@@ -7,15 +7,18 @@ import java.io.*;
 
 public class Giocatore {
 
-	private int PV;
+	private int PV=1;
 	private long denari;
 	private Carta cartaPersonaggio;
+	
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	
 	
-	public Giocatore(Carta cartaPersonaggio){
+	public Giocatore(Personaggio cartaPersonaggio){
 		this.cartaPersonaggio=cartaPersonaggio;
-		//denari=cartaPersonaggio.getDenari();
+		denari=cartaPersonaggio.getDenari();
+		
+		
 	}
     public void scommetti(int numscommessa){
        
