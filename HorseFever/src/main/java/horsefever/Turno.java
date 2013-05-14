@@ -27,7 +27,11 @@ public class Turno {
 			
 			partita.getGiocatori(i).scommetti(1);
 		}
-        for(int i=0; i<partita.getNumgiocatori();i++){
+		for(int i=0; i<partita.getNumgiocatori();i++){
+			
+			partita.getGiocatori(i).trucca();
+		}
+        for(int i=partita.getNumgiocatori(); i>0;i++){
 			
 			partita.getGiocatori(i).scommetti(2);
 		}
