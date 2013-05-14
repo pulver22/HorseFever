@@ -51,7 +51,6 @@ public class Turno {
 		
 	}
 	
-	
     public boolean Arrivati(int[] posizioni){
     	
     	for(int i=0;i<6;i++){
@@ -69,9 +68,22 @@ public class Turno {
     }
     public void DadiSprint(){
     	
-    	int j = (int) (Math.random() * 6);
-    	partita.getPlancia().setPosizioneDado(j);
-    	j = (int) (Math.random() * 6);
-    	partita.getPlancia().setPosizioneDado(j);
+    	boolean fatto=false;
+    	
+    	while(fatto==false){
+    	
+    		int j = (int) (Math.random() * 6);
+    		if(partita.getPlancia().AggiornaPosizione(1, j)==true)
+    			fatto=true;
+    	}
+    	
+    	fatto=false;
+    	while(fatto==false){
+        	
+    		int j = (int) (Math.random() * 6);
+    		if(partita.getPlancia().AggiornaPosizione(1, j)==true)
+    			fatto=true;
+    	}
+    	
     }
 }
