@@ -40,5 +40,7 @@ public class Turno {
 	
 	public void FaseCorsa(){
 		
+		
+		
 	}
 }
