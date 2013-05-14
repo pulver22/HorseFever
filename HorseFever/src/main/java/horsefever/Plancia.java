@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Plancia {
 	
-	char[] corsie = new char[6];
+	char[] posizione = new char[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	
 	public Plancia(){
@@ -18,7 +18,7 @@ public class Plancia {
 	}
 
 	public void AggiornaPosizione(int incremento,int cavallo){
-		corsie[cavallo] += incremento;
+		posizione[cavallo] += incremento;
 	}
 
 }
