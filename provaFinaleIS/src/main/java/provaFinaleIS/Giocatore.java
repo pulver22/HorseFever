@@ -9,13 +9,13 @@ public class Giocatore {
 
 	private int PV;
 	private long denari;
-	private Personaggio cartaPersonaggio;
+	private Carta cartaPersonaggio;
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	
 	
-	public Giocatore(){
-		
-		
+	public Giocatore(Carta cartaPersonaggio){
+		this.cartaPersonaggio=cartaPersonaggio;
+		//denari=cartaPersonaggio.getDenari();
 	}
     public void scommetti(int numscommessa){
        
@@ -170,7 +170,7 @@ public class Giocatore {
 	public void setPV(int pV) {
 		PV = pV;
 	}
-	public Personaggio getCartaPersonaggio() {
+	public Carta getCartaPersonaggio() {
 		return cartaPersonaggio;
 	}
 	public void setCartaPersonaggio(Personaggio cartaPersonaggio) {
