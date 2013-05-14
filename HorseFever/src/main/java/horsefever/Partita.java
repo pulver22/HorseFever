@@ -25,6 +25,9 @@ public class Partita {
 	}
 	
 	public void preparazione(){
+		
+		
+		
 		for (int i=0; i<numgiocatori; i++){
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
 			giocatori.add(new Giocatore(p));
