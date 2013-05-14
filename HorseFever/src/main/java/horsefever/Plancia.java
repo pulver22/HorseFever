@@ -20,9 +20,9 @@ public class Plancia {
 	}
 
 	public boolean AggiornaPosizione(int incremento,int cavallo){
+		if(posizione[cavallo] > 13) return false;
 		posizione[cavallo] += incremento;
 		System.out.println(Arrays.toString(posizione));
-		if(posizione[cavallo] > 13) return false;
 		return true;
 	}
 
