@@ -28,12 +28,11 @@ public class Lavagna {
 		}
 	}
 	
-	public String getQuot(String colore){
-		if (colore=="Nero") return quotazioni[0][1];
-		else if (colore=="Blu") return quotazioni[1][1];
-		else if (colore=="Verde") return quotazioni[2][1];
-		else if (colore=="Rosso") return quotazioni[3][1];
-		else if (colore=="Giallo") return quotazioni[4][1];
-		else return quotazioni[5][1];
+	public String getScuderiaInit(String quotazione){
+		String scuderia=null;
+		for (int j=0; j<6;j++){
+			if (quotazione==quotazioni[j][1]) scuderia=quotazioni[j][0];
+		}
+		return scuderia;
 	}
 }

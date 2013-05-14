@@ -15,10 +15,10 @@ public class Giocatore {
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	
 	
-	public Giocatore(Personaggio cartaPersonaggio){
+	public Giocatore(Personaggio cartaPersonaggio, String scuderia){
 		this.cartaPersonaggio=cartaPersonaggio;
 		denari=cartaPersonaggio.getDenari();
-		
+		this.scuderia=scuderia;
 		
 	}
     public void scommetti(int numscommessa){

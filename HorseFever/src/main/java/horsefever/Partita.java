@@ -32,7 +32,9 @@ public class Partita {
 		for (int i=0; i<numgiocatori; i++){
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
 			quotazione=p.getQuot_scuderia();
-			giocatori.add(new Giocatore(p));
+			scuderia=lavagna.getScuderiaInit(quotazione);
+			giocatori.add(new Giocatore(p,scuderia));
+			
 		}
 		
 	}
