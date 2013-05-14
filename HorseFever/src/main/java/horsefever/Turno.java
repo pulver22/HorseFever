@@ -18,8 +18,23 @@ public class Turno {
 			cartedaassegnare.add((Azione) partita.getMazzoAzione().pesca());
 			partita.getGiocatori(i).setCarteAzione(cartedaassegnare);
 			
+		}	
+	}
+	
+	public void FaseScommesse(){
+		
+		for(int i=0; i<partita.getNumgiocatori();i++){
+			
+			partita.getGiocatori(i).scommetti(1);
+		}
+        for(int i=0; i<partita.getNumgiocatori();i++){
+			
+			partita.getGiocatori(i).scommetti(2);
 		}
 		
+	}
+	
+	public void FaseCorsa(){
 		
 	}
 }
