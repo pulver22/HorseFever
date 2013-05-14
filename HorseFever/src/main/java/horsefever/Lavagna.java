@@ -28,11 +28,21 @@ public class Lavagna {
 		}
 	}
 	
+	public void ricalcolaQuotazioni(){
+		for (int i=0; i<6; i++){
+			
+		}
+	}
+	
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
 		for (int j=0; j<6;j++){
 			if (quotazione==quotazioni[j][1]) scuderia=quotazioni[j][0];
 		}
 		return scuderia;
+	}
+	
+	public void setArrivi(String[] arrivi){
+		this.arrivi=arrivi;
 	}
 }

@@ -14,6 +14,7 @@ public class Partita {
 	private Lavagna lavagna;
 	private Plancia plancia;
 	private Turno turno;
+	private int numSegnaliniScommessaPerColore;
 	
 	public Partita(int numgiocatori){
 		this.numgiocatori=numgiocatori;
@@ -22,6 +23,11 @@ public class Partita {
 		else numturni=6;
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna();
+		
+		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
+		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
+		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
+		else numSegnaliniScommessaPerColore=4;
 	}
 	
 	public void preparazione(){
