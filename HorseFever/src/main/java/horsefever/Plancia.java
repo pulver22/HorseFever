@@ -10,8 +10,7 @@ public class Plancia {
 	
 	public Plancia(){
 		for (int i=0;i<6; i++){
-			corsieTruccate[i]=new ArrayList<Azione>();
-		
+			corsieTruccate[i]=new ArrayList<Azione>();		
 			posizione[i]=0;
 		}
 	}
@@ -20,18 +19,17 @@ public class Plancia {
 		corsieTruccate[numCorsia].add(carta);
 	}
 
-	public void AggiornaPosizione(int incremento,int cavallo){
+	public boolean AggiornaPosizione(int incremento,int cavallo){
 		posizione[cavallo] += incremento;
 		System.out.println(Arrays.toString(posizione));
+		if(posizione[cavallo] > 13) return false;
+		return true;
 	}
 
 	public int[] getPosizione() {
 		return posizione;
 	}
     
-	public void setPosizioneDado(int i){
-		
-		posizione[i]++;
-	}
+	
 
 }
