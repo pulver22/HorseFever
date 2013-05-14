@@ -10,6 +10,7 @@ public class Giocatore {
 	private int PV=1;
 	private long denari;
 	private Carta cartaPersonaggio;
+	private String scuderia;
 	
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	
@@ -184,6 +185,9 @@ public class Giocatore {
 	}
 	public void setCarteAzione(ArrayList<Azione> carteAzione) {
 		this.carteAzione = carteAzione;
+	}
+	public void setScudera(String scuderia){
+		this.scuderia=scuderia;
 	}
 	public long getDenari() {
 		return denari;

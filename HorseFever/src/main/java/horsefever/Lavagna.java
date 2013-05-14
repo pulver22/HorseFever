@@ -29,6 +29,11 @@ public class Lavagna {
 	}
 	
 	public String getQuot(String colore){
-		if (colore="Nero") return quotazioni[0][1];
+		if (colore=="Nero") return quotazioni[0][1];
+		else if (colore=="Blu") return quotazioni[1][1];
+		else if (colore=="Verde") return quotazioni[2][1];
+		else if (colore=="Rosso") return quotazioni[3][1];
+		else if (colore=="Giallo") return quotazioni[4][1];
+		else return quotazioni[5][1];
 	}
 }

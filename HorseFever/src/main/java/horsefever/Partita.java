@@ -21,15 +21,17 @@ public class Partita {
 		else if (numgiocatori==5) numturni=5;
 		else numturni=6;
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
-		
+		lavagna = new Lavagna();
 	}
 	
 	public void preparazione(){
 		
-		
+		String quotazione;
+		String scuderia;
 		
 		for (int i=0; i<numgiocatori; i++){
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
+			quotazione=p.getQuot_scuderia();
 			giocatori.add(new Giocatore(p));
 		}
 		
