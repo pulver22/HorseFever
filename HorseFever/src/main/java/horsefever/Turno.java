@@ -5,6 +5,8 @@ public class Turno {
 	
 	private Partita partita;
 	private ArrayList<Azione> cartedaassegnare;
+	final int FINE_CORSA=10;
+	
 	public Turno(Partita par){
 		
 		this.partita=par;
@@ -40,7 +42,36 @@ public class Turno {
 	
 	public void FaseCorsa(){
 		
-		
+		while(Arrivati(partita.getPlancia().getPosizione())==false){
+			
+			IncrementaPos(partita.getMazzoMovimento());
+			DadiSprint();
+			
+		}
 		
 	}
+	
+	
+    public boolean Arrivati(int[] posizioni){
+    	
+    	for(int i=0;i<6;i++){
+    	
+    	if(posizioni[i]<FINE_CORSA) return false;
+    	
+    	}
+    	return true;
+    }
+    public void IncrementaPos(Mazzo movimento){
+    	
+    	for(int i=0;i<6;i++){
+    	//partita.getPlancia().setPosizione(i,movimento.pesca().getMovimento(i));
+    	}
+    }
+    public void DadiSprint(){
+    	
+    	int j = (int) (Math.random() * 6);
+    	partita.getPlancia().setPosizioneDado(j);
+    	j = (int) (Math.random() * 6);
+    	partita.getPlancia().setPosizioneDado(j);
+    }
 }
