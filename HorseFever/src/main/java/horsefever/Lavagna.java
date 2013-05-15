@@ -54,6 +54,10 @@ public class Lavagna {
 		}
 	}
 	
+	public int getRigaMovimento(int numCorsiaCavallo){
+		return (Integer.parseInt(quotazioni[numCorsiaCavallo][1]) -2);
+	}
+	
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
 		for (int j=0; j<6;j++){
