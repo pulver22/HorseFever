@@ -69,9 +69,11 @@ public class Turno {
     }
     public void IncrementaPos(Mazzo movimento){
     	int j,i;
+    	
     	for(i=0;i<6;i++){ 
     		posizioniaggiornate[i]=0;
     	}
+    	
     	for(i=0;i<6;i++){
     	
         //j=getRigaMovimento(i);
@@ -84,9 +86,11 @@ public class Turno {
     public void DadiSprint(){
     	
     	int i,j;
+    	
     	for(i=0;i<6;i++){ 
     		posizioniaggiornate[i]=0;
     	} 
+    	
     	j = (int) (Math.random() * 6);
     	posizioniaggiornate[j]++;
    		j = (int) (Math.random() * 6);
