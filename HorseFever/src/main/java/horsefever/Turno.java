@@ -5,7 +5,7 @@ public class Turno {
 	
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare;
-	final int FINE_CORSA=13;
+	final int FINE_CORSA=13,FINE_PARTITA=10;
 	private int[]  posizioniAggiornate=new int[6];
 	
 	public Turno(Partita par){
@@ -62,6 +62,8 @@ public class Turno {
 	
 	public void FaseFineTurno(){
 		
+		partita.setNumturni(partita.getNumturni()+1);
+		if(partita.getNumturni()>FINE_PARTITA) partita.FinePartita();
 	}
 	
     public boolean Arrivati(int[] posizioni){
