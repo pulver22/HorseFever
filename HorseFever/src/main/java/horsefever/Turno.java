@@ -76,7 +76,7 @@ public class Turno {
     	
     	for(i=0;i<6;i++){
     	
-        //j=getRigaMovimento(i);
+        j=partita.getLavagna().getRigaMovimento(i);
         //posizioniaggiornate[i]=movimento.pesca().getMovimento(j);
     	
     	}
