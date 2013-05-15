@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class Turno {
 	
 	private Partita partita;
-	private ArrayList<Azione> cartedaassegnare;
+	private ArrayList<Azione> carteDaAssegnare;
 	final int FINE_CORSA=13;
-	private int[]  posizioniaggiornate=new int[6];
+	private int[]  posizioniAggiornate=new int[6];
 	
 	public Turno(Partita par){
 		
@@ -21,9 +21,9 @@ public class Turno {
 		
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
-			cartedaassegnare.add((Azione) partita.getMazzoAzione().pesca());
-			cartedaassegnare.add((Azione) partita.getMazzoAzione().pesca());
-			partita.getGiocatori(i).setCarteAzione(cartedaassegnare);
+			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
+			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
+			partita.getGiocatori(i).setCarteAzione(carteDaAssegnare);
 			
 		}	
 	}
@@ -72,31 +72,31 @@ public class Turno {
     	int j,i;
     	
     	for(i=0;i<6;i++){ 
-    		posizioniaggiornate[i]=0;
+    		posizioniAggiornate[i]=0;
     	}
     	
     	for(i=0;i<6;i++){
     	
         j=partita.getLavagna().getRigaMovimento(i);
-        posizioniaggiornate[i]=movimento.getMovimento(j);
+        posizioniAggiornate[i]=movimento.getMovimento(j);
     	
     	}
     	
-    	partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
+    	partita.getPlancia().AggiornaPosizione(posizioniAggiornate);
     }
     public void DadiSprint(){
     	
     	int i,j;
     	
     	for(i=0;i<6;i++){ 
-    		posizioniaggiornate[i]=0;
+    		posizioniAggiornate[i]=0;
     	} 
     	
     	j = (int) (Math.random() * 6);
-    	posizioniaggiornate[j]++;
+    	posizioniAggiornate[j]++;
    		j = (int) (Math.random() * 6);
-   		posizioniaggiornate[j]++;
-   		partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
+   		posizioniAggiornate[j]++;
+   		partita.getPlancia().AggiornaPosizione(posizioniAggiornate);
  
     }
     
