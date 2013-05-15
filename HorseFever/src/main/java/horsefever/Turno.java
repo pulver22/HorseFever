@@ -68,8 +68,11 @@ public class Turno {
     	return true;
     }
     public void IncrementaPos(Mazzo movimento){
-    	int j;
-    	for(int i=0;i<6;i++){
+    	int j,i;
+    	for(i=0;i<6;i++){ 
+    		posizioniaggiornate[i]=0;
+    	}
+    	for(i=0;i<6;i++){
     	
         //j=getRigaMovimento(i);
         //posizioniaggiornate[i]=movimento.pesca().getMovimento(j);
@@ -80,7 +83,11 @@ public class Turno {
     }
     public void DadiSprint(){
     	
-    	int j = (int) (Math.random() * 6);
+    	int i,j;
+    	for(i=0;i<6;i++){ 
+    		posizioniaggiornate[i]=0;
+    	} 
+    	j = (int) (Math.random() * 6);
     	posizioniaggiornate[j]++;
    		j = (int) (Math.random() * 6);
    		posizioniaggiornate[j]++;
