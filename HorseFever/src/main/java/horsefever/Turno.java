@@ -49,7 +49,8 @@ public class Turno {
 		
 		while(Arrivati(partita.getPlancia().getPosizione())==false){
 			
-			IncrementaPos(partita.getMazzoMovimento());
+			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
+			IncrementaPos(cartamov);
 			DadiSprint();
 			
 		}
@@ -67,7 +68,7 @@ public class Turno {
     	}
     	return true;
     }
-    public void IncrementaPos(Mazzo movimento){
+    public void IncrementaPos(Movimento movimento){
     	int j,i;
     	
     	for(i=0;i<6;i++){ 
@@ -77,7 +78,7 @@ public class Turno {
     	for(i=0;i<6;i++){
     	
         j=partita.getLavagna().getRigaMovimento(i);
-        //posizioniaggiornate[i]=movimento.pesca().getMovimento(j);
+        posizioniaggiornate[i]=movimento.getMovimento(j);
     	
     	}
     	
