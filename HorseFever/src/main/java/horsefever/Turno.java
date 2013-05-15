@@ -75,10 +75,10 @@ public class Turno {
     public void DadiSprint(){
     	
     	int j = (int) (Math.random() * 6);
-    	if(partita.getPlancia().AggiornaPosizione(1, j)==true){}
+    	partita.getPlancia().AggiornaPosizione(1, j);
         	
    		j = (int) (Math.random() * 6);
-   		if(partita.getPlancia().AggiornaPosizione(1, j)==true){}
+   		partita.getPlancia().AggiornaPosizione(1, j);
     
     	
     }
