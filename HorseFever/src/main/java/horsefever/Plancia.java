@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Plancia {
 	
+	String[] ordineArrivo = new String[6];
 	int[] posizione = new int[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	
@@ -19,11 +20,10 @@ public class Plancia {
 		corsieTruccate[numCorsia].add(carta);
 	}
 
-	public boolean AggiornaPosizione(int incremento,int cavallo){
-		if(posizione[cavallo] > 13) return false;
+	public void AggiornaPosizione(int incremento,int cavallo){
+		if(posizione[cavallo] > 13) return ;
 		posizione[cavallo] += incremento;
-		System.out.println(Arrays.toString(posizione));
-		return true;
+		
 	}
 
 	public int[] getPosizione() {
