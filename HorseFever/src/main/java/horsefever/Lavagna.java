@@ -40,9 +40,9 @@ public class Lavagna {
 					 confrontando così le righe di scuderia e cavallo stabilisco se far salire
 					 o diminuire la quotazione di quel cavallo*/
 					if (posCavallo>(quotCavallo-1)){
-						quotCavallo++;
+						if (quotCavallo>2)quotCavallo--;
 					} else if (posCavallo<(quotCavallo-1)){
-						quotCavallo--;
+						if (quotCavallo<7)quotCavallo++;
 					} else {
 						quotCavallo=quotCavallo;
 					}
