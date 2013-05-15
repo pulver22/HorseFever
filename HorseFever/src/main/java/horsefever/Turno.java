@@ -12,6 +12,10 @@ public class Turno {
 		this.partita=par;
 	}
 	
+	public void start(){
+		
+	}
+	
 	public void FaseDistribuzioneCarte(){
 		
 		for(int i=0; i<partita.getNumgiocatori();i++){
