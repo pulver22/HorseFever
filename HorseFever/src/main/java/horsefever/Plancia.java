@@ -57,6 +57,13 @@ public class Plancia {
 		return posizione;
 	}
     
+	public String[] getOrdineArrivo(){
+		String[] ordineDefinitivo = new String[6];
+		for(int i=0;i<ordineArrivo.size();i++){
+			 ordineDefinitivo[i] = ordineArrivo.get(i);
+		}
+		return (ordineDefinitivo);
+	}
 	
 
 }
