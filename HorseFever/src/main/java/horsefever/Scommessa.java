@@ -13,4 +13,27 @@ public class Scommessa {
 		this.quota = quota;
 		this.tipoScomessa = tipoScommessa;
 	}
+
+	public int getGiocatore() {
+		return giocatore;
+	}
+
+	public int getCorsia() {
+		return corsia;
+	}
+
+	
+
+	public double getQuota() {
+		return quota;
+	}
+
+	
+
+	public char getTipoScomessa() {
+		return tipoScomessa;
+	}
+
+
+
 }
