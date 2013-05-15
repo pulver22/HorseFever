@@ -45,11 +45,13 @@ public class Partita {
 		
 	}
 	
-	public void gioca(){
+	public void Gioca(){
 		
 	}
 
-	
+	public void FinePartita(){
+		
+	}
 	
 	//Metodi Getter e Setter
 	public ArrayList<Giocatore> getGiocatori() {
