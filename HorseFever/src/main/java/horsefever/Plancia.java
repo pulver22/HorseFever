@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Plancia {
 	
+	boolean[] arrivati = new boolean[6];
 	ArrayList<String> ordineArrivo = new ArrayList<String>(6);
 	int[] posizione = new int[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
@@ -22,18 +23,34 @@ public class Plancia {
 
 	public void AggiornaPosizione(int[] movimento){
 		for(int i=0; i<6;i++){
-			if(posizione[i] > 13) return ;
+			if(posizione[i] > 13) ;
 			else posizione[i] += movimento[i];
-			}
+		}
+		
+		Fotofinish(posizione);
 	}
 
-	public void Fotofinish (int cavallo1,int cavallo2){
-		if (posizione[cavallo1] >= posizione[cavallo2])
-			ordineArrivo.add(""+cavallo1);
-			ordineArrivo.add(""+cavallo2);
-		if (posizione[cavallo1] < posizione[cavallo2])
-			ordineArrivo.add(""+cavallo2);
-			ordineArrivo.add(""+cavallo1);
+	public void Fotofinish (int[] posizione){
+		for(int i=0;i<5;i++){
+			for(int j=1;j<6;j++){
+				if (arrivati[i] == false & arrivati[j] == false) {
+					if (posizione[i] >= posizione[j] & posizione[i] > 13
+							& posizione[j] > 13) {
+						ordineArrivo.add("" + i);
+						ordineArrivo.add("" + j);
+						arrivati[i] = true;
+						arrivati[j] = true;
+					} else if (posizione[i] < posizione[j] & posizione[i] > 13
+							& posizione[j] > 13) {
+						ordineArrivo.add("" + j);
+						ordineArrivo.add("" + i);
+						arrivati[i] = true;
+						arrivati[j] = true;
+					}
+				}
+			}
+		}
+		
 	}
 	
 	public int[] getPosizione() {
