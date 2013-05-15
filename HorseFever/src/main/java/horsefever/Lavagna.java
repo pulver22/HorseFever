@@ -28,7 +28,8 @@ public class Lavagna {
 		}
 	}
 	
-	public void ricalcolaQuotazioni(){
+	public void ricalcolaQuotazioni(String[] arrivi){
+		this.arrivi=arrivi;
 		for (int i=0; i<6; i++){
 			for (int j=0; j<6; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
 				if (arrivi[i]==quotazioni[j][0]){
