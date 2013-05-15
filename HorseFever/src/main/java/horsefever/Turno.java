@@ -53,6 +53,8 @@ public class Turno {
 			
 		}
 		
+		
+		
 	}
 	
     public boolean Arrivati(int[] posizioni){
@@ -67,7 +69,7 @@ public class Turno {
     public void IncrementaPos(Mazzo movimento){
     	
     	for(int i=0;i<6;i++){
-    	//partita.getPlancia().setPosizione(i,movimento.pesca().getMovimento(i));
+    	//partita.getPlancia().AggiornaPosizione(i,movimento.pesca().getMovimento(i));
     	}
     }
     public void DadiSprint(){
