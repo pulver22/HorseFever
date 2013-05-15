@@ -6,6 +6,7 @@ public class Turno {
 	private Partita partita;
 	private ArrayList<Azione> cartedaassegnare;
 	final int FINE_CORSA=10;
+	private int[]  posizioniaggiornate=new int[6];
 	
 	public Turno(Partita par){
 		
@@ -67,18 +68,24 @@ public class Turno {
     	return true;
     }
     public void IncrementaPos(Mazzo movimento){
-    	
+    	int j;
     	for(int i=0;i<6;i++){
-    	//partita.getPlancia().AggiornaPosizione(movimento.pesca().getMovimento(i),i);
+    	
+        //j=getRigaMovimento(i);
+        //posizioniaggiornate[i]=movimento.pesca().getMovimento(j);
+    	
     	}
+    	
+    	//partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
     }
     public void DadiSprint(){
     	
     	int j = (int) (Math.random() * 6);
-    	partita.getPlancia().AggiornaPosizione(1, j);
-        	
+    	posizioniaggiornate[j]++;
    		j = (int) (Math.random() * 6);
-   		partita.getPlancia().AggiornaPosizione(1, j);
+   		posizioniaggiornate[j]++;
+   		partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
  
     }
+    
 }
