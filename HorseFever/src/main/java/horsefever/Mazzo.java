@@ -5,6 +5,10 @@ public class Mazzo {
 	
 	private ArrayList<Carta> Mazzo = new ArrayList<Carta>();
 	
+	
+/**
+ 	* Scorre il mazzo e sostituisce a caso una carta con un' altra	
+ */
 	public void mischia(){
 		for(int i=Mazzo.size()-1;i > 0; i--){
 			int j = (int) (Math.random()* i);
@@ -13,7 +17,12 @@ public class Mazzo {
 			Mazzo.set(i,test);
 		}
 	}
-
+	
+	
+/**
+ 	* Pesca una carta a caso dal mazzo,la restituisce e la rimuove dal mazzo
+ * @return
+ */
 	public Carta pesca(){
 		int j = (int) (Math.random() * Mazzo.size());
 		Carta test =  (Carta) Mazzo.get(j);
@@ -21,10 +30,20 @@ public class Mazzo {
 		return test;
 	}
 	
+	
+	/**
+	* Inserisce una carta in fondo al mazzo
+	 * @param carta
+	 */
 	public void inserisci(Carta carta){
 		Mazzo.add(carta);
 	}
 	
+	
+	/**
+	 * In base al tipo di carta passato, viene creato il mazzo opportuno
+	 * @param nome
+	 */
 	public Mazzo(String nome){
 		
 		if (nome == "MazzoAzione"){

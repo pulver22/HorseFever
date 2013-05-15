@@ -2,38 +2,42 @@ package horsefever;
 
 public class Scommessa {
 
-	private int giocatore;
+	private Giocatore scommettitore;
 	private int corsia;
-	private double quota;
+	private long importo;
 	private char tipoScomessa;
 	
-	public Scommessa(int giocatore,int corsia,double quota,char tipoScommessa){
-		this.giocatore = giocatore;
+	/**
+	 * Crea la scommessa per quel giocatore salvando il cavallo puntato,la somma e piazzato/vincente
+	 * @param scommettitore
+	 * @param corsia
+	 * @param importo
+	 * @param tipoScommessa
+	 */
+	public Scommessa(Giocatore scommettitore,int corsia,long importo,char tipoScommessa){
+		this.scommettitore = scommettitore;
 		this.corsia = corsia;
-		this.quota = quota;
+		this.importo = importo;
 		this.tipoScomessa = tipoScommessa;
 	}
 
-	public int getGiocatore() {
-		return giocatore;
+	public Giocatore getScommettitore() {
+		return scommettitore;
 	}
 
 	public int getCorsia() {
 		return corsia;
 	}
 
-	
-
-	public double getQuota() {
-		return quota;
+	public long getImporto() {
+		return importo;
 	}
-
-	
 
 	public char getTipoScomessa() {
 		return tipoScomessa;
 	}
 
+	
 
 
 }

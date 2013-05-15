@@ -221,9 +221,10 @@ public class Giocatore {
 	public long getDenari() {
 		return denari;
 	}
-	public void setDenari(int denari) {
-		this.denari = denari;
+	public void setDenari(long nuoviDenari) {
+		this.denari = nuoviDenari;
 	}
+	
 		
 		
 	

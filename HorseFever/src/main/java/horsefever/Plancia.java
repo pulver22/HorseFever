@@ -17,19 +17,50 @@ public class Plancia {
 		}
 	}
 	
+	
+	/**
+	 * Aggiunge la carta azione su quella determinata corsia
+	 * @param carta
+	 * @param numCorsia
+	 */
 	public void TruccaCorsia(Azione carta,int numCorsia){
 		corsieTruccate[numCorsia-1].add(carta);
 	}
 
+	
+	/**
+	 * Se il cavallo non è ancora arrivato al traguardo, ne incrementa la posizione, 
+	 * altrimenti non fa nulla. Se ci sono due cavalli con la posizione successiva al
+	 * traguardo, viene analizzata la situazione di fotofinish.
+	 * Successivamente viene verificato che se c'è un solo cavallo ad avere superato il
+	 * traguardo,viene registrato il suo arrivo.
+	 * @param movimento
+	 */
 	public void AggiornaPosizione(int[] movimento){
 		for(int i=0; i<6;i++){
 			if(posizione[i] > 13) ;
 			else posizione[i] += movimento[i];
 		}
-		
-		Fotofinish(posizione);
+		for(int i=0;i<6;i++){
+			for(int j=1; j<7;j++){
+				if (posizione[i] == posizione[j]) Fotofinish(posizione);
+			}
+		}
+		for(int i=0;i<6;i++){
+			if (posizione[i] >= 13 & arrivati[i] == false) {
+				ordineArrivo.add("" +i);
+				arrivati[i] = true;
+			}
+		}
 	}
-//Attenzione al fatto che un solo giocatore sia arrivato oltre il traguardo!!
+
+	
+	/**
+	 * Prendendo l'ordine dei cavalli, se i due cavalli oltre il traguardo sono arrivati al
+	 * turno precedente, non si fa nulla. Altrimenti si verifica quale ha percorso più spazio
+	 * e si registra che lui è arrivato prima dell'altro. 
+	 * @param posizione
+	 */
 	public void Fotofinish (int[] posizione){
 		for(int i=0;i<5;i++){
 			for(int j=1;j<6;j++){
