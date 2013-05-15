@@ -9,6 +9,7 @@ public class Giocatore {
 
 	private int PV=1;
 	private long denari;
+	private Plancia plancia;
 	private Carta cartaPersonaggio;
 	private String scuderia;
 	
@@ -131,7 +132,7 @@ public class Giocatore {
 
     public void trucca(){
     	boolean buonfine = false;
-    	int numcarta=0;
+    	int numcarta=0,numcorsia=0;
     	System.out.println("Hai in mano queste carte: " );
     	
     	for (int i=0;i< carteAzione.size();i++){
@@ -163,6 +164,34 @@ public class Giocatore {
         		buonfine=false;
         	}
     	}
+      	
+    	while(buonfine==false){	
+    	
+    		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi giocare la carta: ");
+    		try{
+    			buonfine=true;
+    			InputStreamReader reader=new InputStreamReader(System.in);
+    			BufferedReader myInput=new BufferedReader(reader);
+    			numcorsia=Integer.parseInt(""+myInput.readLine());
+    			if(numcorsia<1 || numcorsia>6){
+    	    	
+    				System.out.println("Errore!! Inserisci un numero da 1 a 6");
+    				buonfine=false;
+    			}
+    		}
+    		catch(IOException e){
+    		
+    			System.out.println("Errore !!!\n");
+    			buonfine=false;
+    		}
+    		catch(NumberFormatException e){
+    		
+    			System.out.println("Errore, ci vuole un numero !!!");
+    			buonfine=false;
+    		}
+    	
+    	}
+    	plancia.TruccaCorsia(carteAzione.get(numcarta-1), numcorsia);
     	carteAzione.remove(numcarta -1);
         	
     }
