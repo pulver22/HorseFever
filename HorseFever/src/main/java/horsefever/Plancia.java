@@ -29,7 +29,7 @@ public class Plancia {
 		
 		Fotofinish(posizione);
 	}
-
+//Attenzione al fatto che un solo giocatore sia arrivato oltre il traguardo!!
 	public void Fotofinish (int[] posizione){
 		for(int i=0;i<5;i++){
 			for(int j=1;j<6;j++){
