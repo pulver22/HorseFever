@@ -30,7 +30,26 @@ public class Lavagna {
 	
 	public void ricalcolaQuotazioni(){
 		for (int i=0; i<6; i++){
-			
+			for (int j=0; j<6; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
+				if (arrivi[i]==quotazioni[j][0]){
+					int posCavallo=i+1; //Poichè l'indice i è di 1 inferiore alla posizione reale
+					int quotCavallo=Integer.parseInt(quotazioni[j][1]);
+					/*Confronto tra quotazioni e posizione perchè 
+					 Riga cavallo=Posizione cavallo
+					 Riga Scuderia= quotazione scuderia -1 ( 1:2 = > 2 = > 2-1=1 riga della scuderia a quotazione 1:2)
+					 confrontando così le righe di scuderia e cavallo stabilisco se far salire
+					 o diminuire la quotazione di quel cavallo*/
+					if (posCavallo>(quotCavallo-1)){
+						quotCavallo++;
+					} else if (posCavallo<(quotCavallo-1)){
+						quotCavallo--;
+					} else {
+						quotCavallo=quotCavallo;
+					}
+					quotazioni[j][1]=Integer.toString(quotCavallo); //Aggiorna nuova quotazione in tabella quotazioni
+					
+				}
+			}
 		}
 	}
 	
