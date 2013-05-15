@@ -62,6 +62,10 @@ public class Turno {
 	
 	public void FaseFineTurno(){
 		
+		//reset dei mazzi 
+		partita.setMazzoAzione(new Mazzo("MazzoAzione"));
+		partita.setMazzoMovimento(new Mazzo("MazzoMovimento"));
+		
 		partita.setNumturni(partita.getNumturni()+1);
 		if(partita.getNumturni()>FINE_PARTITA) partita.FinePartita();
 	}
