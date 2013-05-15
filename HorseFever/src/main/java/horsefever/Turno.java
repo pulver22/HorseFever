@@ -81,7 +81,7 @@ public class Turno {
     	
     	}
     	
-    	//partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
+    	partita.getPlancia().AggiornaPosizione(posizioniaggiornate);
     }
     public void DadiSprint(){
     	
