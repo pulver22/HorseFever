@@ -5,7 +5,7 @@ public class Turno {
 	
 	private Partita partita;
 	private ArrayList<Azione> cartedaassegnare;
-	final int FINE_CORSA=10;
+	final int FINE_CORSA=13;
 	private int[]  posizioniaggiornate=new int[6];
 	
 	public Turno(Partita par){
