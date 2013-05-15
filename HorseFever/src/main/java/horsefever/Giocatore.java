@@ -135,7 +135,7 @@ public class Giocatore {
     	System.out.println("Hai in mano queste carte: " );
     	
     	for (int i=0;i< carteAzione.size();i++){
-    		System.out.println("" +(i+1)+") " +carteAzione.get(i).getNome()+"," +carteAzione.get(i).getTipo_effetto() +"," +carteAzione.get(i).getValore_effetto());
+    		System.out.println("" +(i+1)+") " +carteAzione.get(i).getNome()+"," +carteAzione.get(i).getTipoEffetto() +"," +carteAzione.get(i).getValoreEffetto());
     		}
     	
     	while( buonfine==false){	
