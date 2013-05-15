@@ -64,7 +64,9 @@ public class Turno {
 		
 		//reset dei mazzi 
 		partita.setMazzoAzione(new Mazzo("MazzoAzione"));
+		partita.getMazzoAzione().mischia();
 		partita.setMazzoMovimento(new Mazzo("MazzoMovimento"));
+		partita.getMazzoMovimento().mischia();
 		
 		partita.setNumturni(partita.getNumturni()+1);
 		if(partita.getNumturni()>FINE_PARTITA) partita.FinePartita();
