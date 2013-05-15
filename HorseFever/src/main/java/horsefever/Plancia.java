@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Plancia {
 	
-	String[] ordineArrivo = new String[6];
+	ArrayList<String> ordineArrivo = new ArrayList<String>(6);
 	int[] posizione = new int[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	
@@ -17,15 +17,25 @@ public class Plancia {
 	}
 	
 	public void TruccaCorsia(Azione carta,int numCorsia){
-		corsieTruccate[numCorsia].add(carta);
+		corsieTruccate[numCorsia-1].add(carta);
 	}
 
-	public void AggiornaPosizione(int incremento,int cavallo){
-		if(posizione[cavallo] > 13) return ;
-		posizione[cavallo] += incremento;
-		
+	public void AggiornaPosizione(int[] movimento){
+		for(int i=0; i<6;i++){
+			if(posizione[i] > 13) return ;
+			else posizione[i] += movimento[i];
+			}
 	}
 
+	public void Fotofinish (int cavallo1,int cavallo2){
+		if (posizione[cavallo1] >= posizione[cavallo2])
+			ordineArrivo.add(""+cavallo1);
+			ordineArrivo.add(""+cavallo2);
+		if (posizione[cavallo1] < posizione[cavallo2])
+			ordineArrivo.add(""+cavallo2);
+			ordineArrivo.add(""+cavallo1);
+	}
+	
 	public int[] getPosizione() {
 		return posizione;
 	}
