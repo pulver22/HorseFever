@@ -64,6 +64,10 @@ public class Mazzo {
 			Mazzo.add(new Proprietario("Giallo"));
 			Mazzo.add(new Proprietario("Bianco"));
 		}
+		else if(nome == "MazzoMovimento"){
+			
+			//aggiungere mazzo movimento
+		}
 			
 		}
 
