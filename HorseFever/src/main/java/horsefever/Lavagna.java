@@ -53,7 +53,9 @@ public class Lavagna {
 			}
 		}
 	}
-	
+	/*
+	 Dato come parametro il numero della corsia del cavallo, rende la riga della carta movimento da cui leggere il valore
+	 in base alla quotazione del cavallo in quella corsia*/
 	public int getRigaMovimento(int numCorsiaCavallo){
 		return (Integer.parseInt(quotazioni[numCorsiaCavallo][1]) -2);
 	}
