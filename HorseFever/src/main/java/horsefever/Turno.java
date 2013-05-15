@@ -69,7 +69,7 @@ public class Turno {
     public void IncrementaPos(Mazzo movimento){
     	
     	for(int i=0;i<6;i++){
-    	//partita.getPlancia().AggiornaPosizione(i,movimento.pesca().getMovimento(i));
+    	//partita.getPlancia().AggiornaPosizione(movimento.pesca().getMovimento(i),i);
     	}
     }
     public void DadiSprint(){
@@ -79,7 +79,6 @@ public class Turno {
         	
    		j = (int) (Math.random() * 6);
    		partita.getPlancia().AggiornaPosizione(1, j);
-    
-    	
+ 
     }
 }
