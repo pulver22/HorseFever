@@ -8,10 +8,7 @@ public class BetManager {
 
 	/**
 	 * Aggiunge la scommessa di ogni giocatore alla lista delle scommesse
-	 * @param scommettitore
-	 * @param corsia
-	 * @param importo
-	 * @param tipo
+	 * @param scom
 	 */
 	public void AggiungiScommessa(Scommessa scom){
 		bManager.add(scom);
