@@ -12,6 +12,7 @@ public class Giocatore {
 	private Plancia plancia;
 	private Carta cartaPersonaggio;
 	private String scuderia;
+	private Scommessa scommessa;
 	
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	
@@ -22,12 +23,19 @@ public class Giocatore {
 		this.scuderia=scuderia;
 		
 	}
-    public void scommetti(int numscommessa){
+	/**
+	 *  @param numscommessa 1 obbligatoria 2 facoltativa
+	 *  Viene verificato se la scommessa è obbligatoria o meno, in tal caso viene chiesto al giocatore
+	 *  se vuole scommettere oppure no, in caso di risposta affermativa viene chiesto al giocatore 
+	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
+	 */
+    public Scommessa Scommetti(int numscommessa){
        
     	int importo=0, numcorsia=0, ScommessaMinima=PV*100;
-    	char risposta='N';
+    	char risposta='N',tiposcommessa='N';
     	boolean buonfine=false;
     	
+    	// Chiede al giocatore se vuole scommettere visto che la seconda scommessa è facoltativa 
     	if(numscommessa==2){
     		
     		while(buonfine==false){
@@ -46,10 +54,19 @@ public class Giocatore {
     		}
     		
     		}
-    		if(risposta=='N' || risposta=='n') return;
-    		if(denari<ScommessaMinima) return;
-    	}
+    		/* Se il giocatore non vuole più scommettere o non ha denari per scommettere
+    		  restituisce una scommessa con il campo tiposcommessa=N */
+    		if(risposta=='N' || risposta=='n' || denari<ScommessaMinima){
+    			
+    			scommessa=new Scommessa(this,numcorsia,importo,'N');
+    			return scommessa;
+    		}
     		
+    	}
+    	
+    	/*  Se la scommessa è obbligatoria e il giocatore non ha abbastanza denari
+    	   gli vengono sottratti 2 PV, se non ha 2 PV il giocatore perde la partita */
+    	 
     	if(denari<ScommessaMinima){
     		
             if(PV<2){   
@@ -68,7 +85,8 @@ public class Giocatore {
     	System.out.println("Hai a disposizione "+denari+" denari.");
     	
     	
-    	
+    	//Chiede al giocatore su quale corsia vuole scommettere
+    	 
     	while(buonfine==false){	
     	
     		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi scommettere: ");
@@ -97,6 +115,8 @@ public class Giocatore {
     	}
     	
     	buonfine=false;
+    	
+    	//chiede al giocatore l'importo da scommettere
     	while(buonfine==false){
 
     		System.out.println("Inserisci l'importo da scommettere (min "+ScommessaMinima+" denari)");
@@ -124,10 +144,34 @@ public class Giocatore {
     	    }
     	}
     	
+    	//chiede al giocatore se vuole scommettere piazzato o vincente
+    	while(buonfine==false){
+
+    		System.out.println("Vuoi scommettere piazzato (P) o vincente (V)?");
+    		try{
+    			buonfine=true;
+    			InputStreamReader reader=new InputStreamReader(System.in);
+    			BufferedReader myInput=new BufferedReader(reader);
+    			tiposcommessa=myInput.readLine().charAt(0);
+    			if(tiposcommessa!='V' && tiposcommessa!='P'){
+    	    	
+    				System.out.println("Errore, scegli P o V ");
+    				buonfine=false;
+    			}
+            
+        	}
+        	catch(IOException e){
+        		
+        		System.out.println("Errore !!!");
+        		buonfine=false;
+        	}
     	
-		System.out.println("Hai scommesso "+importo+" denari sulla corsia: "+numcorsia);
     	}
-	
+      }
+    
+      scommessa=new Scommessa(this,numcorsia,importo,tiposcommessa);
+	  System.out.println("Hai scommesso "+importo+" denari sulla corsia: "+numcorsia);
+	  return scommessa;
     }
 
     public void trucca(){
