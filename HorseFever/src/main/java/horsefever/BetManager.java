@@ -13,8 +13,8 @@ public class BetManager {
 	 * @param importo
 	 * @param tipo
 	 */
-	public void AggiungiScommessa(Giocatore scommettitore, int corsia, long importo,char tipo){
-		bManager.add(new Scommessa(scommettitore,corsia,importo,tipo));
+	public void AggiungiScommessa(Scommessa scom){
+		bManager.add(scom);
 	}
 	
 	/**
