@@ -20,6 +20,11 @@ public class Turno {
 	
 	public void start(){
 		
+		this.FaseDistribuzioneCarte();
+		this.FaseScommesse();
+		this.FaseCorsa();
+		this.FaseFineTurno();
+		
 	}
 	
 	/**
