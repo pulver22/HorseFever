@@ -6,6 +6,7 @@ public class Lavagna {
 
 	private String[][] quotazioni = new String[6][2];
 	private String[] arrivi = new String[6];
+	
 	/**
 	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
 	 * secondo l'ordine convenzionale:
@@ -97,5 +98,13 @@ public class Lavagna {
 	
 	public void setArrivi(String[] arrivi){
 		this.arrivi=arrivi;
+	}
+	
+	//Metodi Getter e Setter
+	public String[][] getQuotazioni() {
+		return quotazioni;
+	}
+	public void setQuotazioni(String[][] quotazioni) {
+		this.quotazioni = quotazioni;
 	}
 }
