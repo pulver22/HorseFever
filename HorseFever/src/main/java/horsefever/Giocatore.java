@@ -27,6 +27,7 @@ public class Giocatore {
 	 *  Viene verificato se la scommessa è obbligatoria o meno, in tal caso viene chiesto al giocatore
 	 *  se vuole scommettere oppure no, in caso di risposta affermativa viene chiesto al giocatore 
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
+	 *  @return scommessa 
 	 */
     public Scommessa Scommetti(int numscommessa){
        
@@ -173,6 +174,11 @@ public class Giocatore {
 	  return scommessa;
     }
 
+    /**
+     * Viene chiesto al giocatore quale delle sue carte azione vuole giocare e su quale corsia
+     * applicarla, queste informazioni vengono poi passate al metodo TruccaCorsia in plancia
+     * La carta giocata viene infine rimossa dalle carte a disposizione del giocatore
+     */
     public void Trucca(){
     	boolean buonfine = false;
     	int numcarta=0,numcorsia=0;
