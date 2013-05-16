@@ -24,7 +24,7 @@ public class Giocatore {
 		
 	}
 	/**
-	 *  @param numscommessa 1 obbligatoria 2 facoltativa
+	 *  @param numscommessa 1:obbligatoria 2:facoltativa
 	 *  Viene verificato se la scommessa è obbligatoria o meno, in tal caso viene chiesto al giocatore
 	 *  se vuole scommettere oppure no, in caso di risposta affermativa viene chiesto al giocatore 
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
