@@ -54,24 +54,30 @@ public class Turno {
 		
 		Scommessa scom;
 		int[] numSegnalini=partita.getNumSegnalini();
+		int numcorsia;
 		
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
-			numSegnalini=partita.getNumSegnalini();
 			scom=partita.getGiocatori(i).Scommetti(1,numSegnalini);
+			numcorsia=scom.getCorsia();
+			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
+		partita.resetNumSegnalini();
+		numSegnalini=partita.getNumSegnalini();
+		
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			partita.getGiocatori(i).Trucca();
 		}
         for(int i=partita.getNumgiocatori(); i>0;i++){
 			
-        	numSegnalini=partita.getNumSegnalini();
         	scom=partita.getGiocatori(i).Scommetti(2,numSegnalini);
+        	numcorsia=scom.getCorsia();
+			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
-		
+        partita.resetNumSegnalini();
 	}
 	
 	/**
