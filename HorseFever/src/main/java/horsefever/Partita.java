@@ -31,7 +31,7 @@ public class Partita {
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
 		else numSegnaliniScommessaPerColore=4;
 		
-		for(int i=0; i<numgiocatori; i++){
+		for(int i=0; i<6; i++){
 			
 			numSegnalini[i]=numSegnaliniScommessaPerColore;
 		}
@@ -62,7 +62,14 @@ public class Partita {
 	}
 	
 	//Metodi Getter e Setter
-	
+	public void resetNumSegnalini(){
+		
+        for(int i=0; i<6; i++){
+			
+			numSegnalini[i]=numSegnaliniScommessaPerColore;
+		}
+		
+	}
 	public BetManager getBetManager() {
 		return betManager;
 	}
