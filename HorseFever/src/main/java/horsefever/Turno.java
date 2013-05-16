@@ -67,16 +67,15 @@ public class Turno {
 		
 	}
 	
-	
+	/**
+	 * Fino a che tutti i cavalli non hanno raggiunto il traguardo pesca una carta movimento dal mazzo movimento
+	 * Calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
+	 * e l'incremento di posizione dovuto al lancio dei dadi sprint
+	 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
+	 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
+	 */
 	public void FaseCorsa(){
 		
-		/**
-		 * Fino a che tutti i cavalli non hanno raggiunto il traguardo pesca una carta movimento dal mazzo movimento
-		 * Calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
-		 * e l'incremento di posizione dovuto al lancio dei dadi sprint
-		 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
-		 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
-		 */
 		while(Arrivati(partita.getPlancia().getPosizione())==false){
 			
 			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
