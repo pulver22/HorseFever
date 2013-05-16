@@ -176,8 +176,7 @@ public class Giocatore {
     	
     	}
       }
-      
-      numSegnalini[numcorsia]--;
+     
       scommessa=new Scommessa(this,numcorsia,importo,tiposcommessa);
 	  System.out.println("Hai scommesso "+importo+" denari sulla corsia: "+numcorsia);
 	  return scommessa;
