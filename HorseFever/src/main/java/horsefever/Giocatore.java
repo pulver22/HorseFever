@@ -58,7 +58,7 @@ public class Giocatore {
     		  restituisce una scommessa con il campo tiposcommessa=N */
     		if(risposta=='N' || risposta=='n' || denari<ScommessaMinima){
     			
-    			scommessa=new Scommessa(this,numcorsia,importo,'N');
+    			scommessa=new Scommessa(this,10,0,'N');
     			return scommessa;
     		}
     		
