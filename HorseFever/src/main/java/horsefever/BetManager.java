@@ -25,7 +25,7 @@ public class BetManager {
 	 * @param bManager : insieme di scommettitore,scomessa,cavallo sui cui si punta e tipo scommessa
 	 * @param quotazioni : griglia che mostra in base al cavallo la sua quotazione
 	 */
-	public void Pagamenti(String[] ordineArrivo,ArrayList<Scommessa> bManager,String[][] quotazioni){
+	public void Pagamenti(String[] ordineArrivo,String[][] quotazioni){
 	for (int i=0;i<bManager.size();i++){
 		if( (bManager.get(i)).getTipoScomessa() == 'V' & bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[0])){
 			//capire perchè richiede long e se quotazioni[][] restituisce valore contenuto
