@@ -52,9 +52,12 @@ public class Turno {
 	 */
 	public void FaseScommesse(){
 		
+		Scommessa scom;
+		
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
-			partita.getBetManager().AggiungiScommessa(partita.getGiocatori(i).Scommetti(1));
+			scom=partita.getGiocatori(i).Scommetti(1);
+			partita.getBetManager().AggiungiScommessa(scom);
 		}
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
@@ -62,7 +65,8 @@ public class Turno {
 		}
         for(int i=partita.getNumgiocatori(); i>0;i++){
 			
-        	partita.getBetManager().AggiungiScommessa(partita.getGiocatori(i).Scommetti(2));
+        	scom=partita.getGiocatori(i).Scommetti(2);
+			partita.getBetManager().AggiungiScommessa(scom);
 		}
 		
 	}
