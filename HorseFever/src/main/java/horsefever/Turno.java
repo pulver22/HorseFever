@@ -85,7 +85,7 @@ public class Turno {
 			
 		}
 		
-		//BetManager.Pagamenti(partita.getPlancia().getOrdineArrivo());
+		partita.getBetManager().Pagamenti(partita.getPlancia().getOrdineArrivo(),partita.getLavagna().getQuotazioni());
 		partita.getLavagna().ricalcolaQuotazioni(partita.getPlancia().getOrdineArrivo());
 		
 	}
