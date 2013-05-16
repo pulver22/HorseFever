@@ -15,8 +15,8 @@ public class Partita {
 	private Plancia plancia;
 	private Turno turno;
 	private BetManager betManager;
-
 	private int numSegnaliniScommessaPerColore;
+	private int[] numSegnalini=new int[6];
 	
 	public Partita(int numgiocatori){
 		this.numgiocatori=numgiocatori;
@@ -30,6 +30,12 @@ public class Partita {
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
 		else numSegnaliniScommessaPerColore=4;
+		
+		for(int i=0; i<numgiocatori; i++){
+			
+			numSegnalini[i]=numSegnaliniScommessaPerColore;
+		}
+			
 	}
 	
 	public void preparazione(){
@@ -56,8 +62,17 @@ public class Partita {
 	}
 	
 	//Metodi Getter e Setter
+	
 	public BetManager getBetManager() {
 		return betManager;
+	}
+
+	public int[] getNumSegnalini() {
+		return numSegnalini;
+	}
+
+	public void setNumSegnalini(int[] numSegnalini) {
+		this.numSegnalini = numSegnalini;
 	}
 
 	public void setBetManager(BetManager betManager) {
