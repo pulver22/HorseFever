@@ -76,16 +76,23 @@ public class Turno {
 	 */
 	public void FaseCorsa(){
 		
-		while(Arrivati(partita.getPlancia().getPosizione())==false){
+		int[] posizioni=partita.getPlancia().getPosizione();
+		
+		while(Arrivati(posizioni)==false){
 			
 			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
 			IncrementaPos(cartamov);
 			DadiSprint();
 			
+			posizioni=partita.getPlancia().getPosizione();
+			
 		}
 		
-		partita.getBetManager().Pagamenti(partita.getPlancia().getOrdineArrivo(),partita.getLavagna().getQuotazioni());
-		partita.getLavagna().ricalcolaQuotazioni(partita.getPlancia().getOrdineArrivo());
+		String[] ordineArrivo = partita.getPlancia().getOrdineArrivo();
+		String[][] quotazioni= partita.getLavagna().getQuotazioni();
+		
+		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni);
+		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
 		
 	}
 	
@@ -96,13 +103,16 @@ public class Turno {
 	 */
 	public void FaseFineTurno(){
 		
+		int numeroturni=partita.getNumturni();
+		numeroturni++;
+		
 		partita.setMazzoAzione(new Mazzo("MazzoAzione"));
 		partita.getMazzoAzione().mischia();
 		partita.setMazzoMovimento(new Mazzo("MazzoMovimento"));
 		partita.getMazzoMovimento().mischia();
 		
-		partita.setNumturni(partita.getNumturni()+1);
-		if(partita.getNumturni()>FINE_PARTITA) partita.FinePartita();
+		partita.setNumturni(numeroturni);
+		if(numeroturni>FINE_PARTITA) partita.FinePartita();
 	}
 	
 	/**
