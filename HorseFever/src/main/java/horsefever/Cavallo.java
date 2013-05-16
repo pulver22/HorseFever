@@ -9,6 +9,7 @@ public class Cavallo {
 	private String effettoUltimoPrimo;
 	private String effettoFotofinish;
 	private String effettoTraguardo;
+	private final int SPRINT=1;
 	
 	public Cavallo(String colore){
 		this.colore=colore;
@@ -19,7 +20,19 @@ public class Cavallo {
 	 * @param L'incremento teorico senza effetti delle carte Azione
 	 * */
 	public void aggiornaPosizionePartenza(int incremento){
-		
+		int incr;
+		if (effettoPartenza!=null){
+			incr=Integer.parseInt(""+effettoPartenza.charAt(1));
+			if (effettoPartenza.charAt(0)=='='){
+				posizione+=incr;
+			} else if (effettoPartenza.charAt(0)=='+'){
+				posizione=posizione+incr+incremento;
+			} else if (effettoPartenza.charAt(0)=='-'){
+				posizione=posizione+incremento-incr;
+			}
+		} else {
+			posizione+=incremento;
+		}
 	}
 	
 	/**
@@ -28,17 +41,43 @@ public class Cavallo {
 	 * implica già che il cavallo abbia ottenuto uno sprint teorico dia dadi
 	 * */
 	public void aggiornaPosizioneSprint(){
-		
+		int incr;
+		if (effettoSprint!=null){
+			incr=Integer.parseInt(""+effettoSprint.charAt(1));
+			if (effettoSprint.charAt(0)=='='){
+				posizione+=incr;
+			} else if (effettoSprint.charAt(0)=='+'){
+				posizione=posizione+SPRINT+incr;
+			} else if (effettoSprint.charAt(0)=='-'){
+				posizione=posizione+SPRINT-incr;
+			}
+		} else {
+			posizione+=SPRINT;
+		}
 	}
 	
 	/**
-	 * Aggiorna la posizione del cavallo applicando gli effetti sul movimento generico (non alla partenza)
+	 * Aggiorna la posizione del cavallo applicando gli effetti sul movimento generico (non alla partenza) e eventuali effetti Traguardo
 	 * @param L'incremento teorico senza effetti delle carte Azione
-	 * @param Booleano che indica se vadano applicati gli effetti primoUltimo (qualora presenti)
-	 * @param Booleano che indica se vadano applicati gli effetti al Traguardo
 	 * */
-	public void aggiornaPosizione(int incremento, boolean primoUltimo, boolean traguardo){
-		
+	public void aggiornaPosizione(int incremento){
+		int incr;
+		posizione+=incremento;
+		if (posizione>=13){
+			if (effettoTraguardo!=null){
+				incr=Integer.parseInt(""+effettoTraguardo.charAt(1));
+				if (effettoTraguardo.charAt(0)=='='){
+					posizione=13; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
+								  //anche perchè altrimenti un cavallo in generale si fermerebbe già, una volta superato il traguardo
+				} else if (effettoTraguardo.charAt(0)=='+'){
+					posizione+=incr;
+				}
+			}
+		}
+	}
+	
+	public void resetPosizione(){
+		posizione=0;
 	}
 	
 	public int getPosizione() {
