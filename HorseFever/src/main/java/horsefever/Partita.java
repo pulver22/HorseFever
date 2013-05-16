@@ -14,6 +14,7 @@ public class Partita {
 	private Lavagna lavagna;
 	private Plancia plancia;
 	private Turno turno;
+	private BetManager betManager;
 	private int numSegnaliniScommessaPerColore;
 	
 	public Partita(int numgiocatori){
