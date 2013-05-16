@@ -6,7 +6,18 @@ public class Lavagna {
 
 	private String[][] quotazioni = new String[6][2];
 	private String[] arrivi = new String[6];
-	
+	/**
+	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
+	 * secondo l'ordine convenzionale:
+	 * 0 = Nero
+	 * 1 = Blu
+	 * 2 = Verde
+	 * 3 = Rosso
+	 * 4 = Giallo
+	 * 5 = Bianco
+	 * Successivamente, ai fini della preparazione di inizio gioco, assegna casualmente una quotazione differente a ciascuna scuderia 
+	 * per ottenere le quotazioni iniziali.
+	 * */
 	public Lavagna(){
 		int temp;
 		quotazioni[0][0]="Nero";
@@ -27,7 +38,10 @@ public class Lavagna {
 			
 		}
 	}
-	
+	/**
+	 * Ricalcola le quotazioni delle relative scuderie, in base all'ordine d'arrivo dei corrispondenti cavalli
+	 * @param Ordine d'arrivo dei cavalli, contraddistinti dal colore che li rappresenta
+	 * */
 	public void ricalcolaQuotazioni(String[] arrivi){
 		this.arrivi=arrivi;
 		for (int i=0; i<6; i++){
@@ -53,13 +67,26 @@ public class Lavagna {
 			}
 		}
 	}
-	/*
-	 Dato come parametro il numero della corsia del cavallo, rende la riga della carta movimento da cui leggere il valore
-	 in base alla quotazione del cavallo in quella corsia*/
+	/**
+	 *Dato come parametro il numero della corsia del cavallo, rende la riga della carta movimento da cui leggere il valore
+	 *in base alla quotazione del cavallo in quella corsia
+	 *@param il numero della corsia del cavallo di cui si vuole sapere la riga del movimento
+	 *@return L'indice della riga della carta movimento corrispondente al movimento relativo di quel cavallo
+	 */
 	public int getRigaMovimento(int numCorsiaCavallo){
+		/*
+		 * Come per il ricalcolo delle quotazioni, essendo:
+		 * indice riga carta movimento [0,...,5] = (quotazione[2,...,7] -2)[0,...,5]
+		 * sarà:
+		 **/
 		return (Integer.parseInt(quotazioni[numCorsiaCavallo][1]) -2);
 	}
-	
+	/**
+	 * Per ottenere il colore corrispondente alla scuderia che è alla data quotazione. Serve solo per la preparazione iniziale, quando ogni 
+	 * quotazione ha assegnata una ed una sola scuderia distinta, altrimenti potrebbe ritornare NULL
+	 * @param La stringa corrispondente alla quotazione (se "1:2" va passato "2" )di cui si vuole sapere a quale scuderia è assegnata
+	 * @return La stringa corrispondente al colore della scuderia cui è assegnata quella quotazione
+	 * */
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
 		for (int j=0; j<6;j++){
