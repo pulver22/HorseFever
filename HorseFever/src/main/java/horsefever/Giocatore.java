@@ -173,7 +173,7 @@ public class Giocatore {
 	  return scommessa;
     }
 
-    public void trucca(){
+    public void Trucca(){
     	boolean buonfine = false;
     	int numcarta=0,numcorsia=0;
     	System.out.println("Hai in mano queste carte: " );
