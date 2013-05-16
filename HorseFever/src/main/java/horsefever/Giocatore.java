@@ -2,7 +2,6 @@ package horsefever;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.io.*;
 
 public class Giocatore {
