@@ -15,6 +15,7 @@ public class Partita {
 	private Plancia plancia;
 	private Turno turno;
 	private BetManager betManager;
+
 	private int numSegnaliniScommessaPerColore;
 	
 	public Partita(int numgiocatori){
@@ -55,6 +56,14 @@ public class Partita {
 	}
 	
 	//Metodi Getter e Setter
+	public BetManager getBetManager() {
+		return betManager;
+	}
+
+	public void setBetManager(BetManager betManager) {
+		this.betManager = betManager;
+	}
+	
 	public ArrayList<Giocatore> getGiocatori() {
 		return giocatori;
 	}
