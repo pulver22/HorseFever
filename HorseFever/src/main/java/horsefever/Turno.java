@@ -58,7 +58,7 @@ public class Turno {
 		}
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
-			partita.getGiocatori(i).trucca();
+			partita.getGiocatori(i).Trucca();
 		}
         for(int i=partita.getNumgiocatori(); i>0;i++){
 			
