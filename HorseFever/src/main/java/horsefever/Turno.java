@@ -54,7 +54,7 @@ public class Turno {
 		
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
-			partita.getGiocatori(i).scommetti(1);
+			partita.getBetManager().AggiungiScommessa(partita.getGiocatori(i).Scommetti(1));
 		}
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
@@ -62,7 +62,7 @@ public class Turno {
 		}
         for(int i=partita.getNumgiocatori(); i>0;i++){
 			
-			partita.getGiocatori(i).scommetti(2);
+        	partita.getBetManager().AggiungiScommessa(partita.getGiocatori(i).Scommetti(2));
 		}
 		
 	}
@@ -74,6 +74,8 @@ public class Turno {
 		 * Fino a che tutti i cavalli non hanno raggiunto il traguardo pesca una carta movimento dal mazzo movimento
 		 * Calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
 		 * e l'incremento di posizione dovuto al lancio dei dadi sprint
+		 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
+		 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
 		 */
 		while(Arrivati(partita.getPlancia().getPosizione())==false){
 			
@@ -82,11 +84,6 @@ public class Turno {
 			DadiSprint();
 			
 		}
-		
-		/**
-		 *  Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
-		 *  Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
-		 */
 		
 		//BetManager.Pagamenti(partita.getPlancia().getOrdineArrivo());
 		partita.getLavagna().ricalcolaQuotazioni(partita.getPlancia().getOrdineArrivo());
