@@ -29,7 +29,7 @@ public class Giocatore {
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
 	 *  @return scommessa 
 	 */
-    public Scommessa Scommetti(int numscommessa){
+    public Scommessa Scommetti(int numscommessa,int[] numSegnalini){
        
     	int importo=0, numcorsia=0, ScommessaMinima=PV*100;
     	char risposta='N',tiposcommessa='N';
@@ -100,6 +100,14 @@ public class Giocatore {
     				System.out.println("Errore!! Inserisci un numero da 1 a 6");
     				buonfine=false;
     			}
+    			
+    			 if(numSegnalini[numcorsia]==0){
+    			 
+    			 System.out.println("Errore!! Non puoi fare altre scommesse su questa corsia!");
+    			 buonfine=false;
+    			 }
+    			  
+    			 
     		}
     		catch(IOException e){
     		
@@ -168,7 +176,8 @@ public class Giocatore {
     	
     	}
       }
-    
+      
+      numSegnalini[numcorsia]--;
       scommessa=new Scommessa(this,numcorsia,importo,tiposcommessa);
 	  System.out.println("Hai scommesso "+importo+" denari sulla corsia: "+numcorsia);
 	  return scommessa;
