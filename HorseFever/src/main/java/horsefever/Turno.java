@@ -104,7 +104,7 @@ public class Turno {
 		String[] ordineArrivo = partita.getPlancia().getOrdineArrivo();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
 		
-		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni);
+		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
 		
 	}
