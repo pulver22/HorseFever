@@ -9,15 +9,16 @@ public class Plancia {
 	ArrayList<String> ordineArrivo = new ArrayList<String>(6);
 	int[] posizione = new int[6];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
-	ArrayList<Cavallo> cavalli = new ArrayList<Cavallo>(6);
+	Cavallo[] cavalli = new Cavallo[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
+	private ArrayList<Cavallo> fotofinish;
 	
 	public Plancia(){
 		for (int i=0;i<6; i++){
 			corsieTruccate[i]=new ArrayList<Azione>();		
 			posizione[i]=0;
-			cavalli.add(new Cavallo(colori[i]));
+			cavalli[i]=new Cavallo(colori[i]);
 		}
 	}
 	
@@ -39,7 +40,7 @@ public class Plancia {
 		for (int i=0; i<6;i++){
 			
 			eliminaEffettiOpposti(corsieTruccate[i]);
-			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli.get(i));
+			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i]);
 		}
 	}
 	
@@ -90,8 +91,7 @@ public class Plancia {
 		Cavallo c;
 		
 		for (int i=0; i<6;i++){
-			c=cavalli.get(i);
-			c.aggiornaPosizionePartenza(movimenti[i]);
+			cavalli[i].aggiornaPosizionePartenza(movimenti[i]);
 		}
 	}
 	
@@ -106,9 +106,8 @@ public class Plancia {
 		int[] dadiSprint=sprint();
 		
 		for(int i=0; i<6; i++){
-			c=cavalli.get(i);
-			c.aggiornaPosizione(movimenti[i]);
-			if (dadiSprint[i]==1) c.aggiornaPosizioneSprint();
+			cavalli[i].aggiornaPosizione(movimenti[i]);
+			if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 		}
 		
 		
