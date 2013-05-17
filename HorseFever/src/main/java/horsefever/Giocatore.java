@@ -11,6 +11,7 @@ public class Giocatore {
 	private Plancia plancia;
 	private Carta cartaPersonaggio;
 	private String scuderia;
+	
 	private Scommessa scommessa;
 	
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
@@ -282,8 +283,12 @@ public class Giocatore {
 		this.denari = nuoviDenari;
 	}
 	
-		
-		
+	public String getScuderia() {
+		return scuderia;
+	}
+	public void setScuderia(String scuderia) {
+		this.scuderia = scuderia;
+	}
 	
 	
 	
