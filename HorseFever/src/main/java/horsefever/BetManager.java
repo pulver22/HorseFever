@@ -22,7 +22,7 @@ public class BetManager {
 	 * @param bManager : insieme di scommettitore,scomessa,cavallo sui cui si punta e tipo scommessa
 	 * @param quotazioni : griglia che mostra in base al cavallo la sua quotazione
 	 */
-	public void Pagamenti(String[] ordineArrivo,String[][] quotazioni){
+	public void Pagamenti(String[] ordineArrivo,String[][] quotazioni,ArrayList<Giocatore> giocatori){
 	for (int i=0;i<bManager.size();i++){
 		if( (bManager.get(i)).getTipoScomessa() == 'V' & bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[0])){
 			//capire perchè richiede long e se quotazioni[][] restituisce valore contenuto
@@ -38,6 +38,13 @@ public class BetManager {
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +1 ;
 			bManager.get(i).getScommettitore().setPV(nuoviPV);
 		}
+	}
+	//Pagamenti ai proprietari di scuderia
+	for(int i=0;i< giocatori.size();i++){
+		long denari = giocatori.get(i).getDenari();
+		if(giocatori.get(i).getScuderia() == ordineArrivo[0]) giocatori.get(i).setDenari(denari + 600);
+		if(giocatori.get(i).getScuderia() == ordineArrivo[1]) giocatori.get(i).setDenari(denari + 400);
+		if(giocatori.get(i).getScuderia() == ordineArrivo[2]) giocatori.get(i).setDenari(denari + 200);
 	}
 	}
 }
