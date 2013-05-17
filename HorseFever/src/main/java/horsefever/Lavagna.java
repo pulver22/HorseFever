@@ -107,4 +107,31 @@ public class Lavagna {
 	public void setQuotazioni(String[][] quotazioni) {
 		this.quotazioni = quotazioni;
 	}
+	
+	public int getQuotazioneDaColoreIniziale(String colore){
+		int quot=0;
+		for (int i=0; i<6;i++){
+			if (quotazioni[i][0]==colore) {
+				quot=Integer.parseInt(quotazioni[i][1]);
+			}
+		}
+		return quot;
+	}
+	
+	public void setQuotazioneAlCavallo(String colore, String variazione){
+		int quot;
+		for (int i=0; i<6;i++){
+			if (colore==quotazioni[i][0]){
+				quot=Integer.parseInt(quotazioni[i][1]);
+				if (variazione.charAt(0)=='+'){
+					quot-=2;
+					if (quot<=2) quot=2;
+				} else {
+					quot+=2;
+					if (quot>=7) quot=7;
+				}
+				quotazioni[i][1]=Integer.toString(quot);
+			}
+		}
+	}
 }

@@ -4,11 +4,13 @@ public class Cavallo {
 	
 	private int posizione=0;
 	private String colore;
+	private int quotazione;
 	private String effettoPartenza;
 	private String effettoSprint;
 	private String effettoUltimoPrimo;
 	private String effettoFotofinish;
 	private String effettoTraguardo;
+	private String effettoQuotazione;
 	private final int SPRINT=1;
 	
 	public Cavallo(String colore){
@@ -134,6 +136,29 @@ public class Cavallo {
 
 	public void setEffettoTraguardo(String effettoTraguardo) {
 		this.effettoTraguardo = effettoTraguardo;
+	}
+
+	public int getQuotazione() {
+		return quotazione;
+	}
+
+	public void setQuotazione(int quotazione) {
+		this.quotazione = quotazione;
+	}
+
+	public String getEffettoQuotazione() {
+		return effettoQuotazione;
+	}
+
+	public void setEffettoQuotazione(String effettoQuotazione) {
+		this.effettoQuotazione = effettoQuotazione;
+		if (effettoQuotazione.charAt(0)=='+'){
+			quotazione-=2;
+			if (quotazione<=2) quotazione=2;
+		} else {
+			quotazione+=2;
+			if (quotazione>=7) quotazione=7;
+		}
 	}
 	
 	

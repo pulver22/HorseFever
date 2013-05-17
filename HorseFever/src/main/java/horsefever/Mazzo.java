@@ -50,7 +50,7 @@ public class Mazzo {
 			Mazzo.add(new Azione("Magna Velocitas","Verde","Partenza","=4"));
 			Mazzo.add(new Azione("Flagellum Fulguris","Verde","Sprint","+1"));
 			Mazzo.add(new Azione("Herba Magica","Verde","Sprint","=2"));
-			Mazzo.add(new Azione("In Igni Veritas","Verde","Fotofinish","Vincitore"));
+			Mazzo.add(new Azione("In Igni Veritas","Verde","Fotofinish","=1"));
 			Mazzo.add(new Azione("Fustis et Radix","Verde","Traguardo","+2"));
 			Mazzo.add(new Azione("Vigor Ferreum","Verde","Utimo","=4"));
 	
@@ -58,7 +58,7 @@ public class Mazzo {
 			Mazzo.add(new Azione("Aqua Putrida","Rosso","Partenza","-1"));
 			Mazzo.add(new Azione("Serum Maleficum","Rosso","Sprint","=0"));
 			Mazzo.add(new Azione("Venenum Veneficum","Rosso","Sprint","-1"));
-			Mazzo.add(new Azione("Mala tempora","Rosso","Fotofinish","Perdente"));
+			Mazzo.add(new Azione("Mala tempora","Rosso","Fotofinish","=0"));
 			Mazzo.add(new Azione("XIII","Rosso","Traguardo","=0"));
 			Mazzo.add(new Azione("Feliz Infernalis","Rosso","Primo","=0"));
 	

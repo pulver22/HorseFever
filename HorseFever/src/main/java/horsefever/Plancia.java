@@ -13,15 +13,17 @@ public class Plancia {
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
 	private ArrayList<Cavallo> fotofinish;
+	private Lavagna lavagna;
 	
-	public Plancia(){
+	public Plancia(Lavagna lavagna){
+		this.lavagna=lavagna;
 		for (int i=0;i<6; i++){
 			corsieTruccate[i]=new ArrayList<Azione>();		
 			posizione[i]=0;
 			cavalli[i]=new Cavallo(colori[i]);
+			cavalli[i].setQuotazione(lavagna.getQuotazioneDaColoreIniziale(colori[i]));
 		}
 	}
-	
 	
 	/**
 	 * Aggiunge la carta azione su quella determinata corsia
@@ -38,12 +40,79 @@ public class Plancia {
 	 * */
 	public void applicaAzioni(){
 		for (int i=0; i<6;i++){
-			
+			//applicaEffettiGrigi(corsieTruccate[i]);
+			controllaAzioniDiRimozione(corsieTruccate[i]);
 			eliminaEffettiOpposti(corsieTruccate[i]);
 			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i]);
 		}
 	}
-	
+	/*
+	/**
+	 * @author Niccolo
+	 * Controlla l'applicazione degli effetti relativi alle carte grigie
+	 * @param L'ArrayList delle carte azione da controllare
+	 * 
+	public void applicaEffettiGrigi(ArrayList azioni){
+		controllaRimozioni(azioni);
+		//controllaQuotazioni(azioni);
+	}
+	*/
+	/**
+	 * @author Niccolo
+	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
+	 * @param l'ArrayList dell carte Azione su cui fare il controllo
+	 * */
+	public void controllaAzioniDiRimozione(ArrayList azioni){
+		Azione a;
+		char carteDaRimuovere='0';
+		for (int i=0; i<azioni.size();i++){
+			a=(Azione) azioni.get(i);
+			if (a.getColore()=="Grigio" && a.getTipoEffetto()=="Azione"){
+				if (a.getValoreEffetto().charAt(8)=='p') carteDaRimuovere='P';
+				else carteDaRimuovere='N';
+			}
+		}
+		if (carteDaRimuovere!='0'){
+			if (carteDaRimuovere=='N'){
+				for (int j=0;j<azioni.size();j++){
+					a=(Azione) azioni.get(j);
+					if (a.getColore()=="Rosso"){
+						azioni.remove(j);
+					}
+				}
+			} else {
+				for (int j=0; j<azioni.size();j++){
+					a=(Azione) azioni.get(j);
+					if (a.getColore()=="Verde"){
+						azioni.remove(j);
+					}
+				}
+			}
+		}
+	}
+	/*
+	/**
+	 * @author Niccolo
+	 * Controlla la presenza di azioni grigie che mutano la quotazione.
+	 * @return l'incremento da effettuare sulal quotazione. Se =0, nessuna azione a riguardo
+	 * @param L'arrayList delle carte azione da controllare
+	 * 
+	public int controllaQuotazioni(ArrayList azioni){
+		Azione a;
+		int incrementoQuotazione=0;
+		for (int i=0; i<azioni.size();i++){
+			a=(Azione) azioni.get(i);
+			if (a.getColore()=="Grigio" && a.getTipoEffetto()=="Quotazione"){
+				if (a.getValoreEffetto().charAt(0)=='+') {
+					incrementoQuotazione=2;
+				} else if (a.getValoreEffetto().charAt(0)=='-') {	
+					incrementoQuotazione=-2;
+				}
+			}
+		}
+		return incrementoQuotazione;
+	}
+	*/
 	/**
 	 * @author Niccolo
 	 * Assegna agli attributi di Cavallo i valori delle Carte Azioni presenti su di esso
@@ -58,6 +127,10 @@ public class Plancia {
 			if (a.getTipoEffetto()=="Fotofinish") cavallo.setEffettoFotofinish(a.getValoreEffetto());
 			if (a.getTipoEffetto()=="Traguardo") cavallo.setEffettoTraguardo(a.getValoreEffetto());
 			if (a.getTipoEffetto()=="Ultimo" || a.getTipoEffetto()=="Primo") cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
+			if (a.getTipoEffetto()=="Quotazione") {
+				cavallo.setEffettoQuotazione(a.getValoreEffetto());
+				lavagna.setQuotazioneAlCavallo(cavallo.getColore(), a.getValoreEffetto());
+			}
 		}
 	}
 	

@@ -25,7 +25,7 @@ public class Partita {
 		else numturni=6;
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna();
-		
+		plancia = new Plancia(lavagna);
 		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
