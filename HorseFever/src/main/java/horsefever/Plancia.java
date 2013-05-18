@@ -221,9 +221,49 @@ public class Plancia {
 			}
 		}
 	}
-	
+	/**
+	 * @author Niccolo
+	 * Esegue il controllo di fotofinish sui vari cavalli nel round di corsa corrente
+	 * */
 	public void fotoFinish(){
-		
+		int[] flagFotofinish=new int[6];
+		char[] effettiCarte;
+		ArrayList<Cavallo> ordineCavalli;
+		boolean almenoUnCavalloPari=false;
+		for (int i=0; i<6; i++){
+			if (cavalli[i]!=null){
+				if (cavalli[i].oltreTraguardo()){ //Per ogni cavallo ancora in gara che ha superato il traguardo
+					flagFotofinish[i]=1; 
+					for (int j=i+1;j<6;j++){
+						if (cavalli[j]!=null){
+							if (cavalli[i].getPosizione()==cavalli[j].getPosizione()){
+								flagFotofinish[j]=1; //Tiene conto dell'indice di cavalli eventualmente pari a
+													 //a quello in analisi
+								almenoUnCavalloPari=true;
+							}
+						}
+					}
+					if (almenoUnCavalloPari){ //Se è stato trovato almeno un cavallo paria quello in analisi
+						for (int k=0;k<6;k++){
+							if (flagFotofinish[k]==1) {
+								fotofinish.add(cavalli[k]);
+								cavalli[k]=null;
+								flagFotofinish[k]=0;// Inserisce nell'ArrayList fotofinish i cavalli da controllare
+							}
+						}
+						ordineCavalli=new ArrayList<Cavallo>(fotofinish.size());
+						for (int n=0; n<fotofinish.size(); n++){
+							if (fotofinish.get(n).getEffettoFotofinish().charAt(1)=='1'){
+								ordineCavalli.add(fotofinish.get(n)); //Mette in primo posto 
+								fotofinish.remove(n);				//il cavallo con l'effetto fotofinish vincente
+							}
+						/*Mancano perdenti Fotofinish*/
+						
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	/**
