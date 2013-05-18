@@ -13,6 +13,7 @@ public class Plancia {
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
 	private ArrayList<Cavallo> fotofinish;
+	private ArrayList<Cavallo> cavalliArrivati;
 	private Lavagna lavagna;
 	
 	public Plancia(Lavagna lavagna){
@@ -179,10 +180,49 @@ public class Plancia {
 		int[] dadiSprint=sprint();
 		
 		for(int i=0; i<6; i++){
-			cavalli[i].aggiornaPosizione(movimenti[i]);
-			if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
+			if (cavalli[i]!=null){
+				cavalli[i].aggiornaPosizione(movimenti[i]);
+				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
+			}
 		}
-		
+		gestioneArrivi();
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Gestisce arrivi e fotofinish dle round di corsa attuale
+	 * */
+	public void gestioneArrivi(){
+		inserisciArrivati();
+		fotoFinish();
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Controlla se un cavallo è arrivati prima di tutti gli altri e in tal caso lo inserisce in arrivi
+	 * rimuovendo il suo riferimento dall'array dei cavalli
+	 * */
+	public void inserisciArrivati(){
+		int flagArrivo=0;
+		for (int j=0;j<6;j++){
+			if (cavalli[j]!=null){
+				if (cavalli[j].oltreTraguardo()){
+					for (int k=j+1;k<6;k++){
+						if (cavalli[k]!=null){
+							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
+							else flagArrivo-=1;
+						} else flagArrivo+=1;
+					}
+					if (flagArrivo==(5-j)) {
+						cavalliArrivati.add(cavalli[j]);
+						cavalli[j]=null;
+					}
+				}
+			}
+		}
+	}
+	
+	public void fotoFinish(){
 		
 	}
 	

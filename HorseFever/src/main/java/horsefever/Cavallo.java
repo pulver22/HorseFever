@@ -78,6 +78,12 @@ public class Cavallo {
 		}
 	}
 	
+	public boolean oltreTraguardo(){
+		if (posizione>=13){
+			return true;
+		} else return false;
+	}
+	
 	public void resetPosizione(){
 		posizione=0;
 	}
