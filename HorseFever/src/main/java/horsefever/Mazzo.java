@@ -84,6 +84,32 @@ public class Mazzo {
 			Mazzo.add(new Proprietario("Bianco"));
 		}
 		else if(nome == "MazzoMovimento"){
+			
+			Mazzo.add(new Movimento(3,3,2,2,2,2));
+			Mazzo.add(new Movimento(3,2,3,2,2,2));
+			Mazzo.add(new Movimento(3,2,2,3,2,2));
+			Mazzo.add(new Movimento(3,2,2,2,3,2));
+			Mazzo.add(new Movimento(2,2,2,2,3,3));
+			Mazzo.add(new Movimento(2,2,2,3,2,3));
+			Mazzo.add(new Movimento(2,2,3,2,2,3));
+			Mazzo.add(new Movimento(2,3,2,2,2,3));
+			Mazzo.add(new Movimento(2,3,2,2,3,2));
+			Mazzo.add(new Movimento(2,3,2,2,3,2));
+			Mazzo.add(new Movimento(2,3,3,2,2,2));
+			Mazzo.add(new Movimento(3,2,2,2,2,3));
+			Mazzo.add(new Movimento(2,2,3,3,2,2));
+			Mazzo.add(new Movimento(2,2,3,2,3,2));
+			Mazzo.add(new Movimento(2,2,2,3,3,2));
+			Mazzo.add(new Movimento(3,3,2,2,2,2));
+			Mazzo.add(new Movimento(4,3,2,2,2,2));
+			Mazzo.add(new Movimento(4,2,2,2,2,0));
+			Mazzo.add(new Movimento(2,2,2,2,1,0));
+			Mazzo.add(new Movimento(2,2,2,2,1,1));
+			Mazzo.add(new Movimento(3,2,2,2,2,1));
+			Mazzo.add(new Movimento(2,2,3,1,2,2));
+			Mazzo.add(new Movimento(2,4,2,2,0,2));
+			
+			/*
 			int mov[]=new int[6];
 			for (int i=0; i<=23; i++){
 				mov[0]=3 + (int)(Math.random() * ((4 - 3) + 1));
@@ -94,10 +120,10 @@ public class Mazzo {
 				mov[5]=0 + (int)(Math.random() * ((1 - 0) + 1));
 				Mazzo.add(new Movimento(mov));
 			}
-			//aggiungere mazzo movimento
+			*/
 		}
 			
-		}
+	}
 
 }
 
