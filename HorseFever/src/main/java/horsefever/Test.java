@@ -9,7 +9,13 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		
-		ArrayList<Azione> carteprova=new ArrayList<Azione>(2);
+		
+		Partita provaPartita=new Partita(6);
+		provaPartita.preparazione();
+		provaPartita.Gioca();
+		provaPartita.FinePartita();
+		
+		
 		
 	}
 
