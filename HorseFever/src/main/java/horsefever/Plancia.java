@@ -41,23 +41,12 @@ public class Plancia {
 	 * */
 	public void applicaAzioni(){
 		for (int i=0; i<6;i++){
-			//applicaEffettiGrigi(corsieTruccate[i]);
 			controllaAzioniDiRimozione(corsieTruccate[i]);
 			eliminaEffettiOpposti(corsieTruccate[i]);
 			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i]);
 		}
 	}
-	/*
-	/**
-	 * @author Niccolo
-	 * Controlla l'applicazione degli effetti relativi alle carte grigie
-	 * @param L'ArrayList delle carte azione da controllare
-	 * 
-	public void applicaEffettiGrigi(ArrayList azioni){
-		controllaRimozioni(azioni);
-		//controllaQuotazioni(azioni);
-	}
-	*/
+	
 	/**
 	 * @author Niccolo
 	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
@@ -91,29 +80,7 @@ public class Plancia {
 			}
 		}
 	}
-	/*
-	/**
-	 * @author Niccolo
-	 * Controlla la presenza di azioni grigie che mutano la quotazione.
-	 * @return l'incremento da effettuare sulal quotazione. Se =0, nessuna azione a riguardo
-	 * @param L'arrayList delle carte azione da controllare
-	 * 
-	public int controllaQuotazioni(ArrayList azioni){
-		Azione a;
-		int incrementoQuotazione=0;
-		for (int i=0; i<azioni.size();i++){
-			a=(Azione) azioni.get(i);
-			if (a.getColore()=="Grigio" && a.getTipoEffetto()=="Quotazione"){
-				if (a.getValoreEffetto().charAt(0)=='+') {
-					incrementoQuotazione=2;
-				} else if (a.getValoreEffetto().charAt(0)=='-') {	
-					incrementoQuotazione=-2;
-				}
-			}
-		}
-		return incrementoQuotazione;
-	}
-	*/
+
 	/**
 	 * @author Niccolo
 	 * Assegna agli attributi di Cavallo i valori delle Carte Azioni presenti su di esso
