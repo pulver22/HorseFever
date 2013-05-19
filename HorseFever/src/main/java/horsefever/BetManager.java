@@ -25,8 +25,8 @@ public class BetManager {
 	public void Pagamenti(String[] ordineArrivo,String[][] quotazioni,ArrayList<Giocatore> giocatori){
 	for (int i=0;i<bManager.size();i++){
 		if( (bManager.get(i)).getTipoScomessa() == 'V' & bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[0])){
-			//capire perchè richiede long e se quotazioni[][] restituisce valore contenuto
-			long nuoviDenari = (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[i][1]));
+			int corsia = bManager.get(i).getCorsia();
+			long nuoviDenari = (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[corsia][1]));
 			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +3 ;
 			bManager.get(i).getScommettitore().setPV(nuoviPV);
