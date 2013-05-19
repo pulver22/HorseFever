@@ -252,13 +252,24 @@ public class Plancia {
 							}
 						}
 						ordineCavalli=new ArrayList<Cavallo>(fotofinish.size());
-						for (int n=0; n<fotofinish.size(); n++){
+						for (int n=0; n<fotofinish.size(); n++){ //Ricerca di cavallo con effetto vincente
 							if (fotofinish.get(n).getEffettoFotofinish().charAt(1)=='1'){
 								ordineCavalli.add(fotofinish.get(n)); //Mette in primo posto 
 								fotofinish.remove(n);				//il cavallo con l'effetto fotofinish vincente
 							}
-						/*Mancano perdenti Fotofinish*/
+						for (int m=0; m<fotofinish.size();m++){//Ricerca di cavallo con effetto perdente
+							if (fotofinish.get(m).getEffettoFotofinish().charAt(1)=='0'){
+								ordineCavalli.add(fotofinish.get(m));
+								fotofinish.remove(m);
+							}
+						}
 						
+						for (int l=0; l<fotofinish.size();l++){//I restanti li inserisce coma capita tra il primo e l'ultimo
+							ordineCavalli.add(1, fotofinish.get(l));
+						}
+						for (int a=0; a<ordineCavalli.size(); a++){ //Inserimento ordinato nei cavalliArrivati
+							cavalliArrivati.add(ordineCavalli.get(a));//di quelli risultanti il fotofinish
+						}
 						}
 					}
 				}
