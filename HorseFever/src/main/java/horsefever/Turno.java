@@ -70,7 +70,7 @@ public class Turno {
 			
 			partita.getGiocatori(i).Trucca();
 		}
-        for(int i=partita.getNumgiocatori(); i>0;i++){
+        for(int i=partita.getNumgiocatori(); i>0;i--){
 			
         	scom=partita.getGiocatori(i).Scommetti(2,numSegnalini);
         	numcorsia=scom.getCorsia();
