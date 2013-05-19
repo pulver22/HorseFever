@@ -142,7 +142,6 @@ public class Plancia {
 	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
 	public void muovi(int[] movimenti){
-		/*VA ANCORA CONSIDERATO IL FOTOFINISH, E EFFETTI CARTE AZIONE "GRIGIE"*/
 		Cavallo c;
 		int[] dadiSprint=sprint();
 		
@@ -153,11 +152,12 @@ public class Plancia {
 			}
 		}
 		gestioneArrivi();
+		
 	}
 	
 	/**
 	 * @author Niccolo
-	 * Gestisce arrivi e fotofinish dle round di corsa attuale
+	 * Gestisce arrivi e fotofinish del round di corsa attuale
 	 * */
 	public void gestioneArrivi(){
 		inserisciArrivati();
@@ -178,10 +178,10 @@ public class Plancia {
 						if (cavalli[k]!=null){
 							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
 							else flagArrivo-=1;
-						} else flagArrivo+=1;
-					}
-					if (flagArrivo==(5-j)) {
-						cavalliArrivati.add(cavalli[j]);
+						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
+					}						 //aumenta il flag, altrimenti lo diminuisce
+					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
+						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
 						cavalli[j]=null;
 					}
 				}
