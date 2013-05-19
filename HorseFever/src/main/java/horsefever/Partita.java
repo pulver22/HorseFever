@@ -65,6 +65,18 @@ public class Partita {
 
 	public void FinePartita(){
 		
+		int i=0,j=0,maxPV=0;
+		for(i=0;i<numgiocatori;i++){
+			
+			if(giocatori.get(i).getPV()>maxPV){
+				
+				j=i;
+				maxPV=giocatori.get(i).getPV();
+			}
+		}
+		
+		//giocatore vincente = j+1
+		
 	}
 	
 	//Metodi Getter e Setter
