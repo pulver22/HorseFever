@@ -128,9 +128,6 @@ public class Plancia {
 	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
 	public void partenza(int[] movimenti){
-		
-		Cavallo c;
-		
 		for (int i=0; i<6;i++){
 			cavalli[i].aggiornaPosizionePartenza(movimenti[i]);
 		}
@@ -182,7 +179,7 @@ public class Plancia {
 					}						 //aumenta il flag, altrimenti lo diminuisce
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
-						cavalli[j]=null;
+						//cavalli[j]=null;
 					}
 				}
 			}
@@ -214,7 +211,7 @@ public class Plancia {
 						for (int k=0;k<6;k++){
 							if (flagFotofinish[k]==1) {
 								fotofinish.add(cavalli[k]);
-								cavalli[k]=null;
+								//cavalli[k]=null;
 								flagFotofinish[k]=0;// Inserisce nell'ArrayList fotofinish i cavalli da controllare
 							}
 						}
@@ -265,6 +262,48 @@ public class Plancia {
 		
 	}
 	
+	/**
+	 * @author Niccolo
+	 * Ritorna l'Array di String dei colori dei cavalli nell'ordine d'arrivo
+	 * @return I colori dei cavalli in ordine d'arrivo
+	 * */
+	public String[] getColoriArrivi(){
+		String colori[]=new String[6];
+		for (int i=0; i<6;i++){
+			colori[i]=cavalliArrivati.get(i).getColore();
+		}
+		return colori;
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Ritorna un array di interi corrispondenti alle posizioni dei vari cavalli
+	 * @return l'array delle posizioni
+	 * */
+	public int[] getPosizioniCavalli(){
+		int[] posizioni=new int[6];
+		for (int i=0; i<6; i++){
+			posizioni[i]=cavalli[i].getPosizione();
+		}
+		return posizioni;
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Ritorna le carte azioni presenti su una data corsia
+	 * @return l'ArrayList delle azioni presenti su di esso.
+	 * */
+	public ArrayList getAzioniSuCorsia(int corsia){
+		return corsieTruccate[corsia];
+	}
+	
+	public void setPosizioniCavalli(int[] posizioneFissa){
+		for (int i=0;i<6;i++){
+			cavalli[i].setPosizione(posizioneFissa[i]);
+		}
+	}
+	
+	/*--------------------------------------------------------------------------------*/
 	/**
 	 * Posizione
 	 * */

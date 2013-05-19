@@ -22,5 +22,9 @@ public class Movimento extends Carta {
 		
 		return valorimov[i];
    }
+   
+   public int[] getArrayMovimenti(){
+	   return valorimov;
+   }
 
 }

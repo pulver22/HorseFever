@@ -5,12 +5,12 @@ public class Cavallo {
 	private int posizione=0;
 	private String colore;
 	private int quotazione;
-	private String effettoPartenza;
-	private String effettoSprint;
-	private String effettoUltimoPrimo;
-	private String effettoFotofinish;
-	private String effettoTraguardo;
-	private String effettoQuotazione;
+	private String effettoPartenza=null;
+	private String effettoSprint=null;
+	private String effettoUltimoPrimo=null;
+	private String effettoFotofinish=null;
+	private String effettoTraguardo=null;
+	private String effettoQuotazione=null;
 	private final int SPRINT=1;
 	
 	public Cavallo(String colore){

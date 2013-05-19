@@ -36,4 +36,8 @@ public class Azione extends Carta{
 	public void setValoreEffetto(String valoreEffetto) {
 		this.valoreEffetto = valoreEffetto;
 	}
+	
+	public String toString(){
+		return this.nome+" "+this.colore+" "+this.tipoEffetto+" "+this.valoreEffetto;
+	}
 }
