@@ -55,6 +55,12 @@ public class Partita {
 	
 	public void Gioca(){
 		
+		int i;
+		for(i=0;i<numturni;i++){
+			
+			turno.start();
+		}
+		FinePartita();
 	}
 
 	public void FinePartita(){

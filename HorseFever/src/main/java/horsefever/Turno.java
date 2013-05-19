@@ -5,7 +5,7 @@ public class Turno {
 	
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare;
-	final int FINE_CORSA=13,FINE_PARTITA=10;
+	final int FINE_CORSA=13;
 	private int[]  posizioniAggiornate=new int[6];
 	
 	
@@ -125,7 +125,6 @@ public class Turno {
 		partita.getMazzoMovimento().mischia();
 		
 		partita.setNumturni(numeroturni);
-		if(numeroturni>FINE_PARTITA) partita.FinePartita();
 	}
 	
 	/**
