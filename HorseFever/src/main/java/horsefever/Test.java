@@ -13,7 +13,6 @@ public class Test {
 		Partita provaPartita=new Partita(6);
 		provaPartita.preparazione();
 		provaPartita.Gioca();
-		provaPartita.FinePartita();
 		
 		
 		
