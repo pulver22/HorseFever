@@ -7,6 +7,7 @@ public class mainTest {
 	 */
 	public static void main(String[] args) {
 		TestPagamento prova=new TestPagamento();
+		prova.setUp();
 		prova.testDenariGiocatori();
 
 	}
