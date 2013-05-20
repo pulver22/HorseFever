@@ -18,6 +18,11 @@ public class Partita {
 	private int numSegnaliniScommessaPerColore;
 	private int[] numSegnalini=new int[6];
 	
+	/**
+	 * @author niccolò
+	 * Sono un bimbominchia
+	 * @param numgiocatori
+	 */
 	public Partita(int numgiocatori){
 		this.numgiocatori=numgiocatori;
 		if(numgiocatori==4) numturni=4;
