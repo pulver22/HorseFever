@@ -68,12 +68,12 @@ public class Mazzo {
 			Mazzo.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive"));
 		}
 		else if (nome == "MazzoPersonaggio"){
-			Mazzo.add(new Personaggio("Cranio Mercanti", 3400, "1:2"));
-			Mazzo.add(new Personaggio("Steve McSkull", 3600, "1:3"));
-			Mazzo.add(new Personaggio("Viktor von Schadel", 3800, "1:4"));
-			Mazzo.add(new Personaggio("Cesar Crane", 4000, "1:5"));
-			Mazzo.add(new Personaggio("Craneo Cervantes", 4200, "1:6"));
-			Mazzo.add(new Personaggio("Sigvard Skalle", 4400, "1:7"));
+			Mazzo.add(new Personaggio("Cranio Mercanti", 3400, "2"));
+			Mazzo.add(new Personaggio("Steve McSkull", 3600, "3"));
+			Mazzo.add(new Personaggio("Viktor von Schadel", 3800, "4"));
+			Mazzo.add(new Personaggio("Cesar Crane", 4000, "5"));
+			Mazzo.add(new Personaggio("Craneo Cervantes", 4200, "6"));
+			Mazzo.add(new Personaggio("Sigvard Skalle", 4400, "7"));
 		}
 		else if (nome == "MazzoProprietario"){
 			Mazzo.add(new Proprietario("Nero"));
