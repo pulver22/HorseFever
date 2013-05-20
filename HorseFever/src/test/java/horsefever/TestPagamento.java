@@ -57,25 +57,25 @@ public class TestPagamento {
 		
 		//set di ordine arrivo
 		ordineArrivo[0]="1";
-		ordineArrivo[1]="2";
-		ordineArrivo[2]="3";
-		ordineArrivo[3]="4";
-		ordineArrivo[4]="5";
-		ordineArrivo[5]="6";
+		ordineArrivo[1]="0";
+		ordineArrivo[2]="2";
+		ordineArrivo[3]="3";
+		ordineArrivo[4]="4";
+		ordineArrivo[5]="5";
 		
 		//creazione scommesse ad-hoc
-		Scommessa scom1=new Scommessa(giocatori.get(0),1,1000,'V');
-		Scommessa scom2=new Scommessa(giocatori.get(1),1,1000,'V');
-		Scommessa scom3=new Scommessa(giocatori.get(2),1,1000,'V');
-		Scommessa scom4=new Scommessa(giocatori.get(3),1,1000,'V');
-		Scommessa scom5=new Scommessa(giocatori.get(4),1,1000,'V');
-		Scommessa scom6=new Scommessa(giocatori.get(5),1,1000,'V');
-		Scommessa scom7=new Scommessa(giocatori.get(0),1,1000,'V');
-		Scommessa scom8=new Scommessa(giocatori.get(1),1,1000,'V');
-		Scommessa scom9=new Scommessa(giocatori.get(2),1,1000,'V');
-		Scommessa scom10=new Scommessa(giocatori.get(3),1,1000,'V');
-		Scommessa scom11=new Scommessa(giocatori.get(4),1,1000,'V');
-		Scommessa scom12=new Scommessa(giocatori.get(5),1,1000,'V');
+		Scommessa scom1=new Scommessa(giocatori.get(0),1,1000,'P');
+		Scommessa scom2=new Scommessa(giocatori.get(1),2,1000,'P');
+		Scommessa scom3=new Scommessa(giocatori.get(2),3,1000,'P');
+		Scommessa scom4=new Scommessa(giocatori.get(3),4,1000,'P');
+		Scommessa scom5=new Scommessa(giocatori.get(4),5,1000,'P');
+		Scommessa scom6=new Scommessa(giocatori.get(5),0,1000,'P');
+		Scommessa scom7=new Scommessa(giocatori.get(0),1,1000,'P');
+		Scommessa scom8=new Scommessa(giocatori.get(1),2,1000,'P');
+		Scommessa scom9=new Scommessa(giocatori.get(2),3,1000,'P');
+		Scommessa scom10=new Scommessa(giocatori.get(3),4,1000,'P');
+		Scommessa scom11=new Scommessa(giocatori.get(4),5,1000,'P');
+		Scommessa scom12=new Scommessa(giocatori.get(5),0,1000,'P');
 		
 		//aggiunta di tutte le scommesse al betmanager
 		betManager.AggiungiScommessa(scom1);
