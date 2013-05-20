@@ -91,6 +91,11 @@ public class Partita {
 		
 	}
 	
+	
+	public void rimuoviGiocatore(int i){
+		
+		giocatori.remove(i);
+	}
 	//Metodi Getter e Setter
 	public void resetNumSegnalini(){
 		
