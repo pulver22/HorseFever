@@ -250,7 +250,7 @@ public class Plancia {
 			}
 		}
 	}
-	
+	/*DA FINIRE GESTIONE PRIMO ULTIMO*/
 	public boolean controllaPrimoUltimo(int indice){
 		int[] pos=getPosizioniCavalli();
 		int max=getMax();
