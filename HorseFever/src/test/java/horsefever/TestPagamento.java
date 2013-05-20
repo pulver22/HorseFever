@@ -50,18 +50,18 @@ public class TestPagamento {
 		ordineArrivo[5]="6";
 		
 		//creazione scommesse ad-hoc
-		Scommessa scom1=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom2=new Scommessa(partita.getGiocatori(2),1,1000,'V');
-		Scommessa scom3=new Scommessa(partita.getGiocatori(3),1,1000,'V');
-		Scommessa scom4=new Scommessa(partita.getGiocatori(4),1,1000,'V');
-		Scommessa scom5=new Scommessa(partita.getGiocatori(5),1,1000,'V');
-		Scommessa scom6=new Scommessa(partita.getGiocatori(6),1,1000,'V');
-		Scommessa scom7=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom8=new Scommessa(partita.getGiocatori(2),1,1000,'V');
-		Scommessa scom9=new Scommessa(partita.getGiocatori(3),1,1000,'V');
-		Scommessa scom10=new Scommessa(partita.getGiocatori(4),1,1000,'V');
-		Scommessa scom11=new Scommessa(partita.getGiocatori(5),1,1000,'V');
-		Scommessa scom12=new Scommessa(partita.getGiocatori(6),1,1000,'V');
+		Scommessa scom1=new Scommessa(partita.getGiocatori(0),1,1000,'V');
+		Scommessa scom2=new Scommessa(partita.getGiocatori(1),1,1000,'V');
+		Scommessa scom3=new Scommessa(partita.getGiocatori(2),1,1000,'V');
+		Scommessa scom4=new Scommessa(partita.getGiocatori(3),1,1000,'V');
+		Scommessa scom5=new Scommessa(partita.getGiocatori(4),1,1000,'V');
+		Scommessa scom6=new Scommessa(partita.getGiocatori(5),1,1000,'V');
+		Scommessa scom7=new Scommessa(partita.getGiocatori(0),1,1000,'V');
+		Scommessa scom8=new Scommessa(partita.getGiocatori(1),1,1000,'V');
+		Scommessa scom9=new Scommessa(partita.getGiocatori(2),1,1000,'V');
+		Scommessa scom10=new Scommessa(partita.getGiocatori(3),1,1000,'V');
+		Scommessa scom11=new Scommessa(partita.getGiocatori(4),1,1000,'V');
+		Scommessa scom12=new Scommessa(partita.getGiocatori(5),1,1000,'V');
 		
 		//aggiunta di tutte le scommesse al betmanager
 		betManager.AggiungiScommessa(scom1);
