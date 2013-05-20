@@ -16,10 +16,14 @@ public class TestPagamento {
 	public void setUp() {
 
 		partita=new Partita(6);
+		int i;
 		
 		partita.preparazione();
 		String[][] quotazioni = new String[6][2];
 		String[] ordineArrivo = new String[6];
+		ArrayList<Giocatore> giocatori=new ArrayList(6);
+		Personaggio bla=new Personaggio("bla",0,"1");
+		Giocatore Gioc=new Giocatore(bla,"Nero");
 		
 		quotazioni[0][0]="Nero";
 		quotazioni[1][0]="Blu";
@@ -43,17 +47,17 @@ public class TestPagamento {
 		ordineArrivo[5]="6";
 		
 		Scommessa scom1=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom2=new Scommessa(partita.getGiocatori(2),2,1000,'V');
-		Scommessa scom3=new Scommessa(partita.getGiocatori(3),3,1000,'V');
-		Scommessa scom4=new Scommessa(partita.getGiocatori(4),4,1000,'V');
-		Scommessa scom5=new Scommessa(partita.getGiocatori(5),5,1000,'V');
-		Scommessa scom6=new Scommessa(partita.getGiocatori(6),6,1000,'V');
+		Scommessa scom2=new Scommessa(partita.getGiocatori(2),1,1000,'V');
+		Scommessa scom3=new Scommessa(partita.getGiocatori(3),1,1000,'V');
+		Scommessa scom4=new Scommessa(partita.getGiocatori(4),1,1000,'V');
+		Scommessa scom5=new Scommessa(partita.getGiocatori(5),1,1000,'V');
+		Scommessa scom6=new Scommessa(partita.getGiocatori(6),1,1000,'V');
 		Scommessa scom7=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom8=new Scommessa(partita.getGiocatori(2),2,1000,'V');
-		Scommessa scom9=new Scommessa(partita.getGiocatori(3),3,1000,'V');
-		Scommessa scom10=new Scommessa(partita.getGiocatori(4),4,1000,'V');
-		Scommessa scom11=new Scommessa(partita.getGiocatori(5),5,1000,'V');
-		Scommessa scom12=new Scommessa(partita.getGiocatori(6),6,1000,'V');
+		Scommessa scom8=new Scommessa(partita.getGiocatori(2),1,1000,'V');
+		Scommessa scom9=new Scommessa(partita.getGiocatori(3),1,1000,'V');
+		Scommessa scom10=new Scommessa(partita.getGiocatori(4),1,1000,'V');
+		Scommessa scom11=new Scommessa(partita.getGiocatori(5),1,1000,'V');
+		Scommessa scom12=new Scommessa(partita.getGiocatori(6),1,1000,'V');
 		
 		betManager.AggiungiScommessa(scom1);
 		betManager.AggiungiScommessa(scom2);
@@ -68,11 +72,19 @@ public class TestPagamento {
 		betManager.AggiungiScommessa(scom11);
 		betManager.AggiungiScommessa(scom12);
 		
+		for(i=0;i<6;i++){
+        	
+			Gioc.setDenari(0);
+        	Gioc.setPV(0);
+        	giocatori.add(Gioc);
+        }
+        
+		partita.setGiocatori(giocatori);
 		betManager.Pagamenti(ordineArrivo, quotazioni , partita.getGiocatori());
 		
 	}
 
-	public boolean testTimeToDestination() {
+	public boolean testDenariGiocatori() {
 
 		int i;
 		boolean sbagliato=false;
@@ -84,14 +96,25 @@ public class TestPagamento {
 		giocatori= partita.getGiocatori();
         giocatori1=partita.getGiocatori();
         
+        Gioc.setDenari(2600);
+        Gioc.setPV(3);
+        giocatori1.add(Gioc);
+        Gioc.setDenari(2400);
+        Gioc.setPV(3);
+        giocatori1.add(Gioc);
+        Gioc.setPV(3);
+        Gioc.setDenari(2200);
+        giocatori1.add(Gioc);
         
-        for(i=0;i<6;i++){
+        for(i=0;i<3;i++){
         	
-        	Gioc.setDenari(5000);
+        	Gioc.setDenari(2000);
         	Gioc.setPV(3);
         	giocatori1.add(Gioc);
         }
 	    
+      
+        
         	for(i=0;i<6;i++){
         	
         		if(giocatori.get(i).getDenari()!=giocatori1.get(i).getDenari()) sbagliato=true;
