@@ -90,6 +90,8 @@ public class TestPagamento {
 			tiposcommessa=scommessebManager.get(i).getTipoScomessa();
 			System.out.println("Scommessa numero "+i+" : importo= "+importo+" corsia= "+numcorsia+" tipo scommessa= "+tiposcommessa);
 		}
+		
+		
 		//reset dei denari e PV di tutti i giocatori
 		for(i=0;i<6;i++){
         	
@@ -111,11 +113,13 @@ public class TestPagamento {
 		boolean sbagliato=false;
 		Personaggio bla=new Personaggio("bla",0,"1");
 		Giocatore Gioc=new Giocatore(bla,"Nero");
+		long denari;
+		int PV;
 		
 		ArrayList<Giocatore> giocatori=new ArrayList(6);
 		ArrayList<Giocatore> giocatori1=new ArrayList(6);
 		giocatori= partita.getGiocatori();
-        giocatori1=partita.getGiocatori();
+
         
         // i primi tre giocatori vengono settati a dei valori maggiori perchè
         // bisogna considerare anche i pagamenti per le scuderie
@@ -136,7 +140,14 @@ public class TestPagamento {
         	giocatori1.add(Gioc);
         }
 	    
-      
+        //stampa i denari in possesso dei giocatori dopo il pagamento
+  		for(i=0;i<6;i++){
+  			
+  			denari=giocatori1.get(i).getDenari();
+  			PV=giocatori1.get(i).getPV();
+  			System.out.println("Giocatore num "+(i+1)+" denari= "+denari+" PV= "+PV);
+  			
+  		}
         
         	for(i=0;i<6;i++){
         	
