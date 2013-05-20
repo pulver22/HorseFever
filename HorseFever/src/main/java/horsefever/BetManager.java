@@ -35,7 +35,8 @@ public class BetManager {
 		}
 		else if( (bManager.get(i)).getTipoScomessa() == 'P' & bManager.get(i).getCorsia() >= Integer.valueOf(ordineArrivo[0])
 				& bManager.get(i).getCorsia() <= Integer.valueOf(ordineArrivo[2])){
-			long nuoviDenari = (long) (bManager.get(i).getImporto() * 2);
+			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
+			nuoviDenari = nuoviDenari+(long) (bManager.get(i).getImporto() * 2);
 			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +1 ;
 			bManager.get(i).getScommettitore().setPV(nuoviPV);
