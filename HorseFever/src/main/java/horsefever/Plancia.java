@@ -12,8 +12,8 @@ public class Plancia {
 	Cavallo[] cavalli = new Cavallo[6];
 	ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
-	private ArrayList<Cavallo> fotofinish;
-	private ArrayList<Cavallo> cavalliArrivati;
+	private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
+	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
 	
 	public Plancia(Lavagna lavagna){
@@ -112,8 +112,10 @@ public class Plancia {
 			for (int j=1; j<azioni.size(); j++){
 				Azione a1= (Azione)azioni.get(i);
 				Azione a2= (Azione)azioni.get(j);
-				if (a1.getTipoEffetto()==a1.getTipoEffetto()){
-					if (a1.getValoreEffetto().charAt(0)==a2.getValoreEffetto().charAt(0)){
+				if (a1.getTipoEffetto()==a2.getTipoEffetto()){
+					if (a1.getValoreEffetto().charAt(0)==a2.getValoreEffetto().charAt(0)||
+							(a1.getValoreEffetto().charAt(0)=='+' && a2.getValoreEffetto().charAt(0)=='-')||
+							a1.getValoreEffetto().charAt(0)=='-' && a2.getValoreEffetto().charAt(0)=='+'){
 						azioni.remove(i);
 						azioni.remove(j);
 					}
@@ -170,17 +172,23 @@ public class Plancia {
 		int flagArrivo=0;
 		for (int j=0;j<6;j++){
 			if (cavalli[j]!=null){
+				System.out.println("Sono inserisciArrivati()[1° ciclo]. Il cavallo "+j+" è "+cavalli[j].toString());
 				if (cavalli[j].oltreTraguardo()){
 					for (int k=j+1;k<6;k++){
 						if (cavalli[k]!=null){
+							System.out.println("Sono inserisciArrivati()[2° ciclo]. Il cavallo "+k+" è "+cavalli[k].toString());
 							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
 							else flagArrivo-=1;
 						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
 					}						 //aumenta il flag, altrimenti lo diminuisce
+					System.out.println("Sono inserisciArrivati()[2° ciclo]. Il cavallo "+j+" è "+cavalli[j].toString());
+					System.out.println("Il flagArrivo è "+flagArrivo);
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
+						arrivati[j]=true;
 						//cavalli[j]=null;
 					}
+					flagArrivo=0;
 				}
 			}
 		}
@@ -192,7 +200,7 @@ public class Plancia {
 	public void fotoFinish(){
 		int[] flagFotofinish=new int[6];
 		char[] effettiCarte;
-		ArrayList<Cavallo> ordineCavalli;
+		ArrayList<Cavallo> ordineCavalli=new ArrayList();
 		boolean almenoUnCavalloPari=false;
 		for (int i=0; i<6; i++){
 			if (cavalli[i]!=null){
@@ -215,7 +223,7 @@ public class Plancia {
 								flagFotofinish[k]=0;// Inserisce nell'ArrayList fotofinish i cavalli da controllare
 							}
 						}
-						ordineCavalli=new ArrayList<Cavallo>(fotofinish.size());
+						
 						for (int n=0; n<fotofinish.size(); n++){ //Ricerca di cavallo con effetto vincente
 							if (fotofinish.get(n).getEffettoFotofinish().charAt(1)=='1'){
 								ordineCavalli.add(fotofinish.get(n)); //Mette in primo posto 
@@ -270,9 +278,14 @@ public class Plancia {
 	public String[] getColoriArrivi(){
 		String colori[]=new String[6];
 		for (int i=0; i<6;i++){
+			if(cavalliArrivati!=null)
 			colori[i]=cavalliArrivati.get(i).getColore();
 		}
 		return colori;
+	}
+	
+	public Cavallo getCavalloArrivatoInPos(int posizione){
+		return cavalliArrivati.get(posizione);
 	}
 	
 	/**

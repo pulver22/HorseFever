@@ -34,16 +34,15 @@ public class Test {
 		plancia.TruccaCorsia(a1, 1);
 		plancia.applicaAzioni();
 		
-		//int[] testPos={14,11,12,11,10,9};
-		//plancia.setPosizioniCavalli(testPos);
+		int[] testPos={12,12,5,5,5,5};
+		plancia.setPosizioniCavalli(testPos);
 		
 		System.out.println(Arrays.toString(plancia.getPosizioniCavalli()));
 		plancia.muovi(movimentiReali);
 		System.out.println(Arrays.toString(plancia.getPosizioniCavalli()));
 		
-		System.out.println(Arrays.toString(movimentiReali));
-		plancia.muovi(movimentiReali);
-		System.out.println(Arrays.toString(plancia.getPosizioniCavalli()));
+		System.out.println("Il cavallo arrivato 1° è "+plancia.getCavalloArrivatoInPos(0).toString());
+		
 	}
 
 }

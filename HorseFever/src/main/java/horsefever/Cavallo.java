@@ -167,5 +167,7 @@ public class Cavallo {
 		}
 	}
 	
-	
+	public String toString(){
+		return colore+" con quotazione "+quotazione+" e posizione "+posizione;
+	}
 }
