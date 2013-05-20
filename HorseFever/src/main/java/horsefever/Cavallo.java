@@ -37,6 +37,20 @@ public class Cavallo {
 		}
 	}
 	
+	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo){
+		int incr;
+		if (effettoUltimoPrimo!=null){
+			incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
+			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
+				posizione+=incr;
+			} else if (!primo && effettoUltimoPrimo.charAt(1)=='4'){
+				posizione+=incr;
+			}
+		} else {
+			posizione+=incremento;
+		}
+	}
+	
 	/**
 	 * Aggiorna la posizione del cavallo applicando effetti allo sprint.
 	 * Essendo lo sprint teorico sempre =1 non necessita di parametri, l'invocazione del metodo

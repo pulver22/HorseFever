@@ -147,7 +147,9 @@ public class Plancia {
 		for(int i=0; i<6; i++){
 			if (cavalli[i]!=null){
 				if (cavalli[i].getEffettoUltimoPrimo()!=null){
-					
+					int[] primiPari=getCavalliPrimiPari(),ultimiPari=getCavalliUltimiPari();
+					if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], true);
+					else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], false);
 				}
 				cavalli[i].aggiornaPosizione(movimenti[i]);
 				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
@@ -250,20 +252,45 @@ public class Plancia {
 			}
 		}
 	}
-	/*DA FINIRE GESTIONE PRIMO ULTIMO*/
-	public boolean controllaPrimoUltimo(int indice){
-		int[] pos=getPosizioniCavalli();
+	
+	/**
+	 * @author Niccolo
+	 * Metodo di supporto, ritorna i cavalli in prima posizione
+	 * @return un array di int con 1 se il cavallo corrispondente è primo (eventualmente parimerito con altri)
+	 * 0 se invece non lo è. 
+	 * */
+	public int[] getCavalliPrimiPari(){
+		int[] primiPari=new int[6];
 		int max=getMax();
-		int min=getMin();
 		for (int i=0;i<6;i++){
-			if (i==indice){}
-			else {
-				
-			}
+			if (cavalli[i].getPosizione()==max){
+				primiPari[i]=1;
+			} else primiPari[i]=0;
 		}
-		return true;
+		return primiPari;
 	}
 	
+	/**
+	 * @author Niccolo
+	 * Metodo di supporto, ritorna i cavalli in ultima posizione
+	 * @return un array di int con 1 se il cavallo corrispondente è ultimo (eventualmente parimerito con altri)
+	 * 0 se invece non lo è. 
+	 * */
+	public int[] getCavalliUltimiPari(){
+		int[] ultimiPari=new int[6];
+		int min=getMin();
+		for (int i=0;i<6;i++){
+			if (cavalli[i].getPosizione()==min){
+				ultimiPari[i]=1;
+			} else ultimiPari[i]=0;
+		}
+		return ultimiPari;
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Metodo di supporto, ritorna la posizione massima tra quelle attuali dei cavalli
+	 * */
 	public int getMax(){
 		int max=0;
 		for (int i=0;i<6;i++){
@@ -273,6 +300,10 @@ public class Plancia {
 		return max;
 	}
 	
+	/**
+	 * @author Niccolo
+	 * Metodo di supporto, ritorna la posizione minima tra quelle attuali dei cavalli
+	 * */
 	public int getMin(){
 		int min=0;
 		for (int i=0;i<6;i++){
