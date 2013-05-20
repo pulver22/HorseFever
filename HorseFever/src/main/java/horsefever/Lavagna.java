@@ -89,8 +89,11 @@ public class Lavagna {
 	 * */
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
+		
 		for (int j=0; j<6;j++){
-			if (quotazione==quotazioni[j][1]) scuderia=quotazioni[j][0];
+			if (quotazione.equals(quotazioni[j][1])) {
+				scuderia=quotazioni[j][0];
+			}
 		}
 		return scuderia;
 	}
