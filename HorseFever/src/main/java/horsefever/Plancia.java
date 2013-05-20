@@ -253,6 +253,8 @@ public class Plancia {
 	
 	public boolean controllaPrimoUltimo(int indice){
 		int[] pos=getPosizioniCavalli();
+		int max=getMax();
+		int min=getMin();
 		for (int i=0;i<6;i++){
 			if (i==indice){}
 			else {
@@ -260,6 +262,24 @@ public class Plancia {
 			}
 		}
 		return true;
+	}
+	
+	public int getMax(){
+		int max=0;
+		for (int i=0;i<6;i++){
+			if (max<cavalli[i].getPosizione()) max=cavalli[i].getPosizione();
+			else max=max;
+		}
+		return max;
+	}
+	
+	public int getMin(){
+		int min=0;
+		for (int i=0;i<6;i++){
+			if (min<cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
+			else min=min;
+		}
+		return min;
 	}
 	
 	/**
