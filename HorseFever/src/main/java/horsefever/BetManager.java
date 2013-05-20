@@ -19,8 +19,8 @@ public class BetManager {
 	 * i relativi PV
 	 * 
 	 * @param ordineArrivo : griglia d'arrivo
-	 * @param bManager : insieme di scommettitore,scomessa,cavallo sui cui si punta e tipo scommessa
 	 * @param quotazioni : griglia che mostra in base al cavallo la sua quotazione
+	 * @param giocatori : lista dei giocatori
 	 */
 	public void Pagamenti(String[] ordineArrivo,String[][] quotazioni,ArrayList<Giocatore> giocatori){
 	for (int i=0;i<bManager.size();i++){
