@@ -73,7 +73,7 @@ public class Giocatore {
             if(PV<2){   
             	
             	System.out.println("Hai perso la partita");
-            	//aggiungere eliminazione giocatore
+            	//partita.rimuoviGiocatore();
             }   
             else{
     		       PV=PV-2;
