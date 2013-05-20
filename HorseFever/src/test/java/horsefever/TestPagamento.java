@@ -48,16 +48,16 @@ public class TestPagamento {
 		quotazioni[4][0]="Giallo";
 		quotazioni[5][0]="Bianco";
 		
-		quotazioni[0][1]="2";
+		quotazioni[0][1]="6";
 		quotazioni[1][1]="3";
 		quotazioni[2][1]="4";
 		quotazioni[3][1]="5";
-		quotazioni[4][1]="6";
+		quotazioni[4][1]="2";
 		quotazioni[5][1]="7";
 		
 		//set di ordine arrivo
-		ordineArrivo[0]="1";
-		ordineArrivo[1]="0";
+		ordineArrivo[0]="0";
+		ordineArrivo[1]="1";
 		ordineArrivo[2]="2";
 		ordineArrivo[3]="3";
 		ordineArrivo[4]="4";
@@ -66,16 +66,17 @@ public class TestPagamento {
 		//creazione scommesse ad-hoc
 		Scommessa scom1=new Scommessa(giocatori.get(0),1,1000,'P');
 		Scommessa scom2=new Scommessa(giocatori.get(1),2,1000,'P');
-		Scommessa scom3=new Scommessa(giocatori.get(2),3,1000,'P');
-		Scommessa scom4=new Scommessa(giocatori.get(3),4,1000,'P');
+		Scommessa scom3=new Scommessa(giocatori.get(2),3,1000,'V');
+		Scommessa scom4=new Scommessa(giocatori.get(3),4,1000,'V');
 		Scommessa scom5=new Scommessa(giocatori.get(4),5,1000,'P');
 		Scommessa scom6=new Scommessa(giocatori.get(5),0,1000,'P');
-		Scommessa scom7=new Scommessa(giocatori.get(0),1,1000,'P');
-		Scommessa scom8=new Scommessa(giocatori.get(1),2,1000,'P');
+		
+		Scommessa scom7=new Scommessa(giocatori.get(0),1,1000,'V');
+		Scommessa scom8=new Scommessa(giocatori.get(1),2,1000,'V');
 		Scommessa scom9=new Scommessa(giocatori.get(2),3,1000,'P');
 		Scommessa scom10=new Scommessa(giocatori.get(3),4,1000,'P');
 		Scommessa scom11=new Scommessa(giocatori.get(4),5,1000,'P');
-		Scommessa scom12=new Scommessa(giocatori.get(5),0,1000,'P');
+		Scommessa scom12=new Scommessa(giocatori.get(5),0,1000,'V');
 		
 		//aggiunta di tutte le scommesse al betmanager
 		betManager.AggiungiScommessa(scom1);
