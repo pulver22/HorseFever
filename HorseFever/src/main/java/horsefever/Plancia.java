@@ -171,11 +171,11 @@ public class Plancia {
 	public void inserisciArrivati(){
 		int flagArrivo=0;
 		for (int j=0;j<6;j++){
-			if (cavalli[j]!=null){
+			if (!arrivati[j]){
 				System.out.println("Sono inserisciArrivati()[1° ciclo]. Il cavallo "+j+" è "+cavalli[j].toString());
 				if (cavalli[j].oltreTraguardo()){
 					for (int k=j+1;k<6;k++){
-						if (cavalli[k]!=null){
+						if (!arrivati[k]){
 							System.out.println("Sono inserisciArrivati()[2° ciclo]. Il cavallo "+k+" è "+cavalli[k].toString());
 							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
 							else flagArrivo-=1;
