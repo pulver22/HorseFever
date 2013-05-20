@@ -112,7 +112,7 @@ public class Plancia {
 			for (int j=1; j<azioni.size(); j++){
 				Azione a1= (Azione)azioni.get(i);
 				Azione a2= (Azione)azioni.get(j);
-				if (a1.getTipoEffetto()==a2.getTipoEffetto()){
+				if (a1.getTipoEffetto().equals(a2.getTipoEffetto())){
 					if (a1.getValoreEffetto().charAt(0)==a2.getValoreEffetto().charAt(0)||
 							(a1.getValoreEffetto().charAt(0)=='+' && a2.getValoreEffetto().charAt(0)=='-')||
 							a1.getValoreEffetto().charAt(0)=='-' && a2.getValoreEffetto().charAt(0)=='+'){
