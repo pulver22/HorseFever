@@ -45,6 +45,7 @@ public class BetManager {
 	//Pagamenti ai proprietari di scuderia
 	for(int i=0;i< giocatori.size();i++){
 		long denari = giocatori.get(i).getDenari();
+		convertiOrdineArrivo(ordineArrivo);
 		if(giocatori.get(i).getScuderia() == ordineArrivo[0]) giocatori.get(i).setDenari(denari + 600);
 		if(giocatori.get(i).getScuderia() == ordineArrivo[1]) giocatori.get(i).setDenari(denari + 400);
 		if(giocatori.get(i).getScuderia() == ordineArrivo[2]) giocatori.get(i).setDenari(denari + 200);
@@ -53,6 +54,23 @@ public class BetManager {
 	
 	}
 	
+	
+	public void convertiOrdineArrivo(String[] ordineArrivo){
+		
+		int i;
+		
+		for(i=0;i<ordineArrivo.length;i++){
+			
+			if(ordineArrivo[i]=="0") ordineArrivo[i]="Nero";
+			if(ordineArrivo[i]=="1") ordineArrivo[i]="Blu";
+			if(ordineArrivo[i]=="2") ordineArrivo[i]="Rosso";
+			if(ordineArrivo[i]=="3") ordineArrivo[i]="Verde";
+			if(ordineArrivo[i]=="4") ordineArrivo[i]="Giallo";
+			if(ordineArrivo[i]=="5") ordineArrivo[i]="Bianco";
+			
+		}
+		
+	}
 	//metodi getter e setter
 	public ArrayList<Scommessa> getbManager() {
 		return bManager;
