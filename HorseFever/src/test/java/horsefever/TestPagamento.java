@@ -9,22 +9,36 @@ import java.util.ArrayList;
 
 public class TestPagamento {
 
-	private Partita partita;
+	private Partita partita=new Partita(6);
 	private BetManager betManager=new BetManager();
 	private ArrayList<Scommessa> scommessebManager = new ArrayList<Scommessa>();
 	
 
 	public void setUp() {
-
-		partita=new Partita(6);
-		int i;
 		
-		partita.preparazione();
+		int i;
 		String[][] quotazioni = new String[6][2];
 		String[] ordineArrivo = new String[6];
 		ArrayList<Giocatore> giocatori=new ArrayList(6);
-		Personaggio bla=new Personaggio("bla",0,"1");
-		Giocatore Gioc=new Giocatore(bla,"Nero");
+		
+		partita.preparazione();
+	    giocatori=partita.getGiocatori();
+		
+	    // stampa i giocatori come sono stati preparati
+		
+	    System.out.println("------------ Situazione Iniziale Giocatori ------------");
+	    
+		for(i=0;i<6;i++){
+			
+			System.out.println("");
+			System.out.println("Giocatore numero "+(i+1));
+			System.out.println("Personaggio: "+giocatori.get(i).getCartaPersonaggio().getNome());
+			System.out.println("Numero PV: "+giocatori.get(i).getPV());
+			System.out.println("Numero denari: "+giocatori.get(i).getDenari());
+			System.out.println("Scuderia: "+giocatori.get(i).getScuderia());
+			System.out.println("-------------------------------------------");
+			
+		}
 		
 		//set di quotazioni
 		quotazioni[0][0]="Nero";
@@ -50,18 +64,18 @@ public class TestPagamento {
 		ordineArrivo[5]="6";
 		
 		//creazione scommesse ad-hoc
-		Scommessa scom1=new Scommessa(partita.getGiocatori(0),1,1000,'V');
-		Scommessa scom2=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom3=new Scommessa(partita.getGiocatori(2),1,1000,'V');
-		Scommessa scom4=new Scommessa(partita.getGiocatori(3),1,1000,'V');
-		Scommessa scom5=new Scommessa(partita.getGiocatori(4),1,1000,'V');
-		Scommessa scom6=new Scommessa(partita.getGiocatori(5),1,1000,'V');
-		Scommessa scom7=new Scommessa(partita.getGiocatori(0),1,1000,'V');
-		Scommessa scom8=new Scommessa(partita.getGiocatori(1),1,1000,'V');
-		Scommessa scom9=new Scommessa(partita.getGiocatori(2),1,1000,'V');
-		Scommessa scom10=new Scommessa(partita.getGiocatori(3),1,1000,'V');
-		Scommessa scom11=new Scommessa(partita.getGiocatori(4),1,1000,'V');
-		Scommessa scom12=new Scommessa(partita.getGiocatori(5),1,1000,'V');
+		Scommessa scom1=new Scommessa(giocatori.get(0),1,1000,'V');
+		Scommessa scom2=new Scommessa(giocatori.get(1),1,1000,'V');
+		Scommessa scom3=new Scommessa(giocatori.get(2),1,1000,'V');
+		Scommessa scom4=new Scommessa(giocatori.get(3),1,1000,'V');
+		Scommessa scom5=new Scommessa(giocatori.get(4),1,1000,'V');
+		Scommessa scom6=new Scommessa(giocatori.get(5),1,1000,'V');
+		Scommessa scom7=new Scommessa(giocatori.get(0),1,1000,'V');
+		Scommessa scom8=new Scommessa(giocatori.get(1),1,1000,'V');
+		Scommessa scom9=new Scommessa(giocatori.get(2),1,1000,'V');
+		Scommessa scom10=new Scommessa(giocatori.get(3),1,1000,'V');
+		Scommessa scom11=new Scommessa(giocatori.get(4),1,1000,'V');
+		Scommessa scom12=new Scommessa(giocatori.get(5),1,1000,'V');
 		
 		//aggiunta di tutte le scommesse al betmanager
 		betManager.AggiungiScommessa(scom1);
@@ -91,73 +105,33 @@ public class TestPagamento {
 			System.out.println("Scommessa numero "+(i+1)+" : importo= "+importo+" corsia= "+numcorsia+" tipo scommessa= "+tiposcommessa);
 		}
 		
-		
-		//reset dei denari e PV di tutti i giocatori
-		for(i=0;i<6;i++){
-        	
-			Gioc.setDenari(0);
-        	Gioc.setPV(0);
-        	giocatori.add(Gioc);
-        }
-        
-		partita.setGiocatori(giocatori);
-		
 		//Richiamo metodo pagamenti da betmanager
 		betManager.Pagamenti(ordineArrivo, quotazioni , partita.getGiocatori());
 		
 	}
 
-	public boolean testDenariGiocatori() {
+	public void testDenariGiocatori() {
 
 		int i;
-		boolean sbagliato=false;
-		Personaggio bla=new Personaggio("bla",0,"1");
-		Giocatore Gioc=new Giocatore(bla,"Nero");
-		long denari;
-		int PV;
-		
 		ArrayList<Giocatore> giocatori=new ArrayList(6);
-		ArrayList<Giocatore> giocatori1=new ArrayList(6);
+		
 		giocatori= partita.getGiocatori();
 
         
-        // i primi tre giocatori vengono settati a dei valori maggiori perchè
-        // bisogna considerare anche i pagamenti per le scuderie
-        Gioc.setDenari(2600);
-        Gioc.setPV(3);
-        giocatori1.add(Gioc);
-        Gioc.setDenari(2400);
-        Gioc.setPV(3);
-        giocatori1.add(Gioc);
-        Gioc.setPV(3);
-        Gioc.setDenari(2200);
-        giocatori1.add(Gioc);
-        
-        for(i=0;i<3;i++){
-        	
-        	Gioc.setDenari(2000);
-        	Gioc.setPV(3);
-        	giocatori1.add(Gioc);
-        }
-	    
-        //stampa i denari in possesso dei giocatori dopo il pagamento
-  		for(i=0;i<6;i++){
-  			
-  			denari=giocatori1.get(i).getDenari();
-  			PV=giocatori1.get(i).getPV();
-  			System.out.println("Giocatore num "+(i+1)+" denari= "+denari+" PV= "+PV);
-  			
-  		}
-        
-        	for(i=0;i<6;i++){
-        	
-        		if(giocatori.get(i).getDenari()!=giocatori1.get(i).getDenari()) sbagliato=true;
-        		if(giocatori.get(i).getPV()!=giocatori1.get(i).getPV()) sbagliato=true;
-        	}
-        	
-            System.out.println("Sbagliato = "+sbagliato);
-    	    return sbagliato;
-        }
+        for(i=0;i<6;i++){
+			
+			System.out.println("");
+			System.out.println("Giocatore numero "+(i+1));
+			System.out.println("Personaggio: "+giocatori.get(i).getCartaPersonaggio().getNome());
+			System.out.println("Numero PV: "+giocatori.get(i).getPV());
+			System.out.println("Numero denari: "+giocatori.get(i).getDenari());
+			System.out.println("Scuderia: "+giocatori.get(i).getScuderia());
+			System.out.println("-------------------------------------------");
+			
+		}
+      
+	   
 		
         
 	}
+}
