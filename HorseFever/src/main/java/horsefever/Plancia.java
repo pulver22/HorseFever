@@ -146,6 +146,9 @@ public class Plancia {
 		
 		for(int i=0; i<6; i++){
 			if (cavalli[i]!=null){
+				if (cavalli[i].getEffettoUltimoPrimo()!=null){
+					
+				}
 				cavalli[i].aggiornaPosizione(movimenti[i]);
 				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 			}
@@ -246,6 +249,17 @@ public class Plancia {
 				}
 			}
 		}
+	}
+	
+	public boolean controllaPrimoUltimo(Cavallo c, int indice){
+		for (int i=0;i<6;i++){
+			if (i==indice){}
+			else {
+				if (c.getPosizione()==cavalli[i].getPosizione()){
+			}
+			}
+		}
+		return true;
 	}
 	
 	/**
