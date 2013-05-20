@@ -251,12 +251,12 @@ public class Plancia {
 		}
 	}
 	
-	public boolean controllaPrimoUltimo(Cavallo c, int indice){
+	public boolean controllaPrimoUltimo(int indice){
+		int[] pos=getPosizioniCavalli();
 		for (int i=0;i<6;i++){
 			if (i==indice){}
 			else {
-				if (c.getPosizione()==cavalli[i].getPosizione()){
-			}
+				
 			}
 		}
 		return true;
