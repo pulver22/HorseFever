@@ -88,7 +88,7 @@ public class TestPagamento {
 			numcorsia=scommessebManager.get(i).getCorsia();
 			importo=scommessebManager.get(i).getImporto();
 			tiposcommessa=scommessebManager.get(i).getTipoScomessa();
-			System.out.println("Scommessa numero "+i+" : importo= "+importo+" corsia= "+numcorsia+" tipo scommessa= "+tiposcommessa);
+			System.out.println("Scommessa numero "+(i+1)+" : importo= "+importo+" corsia= "+numcorsia+" tipo scommessa= "+tiposcommessa);
 		}
 		
 		
