@@ -36,7 +36,6 @@ public class Lavagna {
 			temp=(int) (Math.random()*init.size());
 			quotazioni[j][1]=init.get(temp).toString();
 			init.remove(temp);
-			System.out.println("Quotazione "+j+" è "+quotazioni[j][1]);
 		}
 	}
 	/**
