@@ -44,8 +44,7 @@ public class Test {
 		System.out.println("Il cavallo arrivato 1° è "+plancia.getCavalloArrivatoInPos(0).toString());
 		
 		
-		plancia.setOrdineArrivo(0, "4");
-		System.out.print(Integer.valueOf(plancia.getOrdineArrivo()[0]));
+		
 	}
 
 }
