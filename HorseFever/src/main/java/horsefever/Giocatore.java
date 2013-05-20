@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Giocatore {
 
-	private int PV=1;
+	private int PV=0;
 	private long denari;
 	private Plancia plancia;
 	private Carta cartaPersonaggio;
