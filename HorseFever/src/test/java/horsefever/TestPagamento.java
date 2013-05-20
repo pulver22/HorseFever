@@ -11,6 +11,7 @@ public class TestPagamento {
 
 	private Partita partita;
 	private BetManager betManager;
+	private ArrayList<Scommessa> scommessebManager = new ArrayList<Scommessa>();
 	
 
 	public void setUp() {
@@ -25,6 +26,7 @@ public class TestPagamento {
 		Personaggio bla=new Personaggio("bla",0,"1");
 		Giocatore Gioc=new Giocatore(bla,"Nero");
 		
+		//set di quotazioni
 		quotazioni[0][0]="Nero";
 		quotazioni[1][0]="Blu";
 		quotazioni[2][0]="Verde";
@@ -39,6 +41,7 @@ public class TestPagamento {
 		quotazioni[4][1]="6";
 		quotazioni[5][1]="7";
 		
+		//set di ordine arrivo
 		ordineArrivo[0]="1";
 		ordineArrivo[1]="2";
 		ordineArrivo[2]="3";
@@ -46,6 +49,7 @@ public class TestPagamento {
 		ordineArrivo[4]="5";
 		ordineArrivo[5]="6";
 		
+		//creazione scommesse ad-hoc
 		Scommessa scom1=new Scommessa(partita.getGiocatori(1),1,1000,'V');
 		Scommessa scom2=new Scommessa(partita.getGiocatori(2),1,1000,'V');
 		Scommessa scom3=new Scommessa(partita.getGiocatori(3),1,1000,'V');
@@ -59,6 +63,7 @@ public class TestPagamento {
 		Scommessa scom11=new Scommessa(partita.getGiocatori(5),1,1000,'V');
 		Scommessa scom12=new Scommessa(partita.getGiocatori(6),1,1000,'V');
 		
+		//aggiunta di tutte le scommesse al betmanager
 		betManager.AggiungiScommessa(scom1);
 		betManager.AggiungiScommessa(scom2);
 		betManager.AggiungiScommessa(scom3);
@@ -72,6 +77,20 @@ public class TestPagamento {
 		betManager.AggiungiScommessa(scom11);
 		betManager.AggiungiScommessa(scom12);
 		
+		scommessebManager=betManager.getbManager();
+		int numcorsia;
+		long importo;
+		char tiposcommessa;
+		
+		//stampa le scommesse memorizzate in Bet Manager
+		for(i=0;i<12;i++){
+			
+			numcorsia=scommessebManager.get(i).getCorsia();
+			importo=scommessebManager.get(i).getImporto();
+			tiposcommessa=scommessebManager.get(i).getTipoScomessa();
+			System.out.println("Scommessa numero "+i+" : importo= "+importo+" corsia= "+numcorsia+" tipo scommessa= "+tiposcommessa);
+		}
+		//reset dei denari e PV di tutti i giocatori
 		for(i=0;i<6;i++){
         	
 			Gioc.setDenari(0);
@@ -80,6 +99,8 @@ public class TestPagamento {
         }
         
 		partita.setGiocatori(giocatori);
+		
+		//Richiamo metodo pagamenti da betmanager
 		betManager.Pagamenti(ordineArrivo, quotazioni , partita.getGiocatori());
 		
 	}
@@ -96,6 +117,8 @@ public class TestPagamento {
 		giocatori= partita.getGiocatori();
         giocatori1=partita.getGiocatori();
         
+        // i primi tre giocatori vengono settati a dei valori maggiori perchè
+        // bisogna considerare anche i pagamenti per le scuderie
         Gioc.setDenari(2600);
         Gioc.setPV(3);
         giocatori1.add(Gioc);
