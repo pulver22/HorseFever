@@ -33,8 +33,8 @@ public class BetManager {
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +3 ;
 			bManager.get(i).getScommettitore().setPV(nuoviPV);
 		}
-		else if( (bManager.get(i)).getTipoScomessa() == 'P' & bManager.get(i).getCorsia() >= Integer.valueOf(ordineArrivo[0])
-				& bManager.get(i).getCorsia() <= Integer.valueOf(ordineArrivo[2])){
+		else if( (bManager.get(i)).getTipoScomessa() == 'P' & (bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[0])
+				|| bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[2]) || bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivo[1]))){
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari+(long) (bManager.get(i).getImporto() * 2);
 			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
@@ -63,8 +63,8 @@ public class BetManager {
 			
 			if(ordineArrivo[i]=="0") ordineArrivo[i]="Nero";
 			if(ordineArrivo[i]=="1") ordineArrivo[i]="Blu";
-			if(ordineArrivo[i]=="2") ordineArrivo[i]="Rosso";
-			if(ordineArrivo[i]=="3") ordineArrivo[i]="Verde";
+			if(ordineArrivo[i]=="2") ordineArrivo[i]="Verde";
+			if(ordineArrivo[i]=="3") ordineArrivo[i]="Rosso";
 			if(ordineArrivo[i]=="4") ordineArrivo[i]="Giallo";
 			if(ordineArrivo[i]=="5") ordineArrivo[i]="Bianco";
 			
