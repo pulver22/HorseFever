@@ -46,5 +46,16 @@ public class BetManager {
 		if(giocatori.get(i).getScuderia() == ordineArrivo[1]) giocatori.get(i).setDenari(denari + 400);
 		if(giocatori.get(i).getScuderia() == ordineArrivo[2]) giocatori.get(i).setDenari(denari + 200);
 	}
+	
+	
+	}
+	
+	//metodi getter e setter
+	public ArrayList<Scommessa> getbManager() {
+		return bManager;
+	}
+
+	public void setbManager(ArrayList<Scommessa> bManager) {
+		this.bManager = bManager;
 	}
 }
