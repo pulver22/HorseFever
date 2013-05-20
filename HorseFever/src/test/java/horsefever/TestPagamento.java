@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TestPagamento {
 
 	private Partita partita;
-	private BetManager betManager;
+	private BetManager betManager=new BetManager();
 	private ArrayList<Scommessa> scommessebManager = new ArrayList<Scommessa>();
 	
 
