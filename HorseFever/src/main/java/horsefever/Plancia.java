@@ -172,17 +172,13 @@ public class Plancia {
 		int flagArrivo=0;
 		for (int j=0;j<6;j++){
 			if (!arrivati[j]){
-				System.out.println("Sono inserisciArrivati()[1° ciclo]. Il cavallo "+j+" è "+cavalli[j].toString());
 				if (cavalli[j].oltreTraguardo()){
 					for (int k=j+1;k<6;k++){
 						if (!arrivati[k]){
-							System.out.println("Sono inserisciArrivati()[2° ciclo]. Il cavallo "+k+" è "+cavalli[k].toString());
 							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
 							else flagArrivo-=1;
 						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
 					}						 //aumenta il flag, altrimenti lo diminuisce
-					System.out.println("Sono inserisciArrivati()[2° ciclo]. Il cavallo "+j+" è "+cavalli[j].toString());
-					System.out.println("Il flagArrivo è "+flagArrivo);
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
 						arrivati[j]=true;
@@ -203,15 +199,17 @@ public class Plancia {
 		ArrayList<Cavallo> ordineCavalli=new ArrayList();
 		boolean almenoUnCavalloPari=false;
 		for (int i=0; i<6; i++){
-			if (cavalli[i]!=null){
+			if (!arrivati[i]){
 				if (cavalli[i].oltreTraguardo()){ //Per ogni cavallo ancora in gara che ha superato il traguardo
 					flagFotofinish[i]=1; 
+					arrivati[i]=true;
 					for (int j=i+1;j<6;j++){
-						if (cavalli[j]!=null){
+						if (!arrivati[j]){
 							if (cavalli[i].getPosizione()==cavalli[j].getPosizione()){
 								flagFotofinish[j]=1; //Tiene conto dell'indice di cavalli eventualmente pari a
 													 //a quello in analisi
 								almenoUnCavalloPari=true;
+								arrivati[j]=true;
 							}
 						}
 					}
@@ -219,6 +217,7 @@ public class Plancia {
 						for (int k=0;k<6;k++){
 							if (flagFotofinish[k]==1) {
 								fotofinish.add(cavalli[k]);
+								arrivati[k]=true;
 								//cavalli[k]=null;
 								flagFotofinish[k]=0;// Inserisce nell'ArrayList fotofinish i cavalli da controllare
 							}

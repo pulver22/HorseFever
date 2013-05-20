@@ -34,7 +34,7 @@ public class Test {
 		plancia.TruccaCorsia(a1, 1);
 		plancia.applicaAzioni();
 		
-		int[] testPos={12,12,5,5,5,5};
+		int[] testPos={12,12,0,0,0,0};
 		plancia.setPosizioniCavalli(testPos);
 		
 		System.out.println(Arrays.toString(plancia.getPosizioniCavalli()));
