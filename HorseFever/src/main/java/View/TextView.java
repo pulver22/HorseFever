@@ -105,6 +105,7 @@ public class TextView implements View{
     		
     		}
 		if (risposta =="S") scommessa = chiediScommessa();
+		if (risposta == "N") scommessa[2] = "N";
 		return scommessa;
 	}
 	
