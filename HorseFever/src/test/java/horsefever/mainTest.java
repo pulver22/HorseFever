@@ -11,6 +11,9 @@ public class mainTest {
 		prova.setUp();
 		prova.testDenariGiocatori();
         */
+		
+		TestMovimenti prova=new TestMovimenti();
+		
 	}
 
 }
