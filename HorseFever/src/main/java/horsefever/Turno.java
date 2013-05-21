@@ -91,13 +91,11 @@ public class Turno {
 		
 		int[] posizioni=partita.getPlancia().getPosizione();
 		
-		while(Arrivati(posizioni)==false){
+		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
 			IncrementaPos(cartamov);
-			DadiSprint();
 			
-			posizioni=partita.getPlancia().getPosizione();
 			
 		}
 		
@@ -127,21 +125,7 @@ public class Turno {
 		partita.setNumturni(numeroturni);
 	}
 	
-	/**
-	 * Verifica se tutti i cavalli hanno raggiunto il traguardo
-	 * @param array delle posizioni dei cavalli
-	 * @return true o false se i cavalli sono tutti giunti al traguardo o meno
-	 */
-    public boolean Arrivati(int[] posizioni){
-    	
-    	for(int i=0;i<6;i++){
-    	
-    	if(posizioni[i]<FINE_CORSA) return false;
-    	
-    	}
-    	return true;
-    }
-    
+	
     /**
      * Chiede a lavagna i valori correnti delle quotazioni dei cavalli e, in base alla carta movimento pescata
      * costruisce l'array che indica di quanto deve avanzare ciascun cavallo
@@ -162,27 +146,9 @@ public class Turno {
     	
     	}
     	
-    	partita.getPlancia().AggiornaPosizione(posizioniAggiornate);
+    	partita.getPlancia().muovi(posizioniAggiornate);
     }
     
-    /**
-     * Simula i dadi generando casualmente due numeri e incrementando un array nella posizione corrispondente
-     * Questo array viene poi passato alla plancia che aggiorna i valori delle posizioni effettive dei cavalli
-     */
-    public void DadiSprint(){
-    	
-    	int i,j;
-    	
-    	for(i=0;i<6;i++){ 
-    		posizioniAggiornate[i]=0;
-    	} 
-    	
-    	j = (int) (Math.random() * 6);
-    	posizioniAggiornate[j]++;
-   		j = (int) (Math.random() * 6);
-   		posizioniAggiornate[j]++;
-   		partita.getPlancia().AggiornaPosizione(posizioniAggiornate);
- 
-    }
+    
     
 }
