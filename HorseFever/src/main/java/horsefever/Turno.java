@@ -68,15 +68,9 @@ public class Turno {
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
-		partita.resetNumSegnalini();
 		numSegnalini=partita.getNumSegnalini();
-		
-		for(int i=0; i<partita.getNumgiocatori();i++){
-			
-			giocatoreCorrente=partita.getGiocatori(i);
-			Trucca(giocatoreCorrente);
-		}
-        for(int i=partita.getNumgiocatori(); i>0;i--){
+        
+		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,2,numSegnalini);
@@ -84,7 +78,14 @@ public class Turno {
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
-        partita.resetNumSegnalini();
+        
+        
+		for(int i=0; i<partita.getNumgiocatori();i++){
+			
+			giocatoreCorrente=partita.getGiocatori(i);
+			Trucca(giocatoreCorrente);
+		}
+        
 	}
 	
 	/**
