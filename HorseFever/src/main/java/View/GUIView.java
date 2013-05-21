@@ -6,7 +6,7 @@ import horsefever.Scommessa;
 public class GUIView implements View{
 
 	@Override
-	public Scommessa chiediScommessa() {
+	public long[] chiediScommessa() {
 		// TODO Auto-generated method stub
 		return null;
 	}

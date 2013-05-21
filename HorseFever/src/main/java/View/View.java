@@ -5,7 +5,7 @@ import horsefever.*;
 public interface View {
 	
 	//chiamati dal controller
-	public Scommessa chiediScommessa();
+	public long[] chiediScommessa();
 	
 	public int[] chiediTrucca();
 	
