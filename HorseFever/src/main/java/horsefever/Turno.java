@@ -83,18 +83,15 @@ public class Turno {
 	/**
 	 * Fino a che tutti i cavalli non hanno raggiunto il traguardo pesca una carta movimento dal mazzo movimento
 	 * Calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
-	 * e l'incremento di posizione dovuto al lancio dei dadi sprint
 	 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
 	 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
 	 */
 	public void FaseCorsa(){
 		
-		int[] posizioni=partita.getPlancia().getPosizione();
-		
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
-			IncrementaPos(cartamov);
+			posizioniCartaMov(cartamov);
 			
 			
 		}
@@ -128,11 +125,11 @@ public class Turno {
 	
     /**
      * Chiede a lavagna i valori correnti delle quotazioni dei cavalli e, in base alla carta movimento pescata
-     * costruisce l'array che indica di quanto deve avanzare ciascun cavallo
+     * costruisce l'array che indica di quanto deve avanzare ciascun cavallo senza effetti delle carte azione
      * Questo array viene poi passato alla plancia che aggiorna i valori delle posizioni effettive dei cavalli
      * @param carta movimento
      */
-    public void IncrementaPos(Movimento movimento){
+    public void posizioniCartaMov(Movimento movimento){
     	int j,i;
     	
     	for(i=0;i<6;i++){ 
