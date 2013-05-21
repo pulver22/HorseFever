@@ -199,6 +199,22 @@ public class Plancia {
 				}
 			}
 		}
+		if (esisteAltroArrivato()) inserisciArrivati();
+	}
+	
+	public boolean esisteAltroArrivato(){
+		for (int i=0; i<6;i++){
+			if (!arrivati[i]){
+				if (cavalli[i].oltreTraguardo()){
+					for (int j=i+1;j<6;j++){
+						if (!arrivati[j]){
+							if (cavalli[i].getPosizione()>cavalli[j].getPosizione()) return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 	public boolean almenoDueCavalliPari(){
