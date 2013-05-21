@@ -93,9 +93,9 @@ public class Partita {
 	}
 	
 	
-	public void rimuoviGiocatore(int i){
+	public void rimuoviGiocatore(Giocatore gioc){
 		
-		giocatori.remove(i);
+		giocatori.remove(gioc);
 	}
 	//Metodi Getter e Setter
 
