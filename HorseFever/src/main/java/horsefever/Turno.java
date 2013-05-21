@@ -218,13 +218,13 @@ public class Turno {
             if(PV<2){   
             	
             	System.out.println("Hai perso la partita");
-            	//partita.rimuoviGiocatore();
+            	partita.rimuoviGiocatore(giocatore);
             	scommessa=new Scommessa(giocatore,10,0,'N');
         		return scommessa;
             }   
             else{
     		       PV=PV-2;
-    		       scommessaMinima=PV*100;
+    		       giocatore.setPV(PV);
     		       System.out.println("Non hai abbastanza denari per scommettere! Perdi due PV!");
     		       scommessa=new Scommessa(giocatore,10,0,'N');
            		   return scommessa;
