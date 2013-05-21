@@ -1,5 +1,8 @@
 package View;
 
+import java.util.ArrayList;
+
+import horsefever.Azione;
 import horsefever.HorseFeverEvent;
 import horsefever.Scommessa;
 
@@ -12,7 +15,13 @@ public class GUIView implements View{
 	}
 
 	@Override
-	public int[] chiediTrucca() {
+	public String[] chiediSecondaScommessa() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -23,11 +32,10 @@ public class GUIView implements View{
 		
 	}
 
-	@Override
-	public String[] chiediSecondaScommessa() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+
+
+
 	
 
 }

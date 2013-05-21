@@ -3,16 +3,18 @@ package View;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
+import horsefever.Azione;
 import horsefever.HorseFeverEvent;
 import horsefever.Scommessa;
 
 public class TextView implements View{
-
+	
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
-		String[] scommessa = null;
+		String[] scommessa = new String[3];
 		
 		
 		while(buonfine==false){
@@ -22,7 +24,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[0]=(""+myInput.readLine());
+    			scommessa[0]=myInput.readLine();
         	}
         	catch(IOException e){
         		
@@ -43,7 +45,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[1]=(""+myInput.readLine());
+    			scommessa[1]=myInput.readLine();
     			 
     		}
     		catch(IOException e){
@@ -83,10 +85,12 @@ public class TextView implements View{
     	}	
 		return scommessa;
 	}
+	
+	
 	@Override
 	public String[] chiediSecondaScommessa(){
 		boolean buonfine=false;
-		String[] scommessa = null;
+		String[] scommessa = new String[3];
 		String risposta = "/";
 		while(buonfine==false){
     		
@@ -108,13 +112,61 @@ public class TextView implements View{
 		if (risposta == "N") scommessa[2] = "N";
 		return scommessa;
 	}
-	
+
 	
 	@Override
-	public int[] chiediTrucca() {
-		// TODO Auto-generated method stub
-		return null;
+	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {
+		boolean buonfine = false;
+		String[] scelta = new String[2];
+		
+		System.out.println("Hai in mano queste carte: " );
+    	for (int i=0;i< carteAzione.size();i++){
+    		System.out.println("" +(i+1)+") " +carteAzione.get(i).getNome()+"," +carteAzione.get(i).getTipoEffetto() +"," +carteAzione.get(i).getValoreEffetto());
+    		}
+    	
+    	while( buonfine==false){	
+    		System.out.println("Seleziona il numero della carta che vuoi giocare:");
+        	try{
+        		buonfine=true;
+        	    InputStreamReader reader=new InputStreamReader(System.in);
+        	    BufferedReader myInput=new BufferedReader(reader);
+        	    scelta[0] = myInput.readLine();
+               	}
+       
+        	catch(IOException e){
+        		System.out.println("Errore !!!\n");
+        		buonfine=false;
+        	}
+            catch(NumberFormatException e){
+        		System.out.println("Errore, ci vuole un numero !!!");
+        		buonfine=false;
+        	}
+    	}
+      	
+    	while(buonfine==false){	
+    	
+    		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi giocare la carta: ");
+    		try{
+    			buonfine=true;
+    			InputStreamReader reader=new InputStreamReader(System.in);
+    			BufferedReader myInput=new BufferedReader(reader);
+    			scelta[1]=myInput.readLine();
+    		}
+    		catch(IOException e){
+    			System.out.println("Errore !!!\n");
+    			buonfine=false;
+    		}
+    		catch(NumberFormatException e){
+    			System.out.println("Errore, ci vuole un numero !!!");
+    			buonfine=false;
+    		}
+    	
+    	}
+    	
+		return scelta;
+	
 	}
+
 
 	@Override
 	public void notify(HorseFeverEvent e) {
@@ -122,5 +174,12 @@ public class TextView implements View{
 		
 	}
 	
+	
+
+		
+	
+	
 
 }
+
+

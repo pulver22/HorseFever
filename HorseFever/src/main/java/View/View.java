@@ -1,16 +1,38 @@
 package View;
 
+import java.util.ArrayList;
+
 import horsefever.*;
 
 public interface View {
 	
 	//chiamati dal controller
+	
+	/**
+	 * Chiede all'utente su quale corsia vuole scommettere,quanto, e se piazzato o vincente
+	 */
 	public String[] chiediScommessa();
+	
+	/**
+	 * Se il giocatore vuole fare una seconda scommessa,viene lanciato il metodo per scommettere.
+	 * Altrimenti setta il paramentro vincente/piazzato a valore nullo (N)
+	 */
 	public String[] chiediSecondaScommessa();
 	
-	public int[] chiediTrucca();
+	/**
+	 * 
+	 * @param num  carta azione in mano
+	 * @param nome carta azione in mano 
+	 * @param effetto carta azione
+	 * @param valoreEffetto della carta azione
+	 * @return
+	 */
+	public String[] chiediTrucca(ArrayList<Azione> carteAzione);
+
 	
 	
 	//chiamati dal model
 	public void notify(HorseFeverEvent e);
+
+
 }
