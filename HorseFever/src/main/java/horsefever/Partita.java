@@ -98,14 +98,7 @@ public class Partita {
 		giocatori.remove(i);
 	}
 	//Metodi Getter e Setter
-	public void resetNumSegnalini(){
-		
-        for(int i=0; i<6; i++){
-			
-			numSegnalini[i]=numSegnaliniScommessaPerColore;
-		}
-		
-	}
+
 	public BetManager getBetManager() {
 		return betManager;
 	}
