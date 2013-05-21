@@ -10,9 +10,11 @@ import horsefever.Scommessa;
 public class TextView implements View{
 
 	@Override
-	public long[] chiediScommessa() {
+	public String[] chiediScommessa() {
 		boolean buonfine = false;
-		long[] scommessa = null;
+		String[] scommessa = null;
+		
+		
 		while(buonfine==false){
 
     		System.out.println("Inserisci l'importo da scommettere ");
@@ -20,7 +22,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[0]=Long.parseLong(""+myInput.readLine());
+    			scommessa[0]=(""+myInput.readLine());
         	}
         	catch(IOException e){
         		
@@ -41,7 +43,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[1]=Long.parseLong(""+myInput.readLine());
+    			scommessa[1]=(""+myInput.readLine());
     			 
     		}
     		catch(IOException e){
@@ -56,9 +58,57 @@ public class TextView implements View{
     		}
     	
     	}
-    	return scommessa;
+		
+		while(buonfine==false){
+
+    		System.out.println("Vuoi scommettere piazzato (P) o vincente (V)?");
+    		try{
+    			buonfine=true;
+    			InputStreamReader reader=new InputStreamReader(System.in);
+    			BufferedReader myInput=new BufferedReader(reader);
+    			scommessa[2]=myInput.readLine();
+    			if(scommessa[2]!="V" && scommessa[2]!="P"){
+    	    	
+    				System.out.println("Errore, scegli P o V ");
+    				buonfine=false;
+    			}
+            
+        	}
+        	catch(IOException e){
+        		
+        		System.out.println("Errore !!!");
+        		buonfine=false;
+        	}
+    	
+    	}	
+		return scommessa;
 	}
 
+	public String[] chiediSecondaScommessa(){
+		boolean buonfine=false;
+		String[] scommessa = null;
+		String risposta = "/";
+		while(buonfine==false){
+    		
+    		System.out.println("Vuoi scommettere ancora?? (S/N)");
+    		try{
+    			buonfine=true;
+    			InputStreamReader reader=new InputStreamReader(System.in);
+    			BufferedReader myInput=new BufferedReader(reader);
+    			risposta= myInput.readLine();
+    		}
+    		catch(IOException e){
+        		
+    			System.out.println("Errore !!!\n");
+    			buonfine=false;
+    		}
+    		
+    		}
+		if (risposta =="S") scommessa = chiediScommessa();
+		return scommessa;
+	}
+	
+	
 	@Override
 	public int[] chiediTrucca() {
 		// TODO Auto-generated method stub
