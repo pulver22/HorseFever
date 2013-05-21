@@ -150,8 +150,9 @@ public class Plancia {
 					int[] primiPari=getCavalliPrimiPari(),ultimiPari=getCavalliUltimiPari();
 					if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], true);
 					else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], false);
+				} else {
+					cavalli[i].aggiornaPosizione(movimenti[i]);
 				}
-				cavalli[i].aggiornaPosizione(movimenti[i]);
 				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 			}
 		}
@@ -346,6 +347,18 @@ public class Plancia {
 			colori[i]=cavalliArrivati.get(i).getColore();
 		}
 		return colori;
+	}
+	
+	
+	/**
+	 * @author Niccolo
+	 * Ritorna true se tutti i cavalli sono arrivati e false in caso contrario
+	 * */
+	public boolean tuttiArrivati(){
+		for (int i=0; i<6;i++){
+			if (arrivati[i]==false) return false;
+		}
+		return true;
 	}
 	
 	public Cavallo getCavalloArrivatoInPos(int posizione){
