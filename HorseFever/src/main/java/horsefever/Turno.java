@@ -91,14 +91,12 @@ public class Turno {
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
-			System.out.println(" Carta Movimento:");
-			System.out.println(Arrays.toString(cartamov.getArrayMovimenti()));
 			
 			posizioniCartaMov(cartamov);
 			
 			
 		}
-		
+		System.out.println(Arrays.toString(partita.getPlancia().getColoriArrivi()));
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
 		
