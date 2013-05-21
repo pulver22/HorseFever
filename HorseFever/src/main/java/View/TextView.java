@@ -83,7 +83,7 @@ public class TextView implements View{
     	}	
 		return scommessa;
 	}
-
+	@Override
 	public String[] chiediSecondaScommessa(){
 		boolean buonfine=false;
 		String[] scommessa = null;

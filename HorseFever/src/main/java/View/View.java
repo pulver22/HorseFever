@@ -6,6 +6,7 @@ public interface View {
 	
 	//chiamati dal controller
 	public String[] chiediScommessa();
+	public String[] chiediSecondaScommessa();
 	
 	public int[] chiediTrucca();
 	
