@@ -22,6 +22,12 @@ public class GUIView implements View{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public String[] chiediSecondaScommessa() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
