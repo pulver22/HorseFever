@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import eventi.*;
+
 import horsefever.*;
 import View.*;
 
@@ -14,6 +16,8 @@ public class Controller {
 	private ArrayList<Azione> carteDaAssegnare;
 	private int[]  posizioniAggiornate=new int[6];
 	private View vista;
+	private HorseFeverEvent e;
+	
 	
 	
 	/**
@@ -24,6 +28,7 @@ public class Controller {
 		
 		this.partita=par;
 	}
+	
 	/**
 	 * Setta la vista
 	 * @param vista
@@ -222,6 +227,10 @@ public class Controller {
     				buonfine=false;
     		}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
+    		// NOTIFICA EVENTO
+    		e=new eventoScommessa(scommessa);
+			vista.notify(e);
+			
     		return scommessa;
       	
     	}
@@ -242,6 +251,11 @@ public class Controller {
             	 vista.stampaMessaggio(messaggio);
             	 PV=PV-2;
     		     giocatore.setPV(PV);
+    		     
+    		     //NOTIFICA EVENTO
+    		     e=new eventoGiocatore(giocatore);
+    		     vista.notify(e);
+    		     
     		     scommessa=new Scommessa(giocatore,10,0,'N');
            		 return scommessa;
             }
@@ -262,6 +276,11 @@ public class Controller {
     				buonfine=false;
         	}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
+    		
+    		// NOTIFICA EVENTO
+    		e=new eventoScommessa(scommessa);
+			vista.notify(e);
+			
     		return scommessa;
     	}
     }
@@ -276,6 +295,7 @@ public class Controller {
     	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
     	carteAzione=giocatore.getCarteAzione();
     	String[] scelta = new String[2];
+    	String cartaAzioneGiocata,nomeGiocatore=giocatore.getNome();
     	boolean buonfine = false;
     	int numCartaAzione=0,numCorsia=0;
     	
@@ -292,8 +312,19 @@ public class Controller {
 			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>5 || numCorsia<0)
 				buonfine=false;
     	}
+    	
+    	cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
     	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia);
+    	
+    	// NOTIFICA EVENTO
+    	e=new eventoTrucca(nomeGiocatore,numCorsia,cartaAzioneGiocata);
+    	vista.notify(e);
+    	
     	carteAzione.remove(numCartaAzione);
         giocatore.setCarteAzione(carteAzione);	
+        
+        //NOTIFICA EVENTO
+        e=new eventoGiocatore(giocatore);
+        vista.notify(e);
     }
 }
