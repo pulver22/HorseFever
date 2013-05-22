@@ -1,6 +1,7 @@
 package horsefever;
 import java.util.ArrayList;
 import java.util.Arrays;
+import adapter.Adapter;
 import eventi.*;
 
 public class Partita {
@@ -15,6 +16,9 @@ public class Partita {
 	private Lavagna lavagna;
 	private Plancia plancia;
 	private Turno turno;
+	private Adapter adapter;
+	
+
 	private BetManager betManager;
 	private int numSegnaliniScommessaPerColore;
 	private int[] numSegnalini=new int[6];
@@ -198,6 +202,10 @@ public class Partita {
 
 	public void setTurno(Turno turno) {
 		this.turno = turno;
+	}
+	
+	public Adapter getAdapter() {
+		return adapter;
 	}
 	
 }
