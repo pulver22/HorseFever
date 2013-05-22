@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import horsefever.Azione;
-import horsefever.HorseFeverEvent;
 import horsefever.Scommessa;
+import eventi.*;
 
 public class TextView implements View{
 	

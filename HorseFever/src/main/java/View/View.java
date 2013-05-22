@@ -2,6 +2,8 @@ package View;
 
 import java.util.ArrayList;
 
+import eventi.*;
+
 import horsefever.*;
 
 public interface View {

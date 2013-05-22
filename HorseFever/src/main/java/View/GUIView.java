@@ -3,7 +3,7 @@ package View;
 import java.util.ArrayList;
 
 import horsefever.Azione;
-import horsefever.HorseFeverEvent;
+import eventi.*;
 import horsefever.Scommessa;
 
 public class GUIView implements View{
