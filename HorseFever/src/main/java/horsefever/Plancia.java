@@ -295,7 +295,12 @@ public class Plancia {
 							}
 						}
 						
+						sortPerQuotazioneDecrescente(fotofinish);//Sort dei cavalli in fotofinish
+						
 						for (int l=0; l<fotofinish.size();l++){//I restanti li inserisce coma capita tra il primo e l'ultimo
+															//(In ordine di quotazione, inserisce man mano
+															//cavalli con quotazione maggiore (1:2>1:3) davanti agli altri
+															
 							if (esisteVincente) {
 								ordineCavalli.add(1, fotofinish.get(l));
 								fotofinish.remove(l);
@@ -316,6 +321,27 @@ public class Plancia {
 					almenoUnCavalloPari=false;
 				}
 			}
+		}
+	}
+	
+	/**
+	 * @author Niccolo
+	 * Sostanzialmente un bubblesort dell'ArrayList di Cavalli in base alla loro quotazione (decrescente
+	 * nel senso da "7" a "2"). 
+	 * @param l'ArrayList di Cavalli da ordinare
+	 * */
+	public void sortPerQuotazioneDecrescente(ArrayList<Cavallo> cavalli){
+		int alto=cavalli.size();
+		while (alto>0){
+			for (int i=0;i<alto;i++){
+				if (cavalli.get(i).getQuotazione()<cavalli.get(i+1).getQuotazione()){
+					Cavallo ci=cavalli.get(i);
+					Cavallo ci1=cavalli.get(i+1);
+					cavalli.set(i, ci1);
+					cavalli.set(i+1, ci);
+				}
+			}
+			alto--;
 		}
 	}
 	
