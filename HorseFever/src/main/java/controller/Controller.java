@@ -206,7 +206,7 @@ public class Controller {
     			parametriScommessa=vista.chiediSecondaScommessa();
     			buonfine=true;
     			
-    			if(denari<scommessaMinima || parametriScommessa[2]=="N"){
+    			if(denari<scommessaMinima || parametriScommessa[2].equals("N")){
     	
     				scommessa=new Scommessa(giocatore,10,0,'N');
     				return scommessa;
