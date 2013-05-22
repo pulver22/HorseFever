@@ -1,12 +1,16 @@
 package eventi;
 
+import java.util.Arrays;
+
 public class eventoGiocatore implements HorseFeverEvent{
 
+	private String nomeGiocatore;
 	private long denari;
 	private int pv;
 	private String[] carteAzione;
 	
-	public eventoGiocatore(long denari, int pv, String[] carteAzione){
+	public eventoGiocatore(String nomeGiocatore, long denari, int pv, String[] carteAzione){
+		
 		this.denari=denari;
 		this.pv=pv;
 		this.carteAzione=carteAzione;
@@ -14,8 +18,8 @@ public class eventoGiocatore implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return "Giocatore: "+nomeGiocatore+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
 	}
 
 	public long getDenari() {

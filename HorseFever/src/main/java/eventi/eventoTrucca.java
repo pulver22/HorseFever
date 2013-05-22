@@ -14,8 +14,7 @@ public class eventoTrucca implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" CartaAzione: "+cartaAzione;
 	}
 
 	public String getNomeGiocatore() {

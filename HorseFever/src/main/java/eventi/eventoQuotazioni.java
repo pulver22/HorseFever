@@ -1,5 +1,7 @@
 package eventi;
 
+import java.util.Arrays;
+
 public class eventoQuotazioni implements HorseFeverEvent{
 
 	private String[][] tabellaQuot;
@@ -13,8 +15,7 @@ public class eventoQuotazioni implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Quotazioni Attuali: "+Arrays.toString(tabellaQuot);
 	}
 
 	public String[][] getTabellaQuot() {

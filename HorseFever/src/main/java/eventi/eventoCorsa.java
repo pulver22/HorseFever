@@ -1,5 +1,7 @@
 package eventi;
 
+import java.util.Arrays;
+
 public class eventoCorsa implements HorseFeverEvent{
 	
 	private int[] posizioniAggiornate;
@@ -15,8 +17,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		return "CartaMovimento: "+Arrays.toString(valoriMovimento)+" EsitoDadi: "+Arrays.toString(esitoDadi)+" Posizioni Aggiornate: "+Arrays.toString(posizioniAggiornate);
 	}
 
 	public int[] getPosizioniAggiornate() {

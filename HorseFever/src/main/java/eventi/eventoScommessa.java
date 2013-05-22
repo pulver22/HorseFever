@@ -16,8 +16,7 @@ public class eventoScommessa implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" Denari: "+denari+" TipoScommessa "+tipoScommessa;
 	}
 
 	public String getNomeGiocatore() {

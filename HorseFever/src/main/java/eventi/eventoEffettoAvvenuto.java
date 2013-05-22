@@ -10,8 +10,7 @@ public class eventoEffettoAvvenuto implements HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Ha avuto effetto la carta "+cartaAttivata;
 	}
 
 	public String getCartaAttivata() {
