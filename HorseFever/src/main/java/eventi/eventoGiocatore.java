@@ -1,25 +1,32 @@
 package eventi;
 
+import horsefever.Giocatore;
+
 import java.util.Arrays;
 
 public class eventoGiocatore implements HorseFeverEvent{
 
 	private String nomeGiocatore;
+	private String scuderia;
 	private long denari;
 	private int pv;
 	private String[] carteAzione;
 	
-	public eventoGiocatore(String nomeGiocatore, long denari, int pv, String[] carteAzione){
-		
-		this.denari=denari;
-		this.pv=pv;
-		this.carteAzione=carteAzione;
+	public eventoGiocatore(Giocatore g){
+		this.nomeGiocatore=new String(g.getNome());
+		this.scuderia=new String(g.getScuderia());
+		this.denari=new Long(g.getDenari());
+		this.pv=new Integer(g.getPV());
+		String[] azioni=g.getStringheAzioni();
+		for (int i=0; i<azioni.length; i++){
+			this.carteAzione[i]=new String(azioni[i]);
+		}
 	}
 	
 	@Override
 	public String rappresentazione() {
 		
-		return "Giocatore: "+nomeGiocatore+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
+		return "Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
 	}
 
 	public long getDenari() {

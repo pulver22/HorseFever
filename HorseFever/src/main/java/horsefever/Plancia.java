@@ -15,8 +15,10 @@ public class Plancia {
 	private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
+	private Partita partita;
 	
-	public Plancia(Lavagna lavagna){
+	public Plancia(Lavagna lavagna, Partita p){
+		this.partita=p;
 		this.lavagna=lavagna;
 		for (int i=0;i<6; i++){
 			corsieTruccate[i]=new ArrayList<Azione>();		

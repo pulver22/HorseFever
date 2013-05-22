@@ -9,15 +9,22 @@ public class Giocatore {
 	private Carta cartaPersonaggio;
 	private String scuderia;
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
+	private String nomeGiocatore;
+	private Partita partita;
 	
-	public Giocatore(Personaggio cartaPersonaggio, String scuderia){
+	public Giocatore(Personaggio cartaPersonaggio, String scuderia, Partita p){
+		this.partita=p;
 		this.cartaPersonaggio=cartaPersonaggio;
 		denari=cartaPersonaggio.getDenari();
 		this.scuderia=scuderia;
-		
+		nomeGiocatore=cartaPersonaggio.getNome();
 	}
 	
     //Metodi Setter e Getter
+	public String getNome(){
+		return nomeGiocatore;
+	}
+	
 	public int getPV() {
 		return PV;
 	}
@@ -30,6 +37,17 @@ public class Giocatore {
 	public void setCartaPersonaggio(Personaggio cartaPersonaggio) {
 		this.cartaPersonaggio = cartaPersonaggio;
 	}
+	public Azione getCartaAzione(int indice){
+		return carteAzione.get(indice);
+	}
+	public String[] getStringheAzioni(){
+		String[] azioni=new String[2];
+		for (int i=0; i<carteAzione.size(); i++){
+			azioni[i]=carteAzione.get(i).toString();
+		}
+		return azioni;
+	}
+	
 	public ArrayList<Azione> getCarteAzione() {
 		return carteAzione;
 	}

@@ -1,6 +1,7 @@
 package horsefever;
 import java.util.ArrayList;
 import java.util.Arrays;
+import eventi.*;
 
 public class Partita {
 
@@ -29,8 +30,8 @@ public class Partita {
 		else if (numgiocatori==5) numturni=5;
 		else numturni=6;
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
-		lavagna = new Lavagna();
-		plancia = new Plancia(lavagna);
+		lavagna = new Lavagna(this);
+		plancia = new Plancia(lavagna,this);
 		betManager= new BetManager();
 		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
@@ -53,7 +54,7 @@ public class Partita {
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
 			quotazione=p.getQuotScuderia();
 			scuderia=lavagna.getScuderiaInit(quotazione);
-			giocatori.add(new Giocatore(p,scuderia));
+			giocatori.add(new Giocatore(p,scuderia,this));
 			
 		}
 		

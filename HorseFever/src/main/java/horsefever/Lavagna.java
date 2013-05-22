@@ -6,6 +6,7 @@ public class Lavagna {
 
 	private String[][] quotazioni = new String[6][2];
 	private String[] arrivi = new String[6];
+	private Partita partita;
 	
 	/**
 	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
@@ -19,7 +20,8 @@ public class Lavagna {
 	 * Successivamente, ai fini della preparazione di inizio gioco, assegna casualmente una quotazione differente a ciascuna scuderia 
 	 * per ottenere le quotazioni iniziali.
 	 * */
-	public Lavagna(){
+	public Lavagna(Partita p){
+		this.partita=p;
 		int temp;
 		quotazioni[0][0]="Nero";
 		quotazioni[1][0]="Blu";

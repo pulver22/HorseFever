@@ -12,9 +12,9 @@ public class Test {
 		
 		int[] movimentiReali=new int[6];
 		int[] temp=new int[6];
-		
-		Lavagna lavagna = new Lavagna();
-		Plancia plancia = new Plancia(lavagna);
+		Partita p=new Partita(6);
+		Lavagna lavagna = new Lavagna(p);
+		Plancia plancia = new Plancia(lavagna,p);
 		Mazzo mazzoMovimento = new Mazzo("MazzoMovimento");
 		Mazzo mazzoAzione = new Mazzo("MazzoAzione");
 		
