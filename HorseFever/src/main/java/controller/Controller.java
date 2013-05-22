@@ -115,6 +115,10 @@ public class Controller {
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
 		
+		//NOTIFICA EVENTO
+		e = new eventoQuotazioni(partita.getLavagna().getQuotazioni());
+		partita.getAdapter().notify(e);	
+		
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
 		
