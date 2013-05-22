@@ -32,6 +32,12 @@ public class GUIView implements View{
 		
 	}
 
+	@Override
+	public void stampaMessaggio(String messaggio) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 

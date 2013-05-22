@@ -29,7 +29,11 @@ public interface View {
 	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione);
 
-	
+	/**
+	 * Stampa a video una stringa generica
+	 * @param messaggio 
+	 */
+	public void stampaMessaggio(String messaggio);
 	
 	//chiamati dal model
 	public void notify(HorseFeverEvent e);

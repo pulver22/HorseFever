@@ -179,6 +179,7 @@ public class Controller {
     	long denari,importo,scommessaMinima;
     	char tipoScommessa='N';
     	boolean buonfine=false;
+    	String messaggio;
     	String[] parametriScommessa=new String[3];
     	Scommessa scommessa;
     	
@@ -223,17 +224,19 @@ public class Controller {
     		
             if(PV<2){   
             	
-            	System.out.println("Hai perso la partita");
+            	messaggio="Hai perso la partita";
+            	vista.stampaMessaggio(messaggio);
             	partita.rimuoviGiocatore(giocatore);
             	scommessa=new Scommessa(giocatore,10,0,'N');
         		return scommessa;
             }   
             else{
-    		       PV=PV-2;
-    		       giocatore.setPV(PV);
-    		       System.out.println("Non hai abbastanza denari per scommettere! Perdi due PV!");
-    		       scommessa=new Scommessa(giocatore,10,0,'N');
-           		   return scommessa;
+            	 messaggio="Non hai abbastanza denari per scommettere! Perdi due PV!";
+            	 vista.stampaMessaggio(messaggio);
+            	 PV=PV-2;
+    		     giocatore.setPV(PV);
+    		     scommessa=new Scommessa(giocatore,10,0,'N');
+           		 return scommessa;
             }
     	}
     	else{

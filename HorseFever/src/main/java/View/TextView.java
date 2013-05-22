@@ -167,12 +167,21 @@ public class TextView implements View{
 	
 	}
 
+	@Override
+	public void stampaMessaggio(String messaggio) {
 
+		System.out.println(""+messaggio);
+		
+	}
+	
 	@Override
 	public void notify(HorseFeverEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
 	
 	
 
