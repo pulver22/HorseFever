@@ -46,7 +46,7 @@ public class Lavagna {
 		this.arrivi=arrivi;
 		for (int i=0; i<6; i++){
 			for (int j=0; j<6; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
-				if (arrivi[i]==quotazioni[j][0]){
+				if (arrivi[i].equals(quotazioni[j][0])){
 					int posCavallo=i+1; //Poichè l'indice i è di 1 inferiore alla posizione reale
 					int quotCavallo=Integer.parseInt(quotazioni[j][1]);
 					/*Confronto tra quotazioni e posizione perchè 
@@ -113,7 +113,7 @@ public class Lavagna {
 	public int getQuotazioneDaColoreIniziale(String colore){
 		int quot=0;
 		for (int i=0; i<6;i++){
-			if (quotazioni[i][0]==colore) {
+			if (quotazioni[i][0].equals(colore)) {
 				quot=Integer.parseInt(quotazioni[i][1]);
 			}
 		}
@@ -123,7 +123,7 @@ public class Lavagna {
 	public void setQuotazioneAlCavallo(String colore, String variazione){
 		int quot;
 		for (int i=0; i<6;i++){
-			if (colore==quotazioni[i][0]){
+			if (colore.equals(quotazioni[i][0])){
 				quot=Integer.parseInt(quotazioni[i][1]);
 				if (variazione.charAt(0)=='+'){
 					quot-=2;

@@ -57,7 +57,7 @@ public class Plancia {
 		char carteDaRimuovere='0';
 		for (int i=0; i<azioni.size();i++){
 			a=(Azione) azioni.get(i);
-			if (a.getColore()=="Grigio" && a.getTipoEffetto()=="Azione"){
+			if (a.getColore().equals("Grigio") && a.getTipoEffetto().equals("Azione")){
 				if (a.getValoreEffetto().charAt(8)=='p') carteDaRimuovere='P';
 				else carteDaRimuovere='N';
 			}
@@ -66,14 +66,14 @@ public class Plancia {
 			if (carteDaRimuovere=='N'){
 				for (int j=0;j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
-					if (a.getColore()=="Rosso"){
+					if (a.getColore().equals("Rosso")){
 						azioni.remove(j);
 					}
 				}
 			} else {
 				for (int j=0; j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
-					if (a.getColore()=="Verde"){
+					if (a.getColore().equals("Verde")){
 						azioni.remove(j);
 					}
 				}
@@ -90,12 +90,12 @@ public class Plancia {
 	public void assegnaEffettiAlCavallo(ArrayList azioni, Cavallo cavallo){
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
-			if (a.getTipoEffetto()=="Partenza") cavallo.setEffettoPartenza(a.getValoreEffetto());
-			if (a.getTipoEffetto()=="Sprint") cavallo.setEffettoSprint(a.getValoreEffetto());
-			if (a.getTipoEffetto()=="Fotofinish") cavallo.setEffettoFotofinish(a.getValoreEffetto());
-			if (a.getTipoEffetto()=="Traguardo") cavallo.setEffettoTraguardo(a.getValoreEffetto());
-			if (a.getTipoEffetto()=="Ultimo" || a.getTipoEffetto()=="Primo") cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
-			if (a.getTipoEffetto()=="Quotazione") {
+			if (a.getTipoEffetto().equals("Partenza")) cavallo.setEffettoPartenza(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Sprint")) cavallo.setEffettoSprint(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Fotofinish")) cavallo.setEffettoFotofinish(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Traguardo")) cavallo.setEffettoTraguardo(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Ultimo") || a.getTipoEffetto().equals("Primo")) cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Quotazione")) {
 				cavallo.setEffettoQuotazione(a.getValoreEffetto());
 				lavagna.setQuotazioneAlCavallo(cavallo.getColore(), a.getValoreEffetto());
 			}
