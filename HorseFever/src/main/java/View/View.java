@@ -37,8 +37,15 @@ public interface View {
 	 */
 	public void stampaMessaggio(String messaggio);
 	
+	
+	
+	
+	
+	
+	
+	
 	//chiamati dal model
-	public void notify(HorseFeverEvent e);
+	public void notify(HorseFeverEvent e, Partita p);
 
 
 }

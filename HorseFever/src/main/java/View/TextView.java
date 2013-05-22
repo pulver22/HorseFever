@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import horsefever.Azione;
+import horsefever.Partita;
 import horsefever.Scommessa;
 import eventi.*;
 
@@ -175,7 +176,7 @@ public class TextView implements View{
 	}
 	
 	@Override
-	public void notify(HorseFeverEvent e) {
+	public void notify(HorseFeverEvent e, Partita p) {
 		// TODO Auto-generated method stub
 		
 	}
