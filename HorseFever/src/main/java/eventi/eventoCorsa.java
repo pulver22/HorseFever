@@ -19,4 +19,30 @@ public class eventoCorsa implements HorseFeverEvent{
 		return null;
 	}
 
+	public int[] getPosizioniAggiornate() {
+		return posizioniAggiornate;
+	}
+
+	public void setPosizioniAggiornate(int[] posizioniAggiornate) {
+		this.posizioniAggiornate = posizioniAggiornate;
+	}
+
+	public int[] getValoriMovimento() {
+		return valoriMovimento;
+	}
+
+	public void setValoriMovimento(int[] valoriMovimento) {
+		this.valoriMovimento = valoriMovimento;
+	}
+
+	public int[] getEsitoDadi() {
+		return esitoDadi;
+	}
+
+	public void setEsitoDadi(int[] esitoDadi) {
+		this.esitoDadi = esitoDadi;
+	}
+	
+	
+
 }
