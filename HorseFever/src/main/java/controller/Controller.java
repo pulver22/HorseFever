@@ -1,11 +1,8 @@
 package controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import adapter.Adapter;
 import eventi.*;
 
 import horsefever.*;
@@ -15,6 +12,7 @@ public class Controller {
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare;
 	private int[]  posizioniAggiornate=new int[6];
+	private Adapter adapter;
 	private View vista;
 	private HorseFeverEvent e;
 	
@@ -27,14 +25,6 @@ public class Controller {
 	public Controller(Partita par){
 		
 		this.partita=par;
-	}
-	
-	/**
-	 * Setta la vista
-	 * @param vista
-	 */
-	public void setVista(View vista) {
-		this.vista = vista;
 	}
 	
 	public void start(){
@@ -229,7 +219,7 @@ public class Controller {
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
     		// NOTIFICA EVENTO
     		e=new eventoScommessa(scommessa);
-			vista.notify(e);
+			adapter.notify(e);
 			
     		return scommessa;
       	
@@ -254,7 +244,7 @@ public class Controller {
     		     
     		     //NOTIFICA EVENTO
     		     e=new eventoGiocatore(giocatore);
-    		     vista.notify(e);
+    		     adapter.notify(e);
     		     
     		     scommessa=new Scommessa(giocatore,10,0,'N');
            		 return scommessa;
@@ -279,7 +269,7 @@ public class Controller {
     		
     		// NOTIFICA EVENTO
     		e=new eventoScommessa(scommessa);
-			vista.notify(e);
+			adapter.notify(e);
 			
     		return scommessa;
     	}
@@ -318,13 +308,13 @@ public class Controller {
     	
     	// NOTIFICA EVENTO
     	e=new eventoTrucca(nomeGiocatore,numCorsia,cartaAzioneGiocata);
-    	vista.notify(e);
+    	adapter.notify(e);
     	
     	carteAzione.remove(numCartaAzione);
         giocatore.setCarteAzione(carteAzione);	
         
         //NOTIFICA EVENTO
         e=new eventoGiocatore(giocatore);
-        vista.notify(e);
+        adapter.notify(e);
     }
 }
