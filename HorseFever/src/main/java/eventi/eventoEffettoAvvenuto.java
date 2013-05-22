@@ -13,5 +13,15 @@ public class eventoEffettoAvvenuto implements HorseFeverEvent{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public String getCartaAttivata() {
+		return cartaAttivata;
+	}
+
+	public void setCartaAttivata(String cartaAttivata) {
+		this.cartaAttivata = cartaAttivata;
+	}
+	
+	
 	
 }

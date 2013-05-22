@@ -17,4 +17,14 @@ public class eventoQuotazioni implements HorseFeverEvent{
 		return null;
 	}
 
+	public String[][] getTabellaQuot() {
+		return tabellaQuot;
+	}
+
+	public void setTabellaQuot(String[][] tabellaQuot) {
+		this.tabellaQuot = tabellaQuot;
+	}
+
+	
+	
 }

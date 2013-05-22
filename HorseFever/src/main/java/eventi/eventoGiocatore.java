@@ -18,4 +18,30 @@ public class eventoGiocatore implements HorseFeverEvent{
 		return null;
 	}
 
+	public long getDenari() {
+		return denari;
+	}
+
+	public void setDenari(long denari) {
+		this.denari = denari;
+	}
+
+	public int getPv() {
+		return pv;
+	}
+
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+
+	public String[] getCarteAzione() {
+		return carteAzione;
+	}
+
+	public void setCarteAzione(String[] carteAzione) {
+		this.carteAzione = carteAzione;
+	}
+	
+	
+
 }
