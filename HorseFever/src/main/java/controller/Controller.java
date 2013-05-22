@@ -24,6 +24,13 @@ public class Controller {
 		
 		this.partita=par;
 	}
+	/**
+	 * Setta la vista
+	 * @param vista
+	 */
+	public void setVista(View vista) {
+		this.vista = vista;
+	}
 	
 	public void start(){
 		
@@ -136,8 +143,8 @@ public class Controller {
 		partita.setNumturni(numeroturni);
 	}
 	
-	
-    /**
+
+	/**
      * Chiede a lavagna i valori correnti delle quotazioni dei cavalli e, in base alla carta movimento pescata
      * costruisce l'array che indica di quanto deve avanzare ciascun cavallo senza effetti delle carte azione
      * Questo array viene poi passato alla plancia che aggiorna i valori delle posizioni effettive dei cavalli
