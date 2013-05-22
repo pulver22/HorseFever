@@ -1,5 +1,7 @@
 package eventi;
 
+import horsefever.Scommessa;
+
 public class eventoScommessa implements HorseFeverEvent{
 
 	private String nomeGiocatore;
@@ -7,16 +9,17 @@ public class eventoScommessa implements HorseFeverEvent{
 	private long denari;
 	private char tipoScommessa;
 	
-	public eventoScommessa(String nomeGiocatore, int corsia, long denari, char tipoScommessa){
-		this.nomeGiocatore=nomeGiocatore;
-		this.corsia=corsia;
-		this.denari=denari;
-		this.tipoScommessa=tipoScommessa;
+	public eventoScommessa(Scommessa scom){
+		
+		this.nomeGiocatore=new String(scom.getScommettitore().getNome());
+		this.corsia=new Integer(scom.getCorsia());
+		this.denari=new Long(scom.getImporto());
+		this.tipoScommessa= scom.getTipoScomessa();
 	}
 	
 	@Override
 	public String rappresentazione() {
-		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" Denari: "+denari+" TipoScommessa "+tipoScommessa;
+		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" Importo: "+denari+" TipoScommessa "+tipoScommessa;
 	}
 
 	public String getNomeGiocatore() {
