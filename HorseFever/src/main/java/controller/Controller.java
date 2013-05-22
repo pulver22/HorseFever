@@ -17,7 +17,7 @@ public class Controller {
 	
 	
 	/**
-	 * Il costruttore di Turno riceve in ingresso Partita per poter utilizzare tutti i dati correnti della partita
+	 * Il costruttore di Controller riceve in ingresso Partita per poter utilizzare tutti i dati del Model
 	 *
 	 */
 	public Controller(Partita par){
@@ -52,10 +52,10 @@ public class Controller {
 	/**
 	 * Ciascuno dei seguenti metodi:
 	 * - Scommetti con parametro prima scommessa (obbligatoria)
-	 * - Trucca 
 	 * - Scommetti con parametro seconda scommessa (facoltativa)
-	 * Viene chiamato per ciascun giocatore seguendo per i primi due un giro orario partendo dal primo giocatore
-	 * e per il terzo un giro antiorario
+	 * - Trucca 
+	 * Viene chiamato per ciascun giocatore seguendo per il primo e il terzo un giro orario 
+	 * partendo dal primo giocatore e per il secondo un giro antiorario
 	 */
 	public void FaseScommesse(){
 		
@@ -88,13 +88,14 @@ public class Controller {
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente);
+			Trucca(giocatoreCorrente);
 		}
         
 	}
 	
 	/**
 	 * Fino a che tutti i cavalli non hanno raggiunto il traguardo pesca una carta movimento dal mazzo movimento
-	 * Calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
+	 * calcola l'incremento di posizione che deve subire ciascun cavallo in base alla carta movimento
 	 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
 	 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
 	 */
@@ -155,15 +156,17 @@ public class Controller {
         posizioniAggiornate[i]=movimento.getMovimento(j);
     	
     	}
-    	System.out.println("Posizioni Aggiornate:");
-    	System.out.println(Arrays.toString(posizioniAggiornate));
+    	//System.out.println("Posizioni Aggiornate:");
+    	//System.out.println(Arrays.toString(posizioniAggiornate));
     	partita.getPlancia().muovi(posizioniAggiornate);
-    	System.out.println("Posizioni Cavalli:");
-    	System.out.println(Arrays.toString(partita.getPlancia().getPosizioniCavalli()));
+    	//System.out.println("Posizioni Cavalli:");
+    	//System.out.println(Arrays.toString(partita.getPlancia().getPosizioniCavalli()));
     }
     
     /**
 	 *  @param numscommessa 1:obbligatoria 2:facoltativa
+	 *  @param giocatore il giocatore che effettua la scommessa
+	 *  @param numSegnalini è un array che indica quanti segnalini sono rimasti per ciascuna corsia  
 	 *  Viene verificato se la scommessa è obbligatoria o meno, in tal caso viene chiesto al giocatore
 	 *  se vuole scommettere oppure no, in caso di risposta affermativa viene chiesto al giocatore 
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
@@ -204,9 +207,10 @@ public class Controller {
     		
     			importo=Long.parseLong(parametriScommessa[0]);
     			numCorsia=Integer.parseInt(parametriScommessa[1]);
+    			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     		
-    			if(importo>denari || importo<scommessaMinima || numCorsia>7 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
+    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
     				buonfine=false;
     		}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
@@ -241,9 +245,10 @@ public class Controller {
     			
     			importo=Long.parseLong(parametriScommessa[0]);
     			numCorsia=Integer.parseInt(parametriScommessa[1]);
+    			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     	    
-    			if(importo>denari || importo<scommessaMinima || numCorsia>7 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
+    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
     				buonfine=false;
         	}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
@@ -260,68 +265,25 @@ public class Controller {
         
     	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
     	carteAzione=giocatore.getCarteAzione();
+    	String[] scelta = new String[2];
     	boolean buonfine = false;
-    	int numcarta=0,numcorsia=0;
-    	System.out.println("Hai in mano queste carte: " );
+    	int numCartaAzione=0,numCorsia=0;
     	
-    	for (int i=0;i< carteAzione.size();i++){
-    		System.out.println("" +(i+1)+") " +carteAzione.get(i).getNome()+"," +carteAzione.get(i).getTipoEffetto() +"," +carteAzione.get(i).getValoreEffetto());
-    		}
-    	
-    	while( buonfine==false){	
-    		System.out.println("Scegli quale carta vuoi giocare:");
-        	try{
-        		buonfine=true;
-        	    InputStreamReader reader=new InputStreamReader(System.in);
-        	    BufferedReader myInput=new BufferedReader(reader);
-        	    
-        	    numcarta = Integer.parseInt(""+myInput.readLine());
-        	    
-        	    if(numcarta<1 || numcarta>carteAzione.size()){
-        	    	System.out.println("Errore!! Inserisci un numero da 1 a " +carteAzione.size());
-        	    	buonfine=false;
-        	    }
-        	}
-        	catch(IOException e){
-        		
-        		System.out.println("Errore !!!\n");
-        		buonfine=false;
-        	}
-            catch(NumberFormatException e){
-        		
-        		System.out.println("Errore, ci vuole un numero !!!");
-        		buonfine=false;
-        	}
+    	while(buonfine==false){
+			
+			scelta=vista.chiediTrucca(carteAzione);
+			buonfine=true;
+			
+			numCartaAzione=Integer.parseInt(scelta[0]);
+			numCartaAzione--;
+			numCorsia=Integer.parseInt(scelta[1]);
+			numCorsia--;
+	    
+			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>5 || numCorsia<0)
+				buonfine=false;
     	}
-      	
-    	while(buonfine==false){	
-    	
-    		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi giocare la carta: ");
-    		try{
-    			buonfine=true;
-    			InputStreamReader reader=new InputStreamReader(System.in);
-    			BufferedReader myInput=new BufferedReader(reader);
-    			numcorsia=Integer.parseInt(""+myInput.readLine());
-    			if(numcorsia<1 || numcorsia>6){
-    	    	
-    				System.out.println("Errore!! Inserisci un numero da 1 a 6");
-    				buonfine=false;
-    			}
-    		}
-    		catch(IOException e){
-    		
-    			System.out.println("Errore !!!\n");
-    			buonfine=false;
-    		}
-    		catch(NumberFormatException e){
-    		
-    			System.out.println("Errore, ci vuole un numero !!!");
-    			buonfine=false;
-    		}
-    	
-    	}
-    	partita.getPlancia().TruccaCorsia(carteAzione.get(numcarta-1), numcorsia);
-    	carteAzione.remove(numcarta -1);
+    	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia);
+    	carteAzione.remove(numCartaAzione);
         giocatore.setCarteAzione(carteAzione);	
     }
 }
