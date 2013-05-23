@@ -103,6 +103,7 @@ public class Controller {
 	 */
 	public void FaseCorsa(){
 		
+		partita.getPlancia().applicaAzioni();
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			partita.getPlancia().muovi();

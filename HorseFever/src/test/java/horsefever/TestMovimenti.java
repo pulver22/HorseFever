@@ -8,13 +8,12 @@ package horsefever;
 public class TestMovimenti {
 
 	 private Partita partitaprova;
-	 private Turno turnoprova;
+	 
   
 	 public TestMovimenti(){
 		 
 		 partitaprova=new Partita(6);
-		 turnoprova=new Turno(partitaprova);
-		 turnoprova.FaseCorsa();
+		 
 		 
 	 }
 }

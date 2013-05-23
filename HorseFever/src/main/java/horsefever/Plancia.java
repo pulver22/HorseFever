@@ -189,7 +189,7 @@ public class Plancia {
 	 * Esegue i movimenti dei cavalli successivi alla partenza
 	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
-	public void muovi(int[] movimenti){
+	public void muovi(){
 		Cavallo c;
 		int[] dadiSprint=sprint();
 		
@@ -199,17 +199,17 @@ public class Plancia {
 		int[] movTeorici=calcolaIncrementiDaMov(valoriMov);
 		
 		if (partenza){
-			partenza(movimenti);
+			partenza(movTeorici);
 			partenza=false;
 		}else{
 			for(int i=0; i<6; i++){
 				if (cavalli[i]!=null){
 					if (cavalli[i].getEffettoUltimoPrimo()!=null){
 						int[] primiPari=getCavalliPrimiPari(),ultimiPari=getCavalliUltimiPari();
-						if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], true);
-						else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movimenti[i], false);
+						if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], true);
+						else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false);
 					} else {
-					cavalli[i].aggiornaPosizione(movimenti[i]);
+					cavalli[i].aggiornaPosizione(movTeorici[i]);
 					}
 					if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 				}

@@ -15,7 +15,6 @@ public class Partita {
 	private Mazzo mazzoProprietario=new Mazzo("MazzoProprietario");
 	private Lavagna lavagna;
 	private Plancia plancia;
-	private Turno turno;
 	private Adapter adapter;
 	
 
@@ -72,7 +71,7 @@ public class Partita {
 		int i;
 		for(i=0;i<numturni;i++){
 			
-			turno.start();
+			
 		}
 		FinePartita();
 	}
@@ -198,14 +197,6 @@ public class Partita {
 
 	public void setPlancia(Plancia plancia) {
 		this.plancia = plancia;
-	}
-
-	public Turno getTurno() {
-		return turno;
-	}
-
-	public void setTurno(Turno turno) {
-		this.turno = turno;
 	}
 	
 	public Adapter getAdapter() {
