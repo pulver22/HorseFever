@@ -105,9 +105,7 @@ public class Controller {
 		
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
-			Movimento cartamov=(Movimento) partita.getMazzoMovimento().pesca();
-			
-			posizioniCartaMov(cartamov);
+			partita.getPlancia().muovi();
 			
 			
 		}
@@ -143,31 +141,7 @@ public class Controller {
 	}
 	
 
-	/**
-     * Chiede a lavagna i valori correnti delle quotazioni dei cavalli e, in base alla carta movimento pescata
-     * costruisce l'array che indica di quanto deve avanzare ciascun cavallo senza effetti delle carte azione
-     * Questo array viene poi passato alla plancia che aggiorna i valori delle posizioni effettive dei cavalli
-     * @param carta movimento
-     */
-    public void posizioniCartaMov(Movimento movimento){
-    	int j,i;
-    	
-    	for(i=0;i<6;i++){ 
-    		posizioniAggiornate[i]=0;
-    	}
-    	
-    	for(i=0;i<6;i++){
-    	
-        j=partita.getLavagna().getRigaMovimento(i);
-        posizioniAggiornate[i]=movimento.getMovimento(j);
-    	
-    	}
-    	//System.out.println("Posizioni Aggiornate:");
-    	//System.out.println(Arrays.toString(posizioniAggiornate));
-    	partita.getPlancia().muovi(posizioniAggiornate);
-    	//System.out.println("Posizioni Cavalli:");
-    	//System.out.println(Arrays.toString(partita.getPlancia().getPosizioniCavalli()));
-    }
+	
     
     /**
 	 *  @param numscommessa 1:obbligatoria 2:facoltativa
