@@ -2,6 +2,8 @@ package horsefever;
 
 import java.util.ArrayList;
 
+import eventi.eventoQuotazioni;
+
 public class Lavagna {
 
 	private String[][] quotazioni = new String[6][2];
@@ -68,6 +70,7 @@ public class Lavagna {
 				}
 			}
 		}
+		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
 	/**
 	 *Dato come parametro il numero della corsia del cavallo, rende la riga della carta movimento da cui leggere il valore
@@ -137,5 +140,6 @@ public class Lavagna {
 				quotazioni[i][1]=Integer.toString(quot);
 			}
 		}
+		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
 }

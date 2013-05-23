@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import eventi.HorseFeverEvent;
+import eventi.eventoCorsa;
+import eventi.eventoEffettoAvvenuto;
 import eventi.eventoQuotazioni;
 
 public class Plancia {
@@ -66,8 +68,14 @@ public class Plancia {
 		for (int i=0; i<azioni.size();i++){
 			a=(Azione) azioni.get(i);
 			if (a.getColore().equals("Grigio") && a.getTipoEffetto().equals("Azione")){
-				if (a.getValoreEffetto().charAt(8)=='p') carteDaRimuovere='P';
-				else carteDaRimuovere='N';
+				if (a.getValoreEffetto().charAt(8)=='p') {
+					carteDaRimuovere='P';
+					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));	
+				}
+				else {
+					carteDaRimuovere='N';
+					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));	
+				}
 			}
 		}
 		if (carteDaRimuovere!='0'){
@@ -78,7 +86,7 @@ public class Plancia {
 						azioni.remove(j);
 					}
 				}
-				
+			
 			} else {
 				for (int j=0; j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
@@ -99,14 +107,31 @@ public class Plancia {
 	public void assegnaEffettiAlCavallo(ArrayList azioni, Cavallo cavallo){
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
-			if (a.getTipoEffetto().equals("Partenza")) cavallo.setEffettoPartenza(a.getValoreEffetto());
-			if (a.getTipoEffetto().equals("Sprint")) cavallo.setEffettoSprint(a.getValoreEffetto());
-			if (a.getTipoEffetto().equals("Fotofinish")) cavallo.setEffettoFotofinish(a.getValoreEffetto());
-			if (a.getTipoEffetto().equals("Traguardo")) cavallo.setEffettoTraguardo(a.getValoreEffetto());
-			if (a.getTipoEffetto().equals("Ultimo") || a.getTipoEffetto().equals("Primo")) cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
+			if (a.getTipoEffetto().equals("Partenza")) {
+				cavallo.setEffettoPartenza(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+			}
+			if (a.getTipoEffetto().equals("Sprint")) {
+				cavallo.setEffettoSprint(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+			}
+			if (a.getTipoEffetto().equals("Fotofinish")) {
+				cavallo.setEffettoFotofinish(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+			}
+			if (a.getTipoEffetto().equals("Traguardo")) {
+				cavallo.setEffettoTraguardo(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+			}
+			if (a.getTipoEffetto().equals("Ultimo") || a.getTipoEffetto().equals("Primo")) {
+				cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+			}
 			if (a.getTipoEffetto().equals("Quotazione")) {
 				cavallo.setEffettoQuotazione(a.getValoreEffetto());
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
 				lavagna.setQuotazioneAlCavallo(cavallo.getColore(), a.getValoreEffetto());
+				
 			}
 		}
 	}
@@ -135,6 +160,21 @@ public class Plancia {
 	
 	/**
 	 * @author Niccolo
+	 * A partire dall'array di valori della carta Movimento, rende l'array dei movimenti teorici dei cavalli 
+	 * in base alle quotazioni
+	 * @param array dei valori della carta Movimento
+	 * @return array dei movimenti teorici dei cavalli
+	 * */
+	public int[] calcolaIncrementiDaMov(int[] valoriMov){
+		int[] incrementi = new int[6];
+		for (int i=0; i<6;i++){
+			incrementi[i]=lavagna.getRigaMovimento(i);
+		}
+		return incrementi;
+	}
+	
+	/**
+	 * @author Niccolo
 	 * Esegue i movimenti dei cavalli alla partenza
 	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
@@ -153,6 +193,11 @@ public class Plancia {
 		Cavallo c;
 		int[] dadiSprint=sprint();
 		
+		Movimento m=(Movimento)partita.getMazzoMovimento().pesca();
+		int[] valoriMov=m.getArrayMovimenti();
+		
+		int[] movTeorici=calcolaIncrementiDaMov(valoriMov);
+		
 		if (partenza){
 			partenza(movimenti);
 			partenza=false;
@@ -170,7 +215,9 @@ public class Plancia {
 				}
 			
 			}
+			partita.notifyObserver(new eventoCorsa(getPosizioniCavalli(), valoriMov, dadiSprint));
 			gestioneArrivi();
+			
 		}
 	}
 	
