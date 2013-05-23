@@ -98,6 +98,10 @@ public class Partita {
 	}
 	
 	
+	public void notifyObserver(HorseFeverEvent e){
+		adapter.notify(e);
+	}
+	
 	public void rimuoviGiocatore(Giocatore gioc){
 		
 		giocatori.remove(gioc);
