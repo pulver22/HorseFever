@@ -69,7 +69,7 @@ public class Controller {
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,1,numSegnalini);
+			scom=Scommetti(giocatoreCorrente,1,numSegnalini,partita);
 			numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -79,7 +79,7 @@ public class Controller {
 		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,2,numSegnalini);
+			scom=Scommetti(giocatoreCorrente,2,numSegnalini,partita);
         	numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -178,16 +178,18 @@ public class Controller {
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
 	 *  @return scommessa 
 	 */
-    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini){
+    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini,Partita par){
        
     	
-    	int PV, numCorsia=0;
+    	int PV, numCorsia=0, numCorsiaPrecedente=0;
     	long denari,importo,scommessaMinima;
-    	char tipoScommessa='N';
+    	char tipoScommessa='N',tipoScommessaPrecedente='N';
     	boolean buonfine=false;
     	String messaggio;
     	String[] parametriScommessa=new String[3];
     	Scommessa scommessa;
+    	BetManager bManager=par.getBetManager();
+    	ArrayList<Scommessa> scommesse=new ArrayList<Scommessa>();
     	
     	importo=0;
     	PV=giocatore.getPV();
@@ -217,8 +219,31 @@ public class Controller {
     			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     		
-    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
+    			//Scommessa precedente
+    			scommesse=bManager.getbManager();
+    			for(int i=0;i<partita.getNumgiocatori();i++){
+    				
+    				if(scommesse.get(i).getScommettitore().equals(giocatore))
+    				{
+    					numCorsiaPrecedente=scommesse.get(i).getCorsia();
+    					tipoScommessaPrecedente=scommesse.get(i).getTipoScomessa();
+    				}	
+    			}
+    			
+    			if(numCorsia==numCorsiaPrecedente && tipoScommessaPrecedente==tipoScommessa){
+    				
+    				vista.stampaMessaggio("Errore, non puoi fare due scommesse identiche !!");
     				buonfine=false;
+    				
+    			}
+    			
+    			
+    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
+    				
+    				vista.stampaMessaggio("Parametri non corretti !!");
+    				buonfine=false;
+    			}
+    				
     		}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
     		// NOTIFICA EVENTO
@@ -266,8 +291,12 @@ public class Controller {
     			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     	    
-    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V'))
+    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
+    				
+    				vista.stampaMessaggio("Parametri non corretti !!");
     				buonfine=false;
+    			}
+    				
         	}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
     		
