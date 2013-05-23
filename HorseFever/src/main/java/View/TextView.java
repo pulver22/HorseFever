@@ -176,7 +176,7 @@ public class TextView implements View{
 	}
 	
 	@Override
-	public void notify(HorseFeverEvent e, Partita p) {
+	public void notify(HorseFeverEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

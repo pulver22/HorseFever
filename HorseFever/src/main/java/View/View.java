@@ -45,7 +45,7 @@ public interface View {
 	
 	
 	//chiamati dal model
-	public void notify(HorseFeverEvent e, Partita p);
+	public void notify(HorseFeverEvent e);
 
 
 }
