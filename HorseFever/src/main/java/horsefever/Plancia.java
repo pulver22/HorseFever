@@ -78,6 +78,7 @@ public class Plancia {
 						azioni.remove(j);
 					}
 				}
+				
 			} else {
 				for (int j=0; j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
