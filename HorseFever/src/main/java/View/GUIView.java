@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -117,8 +118,36 @@ public class GUIView implements View{
 	}
 
 	@Override
-	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {
-		// TODO Auto-generated method stub
+	public String[] chiediTrucca( ArrayList<Azione> carteAzione) {
+		JPanel panelCarta = new JPanel();
+		panelCarta.setLayout(new FlowLayout());
+		JPanel panel = new JPanel();
+		JFrame frame = new JFrame();
+		JLabel label = new JLabel("Quale carta vuoi giocare?");
+		JLabel label2 = new JLabel("Su quale corsia la vuoi giocare?");
+		TextField sceltaCarta = new TextField();
+		TextField sceltaCorsia = new TextField();
+		final String[] scelta = new String[2];
+		
+		frame.add(panelCarta, BorderLayout.NORTH);
+		frame.add(panel, BorderLayout.SOUTH);
+		
+	
+		for (int i=0;i< carteAzione.size();i++){
+			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
+					+carteAzione.get(i).getTipoEffetto() +"\n"+carteAzione.get(i).getValoreEffetto());
+			panelCarta.add(descrizioneCarta);
+			}
+		
+		panel.setLayout(new FlowLayout());
+		panel.add(label);
+		panel.add(sceltaCarta);
+		scelta[0] = sceltaCarta.getText();
+		panel.add(label2);
+		panel.add(sceltaCorsia);
+		scelta[0] = sceltaCorsia.getText();
+		frame.setVisible(true);
+		frame.pack();
 		return null;
 	}
 
