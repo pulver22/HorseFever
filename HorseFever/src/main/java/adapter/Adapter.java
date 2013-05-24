@@ -6,7 +6,7 @@ import eventi.HorseFeverEvent;
 
 public class Adapter {
 
-	ArrayList<View> viewRegistrate;
+	ArrayList<View> viewRegistrate=new ArrayList<View>();
 	
 	public void notify(HorseFeverEvent e){
 		

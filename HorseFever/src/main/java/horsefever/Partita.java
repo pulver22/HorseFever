@@ -98,8 +98,8 @@ public class Partita {
 	
 	
 	public void notifyObserver(HorseFeverEvent e){
-		System.out.println(e.rappresentazione());
-		//adapter.notify(e);
+		//System.out.println(e.rappresentazione());
+		adapter.notify(e);
 	}
 	
 	public void rimuoviGiocatore(Giocatore gioc){
