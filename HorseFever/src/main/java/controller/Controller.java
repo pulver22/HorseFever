@@ -69,7 +69,7 @@ public class Controller {
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,1,numSegnalini,partita);
+			scom=Scommetti(giocatoreCorrente,1,numSegnalini);
 			numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -79,7 +79,7 @@ public class Controller {
 		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,2,numSegnalini,partita);
+			scom=Scommetti(giocatoreCorrente,2,numSegnalini);
         	numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -153,7 +153,7 @@ public class Controller {
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
 	 *  @return scommessa 
 	 */
-    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini,Partita par){
+    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini){
        
     	
     	int PV, numCorsia=0, numCorsiaPrecedente=0;
@@ -163,7 +163,7 @@ public class Controller {
     	String messaggio;
     	String[] parametriScommessa=new String[3];
     	Scommessa scommessa;
-    	BetManager bManager=par.getBetManager();
+    	BetManager bManager=partita.getBetManager();
     	ArrayList<Scommessa> scommesse=new ArrayList<Scommessa>();
     	
     	importo=0;
