@@ -168,7 +168,7 @@ public class Plancia {
 	public int[] calcolaIncrementiDaMov(int[] valoriMov){
 		int[] incrementi = new int[6];
 		for (int i=0; i<6;i++){
-			incrementi[i]=lavagna.getRigaMovimento(i);
+			incrementi[i]=valoriMov[lavagna.getRigaMovimento(i)];
 		}
 		return incrementi;
 	}
@@ -205,9 +205,11 @@ public class Plancia {
 			for(int i=0; i<6; i++){
 				if (cavalli[i]!=null){
 					if (cavalli[i].getEffettoUltimoPrimo()!=null){
-						int[] primiPari=getCavalliPrimiPari(),ultimiPari=getCavalliUltimiPari();
-						if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], true);
-						else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false);
+						int[] primiPari=getCavalliPrimiPari();
+						int[] ultimiPari=getCavalliUltimiPari();
+						if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], true, false);
+						else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, true);
+						else cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, false);
 					} else {
 					cavalli[i].aggiornaPosizione(movTeorici[i]);
 					}
@@ -343,7 +345,7 @@ public class Plancia {
 							}
 						}
 						
-						sortPerQuotazioneDecrescente(fotofinish);//Sort dei cavalli in fotofinish
+						if (fotofinish.size()>1)sortPerQuotazioneDecrescente(fotofinish);//Sort dei cavalli restanti in fotofinish
 						
 						for (int l=0; l<fotofinish.size();l++){//I restanti li inserisce coma capita tra il primo e l'ultimo
 															//(In ordine di quotazione, inserisce man mano
@@ -379,17 +381,15 @@ public class Plancia {
 	 * @param l'ArrayList di Cavalli da ordinare
 	 * */
 	public void sortPerQuotazioneDecrescente(ArrayList<Cavallo> cavalli){
-		int alto=cavalli.size();
-		while (alto>0){
-			for (int i=0;i<alto;i++){
-				if (cavalli.get(i).getQuotazione()<cavalli.get(i+1).getQuotazione()){
+		for (int j=0; j<fotofinish.size()-1;j++){
+			for (int i=1;i<fotofinish.size();i++){
+				if (cavalli.get(i).getQuotazione()<cavalli.get(j).getQuotazione()){
 					Cavallo ci=cavalli.get(i);
-					Cavallo ci1=cavalli.get(i+1);
-					cavalli.set(i, ci1);
-					cavalli.set(i+1, ci);
+					Cavallo cj=cavalli.get(j);
+					cavalli.set(i, cj);
+					cavalli.set(j, ci);
 				}
 			}
-			alto--;
 		}
 	}
 	
@@ -447,7 +447,7 @@ public class Plancia {
 	public int getMin(){
 		int min=0;
 		for (int i=0;i<6;i++){
-			if (min<cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
+			if (min>cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
 			else min=min;
 		}
 		return min;

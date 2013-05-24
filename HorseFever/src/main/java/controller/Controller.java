@@ -113,14 +113,14 @@ public class Controller {
 		System.out.println(Arrays.toString(partita.getPlancia().getColoriArrivi()));
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
-		
+		/*
 		//NOTIFICA EVENTO
 		e = new eventoQuotazioni(partita.getLavagna().getQuotazioni());
 		partita.getAdapter().notify(e);	
 		
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
-		
+		*/
 	}
 	
 	/**
@@ -325,4 +325,9 @@ public class Controller {
         e=new eventoGiocatore(giocatore);
         adapter.notify(e);
     }
+    
+    public void setView(View v){
+    	this.vista=v;
+    }
+    
 }

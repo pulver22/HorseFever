@@ -10,7 +10,7 @@ public class eventoQuotazioni implements HorseFeverEvent{
 	public eventoQuotazioni(String[][] tabellaQuot){
 		for (int i=0; i<6; i++){
 			tabellaQuot[i][0]=new String(colori[i]);
-			tabellaQuot[i][1]=new String("1:"+tabellaQuot[i][1]);
+			tabellaQuot[i][1]=new String(tabellaQuot[i][1]);
 		}
 	}
 	

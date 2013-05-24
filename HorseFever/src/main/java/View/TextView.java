@@ -12,6 +12,10 @@ import eventi.*;
 
 public class TextView implements View{
 	
+	public TextView(){
+		
+	}
+	
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
@@ -177,7 +181,7 @@ public class TextView implements View{
 	
 	@Override
 	public void notify(HorseFeverEvent e) {
-		// TODO Auto-generated method stub
+		System.out.println(e.rappresentazione());
 		
 	}
 

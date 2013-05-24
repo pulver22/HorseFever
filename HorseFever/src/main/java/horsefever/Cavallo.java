@@ -37,14 +37,16 @@ public class Cavallo {
 		}
 	}
 	
-	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo){
+	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
 		int incr;
 		if (effettoUltimoPrimo!=null){
 			incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
 			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
 				posizione+=incr;
-			} else if (!primo && effettoUltimoPrimo.charAt(1)=='4'){
+			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
 				posizione+=incr;
+			} else {
+				posizione+=incremento;
 			}
 		} else {
 			posizione+=incremento;

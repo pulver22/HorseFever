@@ -24,7 +24,7 @@ public class Partita {
 	
 	/**
 	 * @author niccolò
-	 * Sono un bimbominchia
+	 * 
 	 * @param numgiocatori
 	 */
 	public Partita(int numgiocatori){
@@ -98,7 +98,8 @@ public class Partita {
 	
 	
 	public void notifyObserver(HorseFeverEvent e){
-		adapter.notify(e);
+		System.out.println(e.rappresentazione());
+		//adapter.notify(e);
 	}
 	
 	public void rimuoviGiocatore(Giocatore gioc){
@@ -106,6 +107,10 @@ public class Partita {
 		giocatori.remove(gioc);
 	}
 	//Metodi Getter e Setter
+	
+	public void setAdapter(Adapter a){
+		this.adapter=a;
+	}
 
 	public BetManager getBetManager() {
 		return betManager;
