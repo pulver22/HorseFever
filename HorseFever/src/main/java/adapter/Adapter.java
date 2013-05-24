@@ -42,7 +42,7 @@ public class Adapter {
 		
 		viewRegistrate.get(indice).stampaMessaggio(messaggio);
 	}
-	
+
 	public void notify(HorseFeverEvent e){
 		
 		for (View v: viewRegistrate){
