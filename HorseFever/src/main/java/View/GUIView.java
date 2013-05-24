@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -18,7 +21,7 @@ public class GUIView implements View{
 	@Override
 	public String[] chiediScommessa() {
 		final JFrame frame = new JFrame("Make your Choice!!");
-		final String[] scommessa = new String[3];
+		 final String[] scommessa = new String[3];
 		
 		JButton invioScommessa = new JButton("Conferma");
 
@@ -86,6 +89,7 @@ public class GUIView implements View{
 		frame.pack();
 		frame.setVisible(true);
 		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
 		
 		return scommessa;
 			
@@ -95,8 +99,21 @@ public class GUIView implements View{
 
 	@Override
 	public String[] chiediSecondaScommessa() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String[] scommessa = new String[3];
+		
+		JOptionPane panel = new JOptionPane("Vuoi effettuare una seconda scommessa? ");
+		panel.setOptions(new String[]  {"Si", "No"});
+		JFrame frame = new JFrame();
+		frame.setLocationRelativeTo(null);
+		JDialog dialog = panel.createDialog(frame, "Seconda scommessa");
+		dialog.setVisible(true);
+		Object value = panel.getValue();
+		
+		if(value != null & value.equals("Si")) scommessa = chiediScommessa();
+		else scommessa[2] = "\\";
+		
+		return scommessa;
 	}
 
 	@Override
