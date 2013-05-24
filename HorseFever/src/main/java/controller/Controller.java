@@ -11,9 +11,7 @@ import View.*;
 public class Controller {
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare;
-	private int[]  posizioniAggiornate=new int[6];
 	private Adapter adapter;
-	private View vista;
 	private HorseFeverEvent e;
 	
 	
@@ -69,7 +67,7 @@ public class Controller {
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,1,numSegnalini);
+			scom=Scommetti(giocatoreCorrente,1,numSegnalini,i);
 			numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -79,7 +77,7 @@ public class Controller {
 		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,2,numSegnalini);
+			scom=Scommetti(giocatoreCorrente,2,numSegnalini,i);
         	numcorsia=scom.getCorsia();
 			numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -89,8 +87,8 @@ public class Controller {
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			Trucca(giocatoreCorrente);
-			Trucca(giocatoreCorrente);
+			Trucca(giocatoreCorrente,i);
+			Trucca(giocatoreCorrente,i);
 		}
         
 	}
@@ -110,17 +108,17 @@ public class Controller {
 			
 			
 		}
-		System.out.println(Arrays.toString(partita.getPlancia().getColoriArrivi()));
+		
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
-		/*
+		
 		//NOTIFICA EVENTO
 		e = new eventoQuotazioni(partita.getLavagna().getQuotazioni());
 		partita.getAdapter().notify(e);	
 		
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
-		*/
+		
 	}
 	
 	/**
@@ -147,13 +145,14 @@ public class Controller {
     /**
 	 *  @param numscommessa 1:obbligatoria 2:facoltativa
 	 *  @param giocatore il giocatore che effettua la scommessa
-	 *  @param numSegnalini è un array che indica quanti segnalini sono rimasti per ciascuna corsia  
+	 *  @param numSegnalini è un array che indica quanti segnalini sono rimasti per ciascuna corsia 
+	 *  @param l'indice del giocatore corrente 
 	 *  Viene verificato se la scommessa è obbligatoria o meno, in tal caso viene chiesto al giocatore
 	 *  se vuole scommettere oppure no, in caso di risposta affermativa viene chiesto al giocatore 
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
 	 *  @return scommessa 
 	 */
-    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini){
+    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini, int indice){
        
     	
     	int PV, numCorsia=0, numCorsiaPrecedente=0;
@@ -179,7 +178,7 @@ public class Controller {
     		
     		while(buonfine==false){
     			
-    			parametriScommessa=vista.chiediSecondaScommessa();
+    			parametriScommessa=adapter.chiediSecondaScommessa(indice);
     			buonfine=true;
     			
     			if(denari<scommessaMinima || parametriScommessa[2].equals("N")){
@@ -207,7 +206,7 @@ public class Controller {
     			
     			if(numCorsia==numCorsiaPrecedente && tipoScommessaPrecedente==tipoScommessa){
     				
-    				vista.stampaMessaggio("Errore, non puoi fare due scommesse identiche !!");
+    				adapter.stampaMessaggio("Errore, non puoi fare due scommesse identiche !!",indice);
     				buonfine=false;
     				
     			}
@@ -215,7 +214,7 @@ public class Controller {
     			
     			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
     				
-    				vista.stampaMessaggio("Parametri non corretti !!");
+    				adapter.stampaMessaggio("Parametri non corretti !!",indice);
     				buonfine=false;
     			}
     				
@@ -235,14 +234,14 @@ public class Controller {
             if(PV<2){   
             	
             	messaggio="Hai perso la partita";
-            	vista.stampaMessaggio(messaggio);
+            	adapter.stampaMessaggio(messaggio,indice);
             	partita.rimuoviGiocatore(giocatore);
             	scommessa=new Scommessa(giocatore,10,0,'N');
         		return scommessa;
             }   
             else{
             	 messaggio="Non hai abbastanza denari per scommettere! Perdi due PV!";
-            	 vista.stampaMessaggio(messaggio);
+            	 adapter.stampaMessaggio(messaggio,indice);
             	 PV=PV-2;
     		     giocatore.setPV(PV);
     		     
@@ -258,7 +257,7 @@ public class Controller {
     		
     		while(buonfine==false){
     			
-    			parametriScommessa=vista.chiediScommessa();
+    			parametriScommessa=adapter.chiediScommessa(indice);
     			buonfine=true;
     			
     			importo=Long.parseLong(parametriScommessa[0]);
@@ -268,7 +267,7 @@ public class Controller {
     	    
     			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
     				
-    				vista.stampaMessaggio("Parametri non corretti !!");
+    				adapter.stampaMessaggio("Parametri non corretti !!",indice);
     				buonfine=false;
     			}
     				
@@ -288,7 +287,7 @@ public class Controller {
      * applicarla, queste informazioni vengono poi passate al metodo TruccaCorsia in plancia
      * La carta giocata viene infine rimossa dalle carte a disposizione del giocatore
      */
-    public void Trucca(Giocatore giocatore){
+    public void Trucca(Giocatore giocatore, int indice){
         
     	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
     	carteAzione=giocatore.getCarteAzione();
@@ -299,7 +298,7 @@ public class Controller {
     	
     	while(buonfine==false){
 			
-			scelta=vista.chiediTrucca(carteAzione);
+			scelta=adapter.chiediTrucca(carteAzione,indice);
 			buonfine=true;
 			
 			numCartaAzione=Integer.parseInt(scelta[0]);
@@ -326,8 +325,5 @@ public class Controller {
         adapter.notify(e);
     }
     
-    public void setView(View v){
-    	this.vista=v;
-    }
     
 }
