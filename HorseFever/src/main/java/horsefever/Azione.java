@@ -5,7 +5,7 @@ public class Azione extends Carta{
 	private String tipoEffetto;
 	private String valoreEffetto;
 
-	Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto){
+	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto){
 		this.nome = nome;
 		this.colore = colore;
 		this.tipoEffetto = tipoeEffetto;
