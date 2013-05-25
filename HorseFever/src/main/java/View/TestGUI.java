@@ -17,11 +17,13 @@ public class TestGUI {
 
 	public static void main(String[] args){
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd");
+		Azione pluto = new Azione("eee","fff","ggg","hhh");
 		GUIView view = new GUIView();
-		
+		String[] trucco = new String[2];
 		
 		ArrayList<Azione> carteAzione = new ArrayList<Azione>();
 		carteAzione.add(pippo);
+		carteAzione.add(pluto);
 		
 		
 		
@@ -32,6 +34,8 @@ public class TestGUI {
 		
 		
 		//NonTestato
-		view.chiediTrucca(carteAzione);
+		trucco = view.chiediTrucca(carteAzione);
+		System.out.print(trucco[0]);
+		System.out.print(trucco[1]);
 	}
 }

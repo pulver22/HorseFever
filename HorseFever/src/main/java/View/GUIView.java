@@ -119,36 +119,74 @@ public class GUIView implements View{
 
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) {
+
+		String[] scelta = new String[2];
 		JPanel panelCarta = new JPanel();
 		panelCarta.setLayout(new FlowLayout());
 		JPanel panel = new JPanel();
-		JFrame frame = new JFrame();
+		final JFrame frame = new JFrame();
+		frame.setLayout(new GridLayout(3,3));
+		JPanel panelConferma = new JPanel();
 		JLabel label = new JLabel("Quale carta vuoi giocare?");
 		JLabel label2 = new JLabel("Su quale corsia la vuoi giocare?");
-		TextField sceltaCarta = new TextField();
-		TextField sceltaCorsia = new TextField();
-		final String[] scelta = new String[2];
+		JButton conferma = new JButton("Conferma");
+		
+		JComboBox<String> sceltaCarta = new JComboBox<String>();
+		sceltaCarta.addItem("");
+		JComboBox<String> sceltaCorsia = new JComboBox<String>();
+		sceltaCorsia.addItem("");
+		sceltaCorsia.addItem("1");
+		sceltaCorsia.addItem("2");
+		sceltaCorsia.addItem("3");
+		sceltaCorsia.addItem("4");
+		sceltaCorsia.addItem("5");
+		sceltaCorsia.addItem("6");
 		
 		frame.add(panelCarta, BorderLayout.NORTH);
-		frame.add(panel, BorderLayout.SOUTH);
+		frame.add(panel, BorderLayout.CENTER);
+		frame.add(panelConferma, BorderLayout.SOUTH);
 		
 	
 		for (int i=0;i< carteAzione.size();i++){
 			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
 					+carteAzione.get(i).getTipoEffetto() +"\n"+carteAzione.get(i).getValoreEffetto());
 			panelCarta.add(descrizioneCarta);
+			String nomeCarta = carteAzione.get(i).getNome();
+			sceltaCarta.addItem(nomeCarta);
 			}
+		
+		conferma.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null,"Hai fatto la tua scommessa!");
+				frame.dispose();
+				
+			}
+			
+		});
 		
 		panel.setLayout(new FlowLayout());
 		panel.add(label);
 		panel.add(sceltaCarta);
-		scelta[0] = sceltaCarta.getText();
+		panelConferma.add(conferma);
+		
+		for(int i=0;i<carteAzione.size();i++){
+			if(sceltaCarta.getSelectedItem().toString() != ""){
+				if(sceltaCarta.getSelectedItem().toString().equals(carteAzione.get(i).getNome())) 
+					scelta[0] = "1";
+				else scelta[0] = "2";
+			}
+		}
+		
+		scelta[1] = sceltaCorsia.getSelectedItem().toString();
+		
+		//System.out.print(scelta[0]);
 		panel.add(label2);
 		panel.add(sceltaCorsia);
-		scelta[0] = sceltaCorsia.getText();
+		
 		frame.setVisible(true);
 		frame.pack();
-		return null;
+		frame.setLocationRelativeTo(null);
+		return scelta;
 	}
 
 	@Override
