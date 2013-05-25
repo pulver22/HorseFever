@@ -21,27 +21,25 @@ public class GUIView implements View{
 
 	@Override
 	public String[] chiediScommessa() {
+		
+		String[] scommessa = new String[3];
+		scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
+		
+		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+		scommessa[1] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+		
+		String[] sceltaScommessa = {"Vincente","Piazzato"};
+		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
+		
+		/* RICHIEDE GESTIONE THREAD
+		 * 
 		final JFrame frame = new JFrame("Make your Choice!!");
-		 final String[] scommessa = new String[3];
 		
 		JButton invioScommessa = new JButton("Conferma");
 
 		JLabel importo = new JLabel("Inserisci Importo");
 		JTextField sceltaImporto = new JTextField();
-		scommessa[0] = sceltaImporto.getText();
-		
-		
 		JLabel corsia = new JLabel("Scegli la corsia : ");
-		JComboBox corsieDisponibili = new JComboBox();
-		corsieDisponibili.addItem("Corsia N.ro 1");
-		corsieDisponibili.addItem("Corsia N.ro 2");
-		corsieDisponibili.addItem("Corsia N.ro 3");
-		corsieDisponibili.addItem("Corsia N.ro 4");
-		corsieDisponibili.addItem("Corsia N.ro 5");
-		corsieDisponibili.addItem("Corsia N.ro 6");
-		corsieDisponibili.setEditable(true);
-				
-		scommessa[1] =  (String) corsieDisponibili.getSelectedItem();
 		
 		JLabel tipo = new JLabel("Scegli se piazzato o vincente : ");
 		JComboBox tipoScommessa = new JComboBox();
@@ -56,7 +54,7 @@ public class GUIView implements View{
 			
 			public void actionPerformed(ActionEvent ae){
 				//visualizzare messaggio conferma invio e chiudere tutto
-				JOptionPane.showMessageDialog(null,"Hai scommesso " +scommessa[0] +" denari, su  " +scommessa[1] +", come " +scommessa[2]);
+				//JOptionPane.showMessageDialog(null,"Hai scommesso " +scommessa[0] +" denari, su  " +scommessa[1] +", come " +scommessa[2]);
 				//vista.scommetti(scommessa);
 				frame.dispose();
 			}
@@ -91,7 +89,7 @@ public class GUIView implements View{
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
-		
+		*/
 		return scommessa;
 			
 	}
@@ -119,7 +117,22 @@ public class GUIView implements View{
 
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) {
-
+		
+		String[] scelta = new String[3];
+		String[] carte = new String[2];
+		
+		for(int i=0; i<carteAzione.size(); i++){
+			carte[i] = carteAzione.get(i).getNome() + " " + carteAzione.get(i).getColore() + " " +
+					carteAzione.get(i).getTipoEffetto() + " " +carteAzione.get(i).getValoreEffetto();
+		}
+		
+		scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, carte, carte);
+		
+		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+		scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+		
+		/* RICHIEDE GESTIONE THREAD
+		
 		String[] scelta = new String[2];
 		JPanel panelCarta = new JPanel();
 		panelCarta.setLayout(new FlowLayout());
@@ -186,6 +199,7 @@ public class GUIView implements View{
 		frame.setVisible(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
+		*/
 		return scelta;
 	}
 
