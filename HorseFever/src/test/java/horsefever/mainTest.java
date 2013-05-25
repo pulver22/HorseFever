@@ -19,7 +19,7 @@ public class mainTest {
 		Controller c=new Controller(p);
 		Adapter ad = new Adapter();
 		TextView v=new TextView();
-		c.setView(v);
+		//c.setView(v);
 		ad.addView(v);
 		p.setAdapter(ad);
 		for (int i=0; i<6;i++){

@@ -24,7 +24,7 @@ public class TestMovimenti {
 		 controller=new Controller(partitaprova);
 		 adapter=new Adapter();
 		 view =new TextView();
-		 controller.setView(view);
+		 //controller.setView(view);
 		 partitaprova.setAdapter(adapter);
 		 adapter.addView(view);
 		 
