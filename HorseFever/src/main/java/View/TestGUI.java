@@ -32,13 +32,16 @@ public class TestGUI {
 		//System.out.println(scommessa[0]);
 		//System.out.println(scommessa[1]);
 		//System.out.println(scommessa[2]);
+		//trucco = view.chiediTrucca(carteAzione);
+		//System.out.println(trucco[0]);
+		//System.out.println(trucco[1]);
+		//view.stampaMessaggio("Ciao Baldo");
 		
 		
 		
 		
 		//NonTestato
-		trucco = view.chiediTrucca(carteAzione);
-		System.out.println(trucco[0]);
-		System.out.println(trucco[1]);
+		
+		
 	}
 }
