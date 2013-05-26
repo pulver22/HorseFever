@@ -4,7 +4,7 @@ public class Personaggio extends Carta{
 	public int denari;
 	public String quotScuderia;
 	
-	Personaggio(String nome,int denari,String quotScuderia){
+	public Personaggio(String nome,int denari,String quotScuderia){
 		this.nome = nome;
 		this.denari = denari;
 		this.quotScuderia = quotScuderia;
