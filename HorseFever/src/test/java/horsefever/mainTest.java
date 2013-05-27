@@ -16,6 +16,7 @@ public class mainTest {
 		prova.testDenariGiocatori();
         */
 		Partita p=new Partita(6);
+		p.preparazione();
 		Controller c=new Controller(p);
 		Adapter ad = new Adapter();
 		TextView v=new TextView();
@@ -24,7 +25,7 @@ public class mainTest {
 		p.setAdapter(ad);
 		for (int i=0; i<6;i++){
 			Azione a=(Azione)p.getMazzoAzione().pesca();
-			p.getPlancia().TruccaCorsia(a, i+1);
+			p.getPlancia().TruccaCorsia(a, i+1,p.getGiocatori().get(i).getNome());
 			System.out.println(a.toString());
 		}
 		
