@@ -24,16 +24,32 @@ public class Board extends JFrame {
 	private JLabel cartaMovimento;
 	private JLabel labelPV=new JLabel("PV:");
 	private JLabel labelDenari=new JLabel("Denari:");
+	private JLabel labelNomeGiocatore=new JLabel("Giocatore:");
+	private JLabel labelScuderia=new JLabel("Scuderia:");
 	
-	private JTextField PV=new JTextField("    0   ");
-	private JTextField denari=new JTextField("   default     ");
+	private JTextField PV=new JTextField("            ");
+	private JTextField nomeGiocatore=new JTextField("Mario Rossi    ");
+	private JTextField denari=new JTextField("            ");
+	private JTextField scuderia=new JTextField(" BiancoNero      ");
 	
 	private Image plancia;
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 	
+	
+	JMenuBar menubar=new JMenuBar();
+	JMenu menu=new JMenu("Opzioni");
+	JMenuItem prova1=new JMenuItem("Prova1");
+	JMenuItem prova2=new JMenuItem("Prova2");
+	
     public Board(){
     	
+    	//Menu
+    	menu.add(prova1);
+		menu.add(prova2);
+		menubar.add(menu);
+		setJMenuBar(menubar);
+		
     	//Area Notifica
     	
     	areaNotifica=new JTextArea();
@@ -48,7 +64,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#883456"));
+    	pannelloNotifica.setBackground(Color.decode("#6666FF"));
     	
     	//Plancia
     	pannelloPlancia.setBounds(450,50,650,300);
@@ -63,8 +79,18 @@ public class Board extends JFrame {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,270);
-		pannelloGiocatore.setBackground(Color.decode("#883456"));
+		pannelloGiocatore.setBackground(Color.decode("#6666FF"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
+		
+		PV.setEditable(false);
+		denari.setEditable(false);
+		nomeGiocatore.setEditable(false);
+		scuderia.setEditable(false);
+		pannelloGiocatore.setLayout(new GridLayout(5,2));
+		pannelloGiocatore.add(labelNomeGiocatore);
+		pannelloGiocatore.add(nomeGiocatore);
+		pannelloGiocatore.add(labelScuderia);
+		pannelloGiocatore.add(scuderia);
 		pannelloGiocatore.add(labelPV);
 		pannelloGiocatore.add(PV);
 		pannelloGiocatore.add(labelDenari);
@@ -73,7 +99,7 @@ public class Board extends JFrame {
 		
 		//Lavagna
 		pannelloLavagna.setBounds(50,350,350,300);
-		pannelloLavagna.setBackground(Color.decode("#883456"));
+		pannelloLavagna.setBackground(Color.decode("#6666FF"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
 
@@ -108,8 +134,8 @@ public class Board extends JFrame {
 	public static void main(String[] args) {
 		
 		Board prova=new Board();
-		prova.settaAreaNotifica("prova prova polvara culo\n");
-		prova.settaAreaNotifica("prova prova polvara culo");
+		prova.settaAreaNotifica("prova prova \n");
+		prova.settaAreaNotifica("prova prova ");
 		prova.settaAreaQuotazioni("    \n");
 		prova.settaAreaQuotazioni("    1:2\n");
 		prova.settaAreaQuotazioni("    1:3\n");
@@ -117,6 +143,8 @@ public class Board extends JFrame {
 		prova.settaAreaQuotazioni("    1:5\n");
 		prova.settaAreaQuotazioni("    1:6\n");
 		prova.settaAreaQuotazioni("    1:7 \n");
+		prova.setPV(100);
+		prova.setDenari(40000);
 		
 	
 	}
@@ -130,6 +158,32 @@ public class Board extends JFrame {
 		quotazioni.append(messaggio);
 	}
 	
+	/**
+	 * setta i pv del giocatore
+	 * @param PV
+	 */
+	public void setPV(int PV){
+		
+		this.PV.setText(""+PV);
+	}
+	
+	/**
+	 * setta il nome del giocatore
+	 * @param nome
+	 */
+    public void setNomeGiocatore(String nome){
+    	
+    	this.nomeGiocatore.setText(nome);
+    }
+	
+	/**
+	 * setta i denari del giocatore
+	 * @param denari
+	 */
+    public void setDenari(long denari){
+		
+		this.denari.setText(""+denari);
+	}
 	/**
 	 * Scrive sulla JTextArea delle notifiche della partita
 	 * @param messaggio

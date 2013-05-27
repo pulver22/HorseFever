@@ -19,6 +19,12 @@ import horsefever.Scommessa;
 
 public class GUIView implements View{
 
+	private Board board;
+	
+	public GUIView(){
+		
+		board=new Board();
+	}
 	@Override
 	public String[] chiediScommessa() {
 		
@@ -205,7 +211,16 @@ public class GUIView implements View{
 
 	@Override
 	public void notify(HorseFeverEvent e) {
-		// TODO Auto-generated method stub
+
+       if(e instanceof eventoGiocatore){
+    	   
+           long denari=((eventoGiocatore) e).getDenari();
+    	   int pv=((eventoGiocatore) e).getPv();
+    	   String[] carteAzione=((eventoGiocatore) e).getCarteAzione();
+    	   
+    	   board.setPV(pv);
+    	   board.setDenari(denari);
+       }
 		
 	}
 
