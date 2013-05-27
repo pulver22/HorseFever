@@ -13,9 +13,15 @@ public class Board extends JFrame {
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloPlancia=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
-	private JPanel pannelloLavagna=new JPanel();
+	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
+	private JLabel cartaMovimento;
 	private Image plancia;
 	private Image movimento;
+	private JSplitPane pannelloDivisore;
+	private JScrollPane pictureScrollPane;
+	private JScrollPane quotazioniScrollPane;
+	
+	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 	
     public Board(){
     	
@@ -37,7 +43,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#FFFFFF"));
+    	pannelloNotifica.setBackground(Color.decode("#123456"));
     	
     	//Plancia
     	pannelloPlancia.setBounds(450,50,650,300);
@@ -52,7 +58,7 @@ public class Board extends JFrame {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,270);
-		pannelloGiocatore.setBackground(Color.decode("#FFFFFF"));
+		pannelloGiocatore.setBackground(Color.decode("#123456"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
 		pannelloGiocatore.setVisible(true);
 		
@@ -61,12 +67,23 @@ public class Board extends JFrame {
 		pannelloLavagna.setBackground(Color.decode("#123456"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
-		pannelloLavagna.add(quotazioni);
 		
-		ii=new ImageIcon(this.getClass().getResource("horsefever.png"));
-		movimento=ii.getImage();
 		
+		ImageIcon imgMov=new ImageIcon(getClass().getResource("horseFever-85.png"));
+		cartaMovimento=new JLabel(imgMov);
+		quotazioni.append("Quotazioni:\n");
+		quotazioni.setFont(fontPersonale);
+		pictureScrollPane = new JScrollPane(cartaMovimento);
+		quotazioniScrollPane=new JScrollPane(quotazioni);
+		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pictureScrollPane,quotazioniScrollPane);
     	
+		pannelloDivisore.setOneTouchExpandable(false); 
+	    pannelloDivisore.setDividerLocation(190); 
+	    pannelloDivisore.setContinuousLayout(false);
+	
+	    
+	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
+	    
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
     	//this.add(pannelloPlancia);
@@ -85,7 +102,33 @@ public class Board extends JFrame {
 	public static void main(String[] args) {
 		
 		Board prova=new Board();
-
+		prova.settaAreaNotifica("prova prova polvara culo\n");
+		prova.settaAreaNotifica("prova prova polvara culo");
+		prova.settaAreaQuotazioni("    \n");
+		prova.settaAreaQuotazioni("    1:2\n");
+		prova.settaAreaQuotazioni("    1:3\n");
+		prova.settaAreaQuotazioni("    1:4\n");
+		prova.settaAreaQuotazioni("    1:5\n");
+		prova.settaAreaQuotazioni("    1:6\n");
+		prova.settaAreaQuotazioni("    1:7 \n");
+	}
+	
+	/**
+	 * Scrive sulla JTextArea delle quotazioni
+	 * @param messaggio
+	 */
+	public void settaAreaQuotazioni(String messaggio){
+		
+		quotazioni.append(messaggio);
+	}
+	
+	/**
+	 * Scrive sulla JTextArea delle notifiche della partita
+	 * @param messaggio
+	 */
+	public void settaAreaNotifica(String messaggio){
+		
+		areaNotifica.append(messaggio);
 	}
 	
 	public void paint(Graphics g) {
@@ -93,7 +136,7 @@ public class Board extends JFrame {
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(plancia, 450,50, null);
-        g2d.drawImage(movimento, 100,450,null);
+        //g2d.drawImage(movimento, 100,450,null);
         
         
     
