@@ -32,7 +32,7 @@ public class Cavallo {
 				} else if (effettoPartenza.equals("=4") && effettoPartenza2.equals("+1")){
 					posizione+=5;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("-1")){
-					posizione+=0;
+					posizione=posizione;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("+1")){
 					posizione+=1;
 				}
@@ -40,12 +40,12 @@ public class Cavallo {
 				if (effettoPartenza.equals("=4")){
 					posizione+=4;
 				} else if (effettoPartenza.equals("=0")){
-					posizione+=0;
+					posizione=posizione;
 				}
 			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
 				if (effettoPartenza2.equals("-1")){
 					if (incremento-1>=0) posizione=incremento-1;
-					else posizione+=0;
+					else posizione=posizione;
 				} else if (effettoPartenza2.equals("+1")){
 					posizione=incremento+1;
 				}
