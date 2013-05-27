@@ -14,12 +14,13 @@ public class Board extends JFrame {
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel();
 	private Image plancia;
+	private Image sfondo;
 	
     public Board(){
     	
     	//toglie il Layout di default del JFrame
     	getContentPane().setLayout(null);
-    	
+    	repaint();
     	//Area Notifica
     	
     	areaNotifica=new JTextArea();
@@ -41,6 +42,9 @@ public class Board extends JFrame {
        
         ImageIcon ii=new ImageIcon(this.getClass().getResource("plancia.jpg"));
 		plancia=ii.getImage();
+		
+		ImageIcon ii2=new ImageIcon(this.getClass().getResource("sfondo.jpg"));
+		sfondo=ii2.getImage();
 		
 		//Giocatore
 		
@@ -78,7 +82,9 @@ public class Board extends JFrame {
         super.paint(g);
         
         Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(sfondo, 0,0,null);
         g2d.drawImage(plancia, 450,50, null);
+        
     
 	}
 	
