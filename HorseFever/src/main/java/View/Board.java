@@ -20,7 +20,7 @@ public class Board extends JFrame {
     	
     	//toglie il Layout di default del JFrame
     	getContentPane().setLayout(null);
-    	repaint();
+    	
     	//Area Notifica
     	
     	areaNotifica=new JTextArea();
@@ -63,6 +63,8 @@ public class Board extends JFrame {
     	this.add(pannelloLavagna);
     	//this.add(pannelloPlancia);
     	this.add(pannelloGiocatore);
+    	
+    	
     	
     	this.setBackground(Color.gray);
     	this.setResizable(false);
