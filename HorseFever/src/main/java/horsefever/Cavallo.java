@@ -6,7 +6,9 @@ public class Cavallo {
 	private String colore;
 	private int quotazione;
 	private String effettoPartenza=null;
+	private String effettoPartenza2=null;
 	private String effettoSprint=null;
+	private String effettoSprint2=null;
 	private String effettoUltimoPrimo=null;
 	private String effettoFotofinish=null;
 	private String effettoTraguardo=null;
@@ -22,15 +24,31 @@ public class Cavallo {
 	 * @param L'incremento teorico senza effetti delle carte Azione
 	 * */
 	public void aggiornaPosizionePartenza(int incremento){
-		int incr;
-		if (effettoPartenza!=null){
-			incr=Integer.parseInt(""+effettoPartenza.charAt(1));
-			if (effettoPartenza.charAt(0)=='='){
-				posizione+=incr;
-			} else if (effettoPartenza.charAt(0)=='+'){
-				posizione=posizione+incr+incremento;
-			} else if (effettoPartenza.charAt(0)=='-'){
-				posizione=posizione+incremento-incr;
+		if (effettoPartenza!=null || effettoPartenza2!=null){
+			
+			if (effettoPartenza!=null && effettoPartenza2!=null){ //Se entrambi tipi di effetti != NULL
+				if (effettoPartenza.equals("=4") && effettoPartenza2.equals("-1")){
+					posizione+=3;
+				} else if (effettoPartenza.equals("=4") && effettoPartenza2.equals("+1")){
+					posizione+=5;
+				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("-1")){
+					posizione+=0;
+				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("+1")){
+					posizione+=1;
+				}
+			} else if (effettoPartenza!=null){//Se solo quello con lettera A è !=null
+				if (effettoPartenza.equals("=4")){
+					posizione+=4;
+				} else if (effettoPartenza.equals("=0")){
+					posizione+=0;
+				}
+			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
+				if (effettoPartenza2.equals("-1")){
+					if (incremento-1>=0) posizione=incremento-1;
+					else posizione+=0;
+				} else if (effettoPartenza2.equals("+1")){
+					posizione=incremento+1;
+				}
 			}
 		} else {
 			posizione+=incremento;
@@ -56,20 +74,37 @@ public class Cavallo {
 	/**
 	 * Aggiorna la posizione del cavallo applicando effetti allo sprint.
 	 * Essendo lo sprint teorico sempre =1 non necessita di parametri, l'invocazione del metodo
-	 * implica già che il cavallo abbia ottenuto uno sprint teorico dia dadi
+	 * implica già che il cavallo abbia ottenuto uno sprint teorico dai dadi
 	 * */
 	public void aggiornaPosizioneSprint(){
-		int incr;
-		if (effettoSprint!=null){
-			incr=Integer.parseInt(""+effettoSprint.charAt(1));
-			if (effettoSprint.charAt(0)=='='){
-				posizione+=incr;
-			} else if (effettoSprint.charAt(0)=='+'){
-				posizione=posizione+SPRINT+incr;
-			} else if (effettoSprint.charAt(0)=='-'){
-				posizione=posizione+SPRINT-incr;
+		/*
+		 * effettoSprint: +1  o =0  Cioè l'effetto Sprint con lettera C
+		 * effettoSprint2:=2  o -1  Cioè l'effetto Sprint con lettera D
+		 * 
+		 * */
+		if (effettoSprint!=null || effettoSprint2!=null){
+			if (effettoSprint!=null && effettoSprint2!=null){ //Se entrambi tipi di effetti != NULL
+				if (effettoSprint.equals("=0")){
+					posizione=posizione;
+				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("-1")){
+					posizione+=SPRINT;
+				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("=2")){
+					posizione+=3;
+				}
+			} else if (effettoSprint!=null){//Se solo quello con lettera C è !=null
+				if (effettoSprint.equals("=0")){
+					posizione=posizione;
+				} else if (effettoSprint.equals("+1")){
+					posizione=posizione+SPRINT+1;
+				}
+			} else if (effettoSprint2!=null){//Se solo quello con lettera D è !=null
+				if (effettoSprint2.equals("-1")){
+					posizione=SPRINT-1;
+				} else if (effettoSprint2.equals("=2")){
+					posizione+=2;
+				}
 			}
-		} else {
+		} else { //Se entrambi =NULL e quindi non ha effetti sprint di nessun tipo
 			posizione+=SPRINT;
 		}
 	}
@@ -186,4 +221,22 @@ public class Cavallo {
 	public String toString(){
 		return colore+" con quotazione "+quotazione+" e posizione "+posizione;
 	}
+
+	public String getEffettoPartenza2() {
+		return effettoPartenza2;
+	}
+
+	public void setEffettoPartenza2(String effettoPartenza2) {
+		this.effettoPartenza2 = effettoPartenza2;
+	}
+
+	public String getEffettoSprint2() {
+		return effettoSprint2;
+	}
+
+	public void setEffettoSprint2(String effettoSprint2) {
+		this.effettoSprint2 = effettoSprint2;
+	}
+	
+	
 }

@@ -110,11 +110,19 @@ public class Plancia {
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
 			if (a.getTipoEffetto().equals("Partenza")) {
-				cavallo.setEffettoPartenza(a.getValoreEffetto());
+				if (a.getValoreEffetto().charAt(0)=='='){
+					cavallo.setEffettoPartenza(a.getValoreEffetto());
+				} else {
+					cavallo.setEffettoPartenza2(a.getValoreEffetto());
+				}
 				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
 			}
 			if (a.getTipoEffetto().equals("Sprint")) {
-				cavallo.setEffettoSprint(a.getValoreEffetto());
+				if (a.getLettera()=='C'){
+					cavallo.setEffettoSprint(a.getValoreEffetto());
+				} else {
+					cavallo.setEffettoSprint2(a.getValoreEffetto());
+				}
 				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
 			}
 			if (a.getTipoEffetto().equals("Fotofinish")) {
@@ -148,13 +156,9 @@ public class Plancia {
 			for (int j=1; j<azioni.size(); j++){
 				Azione a1= (Azione)azioni.get(i);
 				Azione a2= (Azione)azioni.get(j);
-				if (a1.getTipoEffetto().equals(a2.getTipoEffetto())){
-					if (a1.getValoreEffetto().charAt(0)==a2.getValoreEffetto().charAt(0)||
-							(a1.getValoreEffetto().charAt(0)=='+' && a2.getValoreEffetto().charAt(0)=='-')||
-							a1.getValoreEffetto().charAt(0)=='-' && a2.getValoreEffetto().charAt(0)=='+'){
-						azioni.remove(i);
-						azioni.remove(j);
-					}
+				if (a1.getLettera()==a2.getLettera()){
+					azioni.remove(i);
+					azioni.remove(j);
 				}
 			}
 		}
