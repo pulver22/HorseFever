@@ -26,11 +26,11 @@ public class GUIView implements View{
 		scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
 		
 		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-		scommessa[1] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-		
+		scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+		scommessa[1] = ""+scommessa[1].charAt(9);
 		String[] sceltaScommessa = {"Vincente","Piazzato"};
 		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
-		
+		scommessa[2] = ""+scommessa[2].charAt(0);
 		/* RICHIEDE GESTIONE THREAD
 		 * 
 		final JFrame frame = new JFrame("Make your Choice!!");
@@ -110,7 +110,7 @@ public class GUIView implements View{
 		Object value = panel.getValue();
 		
 		if(value != null & value.equals("Si")) scommessa = chiediScommessa();
-		else scommessa[2] = "\\";
+		else scommessa[2] = "N";
 		
 		return scommessa;
 	}
