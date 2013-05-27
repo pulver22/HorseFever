@@ -4,30 +4,35 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class Board extends JFrame {
 
 	private JTextArea areaNotifica;
 	private JTextArea quotazioni;
+	
+	private JSplitPane pannelloDivisore;
     private JScrollPane scroll;
+    private JScrollPane immagineCartaMovimento;
+	private JScrollPane quotazioniScrollPane;
+	
     private Background background=new Background("sfondo.jpg");
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloPlancia=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
+	
 	private JLabel cartaMovimento;
+	private JLabel labelPV=new JLabel("PV:");
+	private JLabel labelDenari=new JLabel("Denari:");
+	
+	private JTextField PV=new JTextField("    0   ");
+	private JTextField denari=new JTextField("   default     ");
+	
 	private Image plancia;
-	private Image movimento;
-	private JSplitPane pannelloDivisore;
-	private JScrollPane pictureScrollPane;
-	private JScrollPane quotazioniScrollPane;
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 	
     public Board(){
-    	
-    	//toglie il Layout di default del JFrame
-    	//getContentPane().setLayout(null);
-    	
     	
     	//Area Notifica
     	
@@ -43,7 +48,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#123456"));
+    	pannelloNotifica.setBackground(Color.decode("#883456"));
     	
     	//Plancia
     	pannelloPlancia.setBounds(450,50,650,300);
@@ -58,28 +63,29 @@ public class Board extends JFrame {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,270);
-		pannelloGiocatore.setBackground(Color.decode("#123456"));
+		pannelloGiocatore.setBackground(Color.decode("#883456"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
+		pannelloGiocatore.add(labelPV);
+		pannelloGiocatore.add(PV);
+		pannelloGiocatore.add(labelDenari);
+		pannelloGiocatore.add(denari);
 		pannelloGiocatore.setVisible(true);
 		
 		//Lavagna
 		pannelloLavagna.setBounds(50,350,350,300);
-		pannelloLavagna.setBackground(Color.decode("#123456"));
+		pannelloLavagna.setBackground(Color.decode("#883456"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
-		
-		
+
 		ImageIcon imgMov=new ImageIcon(getClass().getResource("horseFever-85.png"));
 		cartaMovimento=new JLabel(imgMov);
 		quotazioni.append("Quotazioni:\n");
 		quotazioni.setFont(fontPersonale);
-		pictureScrollPane = new JScrollPane(cartaMovimento);
+		immagineCartaMovimento = new JScrollPane(cartaMovimento);
 		quotazioniScrollPane=new JScrollPane(quotazioni);
-		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pictureScrollPane,quotazioniScrollPane);
-    	
-		pannelloDivisore.setOneTouchExpandable(false); 
+		
+		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,immagineCartaMovimento,quotazioniScrollPane);
 	    pannelloDivisore.setDividerLocation(190); 
-	    pannelloDivisore.setContinuousLayout(false);
 	
 	    
 	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
@@ -111,6 +117,8 @@ public class Board extends JFrame {
 		prova.settaAreaQuotazioni("    1:5\n");
 		prova.settaAreaQuotazioni("    1:6\n");
 		prova.settaAreaQuotazioni("    1:7 \n");
+		
+	
 	}
 	
 	/**
@@ -131,6 +139,11 @@ public class Board extends JFrame {
 		areaNotifica.append(messaggio);
 	}
 	
+	public void setImmagineMovimento(ImageIcon immagine){
+		
+		
+		
+	}
 	public void paint(Graphics g) {
         super.paint(g);
         
