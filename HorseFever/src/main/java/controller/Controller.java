@@ -112,10 +112,6 @@ public class Controller {
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
 		
-		//NOTIFICA EVENTO
-		e = new eventoQuotazioni(partita.getLavagna().getQuotazioni());
-		partita.getAdapter().notify(e);	
-		
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
 		
@@ -220,9 +216,6 @@ public class Controller {
     				
     		}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
-    		// NOTIFICA EVENTO
-    		e=new eventoScommessa(scommessa);
-			adapter.notify(e);
 			
     		return scommessa;
       	
@@ -244,10 +237,6 @@ public class Controller {
             	 adapter.stampaMessaggio(messaggio,indice);
             	 PV=PV-2;
     		     giocatore.setPV(PV);
-    		     
-    		     //NOTIFICA EVENTO
-    		     e=new eventoGiocatore(giocatore);
-    		     adapter.notify(e);
     		     
     		     scommessa=new Scommessa(giocatore,10,0,'N');
            		 return scommessa;
@@ -273,10 +262,6 @@ public class Controller {
     				
         	}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
-    		
-    		// NOTIFICA EVENTO
-    		e=new eventoScommessa(scommessa);
-			adapter.notify(e);
 			
     		return scommessa;
     	}
@@ -313,16 +298,11 @@ public class Controller {
     	cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
     	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia);
     	
-    	// NOTIFICA EVENTO
-    	e=new eventoTrucca(nomeGiocatore,numCorsia,cartaAzioneGiocata);
-    	adapter.notify(e);
     	
     	carteAzione.remove(numCartaAzione);
         giocatore.setCarteAzione(carteAzione);	
         
-        //NOTIFICA EVENTO
-        e=new eventoGiocatore(giocatore);
-        adapter.notify(e);
+        
     }
     
     

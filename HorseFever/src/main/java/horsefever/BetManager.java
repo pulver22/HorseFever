@@ -1,10 +1,19 @@
 package horsefever;
 import java.util.ArrayList;
 
+import eventi.eventoScommessa;
+
 
 public class BetManager {
 	
 	private ArrayList<Scommessa> bManager = new ArrayList<Scommessa>();
+	private eventoScommessa e;
+	private Partita p;
+	
+	public BetManager(Partita p){
+		
+		this.p=p;
+	}
 
 	/**
 	 * Aggiunge la scommessa di ogni giocatore alla lista delle scommesse
@@ -12,6 +21,10 @@ public class BetManager {
 	 */
 	public void AggiungiScommessa(Scommessa scom){
 		bManager.add(scom);
+		
+		// NOTIFICA EVENTO
+		e=new eventoScommessa(scom);
+		p.notifyObserver(e);
 	}
 	
 	/**

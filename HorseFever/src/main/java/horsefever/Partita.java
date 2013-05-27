@@ -35,7 +35,7 @@ public class Partita {
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna(this);
 		plancia = new Plancia(lavagna,this);
-		betManager= new BetManager();
+		betManager= new BetManager(this);
 		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;

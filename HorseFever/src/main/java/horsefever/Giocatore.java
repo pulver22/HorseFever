@@ -2,6 +2,9 @@ package horsefever;
 
 import java.util.ArrayList;
 
+import eventi.eventoGiocatore;
+import adapter.*;
+
 public class Giocatore {
 
 	private int PV=0;
@@ -11,6 +14,7 @@ public class Giocatore {
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	private String nomeGiocatore;
 	private Partita partita;
+	private eventoGiocatore e;
 	
 	public Giocatore(Personaggio cartaPersonaggio, String scuderia, Partita p){
 		this.partita=p;
@@ -30,6 +34,10 @@ public class Giocatore {
 	}
 	public void setPV(int pV) {
 		PV = pV;
+		
+		//NOTIFICA EVENTO
+	     e=new eventoGiocatore(this);
+	     partita.notifyObserver(e);
 	}
 	public Carta getCartaPersonaggio() {
 		return cartaPersonaggio;
@@ -53,6 +61,10 @@ public class Giocatore {
 	}
 	public void setCarteAzione(ArrayList<Azione> carteAzione) {
 		this.carteAzione = carteAzione;
+		
+		//NOTIFICA EVENTO
+        e=new eventoGiocatore(this);
+        partita.notifyObserver(e);
 	}
 	public void setScudera(String scuderia){
 		this.scuderia=scuderia;
