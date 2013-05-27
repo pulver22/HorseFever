@@ -40,10 +40,10 @@ public class Board extends JFrame {
         pannelloPlancia.setVisible(true);
         pannelloPlancia.setBackground(Color.white);
        
-        ImageIcon ii=new ImageIcon(this.getClass().getResource("plancia.jpg"));
+        ImageIcon ii=new ImageIcon(this.getClass().getResource("/HorseFever/Immagini/Board/plancia.jpg"));
 		plancia=ii.getImage();
 		
-		ImageIcon ii2=new ImageIcon(this.getClass().getResource("sfondo.jpg"));
+		ImageIcon ii2=new ImageIcon(this.getClass().getResource("/HorseFever/Immagini/Board/sfondo.jpg"));
 		sfondo=ii2.getImage();
 		
 		//Giocatore
