@@ -296,7 +296,7 @@ public class Controller {
     	}
     	
     	cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
-    	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia);
+    	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia,giocatore.getNome());
     	
     	
     	carteAzione.remove(numCartaAzione);
