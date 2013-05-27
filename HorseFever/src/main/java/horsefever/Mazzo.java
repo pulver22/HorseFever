@@ -1,6 +1,8 @@
 package horsefever;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class Mazzo {
 	
 	private ArrayList<Carta> Mazzo = new ArrayList<Carta>();
@@ -86,29 +88,29 @@ public class Mazzo {
 		}
 		else if(nome == "MazzoMovimento"){
 			
-			Mazzo.add(new Movimento(3,3,2,2,2,2));
-			Mazzo.add(new Movimento(3,2,3,2,2,2));
-			Mazzo.add(new Movimento(3,2,2,3,2,2));
-			Mazzo.add(new Movimento(3,2,2,2,3,2));
-			Mazzo.add(new Movimento(2,2,2,2,3,3));
-			Mazzo.add(new Movimento(2,2,2,3,2,3));
-			Mazzo.add(new Movimento(2,2,3,2,2,3));
-			Mazzo.add(new Movimento(2,3,2,2,2,3));
-			Mazzo.add(new Movimento(2,3,2,2,3,2));
-			Mazzo.add(new Movimento(2,3,2,2,3,2));
-			Mazzo.add(new Movimento(2,3,3,2,2,2));
-			Mazzo.add(new Movimento(3,2,2,2,2,3));
-			Mazzo.add(new Movimento(2,2,3,3,2,2));
-			Mazzo.add(new Movimento(2,2,3,2,3,2));
-			Mazzo.add(new Movimento(2,2,2,3,3,2));
-			Mazzo.add(new Movimento(3,3,2,2,2,2));
-			Mazzo.add(new Movimento(4,3,2,2,2,2));
-			Mazzo.add(new Movimento(4,2,2,2,2,0));
-			Mazzo.add(new Movimento(2,2,2,2,1,0));
-			Mazzo.add(new Movimento(2,2,2,2,1,1));
-			Mazzo.add(new Movimento(3,2,2,2,2,1));
-			Mazzo.add(new Movimento(2,2,3,1,2,2));
-			Mazzo.add(new Movimento(2,4,2,2,0,2));
+			Mazzo.add(new Movimento(3,3,2,2,2,2,new ImageIcon(this.getClass().getResource("horseFever-83.png"))));
+			Mazzo.add(new Movimento(3,2,3,2,2,2,new ImageIcon(this.getClass().getResource("horseFever-84.png"))));
+			Mazzo.add(new Movimento(3,2,2,3,2,2,new ImageIcon(this.getClass().getResource("horseFever-85.png"))));
+			Mazzo.add(new Movimento(3,2,2,2,3,2,new ImageIcon(this.getClass().getResource("horseFever-86.png"))));
+			Mazzo.add(new Movimento(2,2,2,2,3,3,new ImageIcon(this.getClass().getResource("horseFever-87.png"))));
+			Mazzo.add(new Movimento(2,2,2,3,2,3,new ImageIcon(this.getClass().getResource("horseFever-88.png"))));
+			Mazzo.add(new Movimento(2,2,3,2,2,3,new ImageIcon(this.getClass().getResource("horseFever-89.png"))));
+			Mazzo.add(new Movimento(2,3,2,2,2,3,new ImageIcon(this.getClass().getResource("horseFever-90.png"))));
+			Mazzo.add(new Movimento(2,3,2,2,3,2,new ImageIcon(this.getClass().getResource("horseFever-91.png"))));
+			Mazzo.add(new Movimento(2,3,2,2,3,2,new ImageIcon(this.getClass().getResource("horseFever-92.png"))));
+			Mazzo.add(new Movimento(2,3,3,2,2,2,new ImageIcon(this.getClass().getResource("horseFever-93.png"))));
+			Mazzo.add(new Movimento(3,2,2,2,2,3,new ImageIcon(this.getClass().getResource("horseFever-94.png"))));
+			Mazzo.add(new Movimento(2,2,3,3,2,2,new ImageIcon(this.getClass().getResource("horseFever-95.png"))));
+			Mazzo.add(new Movimento(2,2,3,2,3,2,new ImageIcon(this.getClass().getResource("horseFever-96.png"))));
+			Mazzo.add(new Movimento(2,2,2,3,3,2,new ImageIcon(this.getClass().getResource("horseFever-97.png"))));
+			Mazzo.add(new Movimento(3,3,2,2,2,2,new ImageIcon(this.getClass().getResource("horseFever-98.png"))));
+			Mazzo.add(new Movimento(4,3,2,2,2,2,new ImageIcon(this.getClass().getResource("horseFever-99.png"))));
+			Mazzo.add(new Movimento(4,2,2,2,2,0,new ImageIcon(this.getClass().getResource("horseFever-100.png"))));
+			Mazzo.add(new Movimento(2,2,2,2,1,0,new ImageIcon(this.getClass().getResource("horseFever-101.png"))));
+			Mazzo.add(new Movimento(2,2,2,2,1,1,new ImageIcon(this.getClass().getResource("horseFever-102.png"))));
+			Mazzo.add(new Movimento(3,2,2,2,2,1,new ImageIcon(this.getClass().getResource("horseFever-103.png"))));
+			Mazzo.add(new Movimento(2,2,3,1,2,2,new ImageIcon(this.getClass().getResource("horseFever-104.png"))));
+			Mazzo.add(new Movimento(2,4,2,2,0,2,new ImageIcon(this.getClass().getResource("horseFever-105.png"))));
 		}
 			
 	}
