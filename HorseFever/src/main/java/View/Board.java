@@ -7,12 +7,11 @@ import java.awt.*;
 public class Board extends JFrame {
 
 	private JTextArea areaNotifica;
-	private JTextArea quotazioni=new JTextArea();
+	private JTextArea quotazioni;
     private JScrollPane scroll;
     private Background background=new Background("sfondo.jpg");
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloPlancia=new JPanel();
-	private JPanel carteMovimento=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel();
 	private Image plancia;
@@ -28,6 +27,8 @@ public class Board extends JFrame {
     	
     	areaNotifica=new JTextArea();
     	areaNotifica.setEditable(false);
+    	quotazioni=new JTextArea();
+    	quotazioni.setEditable(false);
     	scroll=new JScrollPane(areaNotifica);
     	scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
     
@@ -45,8 +46,7 @@ public class Board extends JFrame {
        
         ImageIcon ii=new ImageIcon(this.getClass().getResource("plancia.jpg"));
 		plancia=ii.getImage();	
-		ii=new ImageIcon(this.getClass().getResource("horseFever-103.jpg"));
-		movimento=ii.getImage();
+		
 		
 		
 		//Giocatore
@@ -58,12 +58,13 @@ public class Board extends JFrame {
 		
 		//Lavagna
 		pannelloLavagna.setBounds(50,350,350,300);
-		pannelloLavagna.setBackground(Color.decode("#FFFFFF"));
+		pannelloLavagna.setBackground(Color.decode("#123456"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
-		carteMovimento.setBackground(Color.black);
-		pannelloLavagna.add(carteMovimento);
 		pannelloLavagna.add(quotazioni);
+		
+		ii=new ImageIcon(this.getClass().getResource("horsefever.png"));
+		movimento=ii.getImage();
 		
     	
 		this.add(pannelloNotifica);
@@ -92,7 +93,7 @@ public class Board extends JFrame {
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(plancia, 450,50, null);
-        g2d.drawImage(movimento, 60,360,null);
+        g2d.drawImage(movimento, 100,450,null);
         
         
     
