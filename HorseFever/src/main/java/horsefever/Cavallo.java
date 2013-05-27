@@ -60,9 +60,9 @@ public class Cavallo {
 		if (effettoUltimoPrimo!=null){
 			incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
 			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
-				posizione+=incr;
+				posizione=posizione;
 			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
-				posizione+=incr;
+				posizione+=4;
 			} else {
 				posizione+=incremento;
 			}
@@ -87,9 +87,9 @@ public class Cavallo {
 				if (effettoSprint.equals("=0")){
 					posizione=posizione;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("-1")){
-					posizione+=SPRINT;
+					posizione=posizione+SPRINT;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("=2")){
-					posizione+=3;
+					posizione=posizione+3;
 				}
 			} else if (effettoSprint!=null){//Se solo quello con lettera C è !=null
 				if (effettoSprint.equals("=0")){
@@ -99,9 +99,9 @@ public class Cavallo {
 				}
 			} else if (effettoSprint2!=null){//Se solo quello con lettera D è !=null
 				if (effettoSprint2.equals("-1")){
-					posizione=SPRINT-1;
+					posizione=posizione+SPRINT-1;
 				} else if (effettoSprint2.equals("=2")){
-					posizione+=2;
+					posizione=posizione+2;
 				}
 			}
 		} else { //Se entrambi =NULL e quindi non ha effetti sprint di nessun tipo
@@ -130,9 +130,8 @@ public class Cavallo {
 	}
 	
 	public boolean oltreTraguardo(){
-		if (posizione>=13){
-			return true;
-		} else return false;
+		if (posizione>=13) return true;
+		else return false;
 	}
 	
 	public void resetPosizione(){
