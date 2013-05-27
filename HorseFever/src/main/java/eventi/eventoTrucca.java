@@ -4,17 +4,15 @@ public class eventoTrucca implements HorseFeverEvent{
 
 	private String nomeGiocatore;
 	private int corsia;
-	private String cartaAzione;
 	
-	public eventoTrucca(String nomeGiocatore, int corsia, String cartaAzione){
+	public eventoTrucca(String nomeGiocatore, int corsia){
 		this.nomeGiocatore=nomeGiocatore;
 		this.corsia=corsia;
-		this.cartaAzione=cartaAzione;
 	}
 	
 	@Override
 	public String rappresentazione() {
-		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" CartaAzione: "+cartaAzione;
+		return "Il Giocatore: "+nomeGiocatore+" ha truccato la Corsia: "+corsia;
 	}
 
 	public String getNomeGiocatore() {
@@ -31,16 +29,6 @@ public class eventoTrucca implements HorseFeverEvent{
 
 	public void setCorsia(int corsia) {
 		this.corsia = corsia;
-	}
-
-	public String getCartaAzione() {
-		return cartaAzione;
-	}
-
-	public void setCartaAzione(String cartaAzione) {
-		this.cartaAzione = cartaAzione;
-	}
-	
-	
+	}	
 
 }

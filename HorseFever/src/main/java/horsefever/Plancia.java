@@ -7,6 +7,7 @@ import eventi.HorseFeverEvent;
 import eventi.eventoCorsa;
 import eventi.eventoEffettoAvvenuto;
 import eventi.eventoQuotazioni;
+import eventi.eventoTrucca;
 
 public class Plancia {
 	
@@ -41,8 +42,9 @@ public class Plancia {
 	 * @param carta
 	 * @param numCorsia
 	 */
-	public void TruccaCorsia(Azione carta,int numCorsia){
+	public void TruccaCorsia(Azione carta,int numCorsia, String nomeGioc){
 		corsieTruccate[numCorsia-1].add(carta);
+		partita.notifyObserver(new eventoTrucca(nomeGioc,numCorsia));
 	}
 
 	/**
