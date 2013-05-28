@@ -26,11 +26,18 @@ public class Controller {
 	}
 	
 	public void start(){
+		int numturni=partita.getNumturni();
 		
-		this.FaseDistribuzioneCarte();
-		this.FaseScommesse();
-		this.FaseCorsa();
-		this.FaseFineTurno();
+		partita.preparazione();
+		
+		for (int i=0; i<numturni; i++){	
+			
+			this.FaseDistribuzioneCarte();
+			this.FaseScommesse();
+			this.FaseCorsa();
+			this.FaseFineTurno();
+		}
+		partita.FinePartita();
 		
 	}
 	
@@ -118,21 +125,14 @@ public class Controller {
 	}
 	
 	/**
-	 * I mazzi azione e movimento vengono resettati e mischiati
-	 * Il numero di turni della partita viene incrementato
-	 * Se il turno corrente era l'ultimo turno viene chiamata la fine della partita
+	 * Chiama il reset di Partita, che resetta i Mazzi e la plancia alla situazione iniziale
+	 * e cambia il primo giocatore. 
 	 */
 	public void FaseFineTurno(){
 		
-		int numeroturni=partita.getNumturni();
-		numeroturni++;
+		partita.reset();
 		
-		partita.setMazzoAzione(new Mazzo("MazzoAzione"));
-		partita.getMazzoAzione().mischia();
-		partita.setMazzoMovimento(new Mazzo("MazzoMovimento"));
-		partita.getMazzoMovimento().mischia();
-		
-		partita.setNumturni(numeroturni);
+
 	}
 	
 

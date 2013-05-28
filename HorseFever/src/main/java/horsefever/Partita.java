@@ -103,8 +103,27 @@ public class Partita {
 	}
 	
 	public void rimuoviGiocatore(Giocatore gioc){
-		
+		int j=0;
+		for (int i=0;i<giocatori.size();i++){
+			if (gioc.getNome().equals(giocatori.get(i).getNome())) j=i;
+		}
+		notifyObserver(new eventoGiocatore(giocatori.get(j),eventoGiocatore.PRIMO));
 		giocatori.remove(gioc);
+	}
+	/**
+	 * Resetta la plancia e i mazzi alla situazione iniziale. 
+	 * Cambia il primo giocatore. 
+	 * */
+	public void reset(){
+		plancia.reset();
+		mazzoAzione=new Mazzo("MazzoAzione");
+		mazzoAzione.mischia();
+		mazzoMovimento=new Mazzo("MazzoMovimento");
+		mazzoMovimento.mischia();
+		Giocatore g=giocatori.get(0);
+		giocatori.remove(0);
+		giocatori.add(g);
+		notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.PRIMO));
 	}
 	//Metodi Getter e Setter
 	

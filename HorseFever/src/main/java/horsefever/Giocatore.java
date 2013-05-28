@@ -22,6 +22,8 @@ public class Giocatore {
 		denari=cartaPersonaggio.getDenari();
 		this.scuderia=scuderia;
 		nomeGiocatore=cartaPersonaggio.getNome();
+		e=new eventoGiocatore(this, eventoGiocatore.NUOVO);
+        partita.notifyObserver(e);
 	}
 	
     //Metodi Setter e Getter
@@ -36,7 +38,7 @@ public class Giocatore {
 		PV = pV;
 		
 		//NOTIFICA EVENTO
-	     e=new eventoGiocatore(this);
+	     e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
 	     partita.notifyObserver(e);
 	}
 	public Carta getCartaPersonaggio() {
@@ -63,7 +65,7 @@ public class Giocatore {
 		this.carteAzione = carteAzione;
 		
 		//NOTIFICA EVENTO
-        e=new eventoGiocatore(this);
+        e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
         partita.notifyObserver(e);
 	}
 	public void setScudera(String scuderia){
@@ -74,6 +76,10 @@ public class Giocatore {
 	}
 	public void setDenari(long nuoviDenari) {
 		this.denari = nuoviDenari;
+		
+		//NOTIFICA EVENTO
+		e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
+        partita.notifyObserver(e);
 	}
 	
 	public String getScuderia() {
