@@ -21,9 +21,14 @@ public class GUIView implements View{
 
 	private Board board;
 	
-	public GUIView(){
+	public GUIView(String nomegiocatore, String scuderia,long denari){
 		
 		board=new Board();
+		board.setNomeGiocatore(nomegiocatore);
+		board.setNomeScuderia(scuderia);
+		board.setPV(0);
+		board.setDenari(denari);
+		
 	}
 	@Override
 	public String[] chiediScommessa() {

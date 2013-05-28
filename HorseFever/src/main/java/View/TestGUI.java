@@ -18,7 +18,6 @@ public class TestGUI {
 	public static void main(String[] args){
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd",'a');
 		Azione pluto = new Azione("eee","fff","ggg","hhh",'b');
-		GUIView view = new GUIView();
 		String[] trucco = new String[2];
 		String[] scommessa = new String[3];
 		ArrayList<Azione> carteAzione = new ArrayList<Azione>();
