@@ -87,4 +87,8 @@ public class Giocatore {
 		this.scuderia = scuderia;
 	}
 	
+	public void addCartaAzione(Azione a){
+		this.carteAzione.add(a);
+	}
+	
 }
