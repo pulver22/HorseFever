@@ -406,6 +406,32 @@ public class Plancia {
 	}
 	
 	/**
+	 * Resetta la Plancia alla situazione precedente la corsa.
+	 * Rimuove tutti gli elementi da fotofinish cavalliArrivati e corsieTruccate, e resetta i cavalli.
+	 * */
+	public void reset(){
+		for (int i=0; i<6;i++){
+			cavalli[i].reset();
+			if (corsieTruccate[i].size()!=0){
+				for (int j=0; j<corsieTruccate[i].size(); j++){
+					corsieTruccate[i].remove(0);
+				}
+			}
+		}
+		if (fotofinish.size()!=0){
+			for (int k=0; k<fotofinish.size();k++){
+				fotofinish.remove(0);
+			}
+		}
+		if (cavalliArrivati.size()!=0){
+			for (int l=0; l<cavalliArrivati.size();l++){
+				cavalliArrivati.remove(0);
+			}
+		}
+		partenza=true;
+	}
+	
+	/**
 	 * @author Niccolo
 	 * Metodo di supporto, ritorna i cavalli in prima posizione
 	 * @return un array di int con 1 se il cavallo corrispondente è primo (eventualmente parimerito con altri)

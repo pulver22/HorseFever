@@ -138,6 +138,23 @@ public class Cavallo {
 		posizione=0;
 	}
 	
+	/**
+	 * Resetta il cavallo alle condizioni precedenti la corsa. 
+	 * Mantiene sostanzialmente solo la quotazione del cavallo.
+	 * @author Niccolo
+	 * */
+	public void reset(){
+		posizione=0;
+		effettoPartenza=null;
+		effettoPartenza2=null;
+		effettoSprint=null;
+		effettoSprint2=null;
+		effettoUltimoPrimo=null;
+		effettoFotofinish=null;
+		effettoTraguardo=null;
+		effettoQuotazione=null;
+	}
+	
 	public int getPosizione() {
 		return posizione;
 	}
