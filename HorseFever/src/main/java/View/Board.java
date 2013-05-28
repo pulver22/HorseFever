@@ -226,8 +226,8 @@ public class Board extends JFrame {
     
 	}
 	
-	public Pedina[] getPedine() {
-		return pedine;
+	public Pedina getPedina(int i) {
+		return pedine[i];
 	}
 
 }
