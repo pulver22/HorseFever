@@ -215,7 +215,7 @@ public class Controller {
     				
     		}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
-			
+			giocatore.setDenari(denari-importo);
     		return scommessa;
       	
     	}
@@ -261,7 +261,7 @@ public class Controller {
     				
         	}
     		scommessa=new Scommessa(giocatore,numCorsia,importo,tipoScommessa);
-			
+    		giocatore.setDenari(denari-importo);
     		return scommessa;
     	}
     }
