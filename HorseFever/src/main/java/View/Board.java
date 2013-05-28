@@ -2,13 +2,7 @@ package View;
 
 import javax.swing.*;
 import javax.swing.border.*;
-
-import javax.swing.Timer;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 @SuppressWarnings("serial")
 public class Board extends JFrame {
@@ -20,31 +14,29 @@ public class Board extends JFrame {
 	
 	private JSplitPane pannelloDivisore;
     private JScrollPane scroll;
-    private JScrollPane immagineCartaMovimento;
 	private JScrollPane quotazioniScrollPane;
 	
     private Background background=new Background("sfondo.jpg");
 	private JPanel pannelloNotifica=new JPanel();
-	private JPanel pannelloPlancia=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
+	private JPanel pannelloSinistra=new JPanel();
 	
-	private JLabel cartaMovimento;
 	private JLabel labelPV=new JLabel("PV:");
 	private JLabel labelDenari=new JLabel("Denari:");
 	private JLabel labelNomeGiocatore=new JLabel("Giocatore:");
 	private JLabel labelScuderia=new JLabel("Scuderia:");
 	
-	private JTextField PV=new JTextField("            ");
-	private JTextField nomeGiocatore=new JTextField("Mario Rossi    ");
-	private JTextField denari=new JTextField("            ");
-	private JTextField scuderia=new JTextField(" BiancoNero      ");
+	private JTextField PV=new JTextField("                 ");
+	private JTextField nomeGiocatore=new JTextField("                 ");
+	private JTextField denari=new JTextField("                 ");
+	private JTextField scuderia=new JTextField("                 ");
 	
 	private Image plancia;
+	private Image cartaMov;
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 	
-	private Timer timer;
 	
 	JMenuBar menubar=new JMenuBar();
 	JMenu menu=new JMenu("Opzioni");
@@ -87,9 +79,6 @@ public class Board extends JFrame {
     	pannelloNotifica.setBackground(Color.decode("#d6a45f"));
     	
     	//Plancia
-    	pannelloPlancia.setBounds(450,200,650,300);
-        pannelloPlancia.setVisible(true);
-        pannelloPlancia.setBackground(Color.white);
        
         ImageIcon ii=new ImageIcon(this.getClass().getResource("plancia.jpg"));
 		plancia=ii.getImage();	
@@ -122,15 +111,13 @@ public class Board extends JFrame {
 		pannelloLavagna.setBackground(Color.decode("#d6a45f"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
-
-		ImageIcon imgMov=new ImageIcon(getClass().getResource("horseFever-85.png"));
-		cartaMovimento=new JLabel(imgMov);
+		
 		quotazioni.append("Quotazioni:\n");
 		quotazioni.setFont(fontPersonale);
-		immagineCartaMovimento = new JScrollPane(cartaMovimento);
 		quotazioniScrollPane=new JScrollPane(quotazioni);
 		
-		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,immagineCartaMovimento,quotazioniScrollPane);
+		pannelloSinistra.setBackground(Color.gray);
+		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pannelloSinistra,quotazioniScrollPane);
 	    pannelloDivisore.setDividerLocation(175); 
 	    pannelloDivisore.setEnabled(false);
 	    
@@ -138,7 +125,6 @@ public class Board extends JFrame {
 	    
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
-    	//this.add(pannelloPlancia);
     	this.add(pannelloGiocatore);
     	this.add(background);
     
@@ -157,22 +143,55 @@ public class Board extends JFrame {
 		prova.settaAreaNotifica("prova prova \n");
 		prova.settaAreaNotifica("prova prova ");
 		prova.settaAreaQuotazioni("    \n");
-		prova.settaAreaQuotazioni("    1:2\n");
-		prova.settaAreaQuotazioni("    1:3\n");
-		prova.settaAreaQuotazioni("    1:4\n");
-		prova.settaAreaQuotazioni("    1:5\n");
-		prova.settaAreaQuotazioni("    1:6\n");
-		prova.settaAreaQuotazioni("    1:7 \n");
+		prova.settaAreaQuotazioni("Nero:   1:2\n");
+		prova.settaAreaQuotazioni("Blu:    1:3\n");
+		prova.settaAreaQuotazioni("Verde:  1:4\n");
+		prova.settaAreaQuotazioni("Rosso:  1:5\n");
+		prova.settaAreaQuotazioni("Giallo: 1:6\n");
+		prova.settaAreaQuotazioni("Bianco: 1:7 \n");
 		prova.setPV(100);
 		prova.setDenari(40000);
-		for(int i=0;i<6;i++){
+		prova.setNomeGiocatore("Giocatore di Prova");
+		prova.setNomeScuderia("Bianco");
+		
+		prova.setImmagineMovimento("horseFever-85.png");
+		
 			
-			prova.getPedina(i).muovi(5);
-		}
+		prova.getPedina(0).muovi(5);
+		prova.getPedina(1).muovi(6);
+		prova.getPedina(2).muovi(2);
+		prova.getPedina(3).muovi(8);
+		prova.getPedina(4).muovi(10);
+		prova.getPedina(5).muovi(9);
+		
 		
 	
 	}
 	
+	
+	public void paint(Graphics g) {
+        super.paint(g);
+        
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(plancia, 450,80, null);
+        g2d.drawImage(cartaMov, 60,420,null);
+        
+        g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
+        g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
+        g2d.drawImage(pedine[2].getImmagine(),pedine[2].getX(),pedine[2].getY(),this);
+        g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
+        g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
+        g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
+        
+    
+	}
+	
+	//Getter e Setter
+
+	public void setNomeScuderia(String scuderia) {
+		this.scuderia.setText(scuderia);
+	}
+
 	/**
 	 * Scrive sulla JTextArea delle quotazioni
 	 * @param messaggio
@@ -217,25 +236,12 @@ public class Board extends JFrame {
 		areaNotifica.append(messaggio);
 	}
 	
-	public void setImmagineMovimento(ImageIcon immagine){
+	public void setImmagineMovimento(String cartaMovimento){
 		
+		ImageIcon imgMov=new ImageIcon(getClass().getResource(cartaMovimento));
+		cartaMov=imgMov.getImage();
+		repaint();
 		
-		
-	}
-	public void paint(Graphics g) {
-        super.paint(g);
-        
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(plancia, 450,80, null);
-        
-        g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
-        g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
-        g2d.drawImage(pedine[2].getImmagine(),pedine[2].getX(),pedine[2].getY(),this);
-        g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
-        g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
-        g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
-        
-    
 	}
 	
 	public Pedina getPedina(int i) {
