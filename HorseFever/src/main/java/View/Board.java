@@ -34,14 +34,10 @@ public class Board extends JFrame {
 	
 	private Image plancia;
 	private Image cartaMov;
+	private Image titolo;
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
-	
-	
-	JMenuBar menubar=new JMenuBar();
-	JMenu menu=new JMenu("Opzioni");
-	JMenuItem prova1=new JMenuItem("Prova1");
-	JMenuItem prova2=new JMenuItem("Prova2");
+
 	
     public Board(){
     	
@@ -53,14 +49,6 @@ public class Board extends JFrame {
     	pedine[3]=new Pedina(455,245,"rosso.png",this);
     	pedine[4]=new Pedina(455,295,"giallo.png",this);
     	pedine[5]=new Pedina(455,345,"bianco.png",this);
-    	
-    	
-    	
-    	//Menu
-    	menu.add(prova1);
-		menu.add(prova2);
-		menubar.add(menu);
-		setJMenuBar(menubar);
 		
     	//Area Notifica
     	
@@ -71,7 +59,7 @@ public class Board extends JFrame {
     	scroll=new JScrollPane(areaNotifica);
     	scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
     
-    	pannelloNotifica.setBounds(50,50,350,250);
+    	pannelloNotifica.setBounds(50,120,350,250);
     	pannelloNotifica.setLayout(new BorderLayout());
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
@@ -87,7 +75,7 @@ public class Board extends JFrame {
 		
 		//Giocatore
 		
-		pannelloGiocatore.setBounds(450,380,650,270);
+		pannelloGiocatore.setBounds(450,380,650,280);
 		pannelloGiocatore.setBackground(Color.decode("#d6a45f"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
 		
@@ -95,7 +83,7 @@ public class Board extends JFrame {
 		denari.setEditable(false);
 		nomeGiocatore.setEditable(false);
 		scuderia.setEditable(false);
-		pannelloGiocatore.setLayout(new GridLayout(5,2));
+		pannelloGiocatore.setLayout(new GridLayout(4,2));
 		pannelloGiocatore.add(labelNomeGiocatore);
 		pannelloGiocatore.add(nomeGiocatore);
 		pannelloGiocatore.add(labelScuderia);
@@ -107,7 +95,7 @@ public class Board extends JFrame {
 		pannelloGiocatore.setVisible(true);
 		
 		//Lavagna
-		pannelloLavagna.setBounds(50,350,350,300);
+		pannelloLavagna.setBounds(50,370,350,300);
 		pannelloLavagna.setBackground(Color.decode("#d6a45f"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
@@ -123,6 +111,11 @@ public class Board extends JFrame {
 	    
 	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
 	    
+	    //titolo
+	    ii=new ImageIcon(this.getClass().getResource("titolo_horse.png"));
+		titolo=ii.getImage();	
+		
+		
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
     	this.add(pannelloGiocatore);
@@ -175,6 +168,7 @@ public class Board extends JFrame {
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(plancia, 450,80, null);
         g2d.drawImage(cartaMov, 60,420,null);
+        g2d.drawImage(titolo, 170,8,null);
         
         g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
         g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
