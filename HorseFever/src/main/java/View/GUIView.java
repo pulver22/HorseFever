@@ -224,6 +224,14 @@ public class GUIView implements View{
 		
 	}
 
+	public void aggiornaPosizioni(int[] posizioni){
+		for(int i=0; i<6; i++){
+			board.getPedina(i).muovi(posizioni[i]);
+		}
+	}
+	
+	
+	
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
