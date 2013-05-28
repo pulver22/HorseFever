@@ -1,39 +1,52 @@
 package View;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 
-public class Pedina {
+public class Pedina implements ActionListener {
 
 	private int x;
 	private int y;
 	private final int dx=37;
 	private Image immagine;
-	
-	private final int DIM_PEDINA=20;
+	private Timer timer;
+	private Board board;
+	private int posizioni;
 	
 
-	public Pedina(int x, int y, String nomeImmagine){
+	public Pedina(int x, int y, String nomeImmagine,Board board){
 		
 		this.x=x;
 		this.y=y;
+		this.board=board;
 		
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(nomeImmagine));
         immagine = ii.getImage();
-        immagine.getScaledInstance(20, 20, Image.SCALE_DEFAULT);
+        
 		
 	}
 
 	public void muovi(int numPos){
 		
-		if(x+(numPos*dx)>=(936)){
+	   this.posizioni=numPos;
+	   
+       if(x+(numPos*dx)>=(936)){
 			
 			x=950;
 			return;
-		}
+       }
+       
+			
+	   timer=new Timer(350,this);
+	    
+	   timer.start();
+		  
 		
-		x+=(numPos*dx);
+		
 	}
 	
 	//getter e setter
@@ -59,5 +72,19 @@ public class Pedina {
 
 	public void setImmagine(Image immagine) {
 		this.immagine = immagine;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(posizioni>0){
+		
+			posizioni--;
+			x+=dx;
+			board.repaint();
+		}
+		else{
+			timer.stop();
+		}
 	}
 }

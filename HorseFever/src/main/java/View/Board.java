@@ -2,7 +2,12 @@ package View;
 
 import javax.swing.*;
 import javax.swing.border.*;
+
+import javax.swing.Timer;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 @SuppressWarnings("serial")
@@ -39,6 +44,7 @@ public class Board extends JFrame {
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 	
+	private Timer timer;
 	
 	JMenuBar menubar=new JMenuBar();
 	JMenu menu=new JMenu("Opzioni");
@@ -49,12 +55,14 @@ public class Board extends JFrame {
     	
     	
     	//inizializzazione Pedine
-    	pedine[0]=new Pedina(455,90,"nero.png");
-    	pedine[1]=new Pedina(455,140,"blu.png");
-    	pedine[2]=new Pedina(455,195,"verde.png");
-    	pedine[3]=new Pedina(455,245,"rosso.png");
-    	pedine[4]=new Pedina(455,295,"giallo.png");
-    	pedine[5]=new Pedina(455,345,"bianco.png");
+    	pedine[0]=new Pedina(455,90,"nero.png",this);
+    	pedine[1]=new Pedina(455,140,"blu.png",this);
+    	pedine[2]=new Pedina(455,195,"verde.png",this);
+    	pedine[3]=new Pedina(455,245,"rosso.png",this);
+    	pedine[4]=new Pedina(455,295,"giallo.png",this);
+    	pedine[5]=new Pedina(455,345,"bianco.png",this);
+    	
+    	
     	
     	//Menu
     	menu.add(prova1);
@@ -135,6 +143,7 @@ public class Board extends JFrame {
     	this.add(background);
     
     	
+        
     	this.setResizable(false);
     	this.setTitle("Horse Fever");
     	this.setSize(1200,700);
@@ -158,7 +167,7 @@ public class Board extends JFrame {
 		prova.setDenari(40000);
 		for(int i=0;i<6;i++){
 			
-			prova.getPedina(i).muovi(13);
+			prova.getPedina(i).muovi(5);
 		}
 		
 	
@@ -218,7 +227,6 @@ public class Board extends JFrame {
         
         Graphics2D g2d = (Graphics2D) g;
         g2d.drawImage(plancia, 450,80, null);
-        //g2d.drawImage(movimento, 100,450,null);
         
         g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
         g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
