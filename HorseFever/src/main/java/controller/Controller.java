@@ -46,9 +46,8 @@ public class Controller {
 	 * e le assegna alle carte azione a disposizione del giocatore
 	 */
 	public void FaseDistribuzioneCarte(){
-		
 		for(int i=0; i<partita.getGiocatori().size();i++){
-			
+			carteDaAssegnare=new ArrayList<Azione>();
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
 			partita.getGiocatori(i).setCarteAzione(carteDaAssegnare);
@@ -76,7 +75,7 @@ public class Controller {
 			giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,1,numSegnalini,i);
 			numcorsia=scom.getCorsia();
-			numSegnalini[numcorsia]--;
+			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
 		numSegnalini=partita.getNumSegnalini();
@@ -86,7 +85,7 @@ public class Controller {
         	giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,2,numSegnalini,i);
         	numcorsia=scom.getCorsia();
-			numSegnalini[numcorsia]--;
+			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
         

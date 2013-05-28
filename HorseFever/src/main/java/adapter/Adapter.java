@@ -33,7 +33,7 @@ public class Adapter {
 		
 		String[] scelta = new String[2];
 		
-		scelta=viewRegistrate.get(indice).chiediTrucca(carteAzione);
+		scelta=viewRegistrate.get(0).chiediTrucca(carteAzione);
 		
 		return scelta;
 	}

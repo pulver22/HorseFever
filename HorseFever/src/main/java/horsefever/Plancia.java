@@ -43,7 +43,7 @@ public class Plancia {
 	 * @param numCorsia
 	 */
 	public void TruccaCorsia(Azione carta,int numCorsia, String nomeGioc){
-		corsieTruccate[numCorsia-1].add(carta);
+		corsieTruccate[numCorsia].add(carta);
 		partita.notifyObserver(new eventoTrucca(nomeGioc,numCorsia));
 	}
 
@@ -525,7 +525,6 @@ public class Plancia {
 		}
 		return colori;
 	}
-	
 	
 	/**
 	 * @author Niccolo

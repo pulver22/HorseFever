@@ -114,8 +114,8 @@ public class TextView implements View{
     		}
     		
     		}
-		if (risposta =="S") scommessa = chiediScommessa();
-		if (risposta == "N") scommessa[2] = "N";
+		if (risposta.equals("S")) scommessa = chiediScommessa();
+		if (risposta.equals("N")) scommessa[2] = "N";
 		return scommessa;
 	}
 
@@ -148,7 +148,7 @@ public class TextView implements View{
         		buonfine=false;
         	}
     	}
-      	
+      	buonfine=false;
     	while(buonfine==false){	
     	
     		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi giocare la carta: ");

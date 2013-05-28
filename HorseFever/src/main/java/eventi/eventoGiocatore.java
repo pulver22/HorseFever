@@ -29,7 +29,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 		if (g.getCarteAzione().size()!=0){
 			String[] azioni=g.getStringheAzioni();
 			for (int i=0; i<azioni.length; i++){
-				this.carteAzione[i]=new String(azioni[i]);
+				if (azioni[i]!=null) this.carteAzione[i]=new String(azioni[i]);
 			}
 		}
 	}

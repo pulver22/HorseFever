@@ -6,8 +6,8 @@ public class eventoTrucca implements HorseFeverEvent{
 	private int corsia;
 	
 	public eventoTrucca(String nomeGiocatore, int corsia){
-		this.nomeGiocatore=nomeGiocatore;
-		this.corsia=corsia;
+		this.nomeGiocatore=new String(nomeGiocatore);
+		this.corsia=new Integer(corsia)+1;
 	}
 	
 	@Override
