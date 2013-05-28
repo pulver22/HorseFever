@@ -104,7 +104,7 @@ public class Board extends JFrame {
 		quotazioni.setFont(fontPersonale);
 		quotazioniScrollPane=new JScrollPane(quotazioni);
 		
-		pannelloSinistra.setBackground(Color.gray);
+		pannelloSinistra.setBackground(Color.white);
 		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pannelloSinistra,quotazioniScrollPane);
 	    pannelloDivisore.setDividerLocation(175); 
 	    pannelloDivisore.setEnabled(false);
