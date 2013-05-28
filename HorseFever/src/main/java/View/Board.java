@@ -64,7 +64,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#6666FF"));
+    	pannelloNotifica.setBackground(Color.decode("#d6a45f"));
     	
     	//Plancia
     	pannelloPlancia.setBounds(450,50,650,300);
@@ -79,7 +79,7 @@ public class Board extends JFrame {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,270);
-		pannelloGiocatore.setBackground(Color.decode("#6666FF"));
+		pannelloGiocatore.setBackground(Color.decode("#d6a45f"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
 		
 		PV.setEditable(false);
@@ -99,7 +99,7 @@ public class Board extends JFrame {
 		
 		//Lavagna
 		pannelloLavagna.setBounds(50,350,350,300);
-		pannelloLavagna.setBackground(Color.decode("#6666FF"));
+		pannelloLavagna.setBackground(Color.decode("#d6a45f"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
 
