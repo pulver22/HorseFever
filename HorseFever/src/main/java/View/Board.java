@@ -4,9 +4,12 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
+
 @SuppressWarnings("serial")
 public class Board extends JFrame {
 
+	private Pedina[] pedine=new Pedina[6];
+	
 	private JTextArea areaNotifica;
 	private JTextArea quotazioni;
 	
@@ -44,6 +47,15 @@ public class Board extends JFrame {
 	
     public Board(){
     	
+    	
+    	//inizializzazione Pedine
+    	pedine[0]=new Pedina(455,90,"nero.png");
+    	pedine[1]=new Pedina(455,140,"blu.png");
+    	pedine[2]=new Pedina(455,195,"verde.png");
+    	pedine[3]=new Pedina(455,245,"rosso.png");
+    	pedine[4]=new Pedina(455,295,"giallo.png");
+    	pedine[5]=new Pedina(455,345,"bianco.png");
+    	
     	//Menu
     	menu.add(prova1);
 		menu.add(prova2);
@@ -67,7 +79,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBackground(Color.decode("#d6a45f"));
     	
     	//Plancia
-    	pannelloPlancia.setBounds(450,50,650,300);
+    	pannelloPlancia.setBounds(450,200,650,300);
         pannelloPlancia.setVisible(true);
         pannelloPlancia.setBackground(Color.white);
        
@@ -111,8 +123,8 @@ public class Board extends JFrame {
 		quotazioniScrollPane=new JScrollPane(quotazioni);
 		
 		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,immagineCartaMovimento,quotazioniScrollPane);
-	    pannelloDivisore.setDividerLocation(190); 
-	
+	    pannelloDivisore.setDividerLocation(175); 
+	    pannelloDivisore.setEnabled(false);
 	    
 	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
 	    
@@ -129,7 +141,6 @@ public class Board extends JFrame {
     	this.setVisible(true);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-	
 	
 	public static void main(String[] args) {
 		
@@ -202,12 +213,21 @@ public class Board extends JFrame {
         super.paint(g);
         
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(plancia, 450,50, null);
+        g2d.drawImage(plancia, 450,80, null);
         //g2d.drawImage(movimento, 100,450,null);
         
+        g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
+        g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
+        g2d.drawImage(pedine[2].getImmagine(),pedine[2].getX(),pedine[2].getY(),this);
+        g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
+        g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
+        g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
         
     
 	}
 	
+	public Pedina[] getPedine() {
+		return pedine;
+	}
 
 }
