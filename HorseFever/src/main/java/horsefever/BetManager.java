@@ -37,17 +37,18 @@ public class BetManager {
 	 */
 	public void Pagamenti(String[] ordineArrivoColori,String[][] quotazioni,ArrayList<Giocatore> giocatori){
 	for (int i=0;i<bManager.size();i++){
-		if( (bManager.get(i)).getTipoScomessa() == 'V' & bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivoColori[0])){
+		int corsiaInt = bManager.get(i).getCorsia();
+		String corsiaString = convertiOrdineArrivo(corsiaInt);
 		
-			int corsia = bManager.get(i).getCorsia();
+		if( (bManager.get(i)).getTipoScomessa() == 'V' & corsiaString.equals(ordineArrivoColori[0])){
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
-			nuoviDenari = nuoviDenari + (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[corsia][1]));
+			nuoviDenari = nuoviDenari + (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[corsiaInt][1]));
 			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +3 ;
 			bManager.get(i).getScommettitore().setPV(nuoviPV);
 		}
-		else if( (bManager.get(i)).getTipoScomessa() == 'P' & (bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivoColori[0])
-				|| bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivoColori[2]) || bManager.get(i).getCorsia() == Integer.valueOf(ordineArrivoColori[1]))){
+		else if( (bManager.get(i)).getTipoScomessa() == 'P' & (corsiaString.equals(ordineArrivoColori[0])
+				|| corsiaString.equals(ordineArrivoColori[2]) || corsiaString.equals(ordineArrivoColori[1]))){
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari+(long) (bManager.get(i).getImporto() * 2);
 			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
@@ -68,19 +69,19 @@ public class BetManager {
 	}
 	
 	
-	public void convertiOrdineArrivo(String[] ordineArrivo){
+	public String convertiOrdineArrivo(int ordineArrivo){
 		
 		int i;
+		String ordine = new String();
 		
-		for(i=0;i<ordineArrivo.length;i++){
+			if(ordineArrivo==0) ordine ="Nero";
+			if(ordineArrivo==1) ordine ="Blu";
+			if(ordineArrivo==2) ordine ="Verde";
+			if(ordineArrivo==3) ordine ="Rosso";
+			if(ordineArrivo==4) ordine ="Giallo";
+			if(ordineArrivo==5) ordine ="Bianco";
 			
-			if(ordineArrivo[i]=="0") ordineArrivo[i]="Nero";
-			if(ordineArrivo[i]=="1") ordineArrivo[i]="Blu";
-			if(ordineArrivo[i]=="2") ordineArrivo[i]="Verde";
-			if(ordineArrivo[i]=="3") ordineArrivo[i]="Rosso";
-			if(ordineArrivo[i]=="4") ordineArrivo[i]="Giallo";
-			if(ordineArrivo[i]=="5") ordineArrivo[i]="Bianco";
-			
+			return ordine;
 		}
 		
 	}
