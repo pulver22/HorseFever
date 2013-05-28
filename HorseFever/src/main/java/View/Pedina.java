@@ -8,7 +8,7 @@ public class Pedina {
 
 	private int x;
 	private int y;
-	private final int dx=10;
+	private final int dx=37;
 	private Image immagine;
 	
 	private final int DIM_PEDINA=20;
@@ -27,8 +27,13 @@ public class Pedina {
 
 	public void muovi(int numPos){
 		
-		x+=(numPos*dx);
+		if(x+(numPos*dx)>=(936)){
+			
+			x=950;
+			return;
+		}
 		
+		x+=(numPos*dx);
 	}
 	
 	//getter e setter

@@ -156,6 +156,10 @@ public class Board extends JFrame {
 		prova.settaAreaQuotazioni("    1:7 \n");
 		prova.setPV(100);
 		prova.setDenari(40000);
+		for(int i=0;i<6;i++){
+			
+			prova.getPedina(i).muovi(13);
+		}
 		
 	
 	}
