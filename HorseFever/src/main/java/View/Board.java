@@ -230,6 +230,10 @@ public class Board extends JFrame {
 		areaNotifica.append(messaggio);
 	}
 	
+	/**
+	 * viene passata la stringa con il nome dell'immagine movimento che viene stampata sulla lavagna
+	 * @param cartaMovimento
+	 */
 	public void setImmagineMovimento(String cartaMovimento){
 		
 		ImageIcon imgMov=new ImageIcon(getClass().getResource(cartaMovimento));
