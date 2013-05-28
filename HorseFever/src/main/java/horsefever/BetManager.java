@@ -84,7 +84,7 @@ public class BetManager {
 			return ordine;
 		}
 		
-	}
+	
 	//metodi getter e setter
 	public ArrayList<Scommessa> getbManager() {
 		return bManager;
