@@ -19,7 +19,7 @@ public class Giocatore {
 	public Giocatore(Personaggio cartaPersonaggio, String scuderia, Partita p){
 		this.partita=p;
 		this.cartaPersonaggio=cartaPersonaggio;
-		denari=cartaPersonaggio.getDenari();
+		this.denari=cartaPersonaggio.getDenari();
 		this.scuderia=scuderia;
 		nomeGiocatore=cartaPersonaggio.getNome();
 	}
@@ -66,9 +66,7 @@ public class Giocatore {
 
         partita.notifyObserver(new eventoGiocatore(this, eventoGiocatore.MODIFICA));
 	}
-	public void setScudera(String scuderia){
-		this.scuderia=scuderia;
-	}
+	
 	public long getDenari() {
 		return denari;
 	}

@@ -59,7 +59,6 @@ public class BetManager {
 	//Pagamenti ai proprietari di scuderia
 	for(int i=0;i< giocatori.size();i++){
 		long denari = giocatori.get(i).getDenari();
-		//convertiOrdineArrivo(ordineArrivo);
 		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]) giocatori.get(i).setDenari(denari + 600);
 		if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]) giocatori.get(i).setDenari(denari + 400);
 		if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]) giocatori.get(i).setDenari(denari + 200);
@@ -71,7 +70,6 @@ public class BetManager {
 	
 	public String convertiOrdineArrivo(int ordineArrivo){
 		
-		int i;
 		String ordine = new String();
 		
 			if(ordineArrivo==0) ordine ="Nero";
