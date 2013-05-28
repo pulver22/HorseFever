@@ -19,6 +19,7 @@ public class TextView implements View{
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
+		boolean buonfine2=false;
 		String[] scommessa = new String[3];
 		
 		
@@ -42,7 +43,7 @@ public class TextView implements View{
     		    buonfine=false;
     	    }
     	}
-	
+		buonfine=false;
 		while(buonfine==false){	
 	    	
     		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi scommettere: ");
@@ -65,7 +66,7 @@ public class TextView implements View{
     		}
     	
     	}
-		
+		buonfine=false;
 		while(buonfine==false){
 
     		System.out.println("Vuoi scommettere piazzato (P) o vincente (V)?");
@@ -74,7 +75,7 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[2]=myInput.readLine();
-    			if(scommessa[2]!="V" && scommessa[2]!="P"){
+    			if(!scommessa[2].equals("V") && !scommessa[2].equals("P")){
     	    	
     				System.out.println("Errore, scegli P o V ");
     				buonfine=false;

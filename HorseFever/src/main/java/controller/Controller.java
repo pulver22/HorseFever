@@ -10,7 +10,7 @@ import View.*;
 
 public class Controller {
 	private Partita partita;
-	private ArrayList<Azione> carteDaAssegnare;
+	private ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 	private Adapter adapter;
 	private HorseFeverEvent e;
 	
@@ -47,7 +47,7 @@ public class Controller {
 	 */
 	public void FaseDistribuzioneCarte(){
 		
-		for(int i=0; i<partita.getNumgiocatori();i++){
+		for(int i=0; i<partita.getGiocatori().size();i++){
 			
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
@@ -303,6 +303,10 @@ public class Controller {
         giocatore.setCarteAzione(carteAzione);	
         
         
+    }
+    
+    public void setAdapter(Adapter a){
+    	this.adapter=a;
     }
     
     

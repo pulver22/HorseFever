@@ -7,7 +7,7 @@ import adapter.*;
 
 public class Giocatore {
 
-	private int PV=0;
+	private int PV=1;
 	private long denari;
 	private Carta cartaPersonaggio;
 	private String scuderia;
@@ -22,8 +22,6 @@ public class Giocatore {
 		denari=cartaPersonaggio.getDenari();
 		this.scuderia=scuderia;
 		nomeGiocatore=cartaPersonaggio.getNome();
-		e=new eventoGiocatore(this, eventoGiocatore.NUOVO);
-        partita.notifyObserver(e);
 	}
 	
     //Metodi Setter e Getter
@@ -52,8 +50,8 @@ public class Giocatore {
 	}
 	public String[] getStringheAzioni(){
 		String[] azioni=new String[2];
-		for (int i=0; i<carteAzione.size(); i++){
-			azioni[i]=carteAzione.get(i).toString();
+		for (int i=0; i<2; i++){
+			if (i<carteAzione.size())azioni[i]=carteAzione.get(i).toString();
 		}
 		return azioni;
 	}
@@ -65,8 +63,8 @@ public class Giocatore {
 		this.carteAzione = carteAzione;
 		
 		//NOTIFICA EVENTO
-        e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
-        partita.notifyObserver(e);
+
+        partita.notifyObserver(new eventoGiocatore(this, eventoGiocatore.MODIFICA));
 	}
 	public void setScudera(String scuderia){
 		this.scuderia=scuderia;

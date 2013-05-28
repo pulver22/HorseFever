@@ -14,7 +14,7 @@ public class Adapter {
 		
 		String[] valori=new String[3];
 		
-		valori=viewRegistrate.get(indice).chiediScommessa();
+		valori=viewRegistrate.get(0).chiediScommessa();
 		
 		
 		return valori;
@@ -24,7 +24,7 @@ public class Adapter {
 		
         String[] valori=new String[3];
         
-        valori=viewRegistrate.get(indice).chiediSecondaScommessa();
+        valori=viewRegistrate.get(0).chiediSecondaScommessa();
 		
 		return valori;
 	}

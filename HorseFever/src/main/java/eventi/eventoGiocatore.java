@@ -17,7 +17,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 	private String scuderia;
 	private long denari;
 	private int pv;
-	private String[] carteAzione;
+	private String[] carteAzione=new String[2];
 	private int tipo;
 	
 	public eventoGiocatore(Giocatore g, int tipo){
@@ -26,9 +26,11 @@ public class eventoGiocatore implements HorseFeverEvent{
 		this.scuderia=new String(g.getScuderia());
 		this.denari=new Long(g.getDenari());
 		this.pv=new Integer(g.getPV());
-		String[] azioni=g.getStringheAzioni();
-		for (int i=0; i<azioni.length; i++){
-			this.carteAzione[i]=new String(azioni[i]);
+		if (g.getCarteAzione().size()!=0){
+			String[] azioni=g.getStringheAzioni();
+			for (int i=0; i<azioni.length; i++){
+				this.carteAzione[i]=new String(azioni[i]);
+			}
 		}
 	}
 	
