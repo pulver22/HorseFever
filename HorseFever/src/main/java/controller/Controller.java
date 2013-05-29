@@ -172,7 +172,7 @@ public class Controller {
     	if(numScommessa==2){
     		
     		while(buonfine==false){
-    			
+    			adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
     			parametriScommessa=adapter.chiediSecondaScommessa(indice);
     			buonfine=true;
     			
@@ -244,7 +244,7 @@ public class Controller {
     	else{
     		
     		while(buonfine==false){
-    			
+    			adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
     			parametriScommessa=adapter.chiediScommessa(indice);
     			buonfine=true;
     			
@@ -281,7 +281,7 @@ public class Controller {
     	int numCartaAzione=0,numCorsia=0;
     	
     	while(buonfine==false){
-			
+    		adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
 			scelta=adapter.chiediTrucca(carteAzione,indice);
 			buonfine=true;
 			

@@ -40,7 +40,7 @@ public class Adapter {
 	
 	public void stampaMessaggio(String messaggio,int indice){
 		
-		viewRegistrate.get(indice).stampaMessaggio(messaggio);
+		viewRegistrate.get(0).stampaMessaggio(messaggio);
 	}
 
 	public void notify(HorseFeverEvent e){
