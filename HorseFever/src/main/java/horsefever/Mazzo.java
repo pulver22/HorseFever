@@ -19,7 +19,12 @@ public class Mazzo {
 			Mazzo.set(i,test);
 		}
 	}
-	
+	/**
+	 * Pesca una carta precisa
+	 */
+	public Carta pescaCertezza(int i){
+		return Mazzo.get(i);
+	}
 	
 /**
  	* Pesca una carta a caso dal mazzo,la restituisce e la rimuove dal mazzo
