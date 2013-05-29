@@ -55,12 +55,12 @@ public class BetManagerTest {
 		Personaggio p4 = new Personaggio("Stefano",200,"5");
 		Personaggio p5 = new Personaggio("Aldo",200,"3");
 		Personaggio p6 = new Personaggio("Enrico",200,"5");
-		Giocatore g1 = new Giocatore(p1,p1.getQuotScuderia(),p);
-		Giocatore g2 = new Giocatore(p2,p2.getQuotScuderia(),p);
-		Giocatore g3 = new Giocatore(p3,p3.getQuotScuderia(),p);
-		Giocatore g4 = new Giocatore(p4,p4.getQuotScuderia(),p);
-		Giocatore g5 = new Giocatore(p5,p5.getQuotScuderia(),p);
-		Giocatore g6 = new Giocatore(p6,p6.getQuotScuderia(),p);
+		Giocatore g1 = new Giocatore(p1,"Bianco",p);
+		Giocatore g2 = new Giocatore(p2,"Nero",p);
+		Giocatore g3 = new Giocatore(p3,"Bianco",p);
+		Giocatore g4 = new Giocatore(p4,"Nero",p);
+		Giocatore g5 = new Giocatore(p5,"Bianco",p);
+		Giocatore g6 = new Giocatore(p6,"Nero",p);
 		
 		g1.setPV(5);
 		g2.setPV(5);
@@ -109,15 +109,15 @@ public class BetManagerTest {
 		
 		assertEquals(aspettativaDenari1,bM.getbManager().get(0).getScommettitore().getDenari());
 		assertEquals(aspettativaPV1,bM.getbManager().get(0).getScommettitore().getPV());
-		//assertEquals(aspettativaDenari2,bM.getbManager().get(1).getScommettitore().getDenari());
+		assertEquals(aspettativaDenari2,bM.getbManager().get(1).getScommettitore().getDenari());
 		assertEquals(aspettativaPV2,bM.getbManager().get(1).getScommettitore().getPV());
 		assertEquals(aspettativaDenari3,bM.getbManager().get(2).getScommettitore().getDenari());
 		assertEquals(aspettativaPV3,bM.getbManager().get(2).getScommettitore().getPV());
-		//assertEquals(aspettativaDenari4,bM.getbManager().get(3).getScommettitore().getDenari());
+		assertEquals(aspettativaDenari4,bM.getbManager().get(3).getScommettitore().getDenari());
 		assertEquals(aspettativaPV4,bM.getbManager().get(3).getScommettitore().getPV());
 		assertEquals(aspettativaDenari5,bM.getbManager().get(4).getScommettitore().getDenari());
 		assertEquals(aspettativaPV5,bM.getbManager().get(4).getScommettitore().getPV());
-		//assertEquals(aspettativaDenari6,bM.getbManager().get(5).getScommettitore().getDenari());
+		assertEquals(aspettativaDenari6,bM.getbManager().get(5).getScommettitore().getDenari());
 		assertEquals(aspettativaPV6,bM.getbManager().get(5).getScommettitore().getPV());
 	}
 	
