@@ -47,8 +47,10 @@ public class BetManagerTest {
 		
 	}*/
 
-	@Test
-	public void paga(){
+	/*@Test
+	
+		public void paga(){
+	 
 		Personaggio p1 = new Personaggio("Paolo",200,"3");
 		Personaggio p2 = new Personaggio("Luca",200,"5");
 		Personaggio p3 = new Personaggio("Giovanni",200,"3");
@@ -119,7 +121,22 @@ public class BetManagerTest {
 		assertEquals(aspettativaPV5,bM.getbManager().get(4).getScommettitore().getPV());
 		assertEquals(aspettativaDenari6,bM.getbManager().get(5).getScommettitore().getDenari());
 		assertEquals(aspettativaPV6,bM.getbManager().get(5).getScommettitore().getPV());
+	}*/
+	
+	@Test
+	public void ordineTest(){
+		BetManager bM = new BetManager(p);
+		int[] ordineInt = {5,4,3,2,1,0};
+		
+		String[] ordineString = {"Bianco","Giallo","Rosso","Verde","Blu","Nero" };
+		
+		assertEquals(ordineString[0],bM.convertiOrdineArrivo(ordineInt[0]));
+		assertEquals(ordineString[1],bM.convertiOrdineArrivo(ordineInt[1]));
+		assertEquals(ordineString[2],bM.convertiOrdineArrivo(ordineInt[2]));
+		assertEquals(ordineString[3],bM.convertiOrdineArrivo(ordineInt[3]));
+		assertEquals(ordineString[4],bM.convertiOrdineArrivo(ordineInt[4]));
+		assertEquals(ordineString[5],bM.convertiOrdineArrivo(ordineInt[5]));
 	}
 	
 	
-}
+	}
