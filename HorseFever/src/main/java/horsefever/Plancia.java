@@ -66,35 +66,48 @@ public class Plancia {
 	 * */
 	public void controllaAzioniDiRimozione(ArrayList azioni){
 		Azione a;
-		char carteDaRimuovere='0';
+		boolean positive=false;
+		boolean negative=false;
+		if(azioni.size()>0)
 		for (int i=0; i<azioni.size();i++){
 			a=(Azione) azioni.get(i);
 			if (a.getColore().equals("Grigio") && a.getTipoEffetto().equals("Azione")){
 				if (a.getValoreEffetto().charAt(8)=='p') {
-					carteDaRimuovere='P';
-					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));	
+					positive=true;
+					azioni.remove(i);
+					i--;
+					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
 				}
-				else {
-					carteDaRimuovere='N';
+				if (a.getValoreEffetto().charAt(8)=='n') {
+					negative=true;
+					azioni.remove(i);
+					i--;
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));	
 				}
 			}
+			
 		}
-		if (carteDaRimuovere!='0'){
-			if (carteDaRimuovere=='N'){
+		if (positive || negative){
+			if (negative && !positive){
 				for (int j=0;j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
 					if (a.getColore().equals("Rosso")){
 						azioni.remove(j);
+						j--;
 					}
 				}
 			
-			} else {
+			} else if (!negative && positive){
 				for (int j=0; j<azioni.size();j++){
 					a=(Azione) azioni.get(j);
 					if (a.getColore().equals("Verde")){
 						azioni.remove(j);
+						j--;
 					}
+				}
+			} else {
+				for (int j=0; j<azioni.size();j++){
+					azioni.remove(0);
 				}
 			}
 		}
@@ -152,13 +165,16 @@ public class Plancia {
 	 * @param l'arrayList delle carte Azione da controllare
 	 * */
 	public void eliminaEffettiOpposti(ArrayList azioni){
-		for (int i=0; i<azioni.size()-1; i++){
-			for (int j=1; j<azioni.size(); j++){
-				Azione a1= (Azione)azioni.get(i);
-				Azione a2= (Azione)azioni.get(j);
-				if (a1.getLettera()==a2.getLettera()){
-					azioni.remove(i);
-					azioni.remove(j);
+		if (azioni.size()>1){
+			//int[] flag=new int[azioni.size()];
+			for (int i=0; i<azioni.size()-1; i++){
+				for (int j=1; j<azioni.size(); j++){
+					Azione a1= (Azione)azioni.get(i);
+					Azione a2= (Azione)azioni.get(j);
+					if (a1.getLettera()==a2.getLettera()){
+						azioni.remove(j);
+						azioni.remove(i);
+					}
 				}
 			}
 		}
