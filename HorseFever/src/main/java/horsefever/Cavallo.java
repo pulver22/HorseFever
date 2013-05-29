@@ -57,12 +57,15 @@ public class Cavallo {
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
 		int incr;
 		if (effettoUltimoPrimo!=null){
-			incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
 			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
 				posizione=posizione;
+			}else if (primo && effettoUltimoPrimo.charAt(1)=='4'){
+				posizione=posizione+incremento;
 			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
 				posizione+=4;
-			} else {
+			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='0'){
+				posizione=posizione+incremento;
+			} else if (!ultimo && !primo){
 				posizione+=incremento;
 			}
 		} else {
