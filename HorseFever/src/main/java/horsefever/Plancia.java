@@ -585,7 +585,9 @@ public class Plancia {
 		}
 	}
 	
-
+	public Cavallo getCavalloAt(int i){
+		return cavalli[i];
+	}
 	
 
 }

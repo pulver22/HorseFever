@@ -97,4 +97,15 @@ public class TestPlancia {
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1));
 		assertEquals(3,plancia.getAzioniSuCorsia(1).size());
 	}
+	
+	@Test
+	public void casoTestAssegnaEffettiCavallo(){
+		plancia.TruccaCorsia(azione1, 1, nome);
+		plancia.TruccaCorsia(azione3, 1, nome);
+		plancia.assegnaEffettiAlCavallo(plancia.getAzioniSuCorsia(1), plancia.getCavalloAt(1));
+		String eff1=plancia.getCavalloAt(1).getEffettoPartenza();
+		String eff2=plancia.getCavalloAt(1).getEffettoPartenza2();
+		assertEquals("=4",plancia.getCavalloAt(1).getEffettoPartenza());
+		assertEquals("+1",plancia.getCavalloAt(1).getEffettoPartenza2());
+	}
 }
