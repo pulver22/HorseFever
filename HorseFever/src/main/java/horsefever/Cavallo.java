@@ -25,7 +25,6 @@ public class Cavallo {
 	 * */
 	public void aggiornaPosizionePartenza(int incremento){
 		if (effettoPartenza!=null || effettoPartenza2!=null){
-			
 			if (effettoPartenza!=null && effettoPartenza2!=null){ //Se entrambi tipi di effetti != NULL
 				if (effettoPartenza.equals("=4") && effettoPartenza2.equals("-1")){
 					posizione+=3;
@@ -176,7 +175,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza(String effettoPartenza) {
-		this.effettoPartenza = effettoPartenza;
+		this.effettoPartenza = new String(effettoPartenza);
 	}
 
 	public String getEffettoSprint() {
@@ -243,7 +242,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza2(String effettoPartenza2) {
-		this.effettoPartenza2 = effettoPartenza2;
+		this.effettoPartenza2 = new String(effettoPartenza2);
 	}
 
 	public String getEffettoSprint2() {
