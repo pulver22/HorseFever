@@ -29,6 +29,17 @@ public class MazzoTest {
 		assertSame(carta,deck.pescaCertezza(6));
 	}
 	
+	@Test
+	public void pescaTest(){
+		Carta carta = deck.pesca();
+		
+		assertNotSame(deck.pescaCertezza(0),carta);
+		assertNotSame(deck.pescaCertezza(1),carta);
+		assertNotSame(deck.pescaCertezza(2),carta);
+		assertNotSame(deck.pescaCertezza(3),carta);
+		assertNotSame(deck.pescaCertezza(4),carta);
+
+	}
 	
 
 }
