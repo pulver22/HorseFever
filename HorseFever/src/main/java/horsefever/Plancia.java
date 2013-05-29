@@ -72,13 +72,13 @@ public class Plancia {
 		for (int i=0; i<azioni.size();i++){
 			a=(Azione) azioni.get(i);
 			if (a.getColore().equals("Grigio") && a.getTipoEffetto().equals("Azione")){
-				if (a.getValoreEffetto().charAt(8)=='p') {
+				if (a.getValoreEffetto().equals("Rimuovi_positive")) {
 					positive=true;
 					azioni.remove(i);
 					i--;
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
 				}
-				if (a.getValoreEffetto().charAt(8)=='n') {
+				if (a.getValoreEffetto().equals("Rimuovi_negative")) {
 					negative=true;
 					azioni.remove(i);
 					i--;
@@ -105,8 +105,8 @@ public class Plancia {
 						j--;
 					}
 				}
-			} else {
-				for (int j=0; j<azioni.size();j++){
+			} else if (negative && positive){
+				while(azioni.size()>0){
 					azioni.remove(0);
 				}
 			}

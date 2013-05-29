@@ -59,8 +59,8 @@ public class TestPlancia {
 		plancia.TruccaCorsia(azione1, 1, nome);
 		plancia.TruccaCorsia(azione3, 1, nome);
 		plancia.TruccaCorsia(azione2, 1, nome);
-		plancia.TruccaCorsia(rpos, 1, nome);
 		plancia.TruccaCorsia(rneg, 1, nome);
+		plancia.TruccaCorsia(rpos, 1, nome);
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1));
 		for (int j=0;j<plancia.getAzioniSuCorsia(1).size();j++){
 			Azione az=(Azione)plancia.getAzioniSuCorsia(1).get(j);
