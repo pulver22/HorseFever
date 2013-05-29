@@ -25,7 +25,7 @@ public class TestCavalloPartenza {
 	}
 	
 	@Test
-	public void casoTest(){
+	public void casoTestDoppio(){
 		int incremento=2;
 		cavallo1.setEffettoPartenza(azione1.getValoreEffetto());
 		cavallo1.setEffettoPartenza2(azione2.getValoreEffetto());
@@ -34,7 +34,7 @@ public class TestCavalloPartenza {
 	}
 	
 	@Test
-	public void casoTest2(){
+	public void casoTest2Doppio(){
 		int incremento=2;
 		cavallo1.setEffettoPartenza(azione1.getValoreEffetto());
 		cavallo1.setEffettoPartenza2(azione4.getValoreEffetto());
@@ -43,7 +43,7 @@ public class TestCavalloPartenza {
 	}
 	
 	@Test
-	public void casoTest3(){
+	public void casoTestDoppio3(){
 		int incremento=2;
 		cavallo1.setEffettoPartenza(azione3.getValoreEffetto());
 		cavallo1.setEffettoPartenza2(azione2.getValoreEffetto());
@@ -52,7 +52,7 @@ public class TestCavalloPartenza {
 	}
 	
 	@Test
-	public void casoTest4(){
+	public void casoTestDoppio4(){
 		int incremento=2;
 		cavallo1.setEffettoPartenza(azione3.getValoreEffetto());
 		cavallo1.setEffettoPartenza2(azione4.getValoreEffetto());
