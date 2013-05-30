@@ -23,8 +23,12 @@ public class BetManager {
 		bManager.add(scom);
 		
 		// NOTIFICA EVENTO
-		e=new eventoScommessa(scom);
-		p.notifyObserver(e);
+		if(scom.getTipoScomessa()!='N'){
+			
+			e=new eventoScommessa(scom);
+			p.notifyObserver(e);
+		}
+		
 	}
 	
 	/**
