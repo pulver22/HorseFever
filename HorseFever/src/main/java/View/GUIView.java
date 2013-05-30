@@ -42,6 +42,8 @@ public class GUIView implements View{
 		String[] sceltaScommessa = {"Vincente","Piazzato"};
 		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
 		scommessa[2] = ""+scommessa[2].charAt(0);
+		
+		
 		/* RICHIEDE GESTIONE THREAD
 		 * 
 		final JFrame frame = new JFrame("Make your Choice!!");
@@ -139,8 +141,18 @@ public class GUIView implements View{
 		
 		scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, carte, carte);
 		
+		for(int i=0; i<carteAzione.size(); i++){
+			
+			if(scelta[0].equals(carte[i])){
+				
+				scelta[0]=""+i;
+			}
+		}
+				
 		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
 		scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+		scelta[1] = ""+scelta[1].charAt(9);
+		
 		
 		/* RICHIEDE GESTIONE THREAD
 		
@@ -225,6 +237,29 @@ public class GUIView implements View{
     	   
     	   board.setPV(pv);
     	   board.setDenari(denari);
+       }
+       
+       if(e instanceof eventoScommessa){
+    	   
+    	   String nomeGioc=((eventoScommessa) e).getNomeGiocatore();  
+    	   long denari=((eventoScommessa) e).getDenari();  
+    	   int numCorsia=((eventoScommessa) e).getCorsia();  
+    	   char tipoScom=((eventoScommessa) e).getTipoScommessa();
+    	   String tipoSc="";
+    	   
+    	   if(tipoScom=='V') tipoSc="Vincente";
+    	   if(tipoScom=='P') tipoSc="Piazzato"
+;    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha scommesso "+denari+"\nsulla corsia "+numCorsia+"  "+tipoSc+"\n ");
+       
+       }
+       
+       if(e instanceof eventoTrucca){
+    	   
+    	   String nomeGioc=((eventoTrucca) e).getNomeGiocatore();  
+    	   int numCorsia=((eventoTrucca) e).getCorsia();
+    	   
+    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha truccato la corsia numero: "+numCorsia);
+    	   
        }
 		
 	}
