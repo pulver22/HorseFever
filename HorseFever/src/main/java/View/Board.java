@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class Board extends JFrame {
@@ -16,7 +18,7 @@ public class Board extends JFrame {
     private JScrollPane scroll;
 	private JScrollPane quotazioniScrollPane;
 	
-    private Background background=new Background("sfondo.jpg");
+    private Background background=new Background("elementiBoard/sfondo.jpg");
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
@@ -35,20 +37,101 @@ public class Board extends JFrame {
 	private Image plancia;
 	private Image cartaMov;
 	private Image titolo;
+	private Image[] piazzamento=new Image[3];
+	
+	private JButton[] bottoneProva=new JButton[6];
+	
+	private boolean[] stampaPiazzamento=new boolean[3];
+	
+	private int[] yPiazzamento=new int[3];
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
 	
     public Board(){
     	
+    	//bottoni di prova
+    	for(int i=0;i<6;i++){
+    		
+    	bottoneProva[i]=new JButton("Muovi");	
+    	//bottoneProva[i].setText("Muov);	
+    	bottoneProva[i].setBounds(1100,(i*50)+80,50,20);
+    	this.add(bottoneProva[i]);
+    	}
+    	bottoneProva[0].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						pedine[0].muovi(15);
+						
+					}
+    		    }
+    		);
+    	bottoneProva[1].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						pedine[1].muovi(15);
+						
+					}
+    		    }
+    		);
+    	bottoneProva[2].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						pedine[2].muovi(15);
+						
+					}
+    		    }
+    		);
+    	bottoneProva[3].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						pedine[3].muovi(15);
+						
+					}
+    		    }
+    		);
+    	bottoneProva[4].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						pedine[4].muovi(15);
+						
+					}
+    		    }
+    		);
     	
+    	bottoneProva[5].addActionListener(
+    		    new ActionListener() {
+    		        
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						
+						setImmagineMovimento("horsefever.png");
+						
+					}
+    		    }
+    		);
     	//inizializzazione Pedine
-    	pedine[0]=new Pedina(455,90,"nero.png",this);
-    	pedine[1]=new Pedina(455,140,"blu.png",this);
-    	pedine[2]=new Pedina(455,195,"verde.png",this);
-    	pedine[3]=new Pedina(455,245,"rosso.png",this);
-    	pedine[4]=new Pedina(455,295,"giallo.png",this);
-    	pedine[5]=new Pedina(455,345,"bianco.png",this);
+    	pedine[0]=new Pedina(455,90,"pedine/nero.png",this);
+    	pedine[1]=new Pedina(455,140,"pedine/blu.png",this);
+    	pedine[2]=new Pedina(455,195,"pedine/verde.png",this);
+    	pedine[3]=new Pedina(455,245,"pedine/rosso.png",this);
+    	pedine[4]=new Pedina(455,295,"pedine/giallo.png",this);
+    	pedine[5]=new Pedina(455,345,"pedine/bianco.png",this);
 		
     	//Area Notifica
     	
@@ -68,7 +151,7 @@ public class Board extends JFrame {
     	
     	//Plancia
        
-        ImageIcon ii=new ImageIcon(this.getClass().getResource("plancia.jpg"));
+        ImageIcon ii=new ImageIcon(this.getClass().getResource("elementiBoard/plancia.jpg"));
 		plancia=ii.getImage();	
 		
 		
@@ -112,9 +195,16 @@ public class Board extends JFrame {
 	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
 	    
 	    //titolo
-	    ii=new ImageIcon(this.getClass().getResource("titolo_horse.png"));
+	    ii=new ImageIcon(this.getClass().getResource("elementiBoard/titolo_horse.png"));
 		titolo=ii.getImage();	
 		
+		//tesserine piazzamenti
+		ii=new ImageIcon(this.getClass().getResource("piazzamenti/primo.png"));
+		piazzamento[0]=ii.getImage();
+		ii=new ImageIcon(this.getClass().getResource("piazzamenti/secondo.png"));
+		piazzamento[1]=ii.getImage();	
+		ii=new ImageIcon(this.getClass().getResource("piazzamenti/terzo.png"));
+		piazzamento[2]=ii.getImage();	
 		
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
@@ -132,16 +222,13 @@ public class Board extends JFrame {
 	
 	public static void main(String[] args) {
 		
+		int[] quotazioni=new int[6];
+		for(int i=0;i<6;i++) quotazioni[i]=i+2;
+		
 		Board prova=new Board();
 		prova.settaAreaNotifica("prova prova \n");
 		prova.settaAreaNotifica("prova prova ");
-		prova.settaAreaQuotazioni("    \n");
-		prova.settaAreaQuotazioni("Nero:   1:2\n");
-		prova.settaAreaQuotazioni("Blu:    1:3\n");
-		prova.settaAreaQuotazioni("Verde:  1:4\n");
-		prova.settaAreaQuotazioni("Rosso:  1:5\n");
-		prova.settaAreaQuotazioni("Giallo: 1:6\n");
-		prova.settaAreaQuotazioni("Bianco: 1:7 \n");
+		prova.settaAreaQuotazioni(quotazioni);
 		prova.setPV(100);
 		prova.setDenari(40000);
 		prova.setNomeGiocatore("Giocatore di Prova");
@@ -149,15 +236,18 @@ public class Board extends JFrame {
 		
 		prova.setImmagineMovimento("horseFever-85.png");
 		
-			
+		/*	
 		prova.getPedina(0).muovi(5);
-		prova.getPedina(1).muovi(6);
+		prova.getPedina(1).muovi(14);
 		prova.getPedina(2).muovi(2);
-		prova.getPedina(3).muovi(8);
-		prova.getPedina(4).muovi(10);
+		prova.getPedina(3).muovi(15);
+		prova.getPedina(4).muovi(18);
 		prova.getPedina(5).muovi(9);
 		
-		
+		*/
+		prova.stampaPiazzamento(5, 1);
+		prova.stampaPiazzamento(2, 2);
+		prova.stampaPiazzamento(4, 3);
 	
 	}
 	
@@ -169,6 +259,14 @@ public class Board extends JFrame {
         g2d.drawImage(plancia, 450,80, null);
         g2d.drawImage(cartaMov, 60,420,null);
         g2d.drawImage(titolo, 170,8,null);
+        
+        for(int i=0;i<3;i++){
+        	
+        	if(stampaPiazzamento[i]==true){
+        	
+        		g2d.drawImage(piazzamento[i],995,yPiazzamento[i],null);
+        	}
+        }
         
         g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
         g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
@@ -182,6 +280,15 @@ public class Board extends JFrame {
 	
 	//Getter e Setter
 
+	public void stampaPiazzamento(int numCorsia, int posizione){
+		
+		posizione--;
+		numCorsia--;
+		//le corsie sono distanziate di 50px l'una dall'altra e la prima parte a 90px
+		yPiazzamento[posizione]=numCorsia*50+86;
+		stampaPiazzamento[posizione]=true;
+		
+	}
 	public void setNomeScuderia(String scuderia) {
 		this.scuderia.setText(scuderia);
 	}
@@ -190,9 +297,14 @@ public class Board extends JFrame {
 	 * Scrive sulla JTextArea delle quotazioni
 	 * @param messaggio
 	 */
-	public void settaAreaQuotazioni(String messaggio){
+	public void settaAreaQuotazioni(int[] quot){
 		
-		quotazioni.append(messaggio);
+		quotazioni.append("\nNero:   1:"+quot[0]);
+		quotazioni.append("\nBlu:    1:"+quot[1]);
+		quotazioni.append("\nVerde:  1:"+quot[2]);
+		quotazioni.append("\nRosso:  1:"+quot[3]);
+		quotazioni.append("\nGiallo: 1:"+quot[4]);
+		quotazioni.append("\nBianco: 1:"+quot[5]);
 	}
 	
 	/**
@@ -236,7 +348,7 @@ public class Board extends JFrame {
 	 */
 	public void setImmagineMovimento(String cartaMovimento){
 		
-		ImageIcon imgMov=new ImageIcon(getClass().getResource(cartaMovimento));
+		ImageIcon imgMov=new ImageIcon(getClass().getResource("carteMovimento/"+cartaMovimento));
 		cartaMov=imgMov.getImage();
 		repaint();
 		

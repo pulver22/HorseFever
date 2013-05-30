@@ -33,14 +33,7 @@ public class Pedina implements ActionListener {
 	public void muovi(int numPos){
 		
 	   this.posizioni=numPos;
-	   
-       if(x+(numPos*dx)>=(936)){
-			
-			x=950;
-			return;
-       }
-       
-			
+	  	
 	   timer=new Timer(350,this);
 	    
 	   timer.start();
@@ -80,7 +73,11 @@ public class Pedina implements ActionListener {
 		if(posizioni>0){
 		
 			posizioni--;
-			x+=dx;
+			if(x+dx<936){
+			  
+				x+=dx;
+			}
+			else x=950;
 			board.repaint();
 		}
 		else{
