@@ -20,11 +20,12 @@ public class BetManager {
 	 * @param scom
 	 */
 	public void AggiungiScommessa(Scommessa scom){
-		bManager.add(scom);
 		
-		// NOTIFICA EVENTO
 		if(scom.getTipoScomessa()!='N'){
 			
+			bManager.add(scom);
+			
+			// NOTIFICA EVENTO
 			e=new eventoScommessa(scom);
 			p.notifyObserver(e);
 		}
