@@ -50,82 +50,9 @@ public class Board extends JFrame {
 	
     public Board(){
     	
-    	//bottoni di prova
-    	for(int i=0;i<6;i++){
-    		
-    	bottoneProva[i]=new JButton("Muovi");	
-    	//bottoneProva[i].setText("Muov);	
-    	bottoneProva[i].setBounds(1100,(i*50)+80,50,20);
-    	this.add(bottoneProva[i]);
-    	}
-    	bottoneProva[0].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						pedine[0].muovi(15);
-						
-					}
-    		    }
-    		);
-    	bottoneProva[1].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						pedine[1].muovi(15);
-						
-					}
-    		    }
-    		);
-    	bottoneProva[2].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						pedine[2].muovi(15);
-						
-					}
-    		    }
-    		);
-    	bottoneProva[3].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						pedine[3].muovi(15);
-						
-					}
-    		    }
-    		);
-    	bottoneProva[4].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						pedine[4].muovi(15);
-						
-					}
-    		    }
-    		);
-    	
-    	bottoneProva[5].addActionListener(
-    		    new ActionListener() {
-    		        
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						
-						setImmagineMovimento("horsefever.png");
-						
-					}
-    		    }
-    		);
+    
     	//inizializzazione Pedine
+    	
     	pedine[0]=new Pedina(455,90,"pedine/nero.png",this);
     	pedine[1]=new Pedina(455,140,"pedine/blu.png",this);
     	pedine[2]=new Pedina(455,195,"pedine/verde.png",this);
@@ -133,8 +60,9 @@ public class Board extends JFrame {
     	pedine[4]=new Pedina(455,295,"pedine/giallo.png",this);
     	pedine[5]=new Pedina(455,345,"pedine/bianco.png",this);
 		
-    	//Area Notifica
     	
+    	//Area Notifica
+   
     	areaNotifica=new JTextArea();
     	areaNotifica.setEditable(false);
     	quotazioni=new JTextArea();
@@ -178,6 +106,7 @@ public class Board extends JFrame {
 		pannelloGiocatore.setVisible(true);
 		
 		//Lavagna
+		
 		pannelloLavagna.setBounds(50,370,350,300);
 		pannelloLavagna.setBackground(Color.decode("#d6a45f"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
@@ -195,10 +124,12 @@ public class Board extends JFrame {
 	    pannelloLavagna.add(pannelloDivisore,BorderLayout.CENTER);
 	    
 	    //titolo
+	    
 	    ii=new ImageIcon(this.getClass().getResource("elementiBoard/titolo_horse.png"));
 		titolo=ii.getImage();	
 		
 		//tesserine piazzamenti
+		
 		ii=new ImageIcon(this.getClass().getResource("piazzamenti/primo.png"));
 		piazzamento[0]=ii.getImage();
 		ii=new ImageIcon(this.getClass().getResource("piazzamenti/secondo.png"));
@@ -211,43 +142,18 @@ public class Board extends JFrame {
     	this.add(pannelloGiocatore);
     	this.add(background);
     
-    	
-        
     	this.setResizable(false);
     	this.setTitle("Horse Fever");
     	this.setSize(1200,700);
     	this.setVisible(true);
+    	this.setLocationRelativeTo(null);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 	
 	public static void main(String[] args) {
 		
-		int[] quotazioni=new int[6];
-		for(int i=0;i<6;i++) quotazioni[i]=i+2;
-		
 		Board prova=new Board();
-		prova.settaAreaNotifica("prova prova \n");
-		prova.settaAreaNotifica("prova prova ");
-		prova.settaAreaQuotazioni(quotazioni);
-		prova.setPV(100);
-		prova.setDenari(40000);
-		prova.setNomeGiocatore("Giocatore di Prova");
-		prova.setNomeScuderia("Bianco");
 		
-		prova.setImmagineMovimento("horseFever-85.png");
-		
-		/*	
-		prova.getPedina(0).muovi(5);
-		prova.getPedina(1).muovi(14);
-		prova.getPedina(2).muovi(2);
-		prova.getPedina(3).muovi(15);
-		prova.getPedina(4).muovi(18);
-		prova.getPedina(5).muovi(9);
-		
-		*/
-		prova.stampaPiazzamento(5, 1);
-		prova.stampaPiazzamento(2, 2);
-		prova.stampaPiazzamento(4, 3);
 	
 	}
 	
@@ -284,7 +190,7 @@ public class Board extends JFrame {
 		
 		posizione--;
 		numCorsia--;
-		//le corsie sono distanziate di 50px l'una dall'altra e la prima parte a 90px
+		//le corsie sono distanziate di 50px l'una dall'altra e la prima parte a 86px
 		yPiazzamento[posizione]=numCorsia*50+86;
 		stampaPiazzamento[posizione]=true;
 		
