@@ -31,7 +31,7 @@ public class BetManagerTest {
 		lavagna.setQuotazioni(quotazioni);
 	}
 	
-	/*
+	
 	@Test
 	public void aggiungi(){
 		
@@ -45,9 +45,9 @@ public class BetManagerTest {
 		assertEquals(bM.getbManager().get(0).getImporto(),scom.getImporto());
 		assertEquals(bM.getbManager().get(0).getTipoScomessa(),scom.getTipoScomessa());
 		
-	}*/
+	}
 
-	/*@Test
+	@Test
 	
 		public void paga(){
 	 
@@ -121,7 +121,7 @@ public class BetManagerTest {
 		assertEquals(aspettativaPV5,bM.getbManager().get(4).getScommettitore().getPV());
 		assertEquals(aspettativaDenari6,bM.getbManager().get(5).getScommettitore().getDenari());
 		assertEquals(aspettativaPV6,bM.getbManager().get(5).getScommettitore().getPV());
-	}*/
+	}
 	
 	@Test
 	public void ordineTest(){
