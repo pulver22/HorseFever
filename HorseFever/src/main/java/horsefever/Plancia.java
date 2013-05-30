@@ -350,7 +350,6 @@ public class Plancia {
 							if (flagFotofinish[k]==1) {
 								fotofinish.add(cavalli[k]);
 								arrivati[k]=true;
-								//cavalli[k]=null;
 								flagFotofinish[k]=0;// Inserisce nell'ArrayList fotofinish i cavalli da controllare
 							}
 						}
@@ -360,6 +359,7 @@ public class Plancia {
 									if(fotofinish.get(n).getEffettoFotofinish().charAt(1)=='1'){
 										ordineCavalli.add(fotofinish.get(n)); //Mette in primo posto 
 										fotofinish.remove(n);//il cavallo con l'effetto fotofinish vincente
+										n--;
 										esisteVincente=true;
 								}
 							}
@@ -368,31 +368,34 @@ public class Plancia {
 									if(fotofinish.get(m).getEffettoFotofinish().charAt(1)=='0'){
 										ordineCavalli.add(fotofinish.get(m));
 										fotofinish.remove(m);
+										m--;
 										esistePerdente=true;
 									}
 							}
 						}
 						
-						if (fotofinish.size()>1)sortPerQuotazioneDecrescente(fotofinish);//Sort dei cavalli restanti in fotofinish
+						if (fotofinish.size()>1)sortPerQuotazioneDecrescente();//Sort dei cavalli restanti in fotofinish
 						
-						for (int l=0; l<fotofinish.size();l++){//I restanti li inserisce coma capita tra il primo e l'ultimo
+						while(fotofinish.size()>0){//I restanti li inserisce coma capita tra il primo e l'ultimo
 															//(In ordine di quotazione, inserisce man mano
 															//cavalli con quotazione maggiore (1:2>1:3) davanti agli altri
 															
 							if (esisteVincente) {
-								ordineCavalli.add(1, fotofinish.get(l));
-								fotofinish.remove(l);
-							}else if (esistePerdente){
-								ordineCavalli.add(0, fotofinish.get(l));
-								fotofinish.remove(l);
+								ordineCavalli.add(1, fotofinish.get(0));
+								fotofinish.remove(0);
+							}else if (esistePerdente && !esisteVincente){
+								ordineCavalli.add(0, fotofinish.get(0));
+								fotofinish.remove(0);
 							} else {
-								ordineCavalli.add(fotofinish.get(l));
-								fotofinish.remove(l);
+								ordineCavalli.add(fotofinish.get(0));
+								fotofinish.remove(0);
 							}
 						}
-						for (int a=0; a<ordineCavalli.size(); a++){ //Inserimento ordinato nei cavalliArrivati
-							cavalliArrivati.add(ordineCavalli.get(a));//di quelli risultanti il fotofinish
-							ordineCavalli.remove(a);
+						esisteVincente=false;
+						esistePerdente=false;
+						while(ordineCavalli.size()>0){ //Inserimento ordinato nei cavalliArrivati
+							cavalliArrivati.add(ordineCavalli.get(0));//di quelli risultanti il fotofinish
+							ordineCavalli.remove(0);
 						}
 						}
 					}
@@ -408,14 +411,14 @@ public class Plancia {
 	 * nel senso da "7" a "2"). 
 	 * @param l'ArrayList di Cavalli da ordinare
 	 * */
-	public void sortPerQuotazioneDecrescente(ArrayList<Cavallo> cavalli){
+	public void sortPerQuotazioneDecrescente(){
 		for (int j=0; j<fotofinish.size()-1;j++){
 			for (int i=1;i<fotofinish.size();i++){
-				if (cavalli.get(i).getQuotazione()<cavalli.get(j).getQuotazione()){
-					Cavallo ci=cavalli.get(i);
-					Cavallo cj=cavalli.get(j);
-					cavalli.set(i, cj);
-					cavalli.set(j, ci);
+				if (fotofinish.get(i).getQuotazione()<fotofinish.get(j).getQuotazione()){
+					Cavallo ci=fotofinish.get(i);
+					Cavallo cj=fotofinish.get(j);
+					fotofinish.set(i, cj);
+					fotofinish.set(j, ci);
 				}
 			}
 		}
@@ -589,5 +592,8 @@ public class Plancia {
 		return cavalli[i];
 	}
 	
-
+	public ArrayList<Cavallo> getCavalliArrivati(){
+		return cavalliArrivati;
+	}
+	
 }

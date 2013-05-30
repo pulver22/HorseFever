@@ -103,9 +103,62 @@ public class TestPlancia {
 		plancia.TruccaCorsia(azione1, 1, nome);
 		plancia.TruccaCorsia(azione3, 1, nome);
 		plancia.assegnaEffettiAlCavallo(plancia.getAzioniSuCorsia(1), plancia.getCavalloAt(1));
-		String eff1=plancia.getCavalloAt(1).getEffettoPartenza();
-		String eff2=plancia.getCavalloAt(1).getEffettoPartenza2();
 		assertEquals("=4",plancia.getCavalloAt(1).getEffettoPartenza());
 		assertEquals("+1",plancia.getCavalloAt(1).getEffettoPartenza2());
+	}
+	
+	@Test
+	public void casoTestFotofinishNoEffettiSingolaParita(){
+		int[] pos={10,13,13,13,10,10};
+		plancia.setPosizioniCavalli(pos);
+		//Blu
+		plancia.getCavalloAt(1).setQuotazione(3);
+		//Verde
+		plancia.getCavalloAt(2).setQuotazione(2);
+		//Rosso
+		plancia.getCavalloAt(3).setQuotazione(4);
+		plancia.fotoFinish();
+		assertEquals("Verde",plancia.getCavalliArrivati().get(0).getColore());
+		assertEquals("Blu",plancia.getCavalliArrivati().get(1).getColore());
+		assertEquals("Rosso",plancia.getCavalliArrivati().get(2).getColore());
+	}
+	
+	@Test
+	public void casoTestFotofinishNoEffettiMoltepliciParita(){
+		int[] pos={10,13,13,14,14,10};
+		plancia.setPosizioniCavalli(pos);
+		//Blu
+		plancia.getCavalloAt(1).setQuotazione(3);
+		//Verde
+		plancia.getCavalloAt(2).setQuotazione(2);
+		//Rosso
+		plancia.getCavalloAt(3).setQuotazione(5);
+		//Giallo
+		plancia.getCavalloAt(4).setQuotazione(4);
+		plancia.fotoFinish();
+		assertEquals("Verde",plancia.getCavalliArrivati().get(0).getColore());
+		assertEquals("Blu",plancia.getCavalliArrivati().get(1).getColore());
+		assertEquals("Giallo",plancia.getCavalliArrivati().get(2).getColore());
+		assertEquals("Rosso",plancia.getCavalliArrivati().get(3).getColore());
+	}
+	
+	@Test
+	public void casoTestFotofinishEffettoVincente(){
+		int[] pos={10,13,13,13,13,10};
+		plancia.setPosizioniCavalli(pos);
+		//Blu
+		plancia.getCavalloAt(1).setQuotazione(3);
+		//Verde
+		plancia.getCavalloAt(2).setQuotazione(2);
+		//Rosso
+		plancia.getCavalloAt(3).setQuotazione(5);
+		plancia.getCavalloAt(3).setEffettoFotofinish("=1");
+		//Giallo
+		plancia.getCavalloAt(4).setQuotazione(4);
+		plancia.fotoFinish();
+		assertEquals("Rosso",plancia.getCavalliArrivati().get(0).getColore());
+		assertEquals("Verde",plancia.getCavalliArrivati().get(1).getColore());
+		assertEquals("Blu",plancia.getCavalliArrivati().get(2).getColore());
+		assertEquals("Giallo",plancia.getCavalliArrivati().get(3).getColore());
 	}
 }
