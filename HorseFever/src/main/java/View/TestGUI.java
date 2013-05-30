@@ -1,6 +1,8 @@
 package View;
 
-import horsefever.Azione;
+import horsefever.*;
+import adapter.Adapter;
+import controller.*;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -16,6 +18,21 @@ import javax.swing.JPanel;
 public class TestGUI {
 
 	public static void main(String[] args){
+		
+		Partita p=new Partita(2);
+		Controller controller=new Controller(p);
+		Adapter adapter=new Adapter();
+		GUIView view = new GUIView("Alex","Blanco",8000);
+		
+		controller.setAdapter(adapter);
+		p.setAdapter(adapter);
+		adapter.addView(view);
+		
+		p.preparazione();
+		controller.FaseDistribuzioneCarte();
+		controller.FaseScommesse();
+		
+		/*
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd",'a');
 		Azione pluto = new Azione("eee","fff","ggg","hhh",'b');
 		String[] trucco = new String[2];
@@ -24,10 +41,10 @@ public class TestGUI {
 		carteAzione.add(pippo);
 		carteAzione.add(pluto);
 		
-		
+		*/
 		
 		//Testato
-		//scommessa = view.chiediSecondaScommessa();
+		//scommessa = view.chiediScommessa();
 		//System.out.println(scommessa[0]);
 		//System.out.println(scommessa[1]);
 		//System.out.println(scommessa[2]);
