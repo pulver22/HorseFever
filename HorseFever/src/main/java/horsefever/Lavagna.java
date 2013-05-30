@@ -59,9 +59,14 @@ public class Lavagna {
 					 confrontando così le righe di scuderia e cavallo stabilisco se far salire
 					 o diminuire la quotazione di quel cavallo*/
 					if (posCavallo>(quotCavallo-1)){
-						if (quotCavallo>2)quotCavallo--;
+						if (quotCavallo<7){
+							quotCavallo++;
+							
+						}
 					} else if (posCavallo<(quotCavallo-1)){
-						if (quotCavallo<7)quotCavallo++;
+						if (quotCavallo>2){
+							quotCavallo--;
+						}
 					} else {
 						quotCavallo=quotCavallo;
 					}
@@ -91,6 +96,7 @@ public class Lavagna {
 	 * quotazione ha assegnata una ed una sola scuderia distinta, altrimenti potrebbe ritornare NULL
 	 * @param La stringa corrispondente alla quotazione (se "1:2" va passato "2" )di cui si vuole sapere a quale scuderia è assegnata
 	 * @return La stringa corrispondente al colore della scuderia cui è assegnata quella quotazione
+	 * @author Niccolo
 	 * */
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
@@ -114,7 +120,13 @@ public class Lavagna {
 	public void setQuotazioni(String[][] quotazioni) {
 		this.quotazioni = quotazioni;
 	}
-	
+	/**
+	 * Dato il colore della scuderia corrispondente, ritorna la quotazione di quel cavallo. 
+	 * Metodo usabile solo a inizio partita per settare quotazioni iniziali cavalli
+	 * @param il colore del cavallo
+	 * @param la quotazione del cavallo con quel colore
+	 * @author Niccolo
+	 * */
 	public int getQuotazioneDaColoreIniziale(String colore){
 		int quot=0;
 		for (int i=0; i<6;i++){

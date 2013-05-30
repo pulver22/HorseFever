@@ -356,7 +356,8 @@ public class Plancia {
 						
 						for (int n=0; n<fotofinish.size(); n++){ //Ricerca di cavallo con effetto vincente
 							if (fotofinish.get(n).getEffettoFotofinish()!=null){
-									if(fotofinish.get(n).getEffettoFotofinish().charAt(1)=='1'){
+									if(fotofinish.get(n).getEffettoFotofinish().equals("=1")){
+										System.out.println("HO TROVATO VINCENTE");
 										ordineCavalli.add(fotofinish.get(n)); //Mette in primo posto 
 										fotofinish.remove(n);//il cavallo con l'effetto fotofinish vincente
 										n--;
@@ -365,7 +366,7 @@ public class Plancia {
 							}
 						for (int m=0; m<fotofinish.size();m++){//Ricerca di cavallo con effetto perdente
 							if (fotofinish.get(m).getEffettoFotofinish()!=null){
-									if(fotofinish.get(m).getEffettoFotofinish().charAt(1)=='0'){
+									if(fotofinish.get(m).getEffettoFotofinish().equals("=0")){
 										ordineCavalli.add(fotofinish.get(m));
 										fotofinish.remove(m);
 										m--;
@@ -378,8 +379,7 @@ public class Plancia {
 						
 						while(fotofinish.size()>0){//I restanti li inserisce coma capita tra il primo e l'ultimo
 															//(In ordine di quotazione, inserisce man mano
-															//cavalli con quotazione maggiore (1:2>1:3) davanti agli altri
-															
+															//cavalli con quotazione maggiore (1:2>1:3) davanti agli altri								
 							if (esisteVincente) {
 								ordineCavalli.add(1, fotofinish.get(0));
 								fotofinish.remove(0);

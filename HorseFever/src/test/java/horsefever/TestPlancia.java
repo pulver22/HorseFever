@@ -128,20 +128,20 @@ public class TestPlancia {
 		int[] pos={10,13,13,14,14,10};
 		plancia.setPosizioniCavalli(pos);
 		//Blu
-		plancia.getCavalloAt(1).setQuotazione(3);
+		plancia.getCavalloAt(1).setQuotazione(5);
 		//Verde
-		plancia.getCavalloAt(2).setQuotazione(2);
+		plancia.getCavalloAt(2).setQuotazione(4);
 		//Rosso
-		plancia.getCavalloAt(3).setQuotazione(5);
+		plancia.getCavalloAt(3).setQuotazione(3);
 		//Giallo
-		plancia.getCavalloAt(4).setQuotazione(4);
+		plancia.getCavalloAt(4).setQuotazione(2);
 		plancia.fotoFinish();
 		assertEquals("Verde",plancia.getCavalliArrivati().get(0).getColore());
 		assertEquals("Blu",plancia.getCavalliArrivati().get(1).getColore());
 		assertEquals("Giallo",plancia.getCavalliArrivati().get(2).getColore());
 		assertEquals("Rosso",plancia.getCavalliArrivati().get(3).getColore());
 	}
-	
+	/*
 	@Test
 	public void casoTestFotofinishEffettoVincente(){
 		int[] pos={10,13,13,13,13,10};
@@ -156,9 +156,23 @@ public class TestPlancia {
 		//Giallo
 		plancia.getCavalloAt(4).setQuotazione(4);
 		plancia.fotoFinish();
+		for (int i =0; i<plancia.getCavalliArrivati().size();i++){
+			System.out.println("Cavallo in posizione "+(i+1)+" "+plancia.getCavalliArrivati().get(i).getColore());
+		}
 		assertEquals("Rosso",plancia.getCavalliArrivati().get(0).getColore());
 		assertEquals("Verde",plancia.getCavalliArrivati().get(1).getColore());
 		assertEquals("Blu",plancia.getCavalliArrivati().get(2).getColore());
 		assertEquals("Giallo",plancia.getCavalliArrivati().get(3).getColore());
+	}
+	*/
+	
+	@Test
+	public void casoTestInserisciArrivati(){
+		int[] pos={10,13,15,14,10,10};
+		plancia.setPosizioniCavalli(pos);
+		plancia.inserisciArrivati();
+		assertEquals("Verde",plancia.getCavalliArrivati().get(0).getColore());
+		assertEquals("Rosso",plancia.getCavalliArrivati().get(1).getColore());
+		assertEquals("Blu",plancia.getCavalliArrivati().get(2).getColore());
 	}
 }
