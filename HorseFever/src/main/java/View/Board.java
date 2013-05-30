@@ -150,14 +150,6 @@ public class Board extends JFrame {
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 	
-	public static void main(String[] args) {
-		
-		Board prova=new Board();
-		
-	
-	}
-	
-	
 	public void paint(Graphics g) {
         super.paint(g);
         
