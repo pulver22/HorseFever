@@ -19,7 +19,6 @@ public class TextView implements View{
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
-		boolean buonfine2=false;
 		String[] scommessa = new String[3];
 		
 		
