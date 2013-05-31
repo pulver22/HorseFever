@@ -9,6 +9,7 @@ public class Lavagna {
 	private String[][] quotazioni = new String[6][2];
 	private String[] arrivi = new String[6];
 	private Partita partita;
+	private Plancia plancia;
 	
 	/**
 	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
@@ -74,6 +75,9 @@ public class Lavagna {
 					
 				}
 			}
+		}
+		for (int i=0; i<6;i++){ //Aggiorna ai cavalli in plancia la loro nuova quotazione
+			plancia.getCavalloAt(i).setQuotazione(Integer.parseInt(quotazioni[i][1]));
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
@@ -154,4 +158,12 @@ public class Lavagna {
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
+	public Plancia getPlancia() {
+		return plancia;
+	}
+	public void setPlancia(Plancia plancia) {
+		this.plancia = plancia;
+	}
+	
+	
 }
