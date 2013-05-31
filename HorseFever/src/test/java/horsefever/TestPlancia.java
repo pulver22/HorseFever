@@ -245,7 +245,6 @@ public class TestPlancia {
 		plancia.getCavalloAt(2).setQuotazione(2);
 		//Rosso
 		plancia.getCavalloAt(3).setQuotazione(5);
-		plancia.getCavalloAt(3).setEffettoFotofinish("=1");
 		//Giallo
 		plancia.getCavalloAt(4).setQuotazione(4);
 		plancia.getFotofinish().add(plancia.getCavalloAt(1));
