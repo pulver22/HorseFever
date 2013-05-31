@@ -142,6 +142,11 @@ public class Board extends JFrame {
     	this.add(pannelloGiocatore);
     	this.add(background);
     
+    	pannelloNotifica.setDoubleBuffered(true);
+    	pannelloLavagna.setDoubleBuffered(true);
+    	pannelloGiocatore.setDoubleBuffered(true);
+    	background.setDoubleBuffered(true);
+    	
     	this.setResizable(false);
     	this.setTitle("Horse Fever");
     	this.setSize(1200,700);
@@ -172,6 +177,8 @@ public class Board extends JFrame {
         g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
         g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
         g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
+        
+        
         
     
 	}

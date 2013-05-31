@@ -7,7 +7,7 @@ import java.awt.*;
 public class Background extends JPanel {
 	
 	Image sfondo;
-
+	
 	
 	public Background(String wallpaper){
 		
