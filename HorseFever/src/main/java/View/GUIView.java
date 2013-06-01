@@ -131,39 +131,57 @@ public class GUIView implements View{
 	}
 
 	@Override
-	public String[] chiediTrucca( ArrayList<Azione> carteAzione) {
+	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
 		
 		String[] scelta = new String[3];
 		String[] carte = new String[2];
+		boolean buonfine = false;
 		
-		for(int i=0; i<carteAzione.size(); i++){
-			carte[i] = carteAzione.get(i).getNome() + " " + carteAzione.get(i).getColore() + " " +
-					carteAzione.get(i).getTipoEffetto() + " " +carteAzione.get(i).getValoreEffetto();
-		}
-		
-		if(carteAzione.size()==2){
-			
-			scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, carte, carte);
-		}
-		else{
-			
-			JOptionPane.showMessageDialog(null, "Carta azione rimasta: \n"+carte[0],"Attenzione", 1);
-			scelta[0] = carte[0];
-		}
-		
-		for(int i=0; i<carteAzione.size(); i++){
-			
-			if(scelta[0].equals(carte[i])){
-			
-				scelta[0]=""+(i+1);
+		while(buonfine == false){
+			try{
+				for(int i=0; i<carteAzione.size(); i++){
+					carte[i] = carteAzione.get(i).getNome() + " " + carteAzione.get(i).getColore() + " " +
+							carteAzione.get(i).getTipoEffetto() + " " +carteAzione.get(i).getValoreEffetto();
+				}
+
+
+				if(carteAzione.size()==2){
+
+					scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE, null, carte, carte);
+				}
+				else{
+
+					JOptionPane.showMessageDialog(null, "Carta azione rimasta: \n"+carte[0],"Attenzione", 1);
+					scelta[0] = carte[0];
+
+				}
+
+				for(int i=0; i<carteAzione.size(); i++){
+
+					if(scelta[0].equals(carte[i])){
+
+						scelta[0]=""+(i+1);
+					}
+				}
+				buonfine = true;
+			}catch(NullPointerException e){
+				JOptionPane.showMessageDialog(board, "Attento,stai sbagliando qualcosa!!");
+				buonfine = false;
 			}
 		}
-				
-		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-		scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-		scelta[1] = ""+scelta[1].charAt(9);
 		
-		
+		buonfine = false;
+		while(buonfine==false){
+			try{		
+				String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+				scelta[1] = ""+scelta[1].charAt(9);
+				buonfine = true;
+			}catch(NullPointerException e){
+				JOptionPane.showMessageDialog(board, "Attento,stai sbagliando qualcosa!!");
+				buonfine = false;
+			}
+		}
 		/* RICHIEDE GESTIONE THREAD
 		
 		String[] scelta = new String[2];
