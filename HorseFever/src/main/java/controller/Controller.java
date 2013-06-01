@@ -70,6 +70,7 @@ public class Controller {
 		int[] numSegnalini=partita.getNumSegnalini();
 		int numcorsia;
 		
+		/*
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
@@ -89,12 +90,20 @@ public class Controller {
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
         
+        */
         
 		for(int i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente,i);
+			
+		}
+		
+		for(int i=0; i<partita.getNumgiocatori();i++){
+			
+			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente,i);
+			
 		}
         
 	}

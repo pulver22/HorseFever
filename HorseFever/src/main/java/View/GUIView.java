@@ -146,8 +146,8 @@ public class GUIView implements View{
 		for(int i=0; i<carteAzione.size(); i++){
 			
 			if(scelta[0].equals(carte[i])){
-				
-				scelta[0]=""+i;
+			
+				scelta[0]=""+(i+1);
 			}
 		}
 				
