@@ -271,6 +271,33 @@ public class GUIView implements View{
     	   board.settaAreaNotifica("Il giocatore "+nomeGioc+"\n ha truccato la corsia numero: "+numCorsia+"\n");
     	   
        }
+       
+       if(e instanceof eventoCorsa){
+    	   
+    	   int[] posizioniAggiornate=((eventoCorsa) e).getPosizioniAggiornate();
+    	   int[] valoriMovimento=((eventoCorsa) e).getValoriMovimento();
+    	   int[] esitoDadi=((eventoCorsa) e).getEsitoDadi();
+    	   
+       }
+       
+       if(e instanceof eventoEffettoAvvenuto){
+    	   
+    	   String cartaAttivata=((eventoEffettoAvvenuto) e).getCartaAttivata();
+    	   
+       }
+       
+       if(e instanceof eventoQuotazioni){
+    	   
+    	   String[][] tabellaQuot=((eventoQuotazioni) e).getTabellaQuot();
+    	   int[] quotCorrenti=new int[6];
+    	   
+    	   for(int i=0;i<6;i++){
+    		   
+    		   quotCorrenti[i]=Integer.parseInt(tabellaQuot[i][1]);
+    	   }
+    	   
+    	   board.settaAreaQuotazioni(quotCorrenti);
+       }
 		
 	}
 
