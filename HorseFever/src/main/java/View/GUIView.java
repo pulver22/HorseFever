@@ -42,7 +42,7 @@ public class GUIView implements View{
 		scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
 		scommessa[1] = ""+scommessa[1].charAt(9);
 		String[] sceltaScommessa = {"Vincente","Piazzato"};
-		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
+		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Scegli che tipo di scommessa vuoi fare","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
 		scommessa[2] = ""+scommessa[2].charAt(0);
 		
 		
