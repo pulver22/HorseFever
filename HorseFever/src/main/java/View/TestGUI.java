@@ -19,7 +19,7 @@ public class TestGUI {
 
 	public static void main(String[] args){
 		
-		Partita p=new Partita(2);
+		Partita p=new Partita(6);
 		Controller controller=new Controller(p);
 		Adapter adapter=new Adapter();
 		GUIView view = new GUIView("Alex","Blanco",8000);
