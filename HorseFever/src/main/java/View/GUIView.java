@@ -141,7 +141,15 @@ public class GUIView implements View{
 					carteAzione.get(i).getTipoEffetto() + " " +carteAzione.get(i).getValoreEffetto();
 		}
 		
-		scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, carte, carte);
+		if(carteAzione.size()==2){
+			
+			scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, carte, carte);
+		}
+		else{
+			
+			JOptionPane.showMessageDialog(null, "Carta azione rimasta: \n"+carte[0],"Attenzione", 1);
+			scelta[0] = carte[0];
+		}
 		
 		for(int i=0; i<carteAzione.size(); i++){
 			
@@ -260,7 +268,7 @@ public class GUIView implements View{
     	   String nomeGioc=((eventoTrucca) e).getNomeGiocatore();  
     	   int numCorsia=((eventoTrucca) e).getCorsia();
     	   
-    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha truccato la corsia numero: "+numCorsia);
+    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+"\n ha truccato la corsia numero: "+numCorsia+"\n");
     	   
        }
 		
