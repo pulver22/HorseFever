@@ -99,7 +99,7 @@ public class Controller {
 			
 		}
 		
-		for(int i=0; i<partita.getNumgiocatori();i++){
+		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente,i);
