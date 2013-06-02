@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args){
 	
 		Partita p=new Partita(2);
-		Adapter ad=new Adapter();
+		Adapter ad=new AdapterLocale();
 		Controller c = new Controller(p);
 		TextView tv= new TextView();
 		ad.addView(tv);

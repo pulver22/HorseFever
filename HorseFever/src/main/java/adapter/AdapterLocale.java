@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import View.*;
 import eventi.HorseFeverEvent;
 
-public class AdapterLocale {
+public class AdapterLocale implements Adapter {
 
 	ArrayList<View> viewRegistrate=new ArrayList<View>();
 
@@ -57,4 +57,5 @@ public class AdapterLocale {
 	public void removeView(int i){
 		viewRegistrate.remove(i);
 	}
+
 }

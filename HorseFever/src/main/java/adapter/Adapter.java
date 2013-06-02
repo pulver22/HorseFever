@@ -3,58 +3,24 @@ package adapter;
 import horsefever.Azione;
 
 import java.util.ArrayList;
-import View.*;
+
+import View.View;
+
 import eventi.HorseFeverEvent;
 
-public class Adapter {
+public interface Adapter {
 
-	ArrayList<View> viewRegistrate=new ArrayList<View>();
-
-	public String[] chiediScommessa(int indice) {
-		
-		String[] valori=new String[3];
-		
-		valori=viewRegistrate.get(0).chiediScommessa();
-		
-		
-		return valori;
-	}
+	public String[] chiediScommessa(int indice);
 	
-	public String[] chiediSecondaScommessa(int indice){
-		
-        String[] valori=new String[3];
-        
-        valori=viewRegistrate.get(0).chiediSecondaScommessa();
-		
-		return valori;
-	}
+	public String[] chiediSecondaScommessa(int indice);
 	
-	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
-		
-		String[] scelta = new String[2];
-		
-		scelta=viewRegistrate.get(0).chiediTrucca(carteAzione);
-		
-		return scelta;
-	}
+	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice);
 	
-	public void stampaMessaggio(String messaggio,int indice){
-		
-		viewRegistrate.get(0).stampaMessaggio(messaggio);
-	}
-
-	public void notify(HorseFeverEvent e){
-		
-		for (View v: viewRegistrate){
-			v.notify(e);
-		}
-	}
+	public void stampaMessaggio(String messaggio,int indice);
 	
+	public void notify(HorseFeverEvent e);
 	
-	public void addView(View v){
-		viewRegistrate.add(v);
-	}
-	public void removeView(int i){
-		viewRegistrate.remove(i);
-	}
+	public void addView(View v);
+	
+	public void removeView(int i);
 }

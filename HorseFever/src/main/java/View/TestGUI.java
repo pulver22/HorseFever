@@ -2,6 +2,7 @@ package View;
 
 import horsefever.*;
 import adapter.Adapter;
+import adapter.AdapterLocale;
 import controller.*;
 
 import java.awt.BorderLayout;
@@ -21,7 +22,7 @@ public class TestGUI {
 		
 		Partita p=new Partita(6);
 		Controller controller=new Controller(p);
-		Adapter adapter=new Adapter();
+		Adapter adapter=new AdapterLocale();
 		GUIView view = new GUIView("Alex","Blanco",8000);
 		
 		controller.setAdapter(adapter);
