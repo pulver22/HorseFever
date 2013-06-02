@@ -202,14 +202,14 @@ public class Board extends JFrame {
 	 * Scrive sulla JTextArea delle quotazioni
 	 * @param messaggio
 	 */
-	public void settaAreaQuotazioni(int[] quot){
+	public void settaAreaQuotazioni(String[] quot){
 		
-		quotazioni.append("\nNero:   1:"+quot[0]);
-		quotazioni.append("\nBlu:    1:"+quot[1]);
-		quotazioni.append("\nVerde:  1:"+quot[2]);
-		quotazioni.append("\nRosso:  1:"+quot[3]);
-		quotazioni.append("\nGiallo: 1:"+quot[4]);
-		quotazioni.append("\nBianco: 1:"+quot[5]);
+		quotazioni.append("\nNero:   "+quot[0]);
+		quotazioni.append("\nBlu:    "+quot[1]);
+		quotazioni.append("\nVerde:  "+quot[2]);
+		quotazioni.append("\nRosso:  "+quot[3]);
+		quotazioni.append("\nGiallo: "+quot[4]);
+		quotazioni.append("\nBianco: "+quot[5]);
 	}
 	
 	/**

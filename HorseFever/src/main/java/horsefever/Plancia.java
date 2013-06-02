@@ -217,6 +217,7 @@ public class Plancia {
 		
 		Movimento m=(Movimento)partita.getMazzoMovimento().pesca();
 		int[] valoriMov=m.getArrayMovimenti();
+		String immagineMov=m.getNomefile();
 		
 		int[] movTeorici=calcolaIncrementiDaMov(valoriMov);
 		
@@ -239,7 +240,7 @@ public class Plancia {
 				}
 			
 			}
-			partita.notifyObserver(new eventoCorsa(getPosizioniCavalli(), valoriMov, dadiSprint));
+			partita.notifyObserver(new eventoCorsa(getPosizioniCavalli(), valoriMov, dadiSprint,immagineMov));
 			gestioneArrivi();
 			
 		}

@@ -30,7 +30,8 @@ public class TestGUI {
 		
 		p.preparazione();
 		controller.FaseDistribuzioneCarte();
-		controller.FaseScommesse();
+		//controller.FaseScommesse();
+		controller.FaseCorsa();
 		
 		/*
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd",'a');

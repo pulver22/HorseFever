@@ -295,6 +295,9 @@ public class GUIView implements View{
     	   int[] posizioniAggiornate=((eventoCorsa) e).getPosizioniAggiornate();
     	   int[] valoriMovimento=((eventoCorsa) e).getValoriMovimento();
     	   int[] esitoDadi=((eventoCorsa) e).getEsitoDadi();
+    	   String immagineMovimento=((eventoCorsa) e).getImmagineMovimento();
+    	   
+    	   board.setImmagineMovimento(immagineMovimento);
     	   
        }
        
@@ -307,14 +310,14 @@ public class GUIView implements View{
        if(e instanceof eventoQuotazioni){
     	   
     	   String[][] tabellaQuot=((eventoQuotazioni) e).getTabellaQuot();
-    	   int[] quotCorrenti=new int[6];
+    	   String[] quot=new String[6];
     	   
     	   for(int i=0;i<6;i++){
     		   
-    		   quotCorrenti[i]=Integer.parseInt(tabellaQuot[i][1]);
+    		   quot[i]=tabellaQuot[i][1];
     	   }
     	   
-    	   board.settaAreaQuotazioni(quotCorrenti);
+    	   board.settaAreaQuotazioni(quot);
        }
 		
 	}
