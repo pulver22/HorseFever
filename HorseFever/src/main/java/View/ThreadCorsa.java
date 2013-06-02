@@ -47,16 +47,16 @@ public class ThreadCorsa implements Runnable{
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
-        	  try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
+        	   try {
+        		   Thread.sleep(1000);
+        	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+        	   }
         		  
         	  }
         	  
-          }
+      }
 		
 	}
 
