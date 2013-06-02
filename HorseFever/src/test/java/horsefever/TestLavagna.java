@@ -6,6 +6,7 @@ import org.junit.*;
 
 import View.TextView;
 import adapter.Adapter;
+import adapter.AdapterLocale;
 
 public class TestLavagna {
 	Partita partita;
@@ -18,7 +19,7 @@ public class TestLavagna {
 	@Before
 	public void setup(){
 		partita = new Partita(2);
-		adapter = new Adapter();
+		adapter = new AdapterLocale();
 		textview = new TextView();
 		adapter.addView(textview);
 		partita.setAdapter(adapter);

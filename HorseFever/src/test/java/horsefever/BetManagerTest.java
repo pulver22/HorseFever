@@ -5,12 +5,13 @@ import org.junit.*;
 
 import View.TextView;
 import adapter.Adapter;
+import adapter.AdapterLocale;
 import static org.junit.Assert.*;
 
 
 public class BetManagerTest {
 	public Partita p = new Partita(6);
-	public Adapter a = new Adapter();
+	public Adapter a = new AdapterLocale();
 	public TextView v = new TextView();
 	public String[] ordineArrivo = {"Nero","Blu","Rosso","Verde","Giallo","Bianco"};
 	public Lavagna lavagna = new Lavagna(p);

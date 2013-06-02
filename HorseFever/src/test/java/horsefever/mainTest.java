@@ -2,6 +2,7 @@ package horsefever;
 
 import View.TextView;
 import adapter.Adapter;
+import adapter.AdapterLocale;
 import controller.Controller;
 
 public class mainTest {
@@ -18,7 +19,7 @@ public class mainTest {
 		Partita p=new Partita(6);
 		p.preparazione();
 		Controller c=new Controller(p);
-		Adapter ad = new Adapter();
+		Adapter ad = new AdapterLocale();
 		TextView v=new TextView();
 		//c.setView(v);
 		ad.addView(v);

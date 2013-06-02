@@ -22,7 +22,7 @@ public class TestMovimenti {
 	 public TestMovimenti(){
 		 partitaprova=new Partita(6);
 		 controller=new Controller(partitaprova);
-		 adapter=new Adapter();
+		 adapter=new AdapterLocale();
 		 view =new TextView();
 		 //controller.setView(view);
 		 partitaprova.setAdapter(adapter);

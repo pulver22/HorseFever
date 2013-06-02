@@ -6,6 +6,7 @@ import org.junit.*;
 
 import View.TextView;
 import adapter.Adapter;
+import adapter.AdapterLocale;
 
 public class TestPlancia {
 
@@ -26,7 +27,7 @@ public class TestPlancia {
 	@Before
 	public void setup(){
 		partita = new Partita(2);
-		adapter = new Adapter();
+		adapter = new AdapterLocale();
 		textview = new TextView();
 		adapter.addView(textview);
 		partita.setAdapter(adapter);
