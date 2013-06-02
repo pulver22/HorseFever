@@ -326,17 +326,18 @@ public class Plancia {
 	 * */
 	public void fotoFinish2(){
 		
-		int flag[]=getCavalliPariMax();
+		int flag[]=getCavalliPariMax();//Trova indici cavalli pari e in posizione massima
+		
 		ArrayList<Cavallo> ordineCavalli=new ArrayList<Cavallo>();
 		boolean esisteVincente=false,esistePerdente=false;
-		for (int i=0; i<6;i++){
+		for (int i=0; i<6;i++){ //Per cavalli di cui si è memorizzato l'indice, si aggiungono a Fotofinish e si segnano arrivati
 			if (flag[i]==1){
 				fotofinish.add(cavalli[i]);
 				arrivati[i]=true;
 			}
 		}
 		
-		for (int j=0;j<fotofinish.size();j++){
+		for (int j=0;j<fotofinish.size();j++){//Ricerca Cavallo con effetto Vincente
 			if (fotofinish.get(j).getEffettoFotofinish()!=null){
 				if (fotofinish.get(j).getEffettoFotofinish().equals("=1")){
 					ordineCavalli.add(fotofinish.get(j));
@@ -346,7 +347,7 @@ public class Plancia {
 				}
 			}
 		}
-		for (int k=0;k<fotofinish.size();k++){
+		for (int k=0;k<fotofinish.size();k++){//Ricerca Cavallo con effetto perdente
 			if (fotofinish.get(k).getEffettoFotofinish()!=null){
 				if (fotofinish.get(k).getEffettoFotofinish().equals("=0")){
 					ordineCavalli.add(fotofinish.get(k));
@@ -357,9 +358,9 @@ public class Plancia {
 			}
 		}
 		
-		if (fotofinish.size()>1) this.sortPerQuotazioneDecrescente();
+		if (fotofinish.size()>1) this.sortPerQuotazioneDecrescente(); //Ordinamento dei restanti
 		
-		while(fotofinish.size()>0){
+		while(fotofinish.size()>0){//Inserimento dei restanti nelle posizioni adeguate
 			if (esisteVincente){
 				ordineCavalli.add(1,fotofinish.get(0));
 				fotofinish.remove(0);
@@ -372,7 +373,7 @@ public class Plancia {
 			}
 		}
 		
-		while(ordineCavalli.size()>0){
+		while(ordineCavalli.size()>0){//Inserimento finale in cavalliArrivati
 			cavalliArrivati.add(ordineCavalli.get(0));
 			ordineCavalli.remove(0);
 		}
