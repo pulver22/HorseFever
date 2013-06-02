@@ -20,6 +20,8 @@ import horsefever.Scommessa;
 public class GUIView implements View{
 
 	private Board board;
+	private ArrayList<eventoCorsa> eventiCorsa=new ArrayList<eventoCorsa>();
+	private ThreadCorsa threadCorsa;
 	
 	public GUIView(String nomegiocatore, String scuderia,long denari){
 		
@@ -28,6 +30,8 @@ public class GUIView implements View{
 		board.setNomeScuderia(scuderia);
 		board.setPV(0);
 		board.setDenari(denari);
+		
+		threadCorsa=new ThreadCorsa(this);
 		
 	}
 	@Override
@@ -292,13 +296,7 @@ public class GUIView implements View{
        
        if(e instanceof eventoCorsa){
     	   
-    	   int[] posizioniAggiornate=((eventoCorsa) e).getPosizioniAggiornate();
-    	   int[] valoriMovimento=((eventoCorsa) e).getValoriMovimento();
-    	   int[] esitoDadi=((eventoCorsa) e).getEsitoDadi();
-    	   String immagineMovimento=((eventoCorsa) e).getImmagineMovimento();
-    	   
-    	   board.setImmagineMovimento(immagineMovimento);
-    	   aggiornaPosizioni(posizioniAggiornate);
+    	   eventiCorsa.add((eventoCorsa) e);
     	   
        }
        
@@ -322,12 +320,6 @@ public class GUIView implements View{
        }
 		
 	}
-
-	public void aggiornaPosizioni(int[] posizioni){
-		for(int i=0; i<6; i++){
-			board.getPedina(i).muovi(posizioni[i]);
-		}
-	}
 	
 	
 	
@@ -337,10 +329,25 @@ public class GUIView implements View{
 		
 	}
 
-	
+	public eventoCorsa getEventoCorsa(){
+		
+		eventoCorsa e;
+		
+		if(eventiCorsa.size()>0){
+			
+			e=eventiCorsa.get(0);
+			eventiCorsa.remove(0);
+			
+			return e;
+			
+		}
+		
+		return null;
+	}
 
-
-
+	public Board getBoard() {
+		return board;
+	}
 	
 
 }
