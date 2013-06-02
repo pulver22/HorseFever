@@ -298,6 +298,7 @@ public class GUIView implements View{
     	   String immagineMovimento=((eventoCorsa) e).getImmagineMovimento();
     	   
     	   board.setImmagineMovimento(immagineMovimento);
+    	   aggiornaPosizioni(posizioniAggiornate);
     	   
        }
        

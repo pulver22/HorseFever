@@ -33,6 +33,7 @@ public class TestGUI {
 		//controller.FaseScommesse();
 		controller.FaseCorsa();
 		
+		
 		/*
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd",'a');
 		Azione pluto = new Azione("eee","fff","ggg","hhh",'b');
