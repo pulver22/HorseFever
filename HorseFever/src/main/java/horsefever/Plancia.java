@@ -42,6 +42,7 @@ public class Plancia {
 	 * Aggiunge la carta azione su quella determinata corsia
 	 * @param carta
 	 * @param numCorsia
+	 * @author Niccolo
 	 */
 	public void TruccaCorsia(Azione carta,int numCorsia, String nomeGioc){
 		corsieTruccate[numCorsia].add(carta);
@@ -49,23 +50,23 @@ public class Plancia {
 	}
 
 	/**
-	 * @author Niccolo
 	 * Applica gli effetti di tutte le carte Azioni su tutti i Cavalli
+	 * @author Niccolo
 	 * */
 	public void applicaAzioni(){
 		for (int i=0; i<6;i++){
-			controllaAzioniDiRimozione(corsieTruccate[i]);
+			controllaAzioniDiRimozione(corsieTruccate[i],i);
 			eliminaEffettiOpposti(corsieTruccate[i]);
-			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i]);
+			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i],i);
 		}
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
 	 * @param l'ArrayList dell carte Azione su cui fare il controllo
+	 * @author Niccolo
 	 * */
-	public void controllaAzioniDiRimozione(ArrayList azioni){
+	public void controllaAzioniDiRimozione(ArrayList azioni,int corsia){
 		Azione a;
 		boolean positive=false;
 		boolean negative=false;
@@ -77,13 +78,13 @@ public class Plancia {
 					positive=true;
 					azioni.remove(i);
 					i--;
-					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 				}
 				if (a.getValoreEffetto().equals("Rimuovi_negative")) {
 					negative=true;
 					azioni.remove(i);
 					i--;
-					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));	
+					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));	
 				}
 			}
 			
@@ -115,12 +116,12 @@ public class Plancia {
 	}
 
 	/**
-	 * @author Niccolo
 	 * Assegna agli attributi di Cavallo i valori delle Carte Azioni presenti su di esso
 	 * @param ArrayList delle Carte Azione assegnate al cavallo
 	 * @param Il cavallo su cui assegnare gli effetti
+	 * @author Niccolo
 	 * */
-	public void assegnaEffettiAlCavallo(ArrayList azioni, Cavallo cavallo){
+	public void assegnaEffettiAlCavallo(ArrayList azioni, Cavallo cavallo,int corsia){
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
 			if (a.getTipoEffetto().equals("Partenza")) {
@@ -129,7 +130,7 @@ public class Plancia {
 				} else {
 					cavallo.setEffettoPartenza2(a.getValoreEffetto());
 				}
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 			}
 			if (a.getTipoEffetto().equals("Sprint")) {
 				if (a.getLettera()=='C'){
@@ -137,23 +138,23 @@ public class Plancia {
 				} else {
 					cavallo.setEffettoSprint2(a.getValoreEffetto());
 				}
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 			}
 			if (a.getTipoEffetto().equals("Fotofinish")) {
 				cavallo.setEffettoFotofinish(a.getValoreEffetto());
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 			}
 			if (a.getTipoEffetto().equals("Traguardo")) {
 				cavallo.setEffettoTraguardo(a.getValoreEffetto());
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 			}
 			if (a.getTipoEffetto().equals("Ultimo") || a.getTipoEffetto().equals("Primo")) {
 				cavallo.setEffettoUltimoPrimo(a.getValoreEffetto());
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 			}
 			if (a.getTipoEffetto().equals("Quotazione")) {
 				cavallo.setEffettoQuotazione(a.getValoreEffetto());
-				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString()));
+				partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 				lavagna.setQuotazioneAlCavallo(cavallo.getColore(), a.getValoreEffetto());
 				
 			}
@@ -161,9 +162,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Verifica se in un ArrayList di carte Azione, ce ne sono alcune che si annullano
 	 * @param l'arrayList delle carte Azione da controllare
+	 * @author Niccolo
 	 * */
 	public void eliminaEffettiOpposti(ArrayList azioni){
 		if (azioni.size()>1){
@@ -182,11 +183,11 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * A partire dall'array di valori della carta Movimento, rende l'array dei movimenti teorici dei cavalli 
 	 * in base alle quotazioni
 	 * @param array dei valori della carta Movimento
 	 * @return array dei movimenti teorici dei cavalli
+	 * @author Niccolo
 	 * */
 	public int[] calcolaIncrementiDaMov(int[] valoriMov){
 		int[] incrementi = new int[6];
@@ -197,9 +198,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Esegue i movimenti dei cavalli alla partenza
 	 * @param l'array dei movimenti teorici dei cavalli
+	 * @author Niccolo
 	 * */
 	public void partenza(int[] movimenti){
 		for (int i=0; i<6;i++){
@@ -208,9 +209,8 @@ public class Plancia {
 	}
 	
 	/**
+	 * Esegue i movimenti dei cavalli
 	 * @author Niccolo
-	 * Esegue i movimenti dei cavalli successivi alla partenza
-	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
 	public void muovi(){
 		Cavallo c;
@@ -248,8 +248,8 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Gestisce arrivi e fotofinish del round di corsa attuale
+	 * @author Niccolo
 	 * */
 	public void gestioneArrivi(){
 		inserisciArrivati();
@@ -257,9 +257,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Controlla se un cavallo è arrivati prima di tutti gli altri e in tal caso lo inserisce in arrivi
 	 * rimuovendo il suo riferimento dall'array dei cavalli
+	 * @author Niccolo
 	 * */
 	public void inserisciArrivati(){
 		int flagArrivo=0;
@@ -323,8 +323,8 @@ public class Plancia {
 		return false;
 	}
 	/**
-	 * @author Niccolo
 	 * Esegue il controllo di fotofinish sui vari cavalli nel round di corsa corrente
+	 * @author Niccolo
 	 * */
 	public void fotoFinish2(){
 		
@@ -388,6 +388,7 @@ public class Plancia {
 	
 	/**
 	 * Restituisce un array con 1 agli indici dei cavalli pari nella posizione massima non ancora arrivati, 0 altrove 
+	 * @author Niccolo
 	 * */
 	public int[] getCavalliPariMax(){
 		int[] flag=new int[6];
@@ -401,6 +402,7 @@ public class Plancia {
 	/**
 	 * Controlla, tra i cavalli arrivati ora al traguardo, la posizione di quali sono arrivati pari a una posizione maggiore, 0 altrimenti
 	 * @return la posizione dei cavalli pari maggiormente oltre il traguardo 
+	 * @author Niccolo
 	 * */
 	public int getMaxPosPari(){
 		int max=0;
@@ -421,10 +423,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
-	 * Sostanzialmente un bubblesort dell'ArrayList di Cavalli in base alla loro quotazione (decrescente
+	 * Sostanzialmente un bubblesort dell'ArrayList Fotofinish di Cavalli in base alla loro quotazione (decrescente
 	 * nel senso numerico, da "7" a "2", non nel senso dalla migliore (2) alla peggiore (7)). 
-	 * @param l'ArrayList di Cavalli da ordinare
+	 * @author Niccolo
 	 * */
 	public void sortPerQuotazioneDecrescente(){
 		
@@ -448,22 +449,12 @@ public class Plancia {
                              //non ci sono stati scambi, quindi il metodo può terminare
                              //poiché l' array risulta ordinato
         }
-		/*
-		for (int j=0; j<fotofinish.size()-1;j++){
-			for (int i=1;i<fotofinish.size();i++){
-				if (fotofinish.get(j).getQuotazione()<fotofinish.get(i).getQuotazione()){
-					Cavallo ci=fotofinish.get(i);
-					Cavallo cj=fotofinish.get(j);
-					fotofinish.set(i, cj);
-					fotofinish.set(j, ci);
-				}
-			}
-		}*/
 	}
 	
 	/**
 	 * Resetta la Plancia alla situazione precedente la corsa.
 	 * Rimuove tutti gli elementi da fotofinish cavalliArrivati e corsieTruccate, e resetta i cavalli.
+	 * @author Niccolo
 	 * */
 	public void reset(){
 		for (int i=0; i<6;i++){
@@ -488,10 +479,10 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Metodo di supporto, ritorna i cavalli in prima posizione
 	 * @return un array di int con 1 se il cavallo corrispondente è primo (eventualmente parimerito con altri)
 	 * 0 se invece non lo è. 
+	 * @author Niccolo
 	 * */
 	public int[] getCavalliPrimiPari(){
 		int[] primiPari=new int[6];
@@ -505,10 +496,10 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Metodo di supporto, ritorna i cavalli in ultima posizione
 	 * @return un array di int con 1 se il cavallo corrispondente è ultimo (eventualmente parimerito con altri)
 	 * 0 se invece non lo è. 
+	 * @author Niccolo
 	 * */
 	public int[] getCavalliUltimiPari(){
 		int[] ultimiPari=new int[6];
@@ -522,8 +513,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Metodo di supporto, ritorna la posizione massima tra quelle attuali dei cavalli
+	 * @return la posizione massima tra le attuali dei cavalli
+	 * @author Niccolo
 	 * */
 	public int getMax(){
 		int max=0;
@@ -535,8 +527,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Metodo di supporto, ritorna la posizione minima tra quelle attuali dei cavalli
+	 * @return la posizione minima tra quelle attuali dei Cavalli
+	 * @author Niccolo
 	 * */
 	public int getMin(){
 		int min=cavalli[0].getPosizione();
@@ -548,9 +541,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Esegue lo pseudo lancio dei dadi sprint
 	 * @return un array di 6 elementi. Ciascuno a 0 se non è uscito con nessun lancio, 1 se è uscito 
+	 * @author Niccolo
 	 * */
 	public int[] sprint(){
 		int c;
@@ -569,9 +562,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Ritorna l'Array di String dei colori dei cavalli nell'ordine d'arrivo
 	 * @return I colori dei cavalli in ordine d'arrivo
+	 * @author Niccolo
 	 * */
 	public String[] getColoriArrivi(){
 		String colori[]=new String[6];
@@ -583,8 +576,9 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Ritorna true se tutti i cavalli sono arrivati e false in caso contrario
+	 * @return true tutti i cavalli sono arrivati, false altrimenti
+	 * @author Niccolo
 	 * */
 	public boolean tuttiArrivati(){
 		for (int i=0; i<6;i++){
