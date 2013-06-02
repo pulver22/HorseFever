@@ -117,7 +117,7 @@ public class TestPlancia {
 		plancia.getCavalloAt(2).setQuotazione(2);
 		//Rosso
 		plancia.getCavalloAt(3).setQuotazione(4);
-		plancia.fotoFinish();
+		plancia.fotoFinish2();
 		assertEquals("Verde",plancia.getCavalliArrivati().get(0).getColore());
 		assertEquals("Blu",plancia.getCavalliArrivati().get(1).getColore());
 		assertEquals("Rosso",plancia.getCavalliArrivati().get(2).getColore());
@@ -170,7 +170,7 @@ public class TestPlancia {
 		plancia.getCavalloAt(1).setQuotazione(3);
 		//Verde
 		plancia.getCavalloAt(2).setQuotazione(2);
-		plancia.getCavalloAt(3).setEffettoFotofinish("=0");
+		plancia.getCavalloAt(2).setEffettoFotofinish("=0");
 		//Rosso
 		plancia.getCavalloAt(3).setQuotazione(5);
 		//Giallo
@@ -190,7 +190,7 @@ public class TestPlancia {
 		plancia.getCavalloAt(1).setQuotazione(3);
 		//Verde
 		plancia.getCavalloAt(2).setQuotazione(2);
-		plancia.getCavalloAt(3).setEffettoFotofinish("=0");
+		plancia.getCavalloAt(2).setEffettoFotofinish("=0");
 		//Rosso
 		plancia.getCavalloAt(3).setQuotazione(5);
 		plancia.getCavalloAt(3).setEffettoFotofinish("=1");

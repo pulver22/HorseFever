@@ -417,6 +417,7 @@ public class Plancia {
 				arrivati[i]=true;
 			}
 		}
+		
 		for (int j=0;j<fotofinish.size();j++){
 			if (fotofinish.get(j).getEffettoFotofinish()!=null){
 				if (fotofinish.get(j).getEffettoFotofinish().equals("=1")){
@@ -452,10 +453,12 @@ public class Plancia {
 				fotofinish.remove(0);
 			}
 		}
+		
 		while(ordineCavalli.size()>0){
 			cavalliArrivati.add(ordineCavalli.get(0));
 			ordineCavalli.remove(0);
 		}
+		
 		esisteVincente=false;
 		esistePerdente=false;
 		if (almenoDueCavalliPari()) fotoFinish2();
