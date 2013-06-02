@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import eventi.HorseFeverEvent;
+import eventi.eventoArrivi;
 import eventi.eventoCorsa;
 import eventi.eventoEffettoAvvenuto;
 import eventi.eventoQuotazioni;
@@ -273,6 +274,7 @@ public class Plancia {
 					}						 //aumenta il flag, altrimenti lo diminuisce
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
+						partita.notifyObserver(new eventoArrivi(cavalli[j].getColore(),cavalliArrivati.size()));
 						arrivati[j]=true;
 						//cavalli[j]=null;
 					}
@@ -375,6 +377,7 @@ public class Plancia {
 		
 		while(ordineCavalli.size()>0){//Inserimento finale in cavalliArrivati
 			cavalliArrivati.add(ordineCavalli.get(0));
+			partita.notifyObserver(new eventoArrivi(ordineCavalli.get(0).getColore(),cavalliArrivati.size()));
 			ordineCavalli.remove(0);
 		}
 		
