@@ -18,7 +18,7 @@ public class ThreadCorsa implements Runnable{
 		
 		this.vista=vista;
 		this.board=vista.getBoard();
-		t=Thread.currentThread();
+		t=new Thread();
 		t.start();
 		
 	}
