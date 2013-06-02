@@ -257,4 +257,25 @@ public class TestPlancia {
 		assertEquals(3,plancia.getFotofinish().get(2).getQuotazione());
 		assertEquals(2,plancia.getFotofinish().get(3).getQuotazione());
 	}
+	
+	@Test
+	public void casoTestGetPrimiUltimi(){
+		int[] pos={10,13,12,8,13,8};
+		plancia.setPosizioniCavalli(pos);
+		int[] primi=plancia.getCavalliPrimiPari();
+		int[] ultimi=plancia.getCavalliUltimiPari();
+		assertEquals(0,primi[0]);
+		assertEquals(1,primi[1]);
+		assertEquals(0,primi[2]);
+		assertEquals(0,primi[3]);
+		assertEquals(1,primi[4]);
+		assertEquals(0,primi[5]);
+		
+		assertEquals(0,ultimi[0]);
+		assertEquals(0,ultimi[1]);
+		assertEquals(0,ultimi[2]);
+		assertEquals(1,ultimi[3]);
+		assertEquals(0,ultimi[4]);
+		assertEquals(1,ultimi[5]);
+	}
 }

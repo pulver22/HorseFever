@@ -536,7 +536,7 @@ public class Plancia {
 	 * Metodo di supporto, ritorna la posizione minima tra quelle attuali dei cavalli
 	 * */
 	public int getMin(){
-		int min=0;
+		int min=cavalli[0].getPosizione();
 		for (int i=0;i<6;i++){
 			if (min>cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
 			else min=min;
