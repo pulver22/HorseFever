@@ -21,6 +21,7 @@ public class GUIView implements View{
 
 	private Board board;
 	private ArrayList<eventoCorsa> eventiCorsa=new ArrayList<eventoCorsa>();
+	private ArrayList<eventoArrivi> arrivati=new ArrayList<eventoArrivi>();
 	private ThreadCorsa threadCorsa;
 	
 	public GUIView(String nomegiocatore, String scuderia,long denari){
@@ -324,31 +325,23 @@ public class GUIView implements View{
        
        if(e instanceof eventoArrivi){
     	   
-    	   int posArrivo=((eventoArrivi) e).getPosArrivo();
-    	   String cavallo=((eventoArrivi) e).getCavallo();
-    	   String rappresentazione=((eventoArrivi) e).rappresentazione();
-    	   int numCorsia=10;
+    	   arrivati.add((eventoArrivi) e);
     	   
-    	   if(cavallo.equals("Nero")) numCorsia=1;
-    	   if(cavallo.equals("Blu")) numCorsia=2;
-    	   if(cavallo.equals("Verde")) numCorsia=3;
-    	   if(cavallo.equals("Rosso")) numCorsia=4;
-    	   if(cavallo.equals("Giallo")) numCorsia=5;
-    	   if(cavallo.equals("Bianco")) numCorsia=6;
-    	   
+    	   /*
     	   board.settaAreaNotifica(""+rappresentazione+"\n");
     	   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
     		   
     		   board.stampaPiazzamento(numCorsia,posArrivo);
     		   
     	   }
-    	   
+    	   */
        }
 		
 	}
 	
-	
-	
+	public ArrayList<eventoArrivi> getArrivati() {
+		return arrivati;
+	}
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);

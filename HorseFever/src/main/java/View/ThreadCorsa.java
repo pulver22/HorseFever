@@ -1,5 +1,6 @@
 package View;
 
+import eventi.eventoArrivi;
 import eventi.eventoCorsa;
 
 public class ThreadCorsa extends Thread{
@@ -44,6 +45,31 @@ public class ThreadCorsa extends Thread{
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
+        	   if(vista.getArrivati().size()==6){
+        		   
+        		   for(int i=0; i<6;i++){
+        			   
+        		   eventoArrivi e=vista.getArrivati().get(i);
+        		   
+        		   int posArrivo=e.getPosArrivo();
+            	   String cavallo=e.getCavallo();
+            	   String rappresentazione=e.rappresentazione();
+            	   int numCorsia=10;
+            	   
+            	   if(cavallo.equals("Nero")) numCorsia=1;
+            	   if(cavallo.equals("Blu")) numCorsia=2;
+            	   if(cavallo.equals("Verde")) numCorsia=3;
+            	   if(cavallo.equals("Rosso")) numCorsia=4;
+            	   if(cavallo.equals("Giallo")) numCorsia=5;
+            	   if(cavallo.equals("Bianco")) numCorsia=6;
+            	   
+        		   board.settaAreaNotifica(""+rappresentazione+"\n");
+            	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+            		   
+            	   			board.stampaPiazzamento(numCorsia,posArrivo);
+            	   		}   
+            	   }
+        	   }
         	   try {
         		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {

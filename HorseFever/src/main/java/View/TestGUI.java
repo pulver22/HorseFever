@@ -29,10 +29,10 @@ public class TestGUI {
 		p.setAdapter(adapter);
 		adapter.addView(view);
 		
-		controller.start();
+		//controller.start();
 		
 		//controller.FaseScommesse();
-		//controller.FaseCorsa();
+		controller.FaseCorsa();
 		
 		
 		/*
