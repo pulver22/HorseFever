@@ -23,6 +23,7 @@ public class Board extends JFrame {
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
 	private JPanel pannelloSinistra=new JPanel();
+	private JPanel pannelloTurni=new JPanel();
 	
 	private JLabel labelPV=new JLabel("PV:");
 	private JLabel labelDenari=new JLabel("Denari:");
@@ -33,6 +34,7 @@ public class Board extends JFrame {
 	private JTextField nomeGiocatore=new JTextField("                 ");
 	private JTextField denari=new JTextField("                 ");
 	private JTextField scuderia=new JTextField("                 ");
+	private JTextField numTurno=new JTextField("1/X");
 	
 	private Image plancia;
 	private Image cartaMov;
@@ -50,6 +52,13 @@ public class Board extends JFrame {
 	
     public Board(){
     	
+    	//numero turni
+    	pannelloTurni.setBounds(1140,10,50,50);
+    	pannelloTurni.setLayout(new BorderLayout());
+    	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno corrente:" ) );
+        pannelloTurni.add(numTurno);
+        pannelloTurni.setVisible(true);
+        pannelloTurni.setBackground(Color.decode("#d6a45f"));
     
     	//inizializzazione Pedine
     	
@@ -140,11 +149,15 @@ public class Board extends JFrame {
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
     	this.add(pannelloGiocatore);
+    	this.add(pannelloTurni);
     	this.add(background);
+    	
+    	
     
     	pannelloNotifica.setDoubleBuffered(true);
     	pannelloLavagna.setDoubleBuffered(true);
     	pannelloGiocatore.setDoubleBuffered(true);
+    	pannelloTurni.setDoubleBuffered(true);
     	background.setDoubleBuffered(true);
     	
     	this.setResizable(false);
@@ -153,6 +166,11 @@ public class Board extends JFrame {
     	this.setVisible(true);
     	this.setLocationRelativeTo(null);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    public static void main(String args[]){
+    	
+    	Board prova=new Board();
     }
 	
 	public void paint(Graphics g) {
