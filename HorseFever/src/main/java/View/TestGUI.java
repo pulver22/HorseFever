@@ -20,7 +20,7 @@ public class TestGUI {
 
 	public static void main(String[] args){
 		
-		Partita p=new Partita(6);
+		Partita p=new Partita(2);
 		Controller controller=new Controller(p);
 		Adapter adapter=new AdapterLocale();
 		GUIView view = new GUIView("Alex","Blanco",8000);
@@ -29,11 +29,10 @@ public class TestGUI {
 		p.setAdapter(adapter);
 		adapter.addView(view);
 		
-		p.preparazione();
-		controller.FaseDistribuzioneCarte();
+		controller.start();
 		
 		//controller.FaseScommesse();
-		controller.FaseCorsa();
+		//controller.FaseCorsa();
 		
 		
 		/*

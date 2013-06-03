@@ -306,7 +306,7 @@ public class GUIView implements View{
     	   String cartaAttivata=((eventoEffettoAvvenuto) e).getCartaAttivata();
     	   String rappresentazione=((eventoEffettoAvvenuto) e).rappresentazione();
     	   
-    	   board.settaAreaNotifica(""+rappresentazione);
+    	   board.settaAreaNotifica(""+rappresentazione+"\n");
        }
        
        if(e instanceof eventoQuotazioni){
