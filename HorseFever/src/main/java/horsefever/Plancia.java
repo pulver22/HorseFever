@@ -276,7 +276,7 @@ public class Plancia {
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
 						partita.notifyObserver(new eventoArrivi(cavalli[j].getColore(),cavalliArrivati.size()));
 						arrivati[j]=true;
-						//cavalli[j]=null;
+						break;
 					}
 					flagArrivo=0;
 				}
