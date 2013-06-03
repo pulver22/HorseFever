@@ -31,6 +31,7 @@ public class TestGUI {
 		
 		p.preparazione();
 		controller.FaseDistribuzioneCarte();
+		
 		//controller.FaseScommesse();
 		controller.FaseCorsa();
 		
