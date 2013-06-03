@@ -2,7 +2,7 @@ package View;
 
 import eventi.eventoCorsa;
 
-public class ThreadCorsa implements Runnable{
+public class ThreadCorsa extends Thread{
 
 	private boolean stop=false;
 	private GUIView vista;
@@ -12,15 +12,11 @@ public class ThreadCorsa implements Runnable{
 	private int[] esitoDadi;
 	private String immagineMovimento;
 	private Board board;
-	private Thread t;
 	
 	public ThreadCorsa(GUIView vista){
 		
 		this.vista=vista;
-		this.board=vista.getBoard();
-		t=new Thread();
-		t.start();
-		
+		this.board=vista.getBoard();		
 	}
 
 	public void aggiornaPosizioni(int[] posizioni){
@@ -35,6 +31,7 @@ public class ThreadCorsa implements Runnable{
           while(stop==false){
         	  
         	  evento=vista.getEventoCorsa();
+        	  board.settaAreaNotifica("ciao sono il thread \n");
         	  
         	  if(evento!=null){
         		  
@@ -48,7 +45,7 @@ public class ThreadCorsa implements Runnable{
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
         	   try {
-        		   Thread.sleep(1000);
+        		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

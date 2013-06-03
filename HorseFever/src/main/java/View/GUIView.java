@@ -32,6 +32,7 @@ public class GUIView implements View{
 		board.setDenari(denari);
 		
 		threadCorsa=new ThreadCorsa(this);
+		threadCorsa.start();
 		
 	}
 	@Override
@@ -303,7 +304,9 @@ public class GUIView implements View{
        if(e instanceof eventoEffettoAvvenuto){
     	   
     	   String cartaAttivata=((eventoEffettoAvvenuto) e).getCartaAttivata();
+    	   String rappresentazione=((eventoEffettoAvvenuto) e).rappresentazione();
     	   
+    	   board.settaAreaNotifica(""+rappresentazione);
        }
        
        if(e instanceof eventoQuotazioni){
