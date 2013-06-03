@@ -318,6 +318,28 @@ public class GUIView implements View{
     	   
     	   board.settaAreaQuotazioni(quot);
        }
+       
+       if(e instanceof eventoArrivi){
+    	   
+    	   int posArrivo=((eventoArrivi) e).getPosArrivo();
+    	   String cavallo=((eventoArrivi) e).getCavallo();
+    	   String rappresentazione=((eventoArrivi) e).rappresentazione();
+    	   int numCorsia=10;
+    	   
+    	   if(cavallo=="Nero") numCorsia=0;
+    	   if(cavallo=="Blu") numCorsia=1;
+    	   if(cavallo=="Verde") numCorsia=2;
+    	   if(cavallo=="Rosso") numCorsia=3;
+    	   if(cavallo=="Giallo") numCorsia=4;
+    	   if(cavallo=="Bianco") numCorsia=5;
+    	   
+    	   board.settaAreaNotifica(""+rappresentazione+"\n");
+    	   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+    		   
+    		   board.stampaPiazzamento(numCorsia,posArrivo);
+    	   }
+    	   
+       }
 		
 	}
 	
