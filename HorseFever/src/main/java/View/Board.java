@@ -59,7 +59,9 @@ public class Board extends JFrame {
         pannelloTurni.add(numTurno);
         pannelloTurni.setVisible(true);
         pannelloTurni.setBackground(Color.decode("#d6a45f"));
-    
+        numTurno.setEditable(false);
+        
+        
     	//inizializzazione Pedine
     	
     	pedine[0]=new Pedina(455,90,"pedine/nero.png",this);
@@ -168,11 +170,7 @@ public class Board extends JFrame {
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
-    public static void main(String args[]){
-    	
-    	Board prova=new Board();
-    }
-	
+   
 	public void paint(Graphics g) {
         super.paint(g);
         
