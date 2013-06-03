@@ -20,6 +20,8 @@ public interface Adapter {
 	
 	public void notify(HorseFeverEvent e);
 	
+	public void prosegui(String messaggio, int indice);
+	
 	public void addView(View v);
 	
 	public void removeView(int i);

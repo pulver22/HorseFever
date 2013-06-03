@@ -367,6 +367,11 @@ public class GUIView implements View{
 	public Board getBoard() {
 		return board;
 	}
+	@Override
+	public void prosegui(String messaggio) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

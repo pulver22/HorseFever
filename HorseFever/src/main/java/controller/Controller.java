@@ -52,7 +52,8 @@ public class Controller {
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
 			partita.getGiocatori(i).setCarteAzione(carteDaAssegnare);
 			
-		}	
+		}
+		adapter.prosegui("Sono state distribuite le carte", 0);
 	}
 	
 	/**
@@ -103,7 +104,7 @@ public class Controller {
 			Trucca(giocatoreCorrente,i);
 			
 		}
-        
+		adapter.prosegui("Sono state effettuate tutte le scommesse.", 0);
 	}
 	
 	/**
@@ -118,7 +119,7 @@ public class Controller {
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			partita.getPlancia().muovi();
-			
+			adapter.prosegui("Effettuato il round di corsa.", 0);
 			
 		}
 		
@@ -128,6 +129,7 @@ public class Controller {
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
 		partita.getLavagna().ricalcolaQuotazioni(ordineArrivo);
 		
+		adapter.prosegui("E' terminata la fase di corsa.", 0);
 	}
 	
 	/**
@@ -138,6 +140,7 @@ public class Controller {
 		
 		partita.reset();
 		
+		adapter.prosegui("Fine del turno", 0);
 
 	}
 	

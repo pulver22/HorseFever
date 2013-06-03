@@ -51,4 +51,10 @@ public class AdapterRete implements Adapter{
 		
 	}
 
+	@Override
+	public void prosegui(String messaggio, int indice) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

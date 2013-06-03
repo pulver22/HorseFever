@@ -51,11 +51,17 @@ public class AdapterLocale implements Adapter {
 	}
 	
 	
+	
 	public void addView(View v){
 		viewRegistrate.add(v);
 	}
 	public void removeView(int i){
 		viewRegistrate.remove(i);
+	}
+
+	@Override
+	public void prosegui(String messaggio, int indice) {
+		viewRegistrate.get(0).prosegui(messaggio);
 	}
 
 }

@@ -40,7 +40,7 @@ public interface View {
 	
 	
 	
-	
+	public void prosegui(String messaggio);
 	
 	
 	

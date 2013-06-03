@@ -185,6 +185,22 @@ public class TextView implements View{
 		
 	}
 
+	@Override
+	public void prosegui(String messaggio) {
+		
+		System.out.println(messaggio);
+		System.out.println("Premi invio per proseguire.");
+		try{
+			InputStreamReader reader=new InputStreamReader(System.in);
+			BufferedReader myInput=new BufferedReader(reader);
+			myInput.readLine();
+		}
+		catch(IOException e){
+			System.out.println("Errore !!!\n");
+		}
+
+	}
+
 
 	
 	
