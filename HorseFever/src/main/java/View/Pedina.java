@@ -16,6 +16,7 @@ public class Pedina implements ActionListener {
 	private Timer timer;
 	private Board board;
 	private int posizioni;
+	private boolean arrivata=false;
 	
 
 	public Pedina(int x, int y, String nomeImmagine,Board board){
@@ -77,11 +78,19 @@ public class Pedina implements ActionListener {
 			  
 				x+=dx;
 			}
-			else x=950;
+			else{ 
+				  x=950;
+				  arrivata=true;
+			}
 			board.repaint();
 		}
 		else{
 			timer.stop();
 		}
+	}
+	
+	public boolean getArrivata(){
+		
+		return arrivata;
 	}
 }

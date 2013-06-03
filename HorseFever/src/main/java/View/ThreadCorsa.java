@@ -1,5 +1,7 @@
 package View;
 
+import java.util.Arrays;
+
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
 
@@ -41,11 +43,13 @@ public class ThreadCorsa extends Thread{
            	      esitoDadi=evento.getEsitoDadi();
            	      immagineMovimento=evento.getImmagineMovimento();
            	      
-           	      
+           	   board.settaAreaNotifica("Eisto dadi= "+Arrays.toString(esitoDadi)+"\n");   
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
+
         	   if(vista.getArrivati().size()==6){
+        		   
         		   
         		   for(int i=0; i<6;i++){
         			   
@@ -63,11 +67,16 @@ public class ThreadCorsa extends Thread{
             	   if(cavallo.equals("Giallo")) numCorsia=5;
             	   if(cavallo.equals("Bianco")) numCorsia=6;
             	   
-        		   board.settaAreaNotifica(""+rappresentazione+"\n");
-            	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+            	   if(board.getPedina(i).getArrivata()==true){
             		   
-            	   			board.stampaPiazzamento(numCorsia,posArrivo);
-            	   		}   
+            		 board.settaAreaNotifica(""+rappresentazione+"\n");
+           	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+           		   
+           	   			board.stampaPiazzamento(numCorsia,posArrivo);
+           	   		}    
+            		   
+            	   }
+        		   
             	   }
         	   }
         	   try {
