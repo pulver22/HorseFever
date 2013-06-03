@@ -36,6 +36,7 @@ public class Plancia {
 			
 			}
 			
+		partenza=true;
 	}
 	
 	/**
