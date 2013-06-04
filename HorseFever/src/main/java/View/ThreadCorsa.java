@@ -50,7 +50,7 @@ public class ThreadCorsa extends Thread{
         	 
         	   try {
         		   board.repaint();
-        		   Thread.sleep(3500);
+        		   Thread.sleep(1000);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -101,6 +101,7 @@ public class ThreadCorsa extends Thread{
           	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
           		   
           	   				board.stampaPiazzamento(numCorsia,posArrivo);
+          	   				board.repaint();
           	   		}   
            		   
            		}
