@@ -386,7 +386,7 @@ public class GUIView implements View{
         	   
         	   board.settaAreaQuotazioni(quot);
     	    }
-            quotazioni.add((eventoQuotazioni) e);
+    	    else quotazioni.add((eventoQuotazioni) e);
     		   
     	   }
     	 
