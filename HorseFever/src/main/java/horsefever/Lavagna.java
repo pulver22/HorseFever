@@ -33,12 +33,12 @@ public class Lavagna {
 	 * */
 	public void inizializzaLavagna(){
 		int temp;
-		quotazioni[0][0]="Nero";
-		quotazioni[1][0]="Blu";
-		quotazioni[2][0]="Verde";
-		quotazioni[3][0]="Rosso";
-		quotazioni[4][0]="Giallo";
-		quotazioni[5][0]="Bianco";
+		quotazioni[0][0]=new String("Nero");
+		quotazioni[1][0]=new String("Blu");
+		quotazioni[2][0]=new String("Verde");
+		quotazioni[3][0]=new String("Rosso");
+		quotazioni[4][0]=new String("Giallo");
+		quotazioni[5][0]=new String("Bianco");
 		
 		ArrayList<Integer> init = new ArrayList(6);
 		for (int i=2; i<8;i++){
@@ -46,7 +46,7 @@ public class Lavagna {
 		}
 		for (int j=0; j<6; j++){
 			temp=(int) (Math.random()*init.size());
-			quotazioni[j][1]=init.get(temp).toString();
+			quotazioni[j][1]=new String(init.get(temp).toString());
 			init.remove(temp);
 		}
 		
