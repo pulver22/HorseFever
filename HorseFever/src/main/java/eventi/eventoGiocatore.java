@@ -19,6 +19,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 	private int pv;
 	private String[] carteAzione=new String[2];
 	private int tipo;
+	private int numcarte;
 	
 	public eventoGiocatore(Giocatore g, int tipo){
 		this.tipo=tipo;
@@ -29,7 +30,10 @@ public class eventoGiocatore implements HorseFeverEvent{
 		if (g.getCarteAzione().size()!=0){
 			String[] azioni=g.getStringheAzioni();
 			for (int i=0; i<azioni.length; i++){
-				if (azioni[i]!=null) this.carteAzione[i]=new String(azioni[i]);
+				if (azioni[i]!=null) {
+					this.carteAzione[i]=new String(azioni[i]);
+					numcarte++;
+				}
 			}
 		}
 	}
@@ -37,13 +41,13 @@ public class eventoGiocatore implements HorseFeverEvent{
 	@Override
 	public String rappresentazione() {
 		if (tipo==MODIFICA)
-			return "Modifica al Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
+			return "Modifica al Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else if (tipo==NUOVO)
 			return "Si è aggiunto Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
 		else if (tipo==PRIMO)
-			return "Il primo giocatore è Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
+			return "Il primo giocatore è Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else if (tipo==DITURNO)
-			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" CarteAzione: "+Arrays.toString(carteAzione);
+			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else 
 			return "Ha perso il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
 	}
@@ -70,6 +74,10 @@ public class eventoGiocatore implements HorseFeverEvent{
 
 	public void setCarteAzione(String[] carteAzione) {
 		this.carteAzione = carteAzione;
+		numcarte=0;
+		for (int i=0;i<carteAzione.length;i++){
+			if (carteAzione[i]!=null) numcarte++;
+		}
 	}
 	
 	
