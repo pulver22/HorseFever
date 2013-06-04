@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 import horsefever.Azione;
@@ -22,6 +24,7 @@ public class GUIView implements View{
 	private Board board;
 	private ArrayList<eventoCorsa> eventiCorsa=new ArrayList<eventoCorsa>();
 	private ArrayList<eventoArrivi> arrivati=new ArrayList<eventoArrivi>();
+	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
 	
 	public GUIView(String nomegiocatore, String scuderia,long denari){
@@ -312,15 +315,19 @@ public class GUIView implements View{
        
        if(e instanceof eventoQuotazioni){
     	   
-    	   String[][] tabellaQuot=((eventoQuotazioni) e).getTabellaQuot();
+    	   quotazioni.add((eventoQuotazioni) e);
+    	   
+    	   eventoQuotazioni e1=((eventoQuotazioni) e);
+    	   
+		   String[][] tabellaQuot= e1.getTabellaQuot();
     	   String[] quot=new String[6];
     	   
     	   for(int i=0;i<6;i++){
     		   
     		   quot[i]=tabellaQuot[i][1];
     	   }
+    	   board.settaAreaNotifica("\n"+Arrays.toString(quot)+"\n");
     	   
-    	   board.settaAreaQuotazioni(quot);
        }
        
        if(e instanceof eventoArrivi){
@@ -348,6 +355,10 @@ public class GUIView implements View{
 		
 	}
 
+	public eventoQuotazioni getEventoQuotaz(){
+		
+		return quotazioni.get(0);
+	}
 	public eventoCorsa getEventoCorsa(){
 		
 		eventoCorsa e;

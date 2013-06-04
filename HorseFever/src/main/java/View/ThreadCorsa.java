@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
+import eventi.eventoQuotazioni;
 
 public class ThreadCorsa extends Thread{
 
@@ -39,8 +40,6 @@ public class ThreadCorsa extends Thread{
         	  
         	  if(evento!=null){
         		  
-        		  i++;
-        		  board.settaAreaNotifica("sono entrato nel ciclo "+i);
         		  posizioniAggiornate=evento.getPosizioniAggiornate();
            	      valoriMovimento=evento.getValoriMovimento();
            	      esitoDadi=evento.getEsitoDadi();
@@ -62,6 +61,17 @@ public class ThreadCorsa extends Thread{
         	   
         	   if(board.getTutteArrivate()==true){
         			 
+        		   eventoQuotazioni e1=vista.getEventoQuotaz();
+        		   String[][] tabellaQuot= e1.getTabellaQuot();
+            	   String[] quot=new String[6];
+            	   
+            	   for(int i=0;i<6;i++){
+            		   
+            		   quot[i]=tabellaQuot[i][1];
+            	   }
+            	   
+            	   board.settaAreaQuotazioni(quot);
+            	   
         		   for(int i=0; i<6;i++){
         			   
         			eventoArrivi e=vista.getArrivati().get(i);
@@ -88,11 +98,11 @@ public class ThreadCorsa extends Thread{
             		   
             	   }
         		   
-        		   board.setTutteArrivate(false);
+        		   //board.setTutteArrivate(false);
         	   }
         	   try {
         		   board.repaint();
-        		   Thread.sleep(3500);
+        		   Thread.sleep(35000);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
