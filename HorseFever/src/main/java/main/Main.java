@@ -10,12 +10,12 @@ public class Main {
 
 	public static void main(String[] args){
 	
-		Partita p=new Partita(2);
+
 		Adapter ad=new AdapterLocale();
+		Partita p=new Partita(2,ad);
 		Controller c = new Controller(p);
 		TextView tv= new TextView();
 		ad.addView(tv);
-		p.setAdapter(ad);
 		c.setAdapter(ad);
 		c.start();
 	}
