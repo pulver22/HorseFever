@@ -344,6 +344,14 @@ public class GUIView implements View{
     	   }
     	   */
        }
+       
+       if(e instanceof eventoTurno){
+    	   
+    	   int turnoCor=((eventoTurno) e).getTurnoCorrente();
+    	   int turniTot=((eventoTurno) e).getTurniTotali();
+    	   
+    	   board.setTurni(turnoCor, turniTot);
+       }
 		
 	}
 	

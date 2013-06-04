@@ -45,6 +45,9 @@ public class Partita {
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
 		else numSegnaliniScommessaPerColore=4;
 		
+		adapter.notify(new eventoTurno(1,numturni));
+		
+		
 		for(int i=0; i<6; i++){
 			
 			numSegnalini[i]=numSegnaliniScommessaPerColore;
@@ -61,7 +64,8 @@ public class Partita {
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
 			quotazione=p.getQuotScuderia();
 			scuderia=lavagna.getScuderiaInit(quotazione);
-			giocatori.add(new Giocatore(p,scuderia,this));
+			giocatori.add(new Giocatore(p,scuderia,this));	
+			adapter.notify(new eventoGiocatore(giocatori.get(i),0));
 			
 		}
 		

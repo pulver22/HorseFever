@@ -310,4 +310,9 @@ public class Board extends JFrame {
 		
 		return this.tutteArrivate;
 	}
+	
+	public void setTurni(int turnoCor, int turniTot){
+		
+		numTurno.setText(turnoCor+"/"+turniTot);
+	}
 }
