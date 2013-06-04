@@ -6,7 +6,7 @@ import eventi.eventoQuotazioni;
 
 public class Lavagna {
 
-	private String[][] quotazioni = new String[6][2];
+	private String[][] quotazioni;
 	private String[] arrivi = new String[6];
 	private Partita partita;
 	private Plancia plancia;
@@ -25,7 +25,7 @@ public class Lavagna {
 	 * */
 	public Lavagna(Partita p){
 		this.partita=p;
-		
+		quotazioni = new String[6][2];
 	}
 	
 	/**
