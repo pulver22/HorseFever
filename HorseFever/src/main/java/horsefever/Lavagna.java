@@ -25,6 +25,13 @@ public class Lavagna {
 	 * */
 	public Lavagna(Partita p){
 		this.partita=p;
+		
+	}
+	
+	/**
+	 * Inizializzazione di Lavagna con i valori iniziali delle quotazioni 
+	 * */
+	public void inizializzaLavagna(){
 		int temp;
 		quotazioni[0][0]="Nero";
 		quotazioni[1][0]="Blu";
