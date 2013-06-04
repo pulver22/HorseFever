@@ -11,7 +11,7 @@ public class Pedina implements ActionListener {
 
 	private int x;
 	private int y;
-	private final int dx=37;
+	private int dx=37;
 	private Image immagine;
 	private Timer timer;
 	private Board board;
@@ -77,13 +77,19 @@ public class Pedina implements ActionListener {
 		if(posizioni>0){
 		
 			posizioni--;
-			if(x+dx<936){
+			if(x+dx<1046){
 			  
+				if(x+dx>862){
+					dx=48;
+					
+					if(x>=910) arrivata=true;
+				}
 				x+=dx;
+				
 			}
 			else{ 
-				  x=950;
-				  arrivata=true;
+				  
+				  x=1046;
 			}
 			board.repaint();
 		}

@@ -40,19 +40,15 @@ public class ThreadCorsa extends Thread{
         	  
         	  if(evento!=null){
         		  
-        		  
         		  posizioniAggiornate=evento.getPosizioniAggiornate();
-           	      valoriMovimento=evento.getValoriMovimento();
            	      esitoDadi=evento.getEsitoDadi();
            	      immagineMovimento=evento.getImmagineMovimento();
            	      
-           	   //board.settaAreaNotifica("\nEsito dadi= "+Arrays.toString(esitoDadi)); 
-           	   //board.settaAreaNotifica("\n"+Arrays.toString(valoriMovimento));
-           	   //board.settaAreaNotifica("\n posizioni aggiornate:"+Arrays.toString(posizioniAggiornate));
+           	   board.settaAreaNotifica("\nEsito dadi= "+Arrays.toString(esitoDadi)); 
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
-        	   
-
+        	  
+        	   //Verifica se tutte le pedine sono arrivate
         	   for(int i=0; i<6;i++){
         		   
         		   board.setTutteArrivate(true);
@@ -105,7 +101,7 @@ public class ThreadCorsa extends Thread{
         	   }
         	   try {
         		   board.repaint();
-        		   Thread.sleep(3500);
+        		   Thread.sleep(2000);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
