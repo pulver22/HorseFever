@@ -42,6 +42,8 @@ public class Lavagna {
 			quotazioni[j][1]=init.get(temp).toString();
 			init.remove(temp);
 		}
+		
+		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
 	/**
 	 * Ricalcola le quotazioni delle relative scuderie, in base all'ordine d'arrivo dei corrispondenti cavalli
