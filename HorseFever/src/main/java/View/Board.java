@@ -213,6 +213,8 @@ public class Board extends JFrame {
         g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
         
         
+        Toolkit.getDefaultToolkit().sync();
+        this.invalidate();
         
     
 	}
@@ -226,6 +228,7 @@ public class Board extends JFrame {
 		//le corsie sono distanziate di 50px l'una dall'altra e la prima parte a 86px
 		yPiazzamento[posizione]=numCorsia*50+86;
 		stampaPiazzamento[posizione]=true;
+		this.invalidate();
 		
 	}
 	public void setNomeScuderia(String scuderia,int indice) {
@@ -244,6 +247,7 @@ public class Board extends JFrame {
 		quotazioni.append("\nRosso:  "+quot[3]);
 		quotazioni.append("\nGiallo: "+quot[4]);
 		quotazioni.append("\nBianco: "+quot[5]);
+		this.invalidate();
 	}
 	
 	/**
@@ -289,7 +293,7 @@ public class Board extends JFrame {
 		
 		ImageIcon imgMov=new ImageIcon(getClass().getResource("carteMovimento/"+cartaMovimento));
 		cartaMov=imgMov.getImage();
-		repaint();
+		this.invalidate();
 		
 	}
 	
