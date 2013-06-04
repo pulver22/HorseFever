@@ -15,6 +15,7 @@ public class ThreadCorsa extends Thread{
 	private int[] esitoDadi;
 	private String immagineMovimento;
 	private Board board;
+	int i=0;
 	
 	public ThreadCorsa(GUIView vista){
 		
@@ -38,6 +39,8 @@ public class ThreadCorsa extends Thread{
         	  
         	  if(evento!=null){
         		  
+        		  i++;
+        		  board.settaAreaNotifica("sono entrato nel ciclo "+i);
         		  posizioniAggiornate=evento.getPosizioniAggiornate();
            	      valoriMovimento=evento.getValoriMovimento();
            	      esitoDadi=evento.getEsitoDadi();
@@ -48,38 +51,47 @@ public class ThreadCorsa extends Thread{
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
 
-        	   if(vista.getArrivati().size()==6){
+        	   for(int i=0; i<6;i++){
         		   
-        		   
+        		   board.setTutteArrivate(true);
+        		   if(board.getPedina(i).getArrivata()==false){
+        			   
+        			   board.setTutteArrivate(false);
+        		   }
+        	   }
+        	   
+        	   if(board.getTutteArrivate()==true){
+        			 
         		   for(int i=0; i<6;i++){
         			   
-        		   eventoArrivi e=vista.getArrivati().get(i);
+        			eventoArrivi e=vista.getArrivati().get(i);
         		   
-        		   int posArrivo=e.getPosArrivo();
-            	   String cavallo=e.getCavallo();
-            	   String rappresentazione=e.rappresentazione();
-            	   int numCorsia=10;
+        		   	int posArrivo=e.getPosArrivo();
+            	   	String cavallo=e.getCavallo();
+            	   	String rappresentazione=e.rappresentazione();
+            	   	int numCorsia=10;
             	   
-            	   if(cavallo.equals("Nero")) numCorsia=1;
-            	   if(cavallo.equals("Blu")) numCorsia=2;
-            	   if(cavallo.equals("Verde")) numCorsia=3;
-            	   if(cavallo.equals("Rosso")) numCorsia=4;
-            	   if(cavallo.equals("Giallo")) numCorsia=5;
-            	   if(cavallo.equals("Bianco")) numCorsia=6;
+           	   		if(cavallo.equals("Nero")) numCorsia=1;
+           	   		if(cavallo.equals("Blu")) numCorsia=2;
+            	   	if(cavallo.equals("Verde")) numCorsia=3;
+            		if(cavallo.equals("Rosso")) numCorsia=4;
+           	   		if(cavallo.equals("Giallo")) numCorsia=5;
+           	   		if(cavallo.equals("Bianco")) numCorsia=6;
             	   
-            	   if(board.getPedina(i).getArrivata()==true){
-            		   
-            		 board.settaAreaNotifica(""+rappresentazione+"\n");
+            	   
+               
+           	   		board.settaAreaNotifica(""+rappresentazione+"\n");
            	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
            		   
-           	   			board.stampaPiazzamento(numCorsia,posArrivo);
-           	   		}    
+           	   				board.stampaPiazzamento(numCorsia,posArrivo);
+           	   		}   
             		   
             	   }
         		   
-            	   }
+        		   board.setTutteArrivate(false);
         	   }
         	   try {
+        		   board.repaint();
         		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block

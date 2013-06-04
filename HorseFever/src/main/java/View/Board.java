@@ -44,6 +44,7 @@ public class Board extends JFrame {
 	private JButton[] bottoneProva=new JButton[6];
 	
 	private boolean[] stampaPiazzamento=new boolean[3];
+	private boolean tutteArrivate=false;
 	
 	private int[] yPiazzamento=new int[3];
 	
@@ -279,4 +280,13 @@ public class Board extends JFrame {
 		return pedine[i];
 	}
 
+	public void setTutteArrivate(boolean a){
+		
+		this.tutteArrivate=a;
+	}
+	
+	public boolean getTutteArrivate(){
+		
+		return this.tutteArrivate;
+	}
 }

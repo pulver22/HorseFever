@@ -15,7 +15,8 @@ public class Pedina implements ActionListener {
 	private Image immagine;
 	private Timer timer;
 	private Board board;
-	private int posizioni;
+	private int posizioni=0;
+	private int posizioniprec=0;
 	private boolean arrivata=false;
 	
 
@@ -33,7 +34,8 @@ public class Pedina implements ActionListener {
 
 	public void muovi(int numPos){
 		
-	   this.posizioni=numPos;
+	   this.posizioni=numPos-posizioniprec;
+	   posizioniprec=posizioni;
 	  	
 	   timer=new Timer(350,this);
 	    

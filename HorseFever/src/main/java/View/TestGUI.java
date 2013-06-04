@@ -33,7 +33,8 @@ public class TestGUI {
 		
 		//controller.FaseScommesse();
 		controller.FaseCorsa();
-		
+		//view.getBoard().getPedina(0).muovi(2);
+		//view.getBoard().getPedina(1).muovi(3);
 		
 		/*
 		Azione pippo = new Azione("aaa","bbb","ccc","ddd",'a');
