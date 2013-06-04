@@ -8,6 +8,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	private int[] valoriMovimento;
 	private int[] esitoDadi;
 	private String immagineMovimento;
+	private int[] movTeorici;
 	
 	
 	public eventoCorsa(int[] posizioniAggiornate, int[] valoriMovimento, int[] esitoDadi, String immagineMovimento){
@@ -15,6 +16,7 @@ public class eventoCorsa implements HorseFeverEvent{
 		this.valoriMovimento=valoriMovimento;
 		this.esitoDadi=esitoDadi;
 		this.immagineMovimento=immagineMovimento;
+
 	}
 	
 	public String getImmagineMovimento() {
@@ -52,6 +54,14 @@ public class eventoCorsa implements HorseFeverEvent{
 
 	public void setEsitoDadi(int[] esitoDadi) {
 		this.esitoDadi = esitoDadi;
+	}
+
+	public int[] getMovTeorici() {
+		return movTeorici;
+	}
+
+	public void setMovTeorici(int[] movTeorici) {
+		this.movTeorici = movTeorici;
 	}
 	
 	

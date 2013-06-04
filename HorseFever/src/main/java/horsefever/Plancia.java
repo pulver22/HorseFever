@@ -177,6 +177,8 @@ public class Plancia {
 					if (a1.getLettera()==a2.getLettera()){
 						azioni.remove(j);
 						azioni.remove(i);
+						j--;
+						i--;
 					}
 				}
 			}
