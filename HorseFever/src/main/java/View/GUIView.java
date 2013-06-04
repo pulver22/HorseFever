@@ -264,16 +264,74 @@ public class GUIView implements View{
 	@Override
 	public void notify(HorseFeverEvent e) {
 
+	   /*
+	    * cerca il giocatore 
+	    * se tipo 0 (NUOVO) inserisce il giocatore nel primo spazio vuoto
+	    * se tipo 1 (MODIFICA) cerca il nome del giocatore corrispondente e aggiorna i dati
+	    * se tipo 4 (PERSO) elimina il giocatore
+	    * 
+	    */
        if(e instanceof eventoGiocatore){
+    	   
+    	   boolean inserito=false;
+    	   int i=0;
     	   
     	   String nomeGioc=((eventoGiocatore) e).getNome();
            long denari=((eventoGiocatore) e).getDenari();
     	   int pv=((eventoGiocatore) e).getPv();
-    	   String[] carteAzione=((eventoGiocatore) e).getCarteAzione();
+    	   String scuderia=((eventoGiocatore) e).getScuderia();
+    	   int tipo=((eventoGiocatore) e).getTipo();
     	   
-    	   //board.setPV(pv);
-    	   //board.setDenari(denari);
-       }
+    	   if(tipo==0){
+    		  
+    		   
+        	   
+        	   while(inserito==false){
+        		   
+        		   if(board.getNomeGiocatore(i).equals(" ")){
+        			   
+        			   inserito=true;
+        			   board.setNomeGiocatore(nomeGioc, i);
+        			   board.setPV(pv,i);
+        			   board.setDenari(denari, i);
+        			   board.setNomeScuderia(scuderia, i);
+        		   }
+        		   i++;
+        	   }   
+    	   }
+    	   else if(tipo==2){
+    		   
+    		   while(inserito==false){
+    			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
+    			   
+    				   inserito=true;
+    				   board.setPV(pv,i);
+    				   board.setDenari(denari, i);
+    				   board.setNomeScuderia(scuderia, i);
+    		       }
+    			   i++;
+    		   }
+    	   }	   
+    	  else if(tipo==4){
+    		  
+    		  while(inserito==false){
+   			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
+   			   
+   				   inserito=true;
+   				   board.setNomeGiocatore("  ", i);
+   				   board.setPV(0,i);
+   				   board.setDenari(0, i);
+   				   board.setNomeScuderia(" ", i);
+   		       }
+   			   i++;
+   		   }
+    			   
+    			   
+    			   
+    	  }
+    		 	   
+    	}
+     
        
        if(e instanceof eventoScommessa){
     	   
@@ -306,7 +364,6 @@ public class GUIView implements View{
        
        if(e instanceof eventoEffettoAvvenuto){
     	   
-    	   String cartaAttivata=((eventoEffettoAvvenuto) e).getCartaAttivata();
     	   String rappresentazione=((eventoEffettoAvvenuto) e).rappresentazione();
     	   
     	   board.settaAreaNotifica(""+rappresentazione+"\n");
@@ -318,10 +375,8 @@ public class GUIView implements View{
     	   if(quotIniziali==true){
     		   
     		   quotIniziali=false;
-    		  
-    		   eventoQuotazioni e1=((eventoQuotazioni) e);
         	   
-    		   String[][] tabellaQuot= e1.getTabellaQuot();
+    		   String[][] tabellaQuot= ((eventoQuotazioni) e).getTabellaQuot();
         	   String[] quot=new String[6];
         	   
         	   for(int i=0;i<6;i++){

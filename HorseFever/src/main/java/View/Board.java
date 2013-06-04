@@ -25,10 +25,10 @@ public class Board extends JFrame {
 	private JPanel pannelloSinistra=new JPanel();
 	private JPanel pannelloTurni=new JPanel();
 	
-	private JLabel labelPV=new JLabel("PV:");
-	private JLabel labelDenari=new JLabel("Denari:");
-	private JLabel labelNomeGiocatore=new JLabel("Giocatore:");
-	private JLabel labelScuderia=new JLabel("Scuderia:");
+	private JLabel labelPV=new JLabel("    PV:");
+	private JLabel labelDenari=new JLabel("    Denari:");
+	private JLabel labelNomeGiocatore=new JLabel("    Giocatore:");
+	private JLabel labelScuderia=new JLabel("    Scuderia:");
 	
 	private JTextField[] PV=new JTextField[6];
 	private JTextField[] nomeGiocatore=new JTextField[6];
@@ -100,7 +100,7 @@ public class Board extends JFrame {
 		
 		pannelloGiocatore.setBounds(450,380,650,280);
 		pannelloGiocatore.setBackground(Color.decode("#d6a45f"));
-		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
+		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatori"));
 		pannelloGiocatore.setLayout(new GridLayout(7,4));
 		
 		pannelloGiocatore.add(labelNomeGiocatore);
@@ -119,7 +119,6 @@ public class Board extends JFrame {
 			denari[i]=new JTextField(" ");
 			pannelloGiocatore.add(denari[i]);
 		}
-		
 		
 		for(int i=0;i<6;i++){
 			
@@ -241,10 +240,15 @@ public class Board extends JFrame {
 		this.invalidate();
 		
 	}
+	
 	public void setNomeScuderia(String scuderia,int indice) {
 		this.scuderia[indice].setText(scuderia);
 	}
 
+	public String getNomeScuderia(int indice){
+		
+		return this.scuderia[indice].getText();
+	}
 	/**
 	 * Scrive sulla JTextArea delle quotazioni
 	 * @param messaggio
@@ -268,9 +272,13 @@ public class Board extends JFrame {
 	 */
 	public void setPV(int PV,int indice){
 		
-		this.PV[indice].setText(""+PV);
+		this.PV[indice].setText("  "+PV);
 	}
-	
+	 
+	public String getPV(int indice){
+	    	
+	    	return this.PV[indice].getText();
+	}
 	/**
 	 * setta il nome del giocatore
 	 * @param nome
@@ -280,6 +288,11 @@ public class Board extends JFrame {
     	this.nomeGiocatore[indice].setText(nome);
     }
 	
+    public String getNomeGiocatore(int indice){
+    	
+    	return this.nomeGiocatore[indice].getText();
+    }
+ 
 	/**
 	 * setta i denari del giocatore
 	 * @param denari
@@ -288,6 +301,11 @@ public class Board extends JFrame {
 		
 		this.denari[indice].setText(""+denari);
 	}
+    
+    public String getDenari(int indice){
+    	
+    	return this.denari[indice].getText();
+    }
 	/**
 	 * Scrive sulla JTextArea delle notifiche della partita
 	 * @param messaggio

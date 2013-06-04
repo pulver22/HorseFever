@@ -23,7 +23,7 @@ public class TestGUI {
 		Adapter adapter=new AdapterLocale();
 		GUIView view = new GUIView("Alex","Blanco",8000);
 		adapter.addView(view);
-		Partita p=new Partita(2,adapter);
+		Partita p=new Partita(6,adapter);
 		Controller controller=new Controller(p);
 		
 		
