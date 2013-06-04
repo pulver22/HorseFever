@@ -21,20 +21,24 @@ public class TestGUI {
 	public static void main(String[] args){
 		
 		Adapter adapter=new AdapterLocale();
+		GUIView view = new GUIView("Alex","Blanco",8000);
+		adapter.addView(view);
 		Partita p=new Partita(2,adapter);
 		Controller controller=new Controller(p);
-		GUIView view = new GUIView("Alex","Blanco",8000);
+		
 		
 		controller.setAdapter(adapter);
 		p.setAdapter(adapter);
-		adapter.addView(view);
+		
 		
 		p.preparazione();
 		//controller.start();
 		
 		//controller.FaseScommesse();
 		controller.FaseCorsa();
-		//view.getBoard().getPedina(0).muovi(2);
+		
+		//for(int i=0;i<6;i++)
+		//view.getBoard().getPedina(i).muovi(10);
 		//view.getBoard().getPedina(1).muovi(3);
 		
 		/*

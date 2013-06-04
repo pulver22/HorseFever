@@ -35,7 +35,8 @@ public class Pedina implements ActionListener {
 	public void muovi(int numPos){
 		
 	   this.posizioni=numPos-posizioniprec;
-	   posizioniprec=posizioni;
+	   posizioniprec=posizioniprec+posizioni;
+	   
 	  	
 	   timer=new Timer(350,this);
 	    

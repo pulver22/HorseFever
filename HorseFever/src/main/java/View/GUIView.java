@@ -30,11 +30,12 @@ public class GUIView implements View{
 	public GUIView(String nomegiocatore, String scuderia,long denari){
 		
 		board=new Board();
-		board.setNomeGiocatore(nomegiocatore);
-		board.setNomeScuderia(scuderia);
-		board.setPV(0);
-		board.setDenari(denari);
 		
+		for(int i=0;i<6;i++){
+			
+		board.setNomeGiocatore(""+(i+1),i);
+		
+		}
 		threadCorsa=new ThreadCorsa(this);
 		threadCorsa.start();
 		
@@ -272,8 +273,8 @@ public class GUIView implements View{
     	   int pv=((eventoGiocatore) e).getPv();
     	   String[] carteAzione=((eventoGiocatore) e).getCarteAzione();
     	   
-    	   board.setPV(pv);
-    	   board.setDenari(denari);
+    	   //board.setPV(pv);
+    	   //board.setDenari(denari);
        }
        
        if(e instanceof eventoScommessa){
@@ -357,7 +358,18 @@ public class GUIView implements View{
 
 	public eventoQuotazioni getEventoQuotaz(){
 		
-		return quotazioni.get(0);
+        eventoQuotazioni e;
+		
+		if(quotazioni.size()>0){
+			
+			e=quotazioni.get(0);
+			quotazioni.remove(0);
+			
+			return e;
+			
+		}
+		
+		return null;
 	}
 	public eventoCorsa getEventoCorsa(){
 		

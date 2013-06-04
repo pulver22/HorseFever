@@ -40,12 +40,15 @@ public class ThreadCorsa extends Thread{
         	  
         	  if(evento!=null){
         		  
+        		  
         		  posizioniAggiornate=evento.getPosizioniAggiornate();
            	      valoriMovimento=evento.getValoriMovimento();
            	      esitoDadi=evento.getEsitoDadi();
            	      immagineMovimento=evento.getImmagineMovimento();
            	      
-           	   board.settaAreaNotifica("Eisto dadi= "+Arrays.toString(esitoDadi)+"\n");   
+           	   //board.settaAreaNotifica("\nEsito dadi= "+Arrays.toString(esitoDadi)); 
+           	   //board.settaAreaNotifica("\n"+Arrays.toString(valoriMovimento));
+           	   //board.settaAreaNotifica("\n posizioni aggiornate:"+Arrays.toString(posizioniAggiornate));
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
         	   
@@ -98,11 +101,11 @@ public class ThreadCorsa extends Thread{
             		   
             	   }
         		   
-        		   //board.setTutteArrivate(false);
+        		   board.setTutteArrivate(false);
         	   }
         	   try {
         		   board.repaint();
-        		   Thread.sleep(35000);
+        		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

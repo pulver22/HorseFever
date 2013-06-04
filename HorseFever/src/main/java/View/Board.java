@@ -30,10 +30,10 @@ public class Board extends JFrame {
 	private JLabel labelNomeGiocatore=new JLabel("Giocatore:");
 	private JLabel labelScuderia=new JLabel("Scuderia:");
 	
-	private JTextField PV=new JTextField("                 ");
-	private JTextField nomeGiocatore=new JTextField("                 ");
-	private JTextField denari=new JTextField("                 ");
-	private JTextField scuderia=new JTextField("                 ");
+	private JTextField[] PV=new JTextField[6];
+	private JTextField[] nomeGiocatore=new JTextField[6];
+	private JTextField[] denari=new JTextField[6];
+	private JTextField[] scuderia=new JTextField[6];
 	private JTextField numTurno=new JTextField("1/X");
 	
 	private Image plancia;
@@ -101,20 +101,37 @@ public class Board extends JFrame {
 		pannelloGiocatore.setBounds(450,380,650,280);
 		pannelloGiocatore.setBackground(Color.decode("#d6a45f"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatore"));
+		pannelloGiocatore.setLayout(new GridLayout(7,4));
 		
-		PV.setEditable(false);
-		denari.setEditable(false);
-		nomeGiocatore.setEditable(false);
-		scuderia.setEditable(false);
-		pannelloGiocatore.setLayout(new GridLayout(4,2));
 		pannelloGiocatore.add(labelNomeGiocatore);
-		pannelloGiocatore.add(nomeGiocatore);
 		pannelloGiocatore.add(labelScuderia);
-		pannelloGiocatore.add(scuderia);
 		pannelloGiocatore.add(labelPV);
-		pannelloGiocatore.add(PV);
 		pannelloGiocatore.add(labelDenari);
-		pannelloGiocatore.add(denari);
+		
+		for(int i=0;i<6;i++){
+		
+			nomeGiocatore[i]=new JTextField(" ");
+			pannelloGiocatore.add(nomeGiocatore[i]);
+			scuderia[i]=new JTextField(" ");
+			pannelloGiocatore.add(scuderia[i]);
+			PV[i]=new JTextField(" ");
+			pannelloGiocatore.add(PV[i]);
+			denari[i]=new JTextField(" ");
+			pannelloGiocatore.add(denari[i]);
+		}
+		
+		
+		for(int i=0;i<6;i++){
+			
+			
+		PV[i].setEditable(false);
+		denari[i].setEditable(false);
+		nomeGiocatore[i].setEditable(false);
+		scuderia[i].setEditable(false);
+		
+		}
+		
+		
 		pannelloGiocatore.setVisible(true);
 		
 		//Lavagna
@@ -211,8 +228,8 @@ public class Board extends JFrame {
 		stampaPiazzamento[posizione]=true;
 		
 	}
-	public void setNomeScuderia(String scuderia) {
-		this.scuderia.setText(scuderia);
+	public void setNomeScuderia(String scuderia,int indice) {
+		this.scuderia[indice].setText(scuderia);
 	}
 
 	/**
@@ -233,27 +250,27 @@ public class Board extends JFrame {
 	 * setta i pv del giocatore
 	 * @param PV
 	 */
-	public void setPV(int PV){
+	public void setPV(int PV,int indice){
 		
-		this.PV.setText(""+PV);
+		this.PV[indice].setText(""+PV);
 	}
 	
 	/**
 	 * setta il nome del giocatore
 	 * @param nome
 	 */
-    public void setNomeGiocatore(String nome){
+    public void setNomeGiocatore(String nome,int indice){
     	
-    	this.nomeGiocatore.setText(nome);
+    	this.nomeGiocatore[indice].setText(nome);
     }
 	
 	/**
 	 * setta i denari del giocatore
 	 * @param denari
 	 */
-    public void setDenari(long denari){
+    public void setDenari(long denari,int indice){
 		
-		this.denari.setText(""+denari);
+		this.denari[indice].setText(""+denari);
 	}
 	/**
 	 * Scrive sulla JTextArea delle notifiche della partita
