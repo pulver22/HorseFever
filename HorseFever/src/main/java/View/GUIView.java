@@ -415,6 +415,9 @@ public class GUIView implements View{
 		
 	}
 	
+	public ArrayList<eventoCorsa> getEventiCorsa() {
+		return eventiCorsa;
+	}
 	public ArrayList<eventoArrivi> getArrivati() {
 		return arrivati;
 	}
