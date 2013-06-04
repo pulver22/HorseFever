@@ -30,6 +30,7 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[0]=myInput.readLine();
+    			int i=Integer.parseInt(scommessa[0]);
         	}
         	catch(IOException e){
         		
@@ -51,6 +52,7 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[1]=myInput.readLine();
+    			int i=Integer.parseInt(scommessa[1]);
     			 
     		}
     		catch(IOException e){
@@ -105,6 +107,10 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			risposta= myInput.readLine();
+    			if (!risposta.equals("S") && !risposta.equals("N")) {
+    				System.out.println("Errore, devi inserire S o N");
+    				buonfine=false;
+    			}
     		}
     		catch(IOException e){
         		
@@ -112,7 +118,7 @@ public class TextView implements View{
     			buonfine=false;
     		}
     		
-    		}
+    	}
 		if (risposta.equals("S")) scommessa = chiediScommessa();
 		if (risposta.equals("N")) scommessa[2] = "N";
 		return scommessa;
@@ -136,6 +142,19 @@ public class TextView implements View{
         	    InputStreamReader reader=new InputStreamReader(System.in);
         	    BufferedReader myInput=new BufferedReader(reader);
         	    scelta[0] = myInput.readLine();
+        	    int i=Integer.parseInt(scelta[0]);
+        	    if (carteAzione.size()==2){
+        	    	if (i!=1 &&i!=2){
+        	    		System.out.println("Devi inserire uno dei valori in elenco");
+        	    		buonfine=false;
+        	    	}
+        	    }
+        	    if (carteAzione.size()==1){
+        	    	if (i!=1){
+        	    		System.out.println("Devi inserire uno dei valori in elenco");
+        	    		buonfine=false;
+        	    	}
+        	    }
                	}
        
         	catch(IOException e){
@@ -156,6 +175,7 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scelta[1]=myInput.readLine();
+    			int i=Integer.parseInt(scelta[1]);
     		}
     		catch(IOException e){
     			System.out.println("Errore !!!\n");

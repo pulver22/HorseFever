@@ -27,7 +27,10 @@ public class Partita {
 	 * 
 	 * @param numgiocatori
 	 */
-	public Partita(int numgiocatori){
+	public Partita(int numgiocatori, Adapter a){
+		
+		this.adapter=a;
+		
 		this.numgiocatori=numgiocatori;
 		if(numgiocatori==4) numturni=4;
 		else if (numgiocatori==5) numturni=5;
@@ -36,6 +39,7 @@ public class Partita {
 		lavagna = new Lavagna(this);
 		plancia = new Plancia(lavagna,this);
 		lavagna.setPlancia(plancia);
+		lavagna.inizializzaLavagna();
 		betManager= new BetManager(this);
 		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
@@ -50,8 +54,6 @@ public class Partita {
 	}
 	
 	public void preparazione(){
-		
-		lavagna.inizializzaLavagna();
 		
 		String quotazione;
 		String scuderia;
