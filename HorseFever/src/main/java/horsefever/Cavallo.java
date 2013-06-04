@@ -66,10 +66,10 @@ public class Cavallo {
 			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='0'){
 				posizione=posizione+incremento;
 			} else if (!ultimo && !primo){
-				posizione+=incremento;
-			}
-		} else {
-			posizione+=incremento;
+				aggiornaPosizione(incremento); //Se non ha effetti primoUltimo, o li ha senza essere
+			}								   //nè primo nè ultimo, delega l'aggiornamento al 
+		} else {							   //metodo di default di aggiornamentoPosizione
+			aggiornaPosizione(incremento);
 		}
 	}
 	
@@ -118,11 +118,11 @@ public class Cavallo {
 	public void aggiornaPosizione(int incremento){
 		int incr;
 		posizione+=incremento;
-		if (posizione>=13){
+		if (posizione>=12){
 			if (effettoTraguardo!=null){
 				incr=Integer.parseInt(""+effettoTraguardo.charAt(1));
 				if (effettoTraguardo.charAt(0)=='='){
-					posizione=13; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
+					posizione=12; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
 								  //anche perchè altrimenti un cavallo in generale si fermerebbe già, una volta superato il traguardo
 				} else if (effettoTraguardo.charAt(0)=='+'){
 					posizione+=incr;
@@ -132,7 +132,7 @@ public class Cavallo {
 	}
 	
 	public boolean oltreTraguardo(){
-		if (posizione>=13) return true;
+		if (posizione>=12) return true;
 		else return false;
 	}
 	
