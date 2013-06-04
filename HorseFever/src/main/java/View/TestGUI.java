@@ -20,15 +20,16 @@ public class TestGUI {
 
 	public static void main(String[] args){
 		
-		Partita p=new Partita(2);
-		Controller controller=new Controller(p);
 		Adapter adapter=new AdapterLocale();
+		Partita p=new Partita(2,adapter);
+		Controller controller=new Controller(p);
 		GUIView view = new GUIView("Alex","Blanco",8000);
 		
 		controller.setAdapter(adapter);
 		p.setAdapter(adapter);
 		adapter.addView(view);
 		
+		p.preparazione();
 		//controller.start();
 		
 		//controller.FaseScommesse();
