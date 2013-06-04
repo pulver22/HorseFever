@@ -24,6 +24,7 @@ public class TestLavagna {
 		adapter.addView(textview);
 		partita.setAdapter(adapter);
 		lavagna=new Lavagna(partita);
+		lavagna.setPlancia(partita.getPlancia());
 		for (int i=0; i<6;i++){
 			tabellaQuot[i][0]=colori[i];
 			tabellaQuot[i][1]=Integer.toString(i+2);

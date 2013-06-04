@@ -26,6 +26,25 @@ public class Lavagna {
 	public Lavagna(Partita p){
 		this.partita=p;
 		quotazioni = new String[6][2];
+		int temp;
+		quotazioni[0][0]=new String("Nero");
+		quotazioni[1][0]=new String("Blu");
+		quotazioni[2][0]=new String("Verde");
+		quotazioni[3][0]=new String("Rosso");
+		quotazioni[4][0]=new String("Giallo");
+		quotazioni[5][0]=new String("Bianco");
+		
+		ArrayList<Integer> init = new ArrayList(6);
+		for (int i=2; i<8;i++){
+			init.add(i);
+		}
+		for (int j=0; j<6; j++){
+			temp=(int) (Math.random()*init.size());
+			quotazioni[j][1]=new String(init.get(temp).toString());
+			init.remove(temp);
+		}
+		
+		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
 	
 	/**
