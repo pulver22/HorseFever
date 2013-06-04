@@ -10,8 +10,9 @@ import static org.junit.Assert.*;
 
 
 public class BetManagerTest {
-	public Partita p = new Partita(6);
+	
 	public Adapter a = new AdapterLocale();
+	public Partita p = new Partita(6,a);
 	public TextView v = new TextView();
 	public String[] ordineArrivo = {"Nero","Blu","Rosso","Verde","Giallo","Bianco"};
 	public Lavagna lavagna = new Lavagna(p);

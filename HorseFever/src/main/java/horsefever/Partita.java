@@ -37,9 +37,9 @@ public class Partita {
 		else numturni=6;
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna(this);
+		lavagna.inizializzaLavagna();
 		plancia = new Plancia(lavagna,this);
 		lavagna.setPlancia(plancia);
-		lavagna.inizializzaLavagna();
 		betManager= new BetManager(this);
 		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
 		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;

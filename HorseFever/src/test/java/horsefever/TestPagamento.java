@@ -5,11 +5,15 @@ import java.io.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import adapter.AdapterLocale;
+
 import java.util.ArrayList;
 
 public class TestPagamento {
 
-	private Partita partita=new Partita(6);
+	private AdapterLocale ad = new AdapterLocale();
+	private Partita partita=new Partita(6,ad);
 	private BetManager betManager=new BetManager(partita);
 	private ArrayList<Scommessa> scommessebManager = new ArrayList<Scommessa>();
 	

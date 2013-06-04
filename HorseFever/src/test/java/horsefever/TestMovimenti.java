@@ -20,9 +20,10 @@ public class TestMovimenti {
 	 
   
 	 public TestMovimenti(){
-		 partitaprova=new Partita(6);
-		 controller=new Controller(partitaprova);
+
 		 adapter=new AdapterLocale();
+		 partitaprova=new Partita(6,adapter);
+		 controller=new Controller(partitaprova);
 		 view =new TextView();
 		 //controller.setView(view);
 		 partitaprova.setAdapter(adapter);

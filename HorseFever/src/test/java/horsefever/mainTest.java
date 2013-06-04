@@ -16,10 +16,11 @@ public class mainTest {
 		prova.setUp();
 		prova.testDenariGiocatori();
         */
-		Partita p=new Partita(6);
+		
+		Adapter ad = new AdapterLocale();
+		Partita p=new Partita(6,ad);
 		p.preparazione();
 		Controller c=new Controller(p);
-		Adapter ad = new AdapterLocale();
 		TextView v=new TextView();
 		//c.setView(v);
 		ad.addView(v);

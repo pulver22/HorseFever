@@ -18,8 +18,8 @@ public class TestLavagna {
 	
 	@Before
 	public void setup(){
-		partita = new Partita(2);
 		adapter = new AdapterLocale();
+		partita = new Partita(2,adapter);
 		textview = new TextView();
 		adapter.addView(textview);
 		partita.setAdapter(adapter);
