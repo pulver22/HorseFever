@@ -141,7 +141,6 @@ public class Board extends JFrame {
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
 		
-		quotazioni.append("Quotazioni:\n");
 		quotazioni.setFont(fontPersonale);
 		quotazioniScrollPane=new JScrollPane(quotazioni);
 		
@@ -201,7 +200,7 @@ public class Board extends JFrame {
         	
         	if(stampaPiazzamento[i]==true){
         	
-        		g2d.drawImage(piazzamento[i],995,yPiazzamento[i],null);
+        		g2d.drawImage(piazzamento[i],904,yPiazzamento[i],null);
         	}
         }
         
@@ -217,6 +216,17 @@ public class Board extends JFrame {
         this.invalidate();
         
     
+	}
+	
+	public void reset(){
+		
+		
+		for(int i=0;i<6;i++){
+			
+			pedine[i].setArrivata(false);
+			pedine[i].setX(455);
+			stampaPiazzamento[i]=false;
+		}
 	}
 	
 	//Getter e Setter
@@ -241,6 +251,8 @@ public class Board extends JFrame {
 	 */
 	public void settaAreaQuotazioni(String[] quot){
 		
+		quotazioni.setText(null);
+		quotazioni.append("Quotazioni:\n");
 		quotazioni.append("\nNero:   "+quot[0]);
 		quotazioni.append("\nBlu:    "+quot[1]);
 		quotazioni.append("\nVerde:  "+quot[2]);

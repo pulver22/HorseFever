@@ -89,7 +89,7 @@ public class ThreadCorsa extends Thread{
             	   
             	   
                
-           	   		board.settaAreaNotifica(""+rappresentazione+"\n");
+           	   		board.settaAreaNotifica("\n"+rappresentazione+"\n");
            	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
            		   
            	   				board.stampaPiazzamento(numCorsia,posArrivo);

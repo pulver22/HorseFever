@@ -26,16 +26,13 @@ public class GUIView implements View{
 	private ArrayList<eventoArrivi> arrivati=new ArrayList<eventoArrivi>();
 	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
+	private boolean quotIniziali=true;
 	
 	public GUIView(String nomegiocatore, String scuderia,long denari){
 		
 		board=new Board();
-		
-		for(int i=0;i<6;i++){
 			
-		board.setNomeGiocatore(""+(i+1),i);
-		
-		}
+	  
 		threadCorsa=new ThreadCorsa(this);
 		threadCorsa.start();
 		
@@ -269,6 +266,7 @@ public class GUIView implements View{
 
        if(e instanceof eventoGiocatore){
     	   
+    	   String nomeGioc=((eventoGiocatore) e).getNome();
            long denari=((eventoGiocatore) e).getDenari();
     	   int pv=((eventoGiocatore) e).getPv();
     	   String[] carteAzione=((eventoGiocatore) e).getCarteAzione();
@@ -316,21 +314,28 @@ public class GUIView implements View{
        
        if(e instanceof eventoQuotazioni){
     	   
-    	   quotazioni.add((eventoQuotazioni) e);
-    	   
-    	   eventoQuotazioni e1=((eventoQuotazioni) e);
-    	   
-		   String[][] tabellaQuot= e1.getTabellaQuot();
-    	   String[] quot=new String[6];
-    	   
-    	   for(int i=0;i<6;i++){
+    	   //se sono le quotazioni iniziali vengono immediatamente stampate
+    	   if(quotIniziali==true){
     		   
-    		   quot[i]=tabellaQuot[i][1];
+    		   quotIniziali=false;
+    		  
+    		   eventoQuotazioni e1=((eventoQuotazioni) e);
+        	   
+    		   String[][] tabellaQuot= e1.getTabellaQuot();
+        	   String[] quot=new String[6];
+        	   
+        	   for(int i=0;i<6;i++){
+        		   
+        		   quot[i]=tabellaQuot[i][1];
+        	   }
+        	   
+        	   board.settaAreaQuotazioni(quot);
+    	    }
+            quotazioni.add((eventoQuotazioni) e);
+    		   
     	   }
-    	   board.settaAreaNotifica("\n"+Arrays.toString(quot)+"\n");
-    	   
-       }
-       
+    	 
+  
        if(e instanceof eventoArrivi){
     	   
     	   arrivati.add((eventoArrivi) e);

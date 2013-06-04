@@ -52,6 +52,10 @@ public class eventoGiocatore implements HorseFeverEvent{
 			return "Ha perso il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
 	}
 
+	public String getNome(){
+		
+		return nomeGiocatore;
+	}
 	public long getDenari() {
 		return denari;
 	}

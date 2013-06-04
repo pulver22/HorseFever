@@ -82,7 +82,7 @@ public class Pedina implements ActionListener {
 				if(x+dx>862){
 					dx=48;
 					
-					if(x>947) arrivata=true;
+					if(x>910) arrivata=true;
 				}
 				x+=dx;
 				
@@ -98,6 +98,10 @@ public class Pedina implements ActionListener {
 		}
 	}
 	
+	public void setArrivata(boolean x){
+		
+		this.arrivata=x;
+	}
 	public boolean getArrivata(){
 		
 		return arrivata;
