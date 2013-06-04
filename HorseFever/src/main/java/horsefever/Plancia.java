@@ -226,6 +226,8 @@ public class Plancia {
 		if (partenza){
 			partenza(movTeorici);
 			partenza=false;
+			for (int i=0;i<6;i++)
+				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 			partita.notifyObserver(new eventoCorsa(getPosizioniCavalli(), valoriMov, dadiSprint,immagineMov));
 		}else{
 			for(int i=0; i<6; i++){
