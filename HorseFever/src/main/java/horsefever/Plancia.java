@@ -451,7 +451,7 @@ public class Plancia {
 		for (int i=0; i<6;i++){
 			cavalli[i].reset(); //Resetta cavalli
 			if (corsieTruccate[i].size()!=0){//Se ci sono ancora Azioni su corsie, rimuove tutto
-				for (int j=0; j<corsieTruccate[i].size(); j++){
+				while (corsieTruccate[i].size()>0){
 					corsieTruccate[i].remove(0);
 				}
 			}
