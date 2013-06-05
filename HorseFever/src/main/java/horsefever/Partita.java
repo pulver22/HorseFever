@@ -144,7 +144,9 @@ public class Partita {
 	}
 
 	public int[] getNumSegnalini() {
-		return numSegnalini;
+		
+		
+		return numSegnalini.clone();
 	}
 
 	public void setNumSegnalini(int[] numSegnalini) {

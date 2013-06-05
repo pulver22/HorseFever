@@ -79,6 +79,7 @@ public class Controller {
 			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
+		
 		numSegnalini=partita.getNumSegnalini();
         
 		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
