@@ -360,7 +360,7 @@ public class GUIView implements View{
        			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
        			   
        				   inserito=true;
-       				   board.settaAreaNotifica(e.rappresentazione());
+       				   board.settaAreaNotifica("\n"+e.rappresentazione());
        		       }
        			   i++;
     		   
