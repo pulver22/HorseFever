@@ -75,13 +75,13 @@ public class Plancia {
 				if (a.getValoreEffetto().equals("Rimuovi_positive")) {
 					positive=true;
 					azioni.remove(i);
-					i--;
+					if (i>0)i--;
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 				}
 				if (a.getValoreEffetto().equals("Rimuovi_negative")) {
 					negative=true;
 					azioni.remove(i);
-					i--;
+					if(i>0)i--;
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));	
 				}
 			}
@@ -93,7 +93,7 @@ public class Plancia {
 					a=(Azione) azioni.get(j);
 					if (a.getColore().equals("Rosso")){
 						azioni.remove(j);
-						j--;
+						if(j>0)j--;
 					}
 				}
 			
@@ -341,6 +341,7 @@ public class Plancia {
 					fotofinish.remove(j);
 					j--;
 					esisteVincente=true;
+					break;
 				}
 			}
 		}
@@ -351,6 +352,7 @@ public class Plancia {
 					fotofinish.remove(k);
 					k--;
 					esistePerdente=true;
+					break;
 				}
 			}
 		}
@@ -388,7 +390,8 @@ public class Plancia {
 		int[] flag=new int[6];
 		int max=getMaxPosPari();
 		for (int i=0;i<6;i++){
-			if (cavalli[i].getPosizione()==max && !arrivati[i]) flag[i]=1;
+			if (!arrivati[i])
+				if (cavalli[i].getPosizione()==max) flag[i]=1;
 		}
 		return flag;
 	}
