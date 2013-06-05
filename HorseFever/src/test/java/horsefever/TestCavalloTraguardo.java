@@ -20,10 +20,10 @@ public class TestCavalloTraguardo {
 	@Test
 	public void casoTestTraguardo1(){
 		int incremento=2;
-		cavallo.setPosizione(12);
+		cavallo.setPosizione(11);
 		cavallo.setEffettoTraguardo(azione1.getValoreEffetto());
 		cavallo.aggiornaPosizione(incremento);
-		assertEquals(16,cavallo.getPosizione());
+		assertEquals(15,cavallo.getPosizione());
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class TestCavalloTraguardo {
 		cavallo.setPosizione(12);
 		cavallo.setEffettoTraguardo(azione2.getValoreEffetto());
 		cavallo.aggiornaPosizione(incremento);
-		assertEquals(13,cavallo.getPosizione());
+		assertEquals(12,cavallo.getPosizione());
 	}
 	
 	@Test

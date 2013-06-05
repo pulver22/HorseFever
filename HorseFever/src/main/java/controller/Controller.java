@@ -123,7 +123,7 @@ public class Controller {
 		while(partita.getPlancia().tuttiArrivati()==false){
 			
 			partita.getPlancia().muovi();
-			adapter.prosegui("Effettuato il round di corsa.", 0);
+			
 			
 		}
 		
