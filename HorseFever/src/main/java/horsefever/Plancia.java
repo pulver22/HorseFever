@@ -13,7 +13,7 @@ import eventi.eventoTrucca;
 public class Plancia {
 	
 	boolean[] arrivati = new boolean[6];
-	ArrayList<String> ordineArrivo = new ArrayList<String>(6);
+	//ArrayList<String> ordineArrivo = new ArrayList<String>(6);
 	int[] posizione = new int[6];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
 	Cavallo[] cavalli = new Cavallo[6];
@@ -177,8 +177,8 @@ public class Plancia {
 					if (a1.getLettera()==a2.getLettera()){
 						azioni.remove(j);
 						azioni.remove(i);
-						j--;
-						i--;
+						if(i>0)i--;
+						if(j>0)j--;
 					}
 				}
 			}
@@ -464,19 +464,20 @@ public class Plancia {
 	 * */
 	public void reset(){
 		for (int i=0; i<6;i++){
-			cavalli[i].reset();
-			if (corsieTruccate[i].size()!=0){
+			cavalli[i].reset(); //Resetta cavalli
+			if (corsieTruccate[i].size()!=0){//Se ci sono ancora Azioni su corsie, rimuove tutto
 				for (int j=0; j<corsieTruccate[i].size(); j++){
 					corsieTruccate[i].remove(0);
 				}
 			}
+			arrivati[i]=false; //Resetta booleano di arrivi
 		}
-		if (fotofinish.size()!=0){
+		if (fotofinish.size()!=0){//Se ci fosse ancora qualcosa in fotofinish, rimuove tutto
 			for (int k=0; k<fotofinish.size();k++){
 				fotofinish.remove(0);
 			}
 		}
-		if (cavalliArrivati.size()!=0){
+		if (cavalliArrivati.size()!=0){//Se ci fosse ancora qualcosa in cavalliArrivati, rimuove tutto
 			for (int l=0; l<cavalliArrivati.size();l++){
 				cavalliArrivati.remove(0);
 			}
