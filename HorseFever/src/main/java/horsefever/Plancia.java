@@ -528,7 +528,7 @@ public class Plancia {
 		int max=0;
 		for (int i=0;i<6;i++){
 			if (max<cavalli[i].getPosizione()) max=cavalli[i].getPosizione();
-			else max=max;
+			//else max=max;
 		}
 		return max;
 	}
@@ -542,7 +542,7 @@ public class Plancia {
 		int min=cavalli[0].getPosizione();
 		for (int i=0;i<6;i++){
 			if (min>cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
-			else min=min;
+			//else min=min;
 		}
 		return min;
 	}
