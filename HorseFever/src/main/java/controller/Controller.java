@@ -33,7 +33,7 @@ public class Controller {
 		
 		for (int i=0; i<numturni; i++){	
 			
-			adapter.notify(new eventoTurno(i+1,numturni));
+			partita.setTurnoAttuale(i+1);
 			this.FaseDistribuzioneCarte();
 			this.FaseScommesse();
 			this.FaseCorsa();

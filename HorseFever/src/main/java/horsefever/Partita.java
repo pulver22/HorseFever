@@ -8,6 +8,7 @@ public class Partita {
 
 	private ArrayList<Giocatore> giocatori;
 	private int numturni=2;
+	private int turnoAttuale=1;
 	private int numgiocatori;
 	private Mazzo mazzoAzione=new Mazzo("MazzoAzione");
 	private Mazzo mazzoPersonaggio=new Mazzo("MazzoPersonaggio");;
@@ -63,7 +64,7 @@ public class Partita {
 			quotazione=p.getQuotScuderia();
 			scuderia=lavagna.getScuderiaInit(quotazione);
 			giocatori.add(new Giocatore(p,scuderia,this));	
-			adapter.notify(new eventoGiocatore(giocatori.get(i),0));
+			adapter.notify(new eventoGiocatore(giocatori.get(i),eventoGiocatore.NUOVO));
 			
 		}
 		
@@ -133,6 +134,11 @@ public class Partita {
 	}
 	//Metodi Getter e Setter
 	
+	public void setTurnoAttuale(int turno){
+		
+		this.turnoAttuale=turno;
+		adapter.notify(new eventoTurno(turnoAttuale,numturni));
+	}
 	public void setAdapter(Adapter a){
 		this.adapter=a;
 	}

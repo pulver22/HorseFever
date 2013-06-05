@@ -68,6 +68,7 @@ public class ThreadCorsa extends Thread{
        		   }
        	   }
        	   
+       	   // animazione finita
        	   if(board.getTutteArrivate()==true && vista.getEventiCorsa().size()==0){
        			 
        		   eventoQuotazioni e1=vista.getEventoQuotaz();

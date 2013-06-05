@@ -261,6 +261,10 @@ public class GUIView implements View{
 		return scelta;
 	}
 
+	/**
+	 * Verifica quale istanza di HorseFeverEvent è stata notificata e in base a questo gestisce la
+	 * visualizzazione dell'evento sulla board
+	 */
 	@Override
 	public void notify(HorseFeverEvent e) {
 
@@ -282,10 +286,8 @@ public class GUIView implements View{
     	   String scuderia=((eventoGiocatore) e).getScuderia();
     	   int tipo=((eventoGiocatore) e).getTipo();
     	   
-    	   if(tipo==0){
+    	   if(tipo==eventoGiocatore.NUOVO){
     		  
-    		   
-        	   
         	   while(inserito==false){
         		   
         		   if(board.getNomeGiocatore(i).equals(" ")){
@@ -299,7 +301,7 @@ public class GUIView implements View{
         		   i++;
         	   }   
     	   }
-    	   else if(tipo==2){
+    	   else if(tipo==eventoGiocatore.MODIFICA){
     		   
     		   while(inserito==false){
     			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
@@ -312,7 +314,7 @@ public class GUIView implements View{
     			   i++;
     		   }
     	   }	   
-    	  else if(tipo==4){
+    	  else if(tipo==eventoGiocatore.PERSO){
     		  
     		  while(inserito==false){
    			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
@@ -325,9 +327,18 @@ public class GUIView implements View{
    		       }
    			   i++;
    		   }
-    			   
-    			   
-    			   
+    	  }
+    	   else if(tipo==eventoGiocatore.PRIMO){
+    		   
+    		   while(inserito==false){
+       			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
+       			   
+       				   inserito=true;
+       				   board.settaAreaNotifica(e.rappresentazione());
+       		       }
+       			   i++;
+    		   
+    	   }	   
     	  }
     		 	   
     	}

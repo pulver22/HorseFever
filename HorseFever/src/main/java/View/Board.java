@@ -219,6 +219,7 @@ public class Board extends JFrame {
 	
 	public void reset(){
 		
+		this.setTutteArrivate(false);
 		
 		for(int i=0;i<6;i++){
 			
