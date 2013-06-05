@@ -19,7 +19,7 @@ public class Giocatore {
 		this.partita=p;
 		this.cartaPersonaggio=cartaPersonaggio;
 		this.denari=cartaPersonaggio.getDenari();
-		this.scuderia=scuderia;
+		this.scuderia=String.valueOf(scuderia);
 		nomeGiocatore=cartaPersonaggio.getNome();
 	}
 	
