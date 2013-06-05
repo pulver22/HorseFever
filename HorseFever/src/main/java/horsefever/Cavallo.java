@@ -162,7 +162,7 @@ public class Cavallo {
 	}
 
 	public void setPosizione(int posizione) {
-		this.posizione = posizione;
+		this.posizione = Integer.valueOf(posizione);
 	}
 
 	public String getColore() {
@@ -170,7 +170,7 @@ public class Cavallo {
 	}
 
 	public void setColore(String colore) {
-		this.colore = new String(colore);
+		this.colore = String.valueOf(colore);
 	}
 
 	public String getEffettoPartenza() {
@@ -178,7 +178,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza(String effettoPartenza) {
-		this.effettoPartenza = new String(effettoPartenza);
+		this.effettoPartenza = String.valueOf(effettoPartenza);
 	}
 
 	public String getEffettoSprint() {
@@ -186,7 +186,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoSprint(String effettoSprint) {
-		this.effettoSprint = new String(effettoSprint);
+		this.effettoSprint = String.valueOf(effettoSprint);
 	}
 
 	public String getEffettoUltimoPrimo() {
@@ -194,7 +194,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoUltimoPrimo(String effettoUltimoPrimo) {
-		this.effettoUltimoPrimo = new String(effettoUltimoPrimo);
+		this.effettoUltimoPrimo = String.valueOf(effettoUltimoPrimo);
 	}
 
 	public String getEffettoFotofinish() {
@@ -202,7 +202,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoFotofinish(String effettoFotofinish) {
-		this.effettoFotofinish = new String(effettoFotofinish);
+		this.effettoFotofinish = String.valueOf(effettoFotofinish);
 	}
 
 	public String getEffettoTraguardo() {
@@ -210,7 +210,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoTraguardo(String effettoTraguardo) {
-		this.effettoTraguardo = new String(effettoTraguardo);
+		this.effettoTraguardo = String.valueOf(effettoTraguardo);
 	}
 
 	public int getQuotazione() {
@@ -218,7 +218,7 @@ public class Cavallo {
 	}
 
 	public void setQuotazione(int quotazione) {
-		this.quotazione = quotazione;
+		this.quotazione = Integer.valueOf(quotazione);
 	}
 
 	public String getEffettoQuotazione() {
@@ -226,7 +226,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoQuotazione(String effettoQuotazione) {
-		this.effettoQuotazione = new String(effettoQuotazione);
+		this.effettoQuotazione = String.valueOf(effettoQuotazione);
 		if (effettoQuotazione.charAt(0)=='+'){
 			quotazione-=2;
 			if (quotazione<=2) quotazione=2;
@@ -245,7 +245,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza2(String effettoPartenza2) {
-		this.effettoPartenza2 = new String(effettoPartenza2);
+		this.effettoPartenza2 = String.valueOf(effettoPartenza2);
 	}
 
 	public String getEffettoSprint2() {
@@ -253,7 +253,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoSprint2(String effettoSprint2) {
-		this.effettoSprint2 = new String(effettoSprint2);
+		this.effettoSprint2 = String.valueOf(effettoSprint2);
 	}
 	
 	
