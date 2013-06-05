@@ -575,7 +575,7 @@ public class Plancia {
 	 * */
 	public String[] getColoriArrivi(){
 		String colori[]=new String[6];
-		for (int i=0; i<cavalliArrivati.size();i++){
+		for (int i=0; i<6;i++){
 			if(cavalliArrivati.get(i)!=null)
 			colori[i]=cavalliArrivati.get(i).getColore();
 		}
