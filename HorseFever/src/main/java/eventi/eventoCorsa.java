@@ -23,10 +23,6 @@ public class eventoCorsa implements HorseFeverEvent{
 		return immagineMovimento;
 	}
 
-	public void setImmagineMovimento(String immagineMovimento) {
-		this.immagineMovimento = immagineMovimento;
-	}
-
 	@Override
 	public String rappresentazione() {
 		return "CartaMovimento: "+Arrays.toString(valoriMovimento)+" EsitoDadi: "+Arrays.toString(esitoDadi)+" Posizioni Aggiornate: "+Arrays.toString(posizioniAggiornate);
@@ -36,34 +32,16 @@ public class eventoCorsa implements HorseFeverEvent{
 		return posizioniAggiornate;
 	}
 
-	public void setPosizioniAggiornate(int[] posizioniAggiornate) {
-		this.posizioniAggiornate = posizioniAggiornate.clone();
-	}
-
 	public int[] getValoriMovimento() {
 		return valoriMovimento;
-	}
-
-	public void setValoriMovimento(int[] valoriMovimento) {
-		this.valoriMovimento = valoriMovimento.clone();
 	}
 
 	public int[] getEsitoDadi() {
 		return esitoDadi;
 	}
 
-	public void setEsitoDadi(int[] esitoDadi) {
-		this.esitoDadi = esitoDadi.clone();
-	}
-
 	public int[] getMovTeorici() {
 		return movTeorici;
 	}
-
-	public void setMovTeorici(int[] movTeorici) {
-		this.movTeorici = movTeorici.clone();
-	}
-	
-	
 
 }
