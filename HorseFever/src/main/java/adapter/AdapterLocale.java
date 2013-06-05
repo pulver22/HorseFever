@@ -8,7 +8,7 @@ import eventi.HorseFeverEvent;
 
 public class AdapterLocale implements Adapter {
 
-	ArrayList<View> viewRegistrate=new ArrayList<View>();
+	private ArrayList<View> viewRegistrate=new ArrayList<View>();
 
 	public String[] chiediScommessa(int indice) {
 		

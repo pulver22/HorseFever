@@ -16,7 +16,7 @@ public class Cavallo {
 	private final int SPRINT=1;
 	
 	public Cavallo(String colore){
-		this.colore=String.valueOf(colore);
+		this.colore=colore;
 	}
 	
 	/**
@@ -31,7 +31,7 @@ public class Cavallo {
 				} else if (effettoPartenza.equals("=4") && effettoPartenza2.equals("+1")){
 					posizione+=5;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("-1")){
-					//posizione=posizione;
+					posizione=posizione;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("+1")){
 					posizione+=1;
 				}
@@ -39,14 +39,12 @@ public class Cavallo {
 				if (effettoPartenza.equals("=4")){
 					posizione+=4;
 				} else if (effettoPartenza.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione;
 				}
 			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
 				if (effettoPartenza2.equals("-1")){
 					if (incremento-1>=0) posizione=incremento-1;
-					else {
-						   //posizione=posizione;
-					}
+					else posizione=posizione;
 				} else if (effettoPartenza2.equals("+1")){
 					posizione=incremento+1;
 				}
@@ -57,10 +55,10 @@ public class Cavallo {
 	}
 	
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
-		
+		int incr;
 		if (effettoUltimoPrimo!=null){
 			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
-				//posizione=posizione;
+				posizione=posizione;
 			}else if (primo && effettoUltimoPrimo.charAt(1)=='4'){
 				posizione=posizione+incremento;
 			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
@@ -89,7 +87,7 @@ public class Cavallo {
 		if (effettoSprint!=null || effettoSprint2!=null){
 			if (effettoSprint!=null && effettoSprint2!=null){ //Se entrambi tipi di effetti != NULL
 				if (effettoSprint.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("-1")){
 					posizione=posizione+SPRINT;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("=2")){
@@ -97,7 +95,7 @@ public class Cavallo {
 				}
 			} else if (effettoSprint!=null){//Se solo quello con lettera C è !=null
 				if (effettoSprint.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione;
 				} else if (effettoSprint.equals("+1")){
 					posizione=posizione+SPRINT+1;
 				}
@@ -164,7 +162,7 @@ public class Cavallo {
 	}
 
 	public void setPosizione(int posizione) {
-		this.posizione = Integer.valueOf(posizione);
+		this.posizione = posizione;
 	}
 
 	public String getColore() {
@@ -172,7 +170,7 @@ public class Cavallo {
 	}
 
 	public void setColore(String colore) {
-		this.colore =String.valueOf(colore);
+		this.colore = new String(colore);
 	}
 
 	public String getEffettoPartenza() {
@@ -180,7 +178,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza(String effettoPartenza) {
-		this.effettoPartenza =String.valueOf(effettoPartenza);
+		this.effettoPartenza = new String(effettoPartenza);
 	}
 
 	public String getEffettoSprint() {
@@ -188,7 +186,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoSprint(String effettoSprint) {
-		this.effettoSprint = String.valueOf(effettoSprint);
+		this.effettoSprint = new String(effettoSprint);
 	}
 
 	public String getEffettoUltimoPrimo() {
@@ -196,7 +194,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoUltimoPrimo(String effettoUltimoPrimo) {
-		this.effettoUltimoPrimo = String.valueOf(effettoUltimoPrimo);
+		this.effettoUltimoPrimo = new String(effettoUltimoPrimo);
 	}
 
 	public String getEffettoFotofinish() {
@@ -204,7 +202,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoFotofinish(String effettoFotofinish) {
-		this.effettoFotofinish = String.valueOf(effettoFotofinish);
+		this.effettoFotofinish = new String(effettoFotofinish);
 	}
 
 	public String getEffettoTraguardo() {
@@ -212,7 +210,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoTraguardo(String effettoTraguardo) {
-		this.effettoTraguardo = String.valueOf(effettoTraguardo);
+		this.effettoTraguardo = new String(effettoTraguardo);
 	}
 
 	public int getQuotazione() {
@@ -220,7 +218,7 @@ public class Cavallo {
 	}
 
 	public void setQuotazione(int quotazione) {
-		this.quotazione = Integer.valueOf(quotazione);
+		this.quotazione = quotazione;
 	}
 
 	public String getEffettoQuotazione() {
@@ -228,7 +226,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoQuotazione(String effettoQuotazione) {
-		this.effettoQuotazione = String.valueOf(effettoQuotazione);
+		this.effettoQuotazione = new String(effettoQuotazione);
 		if (effettoQuotazione.charAt(0)=='+'){
 			quotazione-=2;
 			if (quotazione<=2) quotazione=2;
@@ -247,7 +245,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoPartenza2(String effettoPartenza2) {
-		this.effettoPartenza2 = String.valueOf(effettoPartenza2);
+		this.effettoPartenza2 = new String(effettoPartenza2);
 	}
 
 	public String getEffettoSprint2() {
@@ -255,7 +253,7 @@ public class Cavallo {
 	}
 
 	public void setEffettoSprint2(String effettoSprint2) {
-		this.effettoSprint2 = String.valueOf(effettoSprint2);
+		this.effettoSprint2 = new String(effettoSprint2);
 	}
 	
 	

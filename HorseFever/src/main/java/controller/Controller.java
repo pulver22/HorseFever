@@ -166,7 +166,8 @@ public class Controller {
        
     	
     	int PV, numCorsia=0, numCorsiaPrecedente=0;
-    	long denari,importo,scommessaMinima;
+    	long denari,importo;
+    	int scommessaMinima;
     	char tipoScommessa='N',tipoScommessaPrecedente='N';
     	boolean buonfine=false;
     	String messaggio;
