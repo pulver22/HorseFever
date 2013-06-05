@@ -22,11 +22,13 @@ public class eventoGiocatore implements HorseFeverEvent{
 	private int numcarte;
 	
 	public eventoGiocatore(Giocatore g, int tipo){
-		this.tipo=tipo;
-		this.nomeGiocatore=new String(g.getNome());
-		this.scuderia=new String(g.getScuderia());
-		this.denari=new Long(g.getDenari());
-		this.pv=new Integer(g.getPV());
+		
+		this.tipo=Integer.valueOf(tipo);
+		this.nomeGiocatore=String.valueOf(g.getNome());
+		this.scuderia=String.valueOf(g.getScuderia());
+		this.denari=Long.valueOf(g.getDenari());
+		this.pv=Integer.valueOf(g.getPV());
+		
 		if (g.getCarteAzione().size()!=0){
 			String[] azioni=g.getStringheAzioni();
 			for (int i=0; i<azioni.length; i++){
