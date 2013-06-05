@@ -128,6 +128,7 @@ public class Controller {
 		}
 		
 		String[] ordineArrivo = partita.getPlancia().getColoriArrivi();
+		System.out.println("Ordine arrivo effettivo: "+Arrays.toString(ordineArrivo));
 		String[][] quotazioni= partita.getLavagna().getQuotazioni();
 		
 		partita.getBetManager().Pagamenti(ordineArrivo,quotazioni,partita.getGiocatori());
