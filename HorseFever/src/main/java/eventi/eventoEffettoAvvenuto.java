@@ -18,17 +18,9 @@ public class eventoEffettoAvvenuto implements HorseFeverEvent{
 	public String getCartaAttivata() {
 		return cartaAttivata;
 	}
-
-	public void setCartaAttivata(String cartaAttivata) {
-		this.cartaAttivata = cartaAttivata;
-	}
-
+	
 	public int getCorsia() {
 		return corsia;
-	}
-
-	public void setCorsia(int corsia) {
-		this.corsia = corsia;
 	}
 	
 	
