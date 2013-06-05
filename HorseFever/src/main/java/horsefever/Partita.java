@@ -130,7 +130,7 @@ public class Partita {
 	
 	public void setTurnoAttuale(int turno){
 		
-		this.turnoAttuale=turno;
+		this.turnoAttuale=Integer.valueOf(turno);
 		adapter.notify(new eventoTurno(turnoAttuale,numturni));
 	}
 	public void setAdapter(Adapter a){
