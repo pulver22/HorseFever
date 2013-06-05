@@ -23,8 +23,9 @@ public class eventoTurno implements HorseFeverEvent{
 
 	@Override
 	public String rappresentazione() {
-		// TODO Auto-generated method stub
-		return null;
+		
+        
+		return "Turno:"+turnoCorrente+"/"+turniTotali;
 	}
 
 }

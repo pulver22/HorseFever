@@ -226,6 +226,7 @@ public class Board extends JFrame {
 			pedine[i].setArrivata(false);
 			pedine[i].setX(455);
 			stampaPiazzamento[i]=false;
+			repaint();
 		}
 	}
 	

@@ -107,10 +107,8 @@ public class ThreadCorsa extends Thread{
            		   
            		}
        		   
-       		   		board.setTutteArrivate(false);
-       		   	    for(int i=0; i<6;i++){
-       		   	    	board.getPedina(i).setArrivata(false);
-       		   	    }
+       		    this.stop=true;
+       		    vista.setContinua(true);
        	       }
         	  
       }

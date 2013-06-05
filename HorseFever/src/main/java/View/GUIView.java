@@ -27,8 +27,9 @@ public class GUIView implements View{
 	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
 	private boolean quotIniziali=true;
+	private boolean continua=true;
 	
-	public GUIView(String nomegiocatore, String scuderia,long denari){
+	public GUIView(){
 		
 		board=new Board();
 			
@@ -369,6 +370,7 @@ public class GUIView implements View{
        
        if(e instanceof eventoCorsa){
     	   
+    	   continua=false;
     	   eventiCorsa.add((eventoCorsa) e);
     	   
        }
@@ -474,8 +476,18 @@ public class GUIView implements View{
 	}
 	@Override
 	public void prosegui(String messaggio) {
-		// TODO Auto-generated method stub
 		
+		while(continua==false){
+			
+		}
+		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+	}
+	
+	public boolean isContinua() {
+		return continua;
+	}
+	public void setContinua(boolean continua) {
+		this.continua = continua;
 	}
 	
 

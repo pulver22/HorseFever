@@ -64,7 +64,7 @@ public class Partita {
 			quotazione=p.getQuotScuderia();
 			scuderia=lavagna.getScuderiaInit(quotazione);
 			giocatori.add(new Giocatore(p,scuderia,this));	
-			adapter.notify(new eventoGiocatore(giocatori.get(i),eventoGiocatore.NUOVO));
+			notifyObserver(new eventoGiocatore(giocatori.get(i),eventoGiocatore.NUOVO));
 			
 		}
 		
