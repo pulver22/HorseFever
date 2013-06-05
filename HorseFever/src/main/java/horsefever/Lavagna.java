@@ -27,12 +27,12 @@ public class Lavagna {
 		this.partita=p;
 		quotazioni = new String[6][2];
 		int temp;
-		quotazioni[0][0]=new String("Nero");
-		quotazioni[1][0]=new String("Blu");
-		quotazioni[2][0]=new String("Verde");
-		quotazioni[3][0]=new String("Rosso");
-		quotazioni[4][0]=new String("Giallo");
-		quotazioni[5][0]=new String("Bianco");
+		quotazioni[0][0]="Nero";
+		quotazioni[1][0]="Blu";
+		quotazioni[2][0]="Verde";
+		quotazioni[3][0]="Rosso";
+		quotazioni[4][0]="Giallo";
+		quotazioni[5][0]="Bianco";
 		
 		ArrayList<Integer> init = new ArrayList(6);
 		for (int i=2; i<8;i++){
