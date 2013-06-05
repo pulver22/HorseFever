@@ -52,12 +52,12 @@ public class Lavagna {
 	 * */
 	public void inizializzaLavagna(){
 		int temp;
-		quotazioni[0][0]=new String("Nero");
-		quotazioni[1][0]=new String("Blu");
-		quotazioni[2][0]=new String("Verde");
-		quotazioni[3][0]=new String("Rosso");
-		quotazioni[4][0]=new String("Giallo");
-		quotazioni[5][0]=new String("Bianco");
+		quotazioni[0][0]="Nero";
+		quotazioni[1][0]="Blu";
+		quotazioni[2][0]="Verde";
+		quotazioni[3][0]="Rosso";
+		quotazioni[4][0]="Giallo";
+		quotazioni[5][0]="Bianco";
 		
 		ArrayList<Integer> init = new ArrayList(6);
 		for (int i=2; i<8;i++){
@@ -142,7 +142,7 @@ public class Lavagna {
 	}
 	
 	public void setArrivi(String[] arrivi){
-		this.arrivi=arrivi;
+		this.arrivi=arrivi.clone();
 	}
 	
 	//Metodi Getter e Setter
@@ -150,7 +150,7 @@ public class Lavagna {
 		return quotazioni;
 	}
 	public void setQuotazioni(String[][] quotazioni) {
-		this.quotazioni = quotazioni;
+		this.quotazioni = quotazioni.clone();
 	}
 	/**
 	 * Dato il colore della scuderia corrispondente, ritorna la quotazione di quel cavallo. 
