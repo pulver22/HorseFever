@@ -1,5 +1,6 @@
 package View;
 
+/*
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -9,15 +10,14 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
+*/
 
 import javax.swing.*;
-
+import java.util.ArrayList;
 import horsefever.Azione;
-import horsefever.Partita;
 import eventi.*;
-import horsefever.Scommessa;
+
 
 public class GUIView implements View{
 
@@ -346,10 +346,9 @@ public class GUIView implements View{
    			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
    			   
    				   inserito=true;
-   				   board.setNomeGiocatore("  ", i);
    				   board.setPV(0,i);
    				   board.setDenari(0, i);
-   				   board.setNomeScuderia(" ", i);
+   				   board.setNomeScuderia("Perdente", i);
    		       }
    			   i++;
    		   }
