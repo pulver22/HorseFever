@@ -45,8 +45,6 @@ public class Partita {
 		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
 		else numSegnaliniScommessaPerColore=4;
 		
-		adapter.notify(new eventoTurno(1,numturni));
-		
 		
 		for(int i=0; i<6; i++){
 			

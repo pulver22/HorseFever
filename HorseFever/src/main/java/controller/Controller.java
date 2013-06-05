@@ -26,16 +26,19 @@ public class Controller {
 	}
 	
 	public void start(){
+		
 		int numturni=partita.getNumturni();
 		
 		partita.preparazione();
 		
 		for (int i=0; i<numturni; i++){	
 			
+			adapter.notify(new eventoTurno(i+1,numturni));
 			this.FaseDistribuzioneCarte();
 			this.FaseScommesse();
 			this.FaseCorsa();
 			this.FaseFineTurno();
+			
 		}
 		partita.FinePartita();
 		
