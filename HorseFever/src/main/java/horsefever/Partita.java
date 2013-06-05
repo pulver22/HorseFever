@@ -74,7 +74,7 @@ public class Partita {
 	 * Verifica il giocatore con il numero di PV più alto che è il giocatore vincente
 	 * @return Giocatore vincente
 	 */
-	public Giocatore FinePartita(){
+	public void FinePartita(){
 		
 		int i=0,indiceGiocVinc=0,maxPV=0;
 		for(i=0;i<numgiocatori;i++){
@@ -86,7 +86,7 @@ public class Partita {
 			}
 		}
 		
-		return this.giocatori.get(indiceGiocVinc);
+		notifyObserver(new eventoGiocatore(giocatori.get(indiceGiocVinc),eventoGiocatore.VINTO));
 		
 	}
 	
@@ -101,7 +101,7 @@ public class Partita {
 		for (int i=0;i<giocatori.size();i++){
 			if (gioc.getNome().equals(giocatori.get(i).getNome())) j=i;
 		}
-		notifyObserver(new eventoGiocatore(giocatori.get(j),eventoGiocatore.PRIMO));
+		notifyObserver(new eventoGiocatore(giocatori.get(j),eventoGiocatore.PERSO));
 		giocatori.remove(gioc);
 	}
 	/**

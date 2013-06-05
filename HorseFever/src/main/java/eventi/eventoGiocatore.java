@@ -11,6 +11,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 	public static final int MODIFICA=2;
 	public static final int DITURNO=3;
 	public static final int PERSO=4;
+	public static final int VINTO=5;
 	
 	
 	private String nomeGiocatore;
@@ -50,8 +51,10 @@ public class eventoGiocatore implements HorseFeverEvent{
 			return "Il primo giocatore è Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else if (tipo==DITURNO)
 			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
-		else 
+		else if (tipo==PERSO)
 			return "Ha perso il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
+		else 
+			return "Ha vinto il Giocatore "+nomeGiocatore+" con "+pv+" PV e "+denari+" Denari! Congratulazioni!";
 	}
 	
 	public int getTipo(){
