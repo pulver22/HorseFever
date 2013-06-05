@@ -99,6 +99,10 @@ public class Pedina implements ActionListener {
 		}
 	}
 	
+	public void setDx(int dx) {
+		this.dx = dx;
+	}
+
 	public void setArrivata(boolean x){
 		
 		this.arrivata=x;

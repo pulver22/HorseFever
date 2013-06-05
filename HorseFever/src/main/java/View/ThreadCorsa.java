@@ -107,12 +107,16 @@ public class ThreadCorsa extends Thread{
            		   
            		}
        		    
-       		    vista.setContinua(true);
        		    this.stop=true;
+       		    vista.setFirst(true);
        	       }
         	  
       }
 		
+	}
+
+	public void setStop(boolean stop) {
+		this.stop = stop;
 	}
 
 }

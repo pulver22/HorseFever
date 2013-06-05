@@ -27,7 +27,6 @@ public class GUIView implements View{
 	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
 	private boolean quotIniziali=true;
-	private boolean continua=true;
 	private boolean first=true;
 	
 	public GUIView(){
@@ -396,11 +395,11 @@ public class GUIView implements View{
        
        if(e instanceof eventoCorsa){
     	   
-    	   continua=false;
     	   if(first==true){
     		   first=false;
+    		   threadCorsa.setStop(false);
+    		   threadCorsa=new ThreadCorsa(this);
     		   threadCorsa.start();
-    		  
     	   }
     	   eventiCorsa.add((eventoCorsa) e);
     	   
@@ -438,15 +437,7 @@ public class GUIView implements View{
        if(e instanceof eventoArrivi){
     	   
     	   arrivati.add((eventoArrivi) e);
-    	   
-    	   /*
-    	   board.settaAreaNotifica(""+rappresentazione+"\n");
-    	   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
-    		   
-    		   board.stampaPiazzamento(numCorsia,posArrivo);
-    		   
-    	   }
-    	   */
+    	 
        }
        
        if(e instanceof eventoTurno){
@@ -459,6 +450,9 @@ public class GUIView implements View{
 		
 	}
 	
+	public void setFirst(boolean first) {
+		this.first = first;
+	}
 	public ArrayList<eventoCorsa> getEventiCorsa() {
 		return eventiCorsa;
 	}
@@ -510,30 +504,24 @@ public class GUIView implements View{
 		
 		if(messaggio.equals("E' terminata la fase di corsa.")){
 		
-			try {
+		    try {
 				threadCorsa.join();
                 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
+			
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
 			first=true;
 			board.reset();
+			
 		}
 		else{
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
 			
 		}
 		
-	}
-	
-	public boolean isContinua() {
-		return continua;
-	}
-	public void setContinua(boolean continua) {
-		this.continua = continua;
-	}
-	
+	}	
 
 }
