@@ -3,7 +3,6 @@ package horsefever;
 import java.util.ArrayList;
 
 import eventi.eventoGiocatore;
-import adapter.*;
 
 public class Giocatore {
 
@@ -33,7 +32,7 @@ public class Giocatore {
 		return PV;
 	}
 	public void setPV(int pV) {
-		PV = pV;
+		PV = Integer.valueOf(pV);
 		
 		//NOTIFICA EVENTO
 	     e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
@@ -71,7 +70,7 @@ public class Giocatore {
 		return denari;
 	}
 	public void setDenari(long nuoviDenari) {
-		this.denari = nuoviDenari;
+		this.denari = Long.valueOf(nuoviDenari);
 		
 		//NOTIFICA EVENTO
 		e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
@@ -82,7 +81,7 @@ public class Giocatore {
 		return scuderia;
 	}
 	public void setScuderia(String scuderia) {
-		this.scuderia = scuderia;
+		this.scuderia = String.valueOf(scuderia);
 	}
 	
 	public void addCartaAzione(Azione a){
