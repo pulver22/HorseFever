@@ -43,7 +43,6 @@ public class Plancia {
 	 * Aggiunge la carta azione su quella determinata corsia
 	 * @param carta
 	 * @param numCorsia
-	 * @author Niccolo
 	 */
 	public void TruccaCorsia(Azione carta,int numCorsia, String nomeGioc){
 		corsieTruccate[numCorsia].add(carta);
@@ -52,8 +51,7 @@ public class Plancia {
 
 	/**
 	 * Applica gli effetti di tutte le carte Azioni su tutti i Cavalli
-	 * @author Niccolo
-	 * */
+	 */
 	public void applicaAzioni(){
 		for (int i=0; i<6;i++){
 			controllaAzioniDiRimozione(corsieTruccate[i],i);
@@ -65,7 +63,6 @@ public class Plancia {
 	/**
 	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
 	 * @param l'ArrayList dell carte Azione su cui fare il controllo
-	 * @author Niccolo
 	 * */
 	public void controllaAzioniDiRimozione(ArrayList<?> azioni,int corsia){
 		Azione a;
@@ -120,7 +117,6 @@ public class Plancia {
 	 * Assegna agli attributi di Cavallo i valori delle Carte Azioni presenti su di esso
 	 * @param ArrayList delle Carte Azione assegnate al cavallo
 	 * @param Il cavallo su cui assegnare gli effetti
-	 * @author Niccolo
 	 * */
 	public void assegnaEffettiAlCavallo(ArrayList<?> azioni, Cavallo cavallo,int corsia){
 		for (int i=0; i<azioni.size();i++){
@@ -189,7 +185,6 @@ public class Plancia {
 	 * in base alle quotazioni
 	 * @param array dei valori della carta Movimento
 	 * @return array dei movimenti teorici dei cavalli
-	 * @author Niccolo
 	 * */
 	public int[] calcolaIncrementiDaMov(int[] valoriMov){
 		int[] incrementi = new int[6];
@@ -202,7 +197,6 @@ public class Plancia {
 	/**
 	 * Esegue i movimenti dei cavalli alla partenza
 	 * @param l'array dei movimenti teorici dei cavalli
-	 * @author Niccolo
 	 * */
 	public void partenza(int[] movimenti){
 		for (int i=0; i<6;i++){
@@ -212,7 +206,6 @@ public class Plancia {
 	
 	/**
 	 * Esegue i movimenti dei cavalli
-	 * @author Niccolo
 	 * */
 	public void muovi(){
 		Cavallo c;
@@ -254,7 +247,6 @@ public class Plancia {
 	
 	/**
 	 * Gestisce arrivi e fotofinish del round di corsa attuale
-	 * @author Niccolo
 	 * */
 	public void gestioneArrivi(){
 		inserisciArrivati();
@@ -264,7 +256,6 @@ public class Plancia {
 	/**
 	 * Controlla se un cavallo è arrivati prima di tutti gli altri e in tal caso lo inserisce in arrivi
 	 * rimuovendo il suo riferimento dall'array dei cavalli
-	 * @author Niccolo
 	 * */
 	public void inserisciArrivati(){
 		int flagArrivo=0;
@@ -329,7 +320,6 @@ public class Plancia {
 	}
 	/**
 	 * Esegue il controllo di fotofinish sui vari cavalli nel round di corsa corrente
-	 * @author Niccolo
 	 * */
 	public void fotoFinish2(){
 		
@@ -393,7 +383,6 @@ public class Plancia {
 	
 	/**
 	 * Restituisce un array con 1 agli indici dei cavalli pari nella posizione massima non ancora arrivati, 0 altrove 
-	 * @author Niccolo
 	 * */
 	public int[] getCavalliPariMax(){
 		int[] flag=new int[6];
@@ -407,7 +396,6 @@ public class Plancia {
 	/**
 	 * Controlla, tra i cavalli arrivati ora al traguardo, la posizione di quali sono arrivati pari a una posizione maggiore, 0 altrimenti
 	 * @return la posizione dei cavalli pari maggiormente oltre il traguardo 
-	 * @author Niccolo
 	 * */
 	public int getMaxPosPari(){
 		int max=0;
@@ -430,7 +418,6 @@ public class Plancia {
 	/**
 	 * Sostanzialmente un bubblesort dell'ArrayList Fotofinish di Cavalli in base alla loro quotazione (decrescente
 	 * nel senso numerico, da "7" a "2", non nel senso dalla migliore (2) alla peggiore (7)). 
-	 * @author Niccolo
 	 * */
 	public void sortPerQuotazioneDecrescente(){
 		
@@ -459,7 +446,6 @@ public class Plancia {
 	/**
 	 * Resetta la Plancia alla situazione precedente la corsa.
 	 * Rimuove tutti gli elementi da fotofinish cavalliArrivati e corsieTruccate, e resetta i cavalli.
-	 * @author Niccolo
 	 * */
 	public void reset(){
 		for (int i=0; i<6;i++){
@@ -488,7 +474,6 @@ public class Plancia {
 	 * Metodo di supporto, ritorna i cavalli in prima posizione
 	 * @return un array di int con 1 se il cavallo corrispondente è primo (eventualmente parimerito con altri)
 	 * 0 se invece non lo è. 
-	 * @author Niccolo
 	 * */
 	public int[] getCavalliPrimiPari(){
 		int[] primiPari=new int[6];
@@ -505,7 +490,6 @@ public class Plancia {
 	 * Metodo di supporto, ritorna i cavalli in ultima posizione
 	 * @return un array di int con 1 se il cavallo corrispondente è ultimo (eventualmente parimerito con altri)
 	 * 0 se invece non lo è. 
-	 * @author Niccolo
 	 * */
 	public int[] getCavalliUltimiPari(){
 		int[] ultimiPari=new int[6];
@@ -521,7 +505,6 @@ public class Plancia {
 	/**
 	 * Metodo di supporto, ritorna la posizione massima tra quelle attuali dei cavalli
 	 * @return la posizione massima tra le attuali dei cavalli
-	 * @author Niccolo
 	 * */
 	public int getMax(){
 		int max=0;
@@ -535,7 +518,6 @@ public class Plancia {
 	/**
 	 * Metodo di supporto, ritorna la posizione minima tra quelle attuali dei cavalli
 	 * @return la posizione minima tra quelle attuali dei Cavalli
-	 * @author Niccolo
 	 * */
 	public int getMin(){
 		int min=cavalli[0].getPosizione();
@@ -549,7 +531,6 @@ public class Plancia {
 	/**
 	 * Esegue lo pseudo lancio dei dadi sprint
 	 * @return un array di 6 elementi. Ciascuno a 0 se non è uscito con nessun lancio, 1 se è uscito 
-	 * @author Niccolo
 	 * */
 	public int[] sprint(){
 		int c;
@@ -570,7 +551,6 @@ public class Plancia {
 	/**
 	 * Ritorna l'Array di String dei colori dei cavalli nell'ordine d'arrivo
 	 * @return I colori dei cavalli in ordine d'arrivo
-	 * @author Niccolo
 	 * */
 	public String[] getColoriArrivi(){
 		String colori[]=new String[6];
@@ -584,7 +564,6 @@ public class Plancia {
 	/**
 	 * Ritorna true se tutti i cavalli sono arrivati e false in caso contrario
 	 * @return true tutti i cavalli sono arrivati, false altrimenti
-	 * @author Niccolo
 	 * */
 	public boolean tuttiArrivati(){
 		for (int i=0; i<6;i++){
@@ -598,7 +577,6 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Ritorna un array di interi corrispondenti alle posizioni dei vari cavalli
 	 * @return l'array delle posizioni
 	 * */
@@ -611,7 +589,6 @@ public class Plancia {
 	}
 	
 	/**
-	 * @author Niccolo
 	 * Ritorna le carte azioni presenti su una data corsia
 	 * @return l'ArrayList delle azioni presenti su di esso.
 	 * */
