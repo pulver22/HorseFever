@@ -69,19 +69,6 @@ public class Partita {
 		}
 		
 	}
-	/**
-	 * Lancia i turni per il numero di turni prestabilito
-	 * Infine invoca FinePartita()
-	 */
-	public void Gioca(){
-		
-		int i;
-		for(i=0;i<numturni;i++){
-			
-			
-		}
-		FinePartita();
-	}
    
 	/**
 	 * Verifica il giocatore con il numero di PV più alto che è il giocatore vincente
