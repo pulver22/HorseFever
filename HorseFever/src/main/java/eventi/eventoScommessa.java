@@ -11,9 +11,9 @@ public class eventoScommessa implements HorseFeverEvent{
 	
 	public eventoScommessa(Scommessa scom){
 		
-		this.nomeGiocatore=new String(scom.getScommettitore().getNome());
-		this.corsia=new Integer(scom.getCorsia()) +1;
-		this.denari=new Long(scom.getImporto());
+		this.nomeGiocatore=String.valueOf(scom.getScommettitore().getNome());
+		this.corsia=Integer.valueOf(scom.getCorsia()) +1;
+		this.denari=Long.valueOf(scom.getImporto());
 		this.tipoScommessa= scom.getTipoScomessa();
 	}
 	
