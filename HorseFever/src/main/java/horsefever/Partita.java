@@ -31,7 +31,7 @@ public class Partita {
 		
 		this.adapter=a;
 		
-		this.numgiocatori=numgiocatori;
+		this.numgiocatori=Integer.valueOf(numgiocatori);
 		if(numgiocatori==4) numturni=4;
 		else if (numgiocatori==5) numturni=5;
 		else numturni=6;
