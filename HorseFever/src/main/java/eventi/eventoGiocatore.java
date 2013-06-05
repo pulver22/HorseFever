@@ -2,8 +2,6 @@ package eventi;
 
 import horsefever.Giocatore;
 
-import java.util.Arrays;
-
 public class eventoGiocatore implements HorseFeverEvent{
 
 	public static final int PRIMO=1;
@@ -48,7 +46,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 		else if (tipo==NUOVO)
 			return "Si è aggiunto Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
 		else if (tipo==PRIMO)
-			return "Il primo giocatore è Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
+			return "Il primo giocatore è : "+nomeGiocatore;
 		else if (tipo==DITURNO)
 			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else if (tipo==PERSO)
