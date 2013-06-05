@@ -12,12 +12,12 @@ import eventi.eventoTrucca;
 
 public class Plancia {
 	
-	boolean[] arrivati = new boolean[6];
-	//ArrayList<String> ordineArrivo = new ArrayList<String>(6);
-	int[] posizione = new int[6];
+	private boolean[] arrivati = new boolean[6];
+	
+	private int[] posizione = new int[6];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
-	Cavallo[] cavalli = new Cavallo[6];
-	ArrayList[] corsieTruccate = new ArrayList[6];
+	private Cavallo[] cavalli = new Cavallo[6];
+	private ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
 	private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
@@ -67,7 +67,7 @@ public class Plancia {
 	 * @param l'ArrayList dell carte Azione su cui fare il controllo
 	 * @author Niccolo
 	 * */
-	public void controllaAzioniDiRimozione(ArrayList azioni,int corsia){
+	public void controllaAzioniDiRimozione(ArrayList<?> azioni,int corsia){
 		Azione a;
 		boolean positive=false;
 		boolean negative=false;
@@ -122,7 +122,7 @@ public class Plancia {
 	 * @param Il cavallo su cui assegnare gli effetti
 	 * @author Niccolo
 	 * */
-	public void assegnaEffettiAlCavallo(ArrayList azioni, Cavallo cavallo,int corsia){
+	public void assegnaEffettiAlCavallo(ArrayList<?> azioni, Cavallo cavallo,int corsia){
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
 			if (a.getTipoEffetto().equals("Partenza")) {
@@ -165,11 +165,10 @@ public class Plancia {
 	/**
 	 * Verifica se in un ArrayList di carte Azione, ce ne sono alcune che si annullano
 	 * @param l'arrayList delle carte Azione da controllare
-	 * @author Niccolo
 	 * */
-	public void eliminaEffettiOpposti(ArrayList azioni){
+	public void eliminaEffettiOpposti(ArrayList<?> azioni){
 		if (azioni.size()>1){
-			//int[] flag=new int[azioni.size()];
+			
 			for (int i=0; i<azioni.size()-1; i++){
 				for (int j=1; j<azioni.size(); j++){
 					Azione a1= (Azione)azioni.get(i);
@@ -616,7 +615,7 @@ public class Plancia {
 	 * Ritorna le carte azioni presenti su una data corsia
 	 * @return l'ArrayList delle azioni presenti su di esso.
 	 * */
-	public ArrayList getAzioniSuCorsia(int corsia){
+	public ArrayList<?> getAzioniSuCorsia(int corsia){
 		return corsieTruccate[corsia];
 	}
 	
