@@ -91,7 +91,7 @@ public class eventoGiocatore implements HorseFeverEvent{
 	}
 
 	public void setCarteAzione(String[] carteAzione) {
-		this.carteAzione = carteAzione;
+		this.carteAzione = carteAzione.clone();
 		numcarte=0;
 		for (int i=0;i<carteAzione.length;i++){
 			if (carteAzione[i]!=null) numcarte++;

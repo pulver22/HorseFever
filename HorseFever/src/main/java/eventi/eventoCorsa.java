@@ -12,9 +12,9 @@ public class eventoCorsa implements HorseFeverEvent{
 	
 	
 	public eventoCorsa(int[] posizioniAggiornate, int[] valoriMovimento, int[] esitoDadi, String immagineMovimento){
-		this.posizioniAggiornate=posizioniAggiornate;
-		this.valoriMovimento=valoriMovimento;
-		this.esitoDadi=esitoDadi;
+		this.posizioniAggiornate=posizioniAggiornate.clone();
+		this.valoriMovimento=valoriMovimento.clone();
+		this.esitoDadi=esitoDadi.clone();
 		this.immagineMovimento=immagineMovimento;
 
 	}
@@ -37,7 +37,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	}
 
 	public void setPosizioniAggiornate(int[] posizioniAggiornate) {
-		this.posizioniAggiornate = posizioniAggiornate;
+		this.posizioniAggiornate = posizioniAggiornate.clone();
 	}
 
 	public int[] getValoriMovimento() {
@@ -45,7 +45,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	}
 
 	public void setValoriMovimento(int[] valoriMovimento) {
-		this.valoriMovimento = valoriMovimento;
+		this.valoriMovimento = valoriMovimento.clone();
 	}
 
 	public int[] getEsitoDadi() {
@@ -53,7 +53,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	}
 
 	public void setEsitoDadi(int[] esitoDadi) {
-		this.esitoDadi = esitoDadi;
+		this.esitoDadi = esitoDadi.clone();
 	}
 
 	public int[] getMovTeorici() {
@@ -61,7 +61,7 @@ public class eventoCorsa implements HorseFeverEvent{
 	}
 
 	public void setMovTeorici(int[] movTeorici) {
-		this.movTeorici = movTeorici;
+		this.movTeorici = movTeorici.clone();
 	}
 	
 	

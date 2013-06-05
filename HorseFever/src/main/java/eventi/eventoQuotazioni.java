@@ -24,7 +24,7 @@ public class eventoQuotazioni implements HorseFeverEvent{
 	}
 
 	public void setTabellaQuot(String[][] tabellaQuot) {
-		this.tabellaQuot = tabellaQuot;
+			this.tabellaQuot = tabellaQuot.clone();
 	}
 
 	
