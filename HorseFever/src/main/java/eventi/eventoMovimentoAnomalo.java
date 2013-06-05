@@ -19,50 +19,18 @@ public class eventoMovimentoAnomalo implements HorseFeverEvent{
 	public String getCavallo() {
 		return cavallo;
 	}
-
-
-
-	public void setCavallo(String cavallo) {
-		this.cavallo = cavallo;
-	}
-
-
-
+	
 	public int getMovTeorico() {
 		return movTeorico;
 	}
-
-
-
-	public void setMovTeorico(int movTeorico) {
-		this.movTeorico = movTeorico;
-	}
-
-
 
 	public int getMovReale() {
 		return movReale;
 	}
 
-
-
-	public void setMovReale(int movReale) {
-		this.movReale = movReale;
-	}
-
-
-
 	public String getCausa() {
 		return causa;
 	}
-
-
-
-	public void setCausa(String causa) {
-		this.causa = causa;
-	}
-
-
 
 	@Override
 	public String rappresentazione() {

@@ -23,10 +23,6 @@ public class eventoQuotazioni implements HorseFeverEvent{
 		return tabellaQuot;
 	}
 
-	public void setTabellaQuot(String[][] tabellaQuot) {
-			this.tabellaQuot = tabellaQuot.clone();
-	}
-
 	
 	
 }

@@ -20,16 +20,8 @@ public class eventoTrucca implements HorseFeverEvent{
 		return nomeGiocatore;
 	}
 
-	public void setNomeGiocatore(String nomeGiocatore) {
-		this.nomeGiocatore = nomeGiocatore;
-	}
-
 	public int getCorsia() {
 		return corsia;
 	}
-
-	public void setCorsia(int corsia) {
-		this.corsia = corsia;
-	}	
 
 }

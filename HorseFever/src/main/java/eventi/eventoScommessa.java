@@ -26,32 +26,16 @@ public class eventoScommessa implements HorseFeverEvent{
 		return nomeGiocatore;
 	}
 
-	public void setNomeGiocatore(String nomeGiocatore) {
-		this.nomeGiocatore = nomeGiocatore;
-	}
-
 	public int getCorsia() {
 		return corsia;
-	}
-
-	public void setCorsia(int corsia) {
-		this.corsia = corsia;
 	}
 
 	public long getDenari() {
 		return denari;
 	}
 
-	public void setDenari(long denari) {
-		this.denari = denari;
-	}
-
 	public char getTipoScommessa() {
 		return tipoScommessa;
-	}
-
-	public void setTipoScommessa(char tipoScommessa) {
-		this.tipoScommessa = tipoScommessa;
 	}
 	
 	
