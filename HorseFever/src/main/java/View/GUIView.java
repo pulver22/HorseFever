@@ -40,19 +40,45 @@ public class GUIView implements View{
 	}
 	@Override
 	public String[] chiediScommessa() {
-		
+		boolean buonfine= false;
 		String[] scommessa = new String[3];
-		scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
-		if(scommessa[0].equals("")) scommessa[0]="0";
 		
+		while(buonfine == false){
+			try{
+				scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
+				if(scommessa[0].equals("")) scommessa[0]="0";
+				buonfine = true;
+			}catch(NullPointerException e){
+				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
+				buonfine = false;
+			}
+		}
+		buonfine = false;
 		
-		String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-		scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-		scommessa[1] = ""+scommessa[1].charAt(9);
-		String[] sceltaScommessa = {"Vincente","Piazzato"};
-		scommessa[2] = (String) JOptionPane.showInputDialog(null, "Scegli che tipo di scommessa vuoi fare","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
-		scommessa[2] = ""+scommessa[2].charAt(0);
+		while(buonfine == false){
+			try{
+			String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+			scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+			scommessa[1] = ""+scommessa[1].charAt(9);
+			buonfine = true;
+			}catch(NullPointerException e){
+				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
+				buonfine = false;
+			}
+		}
+		buonfine = false;
 		
+		while(buonfine == false){
+			try{
+				String[] sceltaScommessa = {"Vincente","Piazzato"};
+				scommessa[2] = (String) JOptionPane.showInputDialog(null, "Scegli che tipo di scommessa vuoi fare","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
+				scommessa[2] = ""+scommessa[2].charAt(0);
+				buonfine = true;
+			}catch(NullPointerException e){
+				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
+				buonfine = false;
+			}
+		}
 		
 		/* RICHIEDE GESTIONE THREAD
 		 * 
@@ -173,7 +199,7 @@ public class GUIView implements View{
 				}
 				buonfine = true;
 			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,stai sbagliando qualcosa!!");
+				JOptionPane.showMessageDialog(board, "Attento,non puoi evitare di truccare la corsa!!\nIl gioco pulito non piace a nessuno!");
 				buonfine = false;
 			}
 		}
@@ -186,7 +212,7 @@ public class GUIView implements View{
 				scelta[1] = ""+scelta[1].charAt(9);
 				buonfine = true;
 			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,stai sbagliando qualcosa!!");
+				JOptionPane.showMessageDialog(board, "Attento,non puoi evitare di truccare la corsa!!\nIl gioco pulito non piace a nessuno!");
 				buonfine = false;
 			}
 		}
