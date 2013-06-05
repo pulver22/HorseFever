@@ -10,6 +10,9 @@ public class AdapterLocale implements Adapter {
 
 	private ArrayList<View> viewRegistrate=new ArrayList<View>();
 
+	/**
+	 * Chiede ad ogni giocatore registrato di fare una scommessa
+	 */
 	public String[] chiediScommessa(int indice) {
 		
 		String[] valori=new String[3];
@@ -20,6 +23,9 @@ public class AdapterLocale implements Adapter {
 		return valori;
 	}
 	
+	/**
+	 * Chiedi ad ogni giocatore registrato di effettuare la seconda scommessa
+	 */
 	public String[] chiediSecondaScommessa(int indice){
 		
         String[] valori=new String[3];
@@ -29,6 +35,9 @@ public class AdapterLocale implements Adapter {
 		return valori;
 	}
 	
+	/**
+	 * Chiedi ad ogni giocatore registrato di truccare la corsa
+	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
 		
 		String[] scelta = new String[2];
@@ -38,11 +47,17 @@ public class AdapterLocale implements Adapter {
 		return scelta;
 	}
 	
+	/**
+	 * Stampa a video di ogni giocatore registrato un messaggio
+	 */
 	public void stampaMessaggio(String messaggio,int indice){
 		
 		viewRegistrate.get(0).stampaMessaggio(messaggio);
 	}
 
+	/**
+	 * Notifica ad ogni giocatore registrato un evento
+	 */
 	public void notify(HorseFeverEvent e){
 		
 		for (View v: viewRegistrate){
@@ -51,14 +66,23 @@ public class AdapterLocale implements Adapter {
 	}
 	
 	
-	
+	/**
+	 * Aggiunge una view, quindi registra un giocatore
+	 */
 	public void addView(View v){
 		viewRegistrate.add(v);
 	}
+	
+	/**
+	 * Rimuove una view, quindi elimina un giocatore dal gioco
+	 */
 	public void removeView(int i){
 		viewRegistrate.remove(i);
 	}
 
+	/**
+	 * Permette di avanzare alla fase successiva del turno, e quindi del gioco
+	 */
 	@Override
 	public void prosegui(String messaggio, int indice) {
 		viewRegistrate.get(0).prosegui(messaggio);
