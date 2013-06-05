@@ -1,6 +1,5 @@
 package horsefever;
 import java.util.ArrayList;
-import java.util.Arrays;
 import adapter.Adapter;
 import eventi.*;
 
@@ -100,7 +99,7 @@ public class Partita {
 	
 	
 	public void notifyObserver(HorseFeverEvent e){
-		//System.out.println(e.rappresentazione());
+		
 		adapter.notify(e);
 	}
 	
@@ -145,11 +144,11 @@ public class Partita {
 	public int[] getNumSegnalini() {
 		
 		
-		return numSegnalini.clone();
+		return numSegnalini;
 	}
 
 	public void setNumSegnalini(int[] numSegnalini) {
-		this.numSegnalini = numSegnalini;
+		this.numSegnalini = numSegnalini.clone();
 	}
 
 	public void setBetManager(BetManager betManager) {
@@ -173,7 +172,7 @@ public class Partita {
 	}
 
 	public void setNumturni(int numturni) {
-		this.numturni = numturni;
+		this.numturni = Integer.valueOf(numturni);
 	}
 
 	public int getNumgiocatori() {
@@ -181,7 +180,7 @@ public class Partita {
 	}
 
 	public void setNumgiocatori(int numgiocatori) {
-		this.numgiocatori = numgiocatori;
+		this.numgiocatori = Integer.valueOf(numgiocatori);
 	}
 
 	public Mazzo getMazzoAzione() {
