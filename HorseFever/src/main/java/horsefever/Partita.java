@@ -76,8 +76,9 @@ public class Partita {
 	 */
 	public void FinePartita(){
 		
-		int i=0,indiceGiocVinc=0,maxPV=0;
-		for(i=0;i<numgiocatori;i++){
+		int i=0,indiceGiocVinc=-1,maxPV=-1;
+		long maxDenari=-1;
+		for(i=0;i<giocatori.size();i++){
 			
 			if(giocatori.get(i).getPV()>maxPV){
 				
@@ -85,7 +86,14 @@ public class Partita {
 				maxPV=giocatori.get(i).getPV();
 			}
 		}
-		
+		for (int j=0;j<giocatori.size();j++){
+			if (giocatori.get(j).getPV()==maxPV && j!=indiceGiocVinc){
+				if (giocatori.get(j).getDenari()>giocatori.get(indiceGiocVinc).getDenari()){
+					indiceGiocVinc=j;
+					maxDenari=giocatori.get(indiceGiocVinc).getDenari();
+				}
+			}
+		}
 		notifyObserver(new eventoGiocatore(giocatori.get(indiceGiocVinc),eventoGiocatore.VINTO));
 		
 	}
