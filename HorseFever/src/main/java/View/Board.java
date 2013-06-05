@@ -3,8 +3,6 @@ package View;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class Board extends JFrame {
@@ -41,8 +39,6 @@ public class Board extends JFrame {
 	private Image titolo;
 	private Image[] piazzamento=new Image[3];
 	
-	private JButton[] bottoneProva=new JButton[6];
-	
 	private boolean[] stampaPiazzamento=new boolean[3];
 	private boolean tutteArrivate=false;
 	
@@ -54,6 +50,7 @@ public class Board extends JFrame {
     public Board(){
     	
     	//numero turni
+    	
     	pannelloTurni.setBounds(1140,10,50,50);
     	pannelloTurni.setLayout(new BorderLayout());
     	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno corrente:" ) );
@@ -94,8 +91,6 @@ public class Board extends JFrame {
         ImageIcon ii=new ImageIcon(this.getClass().getResource("elementiBoard/plancia.jpg"));
 		plancia=ii.getImage();	
 		
-		
-		
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,280);
@@ -121,15 +116,13 @@ public class Board extends JFrame {
 		}
 		
 		for(int i=0;i<6;i++){
-			
-			
-		PV[i].setEditable(false);
-		denari[i].setEditable(false);
-		nomeGiocatore[i].setEditable(false);
-		scuderia[i].setEditable(false);
+				
+			PV[i].setEditable(false);
+			denari[i].setEditable(false);
+			nomeGiocatore[i].setEditable(false);
+			scuderia[i].setEditable(false);
 		
 		}
-		
 		
 		pannelloGiocatore.setVisible(true);
 		
@@ -170,8 +163,6 @@ public class Board extends JFrame {
     	this.add(pannelloTurni);
     	this.add(background);
     	
-    	
-    
     	pannelloNotifica.setDoubleBuffered(true);
     	pannelloLavagna.setDoubleBuffered(true);
     	pannelloGiocatore.setDoubleBuffered(true);
@@ -214,9 +205,14 @@ public class Board extends JFrame {
         Toolkit.getDefaultToolkit().sync();
         this.invalidate();
         
-    
 	}
 	
+	/**
+	 *  resetta la plancia impostando che:
+	 *  tutte le pedine non sono arrivate
+	 *  immagine pedine ai valori iniziali
+	 *  i piazzamenti non vengono stampati
+	 */
 	public void reset(){
 		
 		this.setTutteArrivate(false);
@@ -231,8 +227,11 @@ public class Board extends JFrame {
 		}
 	}
 	
-	//Getter e Setter
-
+	/**
+	 * Stampa il piazzamento 
+	 * @param numCorsia (corsia in cui è arrivato il cavallo che si è piazzato)
+	 * @param posizione (1°,2° o 3° posto)
+	 */
 	public void stampaPiazzamento(int numCorsia, int posizione){
 		
 		posizione--;
@@ -244,14 +243,6 @@ public class Board extends JFrame {
 		
 	}
 	
-	public void setNomeScuderia(String scuderia,int indice) {
-		this.scuderia[indice].setText(scuderia);
-	}
-
-	public String getNomeScuderia(int indice){
-		
-		return this.scuderia[indice].getText();
-	}
 	/**
 	 * Scrive sulla JTextArea delle quotazioni
 	 * @param messaggio
@@ -269,46 +260,6 @@ public class Board extends JFrame {
 		this.invalidate();
 	}
 	
-	/**
-	 * setta i pv del giocatore
-	 * @param PV
-	 */
-	public void setPV(int PV,int indice){
-		
-		this.PV[indice].setText("  "+PV);
-	}
-	 
-	public String getPV(int indice){
-	    	
-	    	return this.PV[indice].getText();
-	}
-	/**
-	 * setta il nome del giocatore
-	 * @param nome
-	 */
-    public void setNomeGiocatore(String nome,int indice){
-    	
-    	this.nomeGiocatore[indice].setText(nome);
-    }
-	
-    public String getNomeGiocatore(int indice){
-    	
-    	return this.nomeGiocatore[indice].getText();
-    }
- 
-	/**
-	 * setta i denari del giocatore
-	 * @param denari
-	 */
-    public void setDenari(long denari,int indice){
-		
-		this.denari[indice].setText(""+denari);
-	}
-    
-    public String getDenari(int indice){
-    	
-    	return this.denari[indice].getText();
-    }
 	/**
 	 * Scrive sulla JTextArea delle notifiche della partita
 	 * @param messaggio
@@ -330,6 +281,47 @@ public class Board extends JFrame {
 		
 	}
 	
+	//Getter e Setter
+	
+	public void setNomeScuderia(String scuderia,int indice) {
+		this.scuderia[indice].setText(scuderia);
+	}
+
+	public String getNomeScuderia(int indice){
+		
+		return this.scuderia[indice].getText();
+	}
+	
+	public void setPV(int PV,int indice){
+		
+		this.PV[indice].setText("  "+PV);
+	}
+	 
+	public String getPV(int indice){
+	    	
+	    	return this.PV[indice].getText();
+	}
+	
+    public void setNomeGiocatore(String nome,int indice){
+    	
+    	this.nomeGiocatore[indice].setText(nome);
+    }
+	
+    public String getNomeGiocatore(int indice){
+    	
+    	return this.nomeGiocatore[indice].getText();
+    }
+ 
+    public void setDenari(long denari,int indice){
+		
+		this.denari[indice].setText(""+denari);
+	}
+    
+    public String getDenari(int indice){
+    	
+    	return this.denari[indice].getText();
+    }
+		
 	public Pedina getPedina(int i) {
 		return pedine[i];
 	}
