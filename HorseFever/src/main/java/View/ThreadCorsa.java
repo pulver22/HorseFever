@@ -50,7 +50,7 @@ public class ThreadCorsa extends Thread{
         	 
         	   try {
         		   board.repaint();
-        		   Thread.sleep(1000);
+        		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -106,9 +106,9 @@ public class ThreadCorsa extends Thread{
           	   		}   
            		   
            		}
-       		   
-       		    this.stop=true;
+       		    
        		    vista.setContinua(true);
+       		    this.stop=true;
        	       }
         	  
       }

@@ -28,6 +28,7 @@ public class GUIView implements View{
 	private ThreadCorsa threadCorsa;
 	private boolean quotIniziali=true;
 	private boolean continua=true;
+	private boolean first=true;
 	
 	public GUIView(){
 		
@@ -35,7 +36,6 @@ public class GUIView implements View{
 			
 	  
 		threadCorsa=new ThreadCorsa(this);
-		threadCorsa.start();
 		
 	}
 	@Override
@@ -371,6 +371,11 @@ public class GUIView implements View{
        if(e instanceof eventoCorsa){
     	   
     	   continua=false;
+    	   if(first==true){
+    		   first=false;
+    		   threadCorsa.start();
+    		  
+    	   }
     	   eventiCorsa.add((eventoCorsa) e);
     	   
        }
@@ -477,10 +482,24 @@ public class GUIView implements View{
 	@Override
 	public void prosegui(String messaggio) {
 		
-		while(continua==false){
+		if(messaggio.equals("E' terminata la fase di corsa.")){
+		
+			try {
+				threadCorsa.join();
+                
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+			first=true;
+			board.reset();
+		}
+		else{
+			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
 			
 		}
-		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+		
 	}
 	
 	public boolean isContinua() {

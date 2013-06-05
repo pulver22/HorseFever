@@ -25,15 +25,10 @@ public class TestGUI {
 		adapter.addView(view);
 		Partita p=new Partita(3,adapter);
 		Controller controller=new Controller(p);
-		
-		
 		controller.setAdapter(adapter);
-		p.setAdapter(adapter);
-		
-		
-		p.preparazione();
+
 		controller.start();
-		
+		//controller.FaseCorsa();
 		//for(int i=0;i<6;i++)
 		//view.getBoard().getPedina(i).muovi(10);
 		//view.getBoard().getPedina(1).muovi(3);
