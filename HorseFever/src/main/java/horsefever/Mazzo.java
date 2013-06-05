@@ -1,8 +1,6 @@
 package horsefever;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-
 public class Mazzo {
 	
 	private ArrayList<Carta> Mazzo = new ArrayList<Carta>();
