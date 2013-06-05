@@ -145,7 +145,6 @@ public class Cavallo {
 	/**
 	 * Resetta il cavallo alle condizioni precedenti la corsa. 
 	 * Mantiene sostanzialmente solo la quotazione del cavallo.
-	 * @author Niccolo
 	 * */
 	public void reset(){
 		posizione=0;
