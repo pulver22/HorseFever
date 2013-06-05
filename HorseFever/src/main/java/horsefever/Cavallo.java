@@ -16,7 +16,7 @@ public class Cavallo {
 	private final int SPRINT=1;
 	
 	public Cavallo(String colore){
-		this.colore=colore;
+		this.colore=String.valueOf(colore);
 	}
 	
 	/**
