@@ -353,7 +353,7 @@ public class GUIView implements View{
    			   i++;
    		   }
     	  }
-    	   else if(tipo==eventoGiocatore.PRIMO){
+    	  else if(tipo==eventoGiocatore.PRIMO){
     		   
     		   while(!inserito){
        			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
@@ -364,6 +364,12 @@ public class GUIView implements View{
        			   i++;
     		   
     	   }	   
+    	  }
+    	  else if(tipo==eventoGiocatore.VINTO){
+    		  
+    		  this.stampaMessaggio("Ha vinto il giocatore: "+nomeGioc+" !!!");
+    		  
+    		  
     	  }
     		 	   
     	}
@@ -400,7 +406,10 @@ public class GUIView implements View{
     		   threadCorsa=new ThreadCorsa(this);
     		   threadCorsa.start();
     	   }
-    	   eventiCorsa.add((eventoCorsa) e);
+    	   
+           eventiCorsa.add((eventoCorsa) e);
+    	   
+    	   
     	   
        }
        
@@ -452,12 +461,7 @@ public class GUIView implements View{
 	public void setFirst(boolean first) {
 		this.first = first;
 	}
-	public ArrayList<eventoCorsa> getEventiCorsa() {
-		return eventiCorsa;
-	}
-	public ArrayList<eventoArrivi> getArrivati() {
-		return arrivati;
-	}
+    
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
@@ -479,6 +483,27 @@ public class GUIView implements View{
 		
 		return null;
 	}
+
+    public eventoArrivi getEventoArrivi(){
+		
+		eventoArrivi e;
+		
+		if(arrivati.size()>0){
+			
+			e=arrivati.get(0);
+			arrivati.remove(0);
+			
+			return e;
+			
+		}
+		
+		return null;
+	}
+    
+	public ArrayList<eventoCorsa> getEventiCorsa() {
+		return eventiCorsa;
+	}
+	
 	public eventoCorsa getEventoCorsa(){
 		
 		eventoCorsa e;

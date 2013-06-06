@@ -52,7 +52,7 @@ public class ThreadCorsa extends Thread{
         		   board.repaint();
         		   Thread.sleep(3500);
         	   } catch (InterruptedException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
         	   }
         		  
@@ -84,7 +84,7 @@ public class ThreadCorsa extends Thread{
            	   
        		   for(int i=0; i<6;i++){
        			   
-       			   	eventoArrivi e=vista.getArrivati().get(i);
+       			   	eventoArrivi e=vista.getEventoArrivi();
        		   
        		   		int posArrivo=e.getPosArrivo();
            	   		String cavallo=e.getCavallo();
