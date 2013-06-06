@@ -2,6 +2,8 @@ package horsefever;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.*;
 
 import View.TextView;
@@ -249,15 +251,16 @@ public class TestPlancia {
 		plancia.getCavalloAt(3).setQuotazione(5);
 		//Giallo
 		plancia.getCavalloAt(4).setQuotazione(4);
-		plancia.getFotofinish().add(plancia.getCavalloAt(1));
-		plancia.getFotofinish().add(plancia.getCavalloAt(2));
-		plancia.getFotofinish().add(plancia.getCavalloAt(3));
-		plancia.getFotofinish().add(plancia.getCavalloAt(4));
-		plancia.sortPerQuotazioneDecrescente();
-		assertEquals(5,plancia.getFotofinish().get(0).getQuotazione());
-		assertEquals(4,plancia.getFotofinish().get(1).getQuotazione());
-		assertEquals(3,plancia.getFotofinish().get(2).getQuotazione());
-		assertEquals(2,plancia.getFotofinish().get(3).getQuotazione());
+		ArrayList<Cavallo> cavalli=new ArrayList<Cavallo>();
+		cavalli.add(plancia.getCavalloAt(1));
+		cavalli.add(plancia.getCavalloAt(2));
+		cavalli.add(plancia.getCavalloAt(3));
+		cavalli.add(plancia.getCavalloAt(4));
+		plancia.sortPerQuotazioneDecrescente(cavalli);
+		assertEquals(5,cavalli.get(0).getQuotazione());
+		assertEquals(4,cavalli.get(1).getQuotazione());
+		assertEquals(3,cavalli.get(2).getQuotazione());
+		assertEquals(2,cavalli.get(3).getQuotazione());
 	}
 	
 	@Test

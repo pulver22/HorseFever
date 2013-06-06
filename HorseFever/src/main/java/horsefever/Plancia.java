@@ -19,7 +19,7 @@ public class Plancia {
 	private Cavallo[] cavalli = new Cavallo[6];
 	private ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
-	private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
+	//private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
 	private Partita partita;
@@ -324,7 +324,7 @@ public class Plancia {
 	public void fotoFinish2(){
 		
 		int flag[]=getCavalliPariMax();//Trova indici cavalli pari e in posizione massima
-		
+		ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 		ArrayList<Cavallo> ordineCavalli=new ArrayList<Cavallo>();
 		boolean esisteVincente=false,esistePerdente=false;
 		for (int i=0; i<6;i++){ //Per cavalli di cui si è memorizzato l'indice, si aggiungono a Fotofinish e si segnano arrivati
@@ -357,7 +357,7 @@ public class Plancia {
 			}
 		}
 		
-		if (fotofinish.size()>1) this.sortPerQuotazioneDecrescente(); //Ordinamento dei restanti
+		if (fotofinish.size()>1) this.sortPerQuotazioneDecrescente(fotofinish); //Ordinamento dei restanti
 		
 		while(fotofinish.size()>0){//Inserimento dei restanti nelle posizioni adeguate
 			if (esisteVincente){
@@ -422,7 +422,7 @@ public class Plancia {
 	 * Sostanzialmente un bubblesort dell'ArrayList Fotofinish di Cavalli in base alla loro quotazione (decrescente
 	 * nel senso numerico, da "7" a "2", non nel senso dalla migliore (2) alla peggiore (7)). 
 	 * */
-	public void sortPerQuotazioneDecrescente(){
+	public void sortPerQuotazioneDecrescente(ArrayList<Cavallo> fotofinish){
 		
 		for(int i = 0; i < fotofinish.size(); i++) {
             boolean flag = false;
@@ -460,11 +460,11 @@ public class Plancia {
 			}
 			arrivati[i]=false; //Resetta booleano di arrivi
 		}
-		if (fotofinish.size()!=0){//Se ci fosse ancora qualcosa in fotofinish, rimuove tutto
+		/*if (fotofinish.size()!=0){//Se ci fosse ancora qualcosa in fotofinish, rimuove tutto
 			for (int k=0; k<fotofinish.size();k++){
 				fotofinish.remove(0);
 			}
-		}
+		}*/
 		if (cavalliArrivati.size()!=0){//Se ci fosse ancora qualcosa in cavalliArrivati, rimuove tutto
 			for (int l=0; l<cavalliArrivati.size();l++){
 				cavalliArrivati.remove(0);
@@ -612,9 +612,9 @@ public class Plancia {
 	public ArrayList<Cavallo> getCavalliArrivati(){
 		return cavalliArrivati;
 	}
-	
+	/*
 	public ArrayList<Cavallo> getFotofinish(){
 		return fotofinish;
 	}
-	
+	*/
 }
