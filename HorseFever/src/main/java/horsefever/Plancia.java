@@ -466,7 +466,7 @@ public class Plancia {
 			}
 		}*/
 		if (cavalliArrivati.size()!=0){//Se ci fosse ancora qualcosa in cavalliArrivati, rimuove tutto
-			for (int l=0; l<cavalliArrivati.size();l++){
+			while(cavalliArrivati.size()>0){
 				cavalliArrivati.remove(0);
 			}
 		}
