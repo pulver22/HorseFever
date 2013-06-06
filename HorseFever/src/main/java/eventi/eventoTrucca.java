@@ -1,7 +1,11 @@
 package eventi;
 
-public class eventoTrucca implements HorseFeverEvent{
+public class eventoTrucca extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2369087174732693884L;
 	private String nomeGiocatore;
 	private int corsia;
 	

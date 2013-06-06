@@ -1,7 +1,11 @@
 package eventi;
 
-public class eventoMovimentoAnomalo implements HorseFeverEvent{
+public class eventoMovimentoAnomalo extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8862445888665384677L;
 	String cavallo;
 	int movTeorico;
 	int movReale;

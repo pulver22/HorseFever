@@ -2,8 +2,12 @@ package eventi;
 
 import horsefever.Scommessa;
 
-public class eventoScommessa implements HorseFeverEvent{
+public class eventoScommessa extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5872180560159747470L;
 	private String nomeGiocatore;
 	private int corsia;
 	private long denari;

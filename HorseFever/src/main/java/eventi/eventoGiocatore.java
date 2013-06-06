@@ -2,8 +2,12 @@ package eventi;
 
 import horsefever.Giocatore;
 
-public class eventoGiocatore implements HorseFeverEvent{
+public class eventoGiocatore extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5686905553454149939L;
 	public static final int PRIMO=1;
 	public static final int NUOVO=0;
 	public static final int MODIFICA=2;

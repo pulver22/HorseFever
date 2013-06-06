@@ -1,7 +1,14 @@
 package eventi;
 
-public interface HorseFeverEvent {
+import java.io.Serializable;
+
+public abstract class HorseFeverEvent implements Serializable{
 	
-	public String rappresentazione();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 119661390107983124L;
+
+	public abstract String rappresentazione();
 
 }

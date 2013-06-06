@@ -1,7 +1,11 @@
 package eventi;
 
-public class eventoEffettoAvvenuto implements HorseFeverEvent{
+public class eventoEffettoAvvenuto extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2425905078412852498L;
 	private String cartaAttivata;
 	private int corsia;
 	

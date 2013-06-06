@@ -1,7 +1,11 @@
 package eventi;
 
-public class eventoTurno implements HorseFeverEvent{
+public class eventoTurno extends HorseFeverEvent{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7990007490326932245L;
 	private int turnoCorrente;
 	private int turniTotali;
 	

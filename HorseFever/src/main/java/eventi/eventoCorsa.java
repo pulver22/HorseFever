@@ -2,8 +2,12 @@ package eventi;
 
 import java.util.Arrays;
 
-public class eventoCorsa implements HorseFeverEvent{
+public class eventoCorsa extends HorseFeverEvent{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1238805836797424930L;
 	private int[] posizioniAggiornate;
 	private int[] valoriMovimento;
 	private int[] esitoDadi;
