@@ -64,9 +64,18 @@ public class BetManager {
 	//Pagamenti ai proprietari di scuderia
 	for(int i=0;i< giocatori.size();i++){
 		long denari = giocatori.get(i).getDenari();
-		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]) giocatori.get(i).setDenari(denari + 600);
-		if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]) giocatori.get(i).setDenari(denari + 400);
-		if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]) giocatori.get(i).setDenari(denari + 200);
+		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]){
+			
+			giocatori.get(i).setDenari(denari + 600);
+		}
+		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]){
+			
+			giocatori.get(i).setDenari(denari + 400);
+		}
+		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]){
+			
+			giocatori.get(i).setDenari(denari + 200);
+		}
 	}
 	
 	
@@ -77,12 +86,30 @@ public class BetManager {
 		
 		String ordine = new String();
 		
-			if(ordineArrivo==0) ordine ="Nero";
-			if(ordineArrivo==1) ordine ="Blu";
-			if(ordineArrivo==2) ordine ="Verde";
-			if(ordineArrivo==3) ordine ="Rosso";
-			if(ordineArrivo==4) ordine ="Giallo";
-			if(ordineArrivo==5) ordine ="Bianco";
+			if(ordineArrivo==0){
+				
+				ordine ="Nero";
+			}
+			else if(ordineArrivo==1){
+				
+				ordine ="Blu";
+			}
+			else if(ordineArrivo==2){
+				
+				ordine ="Verde";
+			}
+			else if(ordineArrivo==3){
+				
+				ordine ="Rosso";
+			}
+			else if(ordineArrivo==4){
+				
+				ordine ="Giallo";
+			}
+			else if(ordineArrivo==5){
+				
+				ordine ="Bianco";
+			}
 			
 			return ordine;
 		}
