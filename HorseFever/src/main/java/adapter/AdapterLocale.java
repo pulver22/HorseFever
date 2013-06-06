@@ -15,7 +15,7 @@ public class AdapterLocale implements Adapter {
 	 */
 	public String[] chiediScommessa(int indice) {
 		
-		String[] valori=new String[3];
+		String[] valori;
 		
 		valori=viewRegistrate.get(0).chiediScommessa();
 		
@@ -28,7 +28,7 @@ public class AdapterLocale implements Adapter {
 	 */
 	public String[] chiediSecondaScommessa(int indice){
 		
-        String[] valori=new String[3];
+        String[] valori;
         
         valori=viewRegistrate.get(0).chiediSecondaScommessa();
 		

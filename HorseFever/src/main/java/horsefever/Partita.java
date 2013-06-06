@@ -76,7 +76,6 @@ public class Partita {
 	public void FinePartita(){
 		
 		int i=0,indiceGiocVinc=-1,maxPV=-1;
-		long maxDenari=-1;
 		for(i=0;i<giocatori.size();i++){
 			
 			if(giocatori.get(i).getPV()>maxPV){
@@ -89,7 +88,6 @@ public class Partita {
 			if (giocatori.get(j).getPV()==maxPV && j!=indiceGiocVinc){
 				if (giocatori.get(j).getDenari()>giocatori.get(indiceGiocVinc).getDenari()){
 					indiceGiocVinc=j;
-					maxDenari=giocatori.get(indiceGiocVinc).getDenari();
 				}
 			}
 		}
