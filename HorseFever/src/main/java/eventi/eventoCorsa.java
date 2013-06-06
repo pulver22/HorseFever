@@ -8,7 +8,6 @@ public class eventoCorsa implements HorseFeverEvent{
 	private int[] valoriMovimento;
 	private int[] esitoDadi;
 	private String immagineMovimento;
-	private int[] movTeorici;
 	
 	
 	public eventoCorsa(int[] posizioniAggiornate, int[] valoriMovimento, int[] esitoDadi, String immagineMovimento){
@@ -38,10 +37,6 @@ public class eventoCorsa implements HorseFeverEvent{
 
 	public int[] getEsitoDadi() {
 		return esitoDadi;
-	}
-
-	public int[] getMovTeorici() {
-		return movTeorici;
 	}
 
 }
