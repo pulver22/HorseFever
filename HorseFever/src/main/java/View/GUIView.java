@@ -15,6 +15,9 @@ import java.util.Arrays;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import horsefever.Azione;
 import eventi.*;
 
@@ -22,7 +25,7 @@ import eventi.*;
 public class GUIView implements View{
 
 	private Board board;
-	private ArrayList<eventoCorsa> eventiCorsa=new ArrayList<eventoCorsa>();
+	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
 	private ArrayList<eventoArrivi> arrivati=new ArrayList<eventoArrivi>();
 	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
@@ -32,10 +35,6 @@ public class GUIView implements View{
 	public GUIView(){
 		
 		board=new Board();
-			
-	  
-		threadCorsa=new ThreadCorsa(this);
-		
 	}
 	@Override
 	public String[] chiediScommessa() {
@@ -375,7 +374,7 @@ public class GUIView implements View{
     	}
      
        
-       if(e instanceof eventoScommessa){
+       else if(e instanceof eventoScommessa){
     	   
     	   String nomeGioc=((eventoScommessa) e).getNomeGiocatore();  
     	   long denari=((eventoScommessa) e).getDenari();  
@@ -389,7 +388,7 @@ public class GUIView implements View{
        
        }
        
-       if(e instanceof eventoTrucca){
+       else if(e instanceof eventoTrucca){
     	   
     	   String nomeGioc=((eventoTrucca) e).getNomeGiocatore();  
     	   int numCorsia=((eventoTrucca) e).getCorsia();
@@ -398,11 +397,10 @@ public class GUIView implements View{
     	   
        }
        
-       if(e instanceof eventoCorsa){
+       else if(e instanceof eventoCorsa){
     	   
     	   if(first){
     		   first=false;
-    		   threadCorsa.setStop(false);
     		   threadCorsa=new ThreadCorsa(this);
     		   threadCorsa.start();
     	   }
@@ -413,14 +411,14 @@ public class GUIView implements View{
     	   
        }
        
-       if(e instanceof eventoEffettoAvvenuto){
+       else if(e instanceof eventoEffettoAvvenuto){
     	   
     	   String rappresentazione=((eventoEffettoAvvenuto) e).rappresentazione();
     	   
     	   board.settaAreaNotifica(""+rappresentazione+"\n");
        }
        
-       if(e instanceof eventoQuotazioni){
+       else if(e instanceof eventoQuotazioni){
     	   
     	   //se sono le quotazioni iniziali vengono immediatamente stampate
     	   if(quotIniziali){
@@ -442,13 +440,13 @@ public class GUIView implements View{
     	   }
     	 
   
-       if(e instanceof eventoArrivi){
+       else if(e instanceof eventoArrivi){
     	   
     	   arrivati.add((eventoArrivi) e);
     	 
        }
        
-       if(e instanceof eventoTurno){
+       else if(e instanceof eventoTurno){
     	   
     	   int turnoCor=((eventoTurno) e).getTurnoCorrente();
     	   int turniTot=((eventoTurno) e).getTurniTotali();
@@ -500,7 +498,7 @@ public class GUIView implements View{
 		return null;
 	}
     
-	public ArrayList<eventoCorsa> getEventiCorsa() {
+	public Queue<eventoCorsa> getEventiCorsa() {
 		return eventiCorsa;
 	}
 	
@@ -510,8 +508,7 @@ public class GUIView implements View{
 		
 		if(eventiCorsa.size()>0){
 			
-			e=eventiCorsa.get(0);
-			eventiCorsa.remove(0);
+			e=eventiCorsa.poll();
 			
 			return e;
 			

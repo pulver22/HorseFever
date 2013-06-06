@@ -8,7 +8,7 @@ import eventi.eventoQuotazioni;
 
 public class ThreadCorsa extends Thread{
 
-	private boolean stop=false;
+	private boolean stop;
 	private GUIView vista;
 	private eventoCorsa evento;
 	private int[] posizioniAggiornate;
@@ -21,7 +21,8 @@ public class ThreadCorsa extends Thread{
 	public ThreadCorsa(GUIView vista){
 		
 		this.vista=vista;
-		this.board=vista.getBoard();		
+		this.board=vista.getBoard();
+		this.stop=false;
 	}
 
 	public void aggiornaPosizioni(int[] posizioni){
@@ -39,11 +40,10 @@ public class ThreadCorsa extends Thread{
         	  board.settaAreaNotifica("");
         	  
         	  if(evento!=null){
-        		  
-        		  posizioniAggiornate=evento.getPosizioniAggiornate();
-           	      esitoDadi=evento.getEsitoDadi();
-           	      immagineMovimento=evento.getImmagineMovimento();
-           	      
+        		          		
+               esitoDadi=evento.getEsitoDadi();
+           	   immagineMovimento=evento.getImmagineMovimento();
+           	   posizioniAggiornate=evento.getPosizioniAggiornate();
            	   board.settaAreaNotifica("\nEsito dadi= "+Arrays.toString(esitoDadi)); 
            	   board.setImmagineMovimento(immagineMovimento);
         	   aggiornaPosizioni(posizioniAggiornate);
@@ -92,11 +92,11 @@ public class ThreadCorsa extends Thread{
            	   		int numCorsia=10;
            	   
           	   		if(cavallo.equals("Nero")) numCorsia=1;
-          	   		if(cavallo.equals("Blu")) numCorsia=2;
-          	   		if(cavallo.equals("Verde")) numCorsia=3;
-           	   		if(cavallo.equals("Rosso")) numCorsia=4;
-          	   		if(cavallo.equals("Giallo")) numCorsia=5;
-          	   		if(cavallo.equals("Bianco")) numCorsia=6;
+          	   		else if(cavallo.equals("Blu")) numCorsia=2;
+          	   		else if(cavallo.equals("Verde")) numCorsia=3;
+          	   		else if(cavallo.equals("Rosso")) numCorsia=4;
+          	   		else if(cavallo.equals("Giallo")) numCorsia=5;
+          	   		else if(cavallo.equals("Bianco")) numCorsia=6;
            	   
           	   		board.settaAreaNotifica("\n"+rappresentazione);
           	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
