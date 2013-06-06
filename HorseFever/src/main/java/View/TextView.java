@@ -107,7 +107,7 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			risposta= myInput.readLine();
-    			if (!risposta.equals("S") && !risposta.equals("N")) {
+    			if (risposta!=null && !risposta.equals("S") && !risposta.equals("N")) {
     				System.out.println("Errore, devi inserire S o N");
     				buonfine=false;
     			}
