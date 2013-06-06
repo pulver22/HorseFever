@@ -97,7 +97,7 @@ public class Lavagna {
 							quotCavallo--;
 						}
 					} else {
-						//quotCavallo=quotCavallo;
+						quotCavallo=quotCavallo+0;
 					}
 					quotazioni[j][1]=Integer.toString(quotCavallo); //Aggiorna nuova quotazione in tabella quotazioni
 					

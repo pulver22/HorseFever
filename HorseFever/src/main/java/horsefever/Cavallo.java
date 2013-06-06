@@ -31,7 +31,7 @@ public class Cavallo {
 				} else if (effettoPartenza.equals("=4") && effettoPartenza2.equals("+1")){
 					posizione+=5;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("-1")){
-					//posizione=posizione;
+					posizione=posizione+0;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("+1")){
 					posizione+=1;
 				}
@@ -39,13 +39,13 @@ public class Cavallo {
 				if (effettoPartenza.equals("=4")){
 					posizione+=4;
 				} else if (effettoPartenza.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione+0;
 				}
 			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
 				if (effettoPartenza2.equals("-1")){
 					if (incremento-1>=0) posizione=incremento-1;
 					else{ 
-						  //posizione=posizione;
+						  posizione=posizione+0;
 					}
 				} else if (effettoPartenza2.equals("+1")){
 					posizione=incremento+1;
@@ -60,7 +60,7 @@ public class Cavallo {
 		
 		if (effettoUltimoPrimo!=null){
 			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
-				//posizione=posizione;
+				posizione=posizione+0;
 			}else if (primo && effettoUltimoPrimo.charAt(1)=='4'){
 				posizione=posizione+incremento;
 			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
@@ -89,7 +89,7 @@ public class Cavallo {
 		if (effettoSprint!=null || effettoSprint2!=null){
 			if (effettoSprint!=null && effettoSprint2!=null){ //Se entrambi tipi di effetti != NULL
 				if (effettoSprint.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione+0;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("-1")){
 					posizione=posizione+SPRINT;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("=2")){
@@ -97,7 +97,7 @@ public class Cavallo {
 				}
 			} else if (effettoSprint!=null){//Se solo quello con lettera C è !=null
 				if (effettoSprint.equals("=0")){
-					//posizione=posizione;
+					posizione=posizione+0;
 				} else if (effettoSprint.equals("+1")){
 					posizione=posizione+SPRINT+1;
 				}
