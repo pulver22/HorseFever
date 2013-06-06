@@ -7,7 +7,7 @@ import eventi.eventoQuotazioni;
 public class Lavagna {
 
 	private String[][] quotazioni;
-	private String[] arrivi = new String[6];
+	//private String[] arrivi = new String[6];
 	private Partita partita;
 	private Plancia plancia;
 	
@@ -75,8 +75,8 @@ public class Lavagna {
 	 * Ricalcola le quotazioni delle relative scuderie, in base all'ordine d'arrivo dei corrispondenti cavalli
 	 * @param Ordine d'arrivo dei cavalli, contraddistinti dal colore che li rappresenta
 	 * */
-	public void ricalcolaQuotazioni(String[] arrivi){
-		this.arrivi=arrivi;
+	public void ricalcolaQuotazioni(String[] ordineArrivo){
+		String [] arrivi=ordineArrivo;
 		for (int i=0; i<6; i++){
 			for (int j=0; j<6; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
 				if (arrivi[i].equals(quotazioni[j][0])){
@@ -140,11 +140,11 @@ public class Lavagna {
 		}
 		return scuderia;
 	}
-	
+	/*
 	public void setArrivi(String[] arrivi){
 		this.arrivi=arrivi.clone();
 	}
-	
+	*/
 	//Metodi Getter e Setter
 	public String[][] getQuotazioni() {
 		return quotazioni;
