@@ -223,6 +223,7 @@ public class Board extends JFrame {
 			pedine[i].setX(455);
 			pedine[i].setDx(37);
 			if(i<3) stampaPiazzamento[i]=false;
+			this.resetAreaNotifica();
 			repaint();
 		}
 	}
@@ -267,6 +268,12 @@ public class Board extends JFrame {
 	public void settaAreaNotifica(String messaggio){
 		
 		areaNotifica.append(messaggio);
+	}
+	
+	public void resetAreaNotifica(){
+		
+		areaNotifica.setText("");
+		
 	}
 	
 	/**
