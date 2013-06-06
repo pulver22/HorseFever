@@ -170,7 +170,7 @@ public class GUIView implements View{
 		String[] carte = new String[2];
 		boolean buonfine = false;
 		
-		while(buonfine == false){
+		while(!buonfine){
 			try{
 				for(int i=0; i<carteAzione.size(); i++){
 					carte[i] = carteAzione.get(i).getNome() + " " + carteAzione.get(i).getColore() + " " +
@@ -204,7 +204,7 @@ public class GUIView implements View{
 		}
 		
 		buonfine = false;
-		while(buonfine==false){
+		while(!buonfine){
 			try{		
 				String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
 				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
@@ -314,7 +314,7 @@ public class GUIView implements View{
     	   
     	   if(tipo==eventoGiocatore.NUOVO){
     		  
-        	   while(inserito==false){
+        	   while(!inserito){
         		   
         		   if(board.getNomeGiocatore(i).equals(" ")){
         			   
@@ -329,7 +329,7 @@ public class GUIView implements View{
     	   }
     	   else if(tipo==eventoGiocatore.MODIFICA){
     		   
-    		   while(inserito==false){
+    		   while(!inserito){
     			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
     			   
     				   inserito=true;
@@ -342,7 +342,7 @@ public class GUIView implements View{
     	   }	   
     	  else if(tipo==eventoGiocatore.PERSO){
     		  
-    		  while(inserito==false){
+    		  while(!inserito){
    			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
    			   
    				   inserito=true;
@@ -355,7 +355,7 @@ public class GUIView implements View{
     	  }
     	   else if(tipo==eventoGiocatore.PRIMO){
     		   
-    		   while(inserito==false){
+    		   while(!inserito){
        			   if(board.getNomeGiocatore(i).equals(nomeGioc)){
        			   
        				   inserito=true;
@@ -394,7 +394,7 @@ public class GUIView implements View{
        
        if(e instanceof eventoCorsa){
     	   
-    	   if(first==true){
+    	   if(first){
     		   first=false;
     		   threadCorsa.setStop(false);
     		   threadCorsa=new ThreadCorsa(this);
@@ -414,7 +414,7 @@ public class GUIView implements View{
        if(e instanceof eventoQuotazioni){
     	   
     	   //se sono le quotazioni iniziali vengono immediatamente stampate
-    	   if(quotIniziali==true){
+    	   if(quotIniziali){
     		   
     		   quotIniziali=false;
         	   
