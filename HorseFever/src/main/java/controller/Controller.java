@@ -12,6 +12,7 @@ public class Controller {
 	private ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 	private Adapter adapter;
 	private HorseFeverEvent e;
+	private boolean finePar=false;
 	
 	
 	
@@ -35,6 +36,9 @@ public class Controller {
 			partita.setTurnoAttuale(i+1);
 			this.FaseDistribuzioneCarte();
 			this.FaseScommesse();
+			if(finePar){
+				 break;
+			}
 			this.FaseCorsa();
 			this.FaseFineTurno();
 			
@@ -77,6 +81,7 @@ public class Controller {
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,1,numSegnalini,i);
+			if(scom.getTipoScomessa()=='F') return;
 			numcorsia=scom.getCorsia();
 			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -248,6 +253,12 @@ public class Controller {
             	messaggio=""+giocatore.getNome() +"Hai perso la partita";
             	adapter.stampaMessaggio(messaggio,indice);
             	partita.rimuoviGiocatore(giocatore);
+            	
+            	if(partita.getGiocatori().size()==1){
+        			finePar=true;
+        			scommessa=new Scommessa(giocatore,10,0,'F');
+        			return scommessa;
+        		}
             	scommessa=new Scommessa(giocatore,10,0,'N');
         		return scommessa;
             }   

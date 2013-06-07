@@ -102,13 +102,11 @@ public class Partita {
 	}
 	
 	public void rimuoviGiocatore(Giocatore gioc){
-		int j=0;
-		for (int i=0;i<giocatori.size();i++){
-			if (gioc.getNome().equals(giocatori.get(i).getNome())) j=i;
-		}
-		notifyObserver(new eventoGiocatore(giocatori.get(j),eventoGiocatore.PERSO));
+		
+		notifyObserver(new eventoGiocatore(gioc,eventoGiocatore.PERSO));
 		giocatori.remove(gioc);
 	}
+	
 	/**
 	 * Resetta la plancia e i mazzi alla situazione iniziale. 
 	 * Cambia il primo giocatore. 
