@@ -6,7 +6,6 @@ import adapter.Adapter;
 import eventi.*;
 
 import horsefever.*;
-import View.*;
 
 public class Controller {
 	private Partita partita;
@@ -72,9 +71,9 @@ public class Controller {
 		Scommessa scom;
 		Giocatore giocatoreCorrente;
 		int[] numSegnalini=partita.getNumSegnalini();
-		int numcorsia;
+		int numcorsia,i;
 		
-		for(int i=0; i<partita.getNumgiocatori();i++){
+		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,1,numSegnalini,i);
@@ -85,7 +84,7 @@ public class Controller {
 		
 		numSegnalini=partita.getNumSegnalini();
         
-		for(int i=partita.getNumgiocatori()-1; i>=0;i--){
+		for(i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
 			scom=Scommetti(giocatoreCorrente,2,numSegnalini,i);
@@ -95,14 +94,14 @@ public class Controller {
 		}
         
         
-		for(int i=0; i<partita.getNumgiocatori();i++){
+		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente,i);
 			
 		}
 		
-		for(int i=0; i<partita.getNumgiocatori();i++){
+		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			Trucca(giocatoreCorrente,i);
@@ -120,7 +119,7 @@ public class Controller {
 	public void FaseCorsa(){
 		
 		partita.getPlancia().applicaAzioni();
-		while(partita.getPlancia().tuttiArrivati()==false){
+		while(!partita.getPlancia().tuttiArrivati()){
 			
 			partita.getPlancia().muovi();
 			
@@ -187,7 +186,7 @@ public class Controller {
     	 */
     	if(numScommessa==2){
     		
-    		while(buonfine==false){
+    		while(!buonfine){
     			adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
     			parametriScommessa=adapter.chiediSecondaScommessa(indice);
     			buonfine=true;
@@ -264,7 +263,7 @@ public class Controller {
     	}
     	else{
     		
-    		while(buonfine==false){
+    		while(!buonfine){
     			adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
     			parametriScommessa=adapter.chiediScommessa(indice);
     			buonfine=true;
@@ -308,7 +307,7 @@ public class Controller {
     	boolean buonfine = false;
     	int numCartaAzione=0,numCorsia=0;
     	
-    	while(buonfine==false){
+    	while(!buonfine){
     		adapter.stampaMessaggio("Il giocatore "+giocatore.getNome()+" deve fare una scelta.", indice);
 			scelta=adapter.chiediTrucca(carteAzione,indice);
 			buonfine=true;
