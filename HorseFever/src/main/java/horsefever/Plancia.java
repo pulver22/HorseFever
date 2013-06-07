@@ -1,7 +1,6 @@
 package horsefever;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import eventi.HorseFeverEvent;
 import eventi.eventoArrivi;
@@ -14,12 +13,10 @@ public class Plancia {
 	
 	private boolean[] arrivati = new boolean[6];
 	
-	private int[] posizione = new int[6];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
 	private Cavallo[] cavalli = new Cavallo[6];
 	private ArrayList[] corsieTruccate = new ArrayList[6];
 	private boolean partenza=true;
-	//private ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
 	private Partita partita;
@@ -30,7 +27,6 @@ public class Plancia {
 		this.lavagna=lavagna;
 		for (int i=0;i<6; i++){
 			corsieTruccate[i]=new ArrayList<Azione>();		
-			posizione[i]=0;
 			cavalli[i]=new Cavallo(colori[i]);
 			cavalli[i].setQuotazione(lavagna.getQuotazioneDaColoreIniziale(colori[i]));
 			
@@ -64,7 +60,7 @@ public class Plancia {
 	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
 	 * @param l'ArrayList dell carte Azione su cui fare il controllo
 	 * */
-	public void controllaAzioniDiRimozione(ArrayList<?> azioni,int corsia){
+	public void controllaAzioniDiRimozione(ArrayList azioni,int corsia){
 		Azione a;
 		boolean positive=false;
 		boolean negative=false;
@@ -208,7 +204,7 @@ public class Plancia {
 	 * Esegue i movimenti dei cavalli
 	 * */
 	public void muovi(){
-		Cavallo c;
+		
 		int[] dadiSprint=sprint();
 		
 		Movimento m=(Movimento)partita.getMazzoMovimento().pesca();
@@ -460,11 +456,7 @@ public class Plancia {
 			}
 			arrivati[i]=false; //Resetta booleano di arrivi
 		}
-		/*if (fotofinish.size()!=0){//Se ci fosse ancora qualcosa in fotofinish, rimuove tutto
-			for (int k=0; k<fotofinish.size();k++){
-				fotofinish.remove(0);
-			}
-		}*/
+		
 		if (cavalliArrivati.size()!=0){//Se ci fosse ancora qualcosa in cavalliArrivati, rimuove tutto
 			while(cavalliArrivati.size()>0){
 				cavalliArrivati.remove(0);
@@ -570,7 +562,7 @@ public class Plancia {
 	 * */
 	public boolean tuttiArrivati(){
 		for (int i=0; i<6;i++){
-			if (arrivati[i]==false) return false;
+			if (!arrivati[i]) return false;
 		}
 		return true;
 	}
@@ -612,9 +604,4 @@ public class Plancia {
 	public ArrayList<Cavallo> getCavalliArrivati(){
 		return cavalliArrivati;
 	}
-	/*
-	public ArrayList<Cavallo> getFotofinish(){
-		return fotofinish;
-	}
-	*/
 }
