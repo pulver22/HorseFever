@@ -38,7 +38,6 @@ public class ThreadCorsa extends Thread{
           while(!stop){
         	  
         	  evento=vista.getEventoCorsa();
-        	  board.settaAreaNotifica("");
         	  
         	  if(evento!=null){
         		          		
