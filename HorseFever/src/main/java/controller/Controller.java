@@ -250,7 +250,7 @@ public class Controller {
     		
             if(PV<2){   
             	
-            	messaggio=""+giocatore.getNome() +"Hai perso la partita";
+            	messaggio=""+giocatore.getNome() +" hai perso la partita";
             	adapter.stampaMessaggio(messaggio,indice);
             	partita.rimuoviGiocatore(giocatore);
             	
