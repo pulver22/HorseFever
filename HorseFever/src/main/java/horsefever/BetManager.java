@@ -123,4 +123,9 @@ public class BetManager {
 	public void setbManager(ArrayList<Scommessa> bManager) {
 		this.bManager = bManager;
 	}
+	
+	public void resetbManager(){
+		int i=0;
+		while(bManager.size() != 0) bManager.remove(i);
+	}
 }

@@ -120,6 +120,7 @@ public class Partita {
 		Giocatore g=giocatori.get(0);
 		giocatori.remove(0);
 		giocatori.add(g);
+		betManager.resetbManager();
 		notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.PRIMO));
 	}
 	//Metodi Getter e Setter
