@@ -51,7 +51,7 @@ public class Mazzo {
 	 */
 	public Mazzo(String nome){
 		
-		if (nome == "MazzoAzione"){
+		if (nome.equals("MazzoAzione")){
 			Mazzo.add(new Azione("Magna Velocitas","Verde","Partenza","=4",'A'));
 			Mazzo.add(new Azione("Fortuna Malevola","Verde","Partenza","+1",'B'));
 			Mazzo.add(new Azione("Flagellum Fulguris","Verde","Sprint","+1",'C'));
@@ -73,7 +73,7 @@ public class Mazzo {
 			Mazzo.add(new Azione("Steven Sting","Grigio","Quotazione","-2",'Y'));
 			Mazzo.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z'));
 		}
-		else if (nome == "MazzoPersonaggio"){
+		else if (nome.equals("MazzoPersonaggio")){
 			Mazzo.add(new Personaggio("Cranio Mercanti", 3400, "2"));
 			Mazzo.add(new Personaggio("Steve McSkull", 3600, "3"));
 			Mazzo.add(new Personaggio("Viktor von Schadel", 3800, "4"));
@@ -81,7 +81,7 @@ public class Mazzo {
 			Mazzo.add(new Personaggio("Craneo Cervantes", 4200, "6"));
 			Mazzo.add(new Personaggio("Sigvard Skalle", 4400, "7"));
 		}
-		else if (nome == "MazzoProprietario"){
+		else if (nome.equals("MazzoProprietario")){
 			Mazzo.add(new Proprietario("Nero"));
 			Mazzo.add(new Proprietario("Blu"));
 			Mazzo.add(new Proprietario("Verde"));
@@ -89,7 +89,7 @@ public class Mazzo {
 			Mazzo.add(new Proprietario("Giallo"));
 			Mazzo.add(new Proprietario("Bianco"));
 		}
-		else if(nome == "MazzoMovimento"){
+		else if(nome.equals("MazzoMovimento")){
 			
 			Mazzo.add(new Movimento(3,3,2,2,2,2,"horseFever-83.png"));
 			Mazzo.add(new Movimento(3,2,3,2,2,2,"horseFever-84.png"));
