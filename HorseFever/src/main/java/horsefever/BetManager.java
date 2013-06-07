@@ -48,17 +48,17 @@ public class BetManager {
 		if( (bManager.get(i)).getTipoScomessa() == 'V' & corsiaString.equals(ordineArrivoColori[0])){
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari + (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[corsiaInt][1]));
-			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
+			bManager.get(i).getScommettitore().setDenariPaga(nuoviDenari);
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +3 ;
-			bManager.get(i).getScommettitore().setPV(nuoviPV);
+			bManager.get(i).getScommettitore().setPVPaga(nuoviPV);
 		}
 		else if( (bManager.get(i)).getTipoScomessa() == 'P' & (corsiaString.equals(ordineArrivoColori[0])
 				|| corsiaString.equals(ordineArrivoColori[2]) || corsiaString.equals(ordineArrivoColori[1]))){
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari+(long) (bManager.get(i).getImporto() * 2);
-			bManager.get(i).getScommettitore().setDenari(nuoviDenari);
+			bManager.get(i).getScommettitore().setDenariPaga(nuoviDenari);
 			int nuoviPV = bManager.get(i).getScommettitore().getPV() +1 ;
-			bManager.get(i).getScommettitore().setPV(nuoviPV);
+			bManager.get(i).getScommettitore().setPVPaga(nuoviPV);
 		}
 	}
 	//Pagamenti ai proprietari di scuderia
@@ -66,15 +66,15 @@ public class BetManager {
 		long denari = giocatori.get(i).getDenari();
 		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]){
 			
-			giocatori.get(i).setDenari(denari + 600);
+			giocatori.get(i).setDenariPaga(denari + 600);
 		}
 		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]){
 			
-			giocatori.get(i).setDenari(denari + 400);
+			giocatori.get(i).setDenariPaga(denari + 400);
 		}
 		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]){
 			
-			giocatori.get(i).setDenari(denari + 200);
+			giocatori.get(i).setDenariPaga(denari + 200);
 		}
 	}
 	

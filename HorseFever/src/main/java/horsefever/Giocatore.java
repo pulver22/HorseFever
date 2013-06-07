@@ -38,6 +38,15 @@ public class Giocatore {
 	     e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
 	     partita.notifyObserver(e);
 	}
+	
+	public void setPVPaga(int pV) {
+		PV = Integer.valueOf(pV);
+		
+		//NOTIFICA EVENTO
+	     e=new eventoGiocatore(this, eventoGiocatore.PAGAMENTO);
+	     partita.notifyObserver(e);
+	}
+	
 	public Carta getCartaPersonaggio() {
 		return cartaPersonaggio;
 	}
@@ -74,6 +83,14 @@ public class Giocatore {
 		
 		//NOTIFICA EVENTO
 		e=new eventoGiocatore(this, eventoGiocatore.MODIFICA);
+        partita.notifyObserver(e);
+	}
+	
+	public void setDenariPaga(long nuoviDenari) {
+		this.denari = Long.valueOf(nuoviDenari);
+		
+		//NOTIFICA EVENTO
+		e=new eventoGiocatore(this, eventoGiocatore.PAGAMENTO);
         partita.notifyObserver(e);
 	}
 	
