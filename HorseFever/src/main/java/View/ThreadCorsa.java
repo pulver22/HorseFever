@@ -12,11 +12,10 @@ public class ThreadCorsa extends Thread{
 	private GUIView vista;
 	private eventoCorsa evento;
 	private int[] posizioniAggiornate;
-	private int[] valoriMovimento;
 	private int[] esitoDadi;
 	private String immagineMovimento;
 	private Board board;
-	int i=0;
+	private int i=0;
 	
 	public ThreadCorsa(GUIView vista){
 		
@@ -26,7 +25,7 @@ public class ThreadCorsa extends Thread{
 	}
 
 	public void aggiornaPosizioni(int[] posizioni){
-		for(int i=0; i<6; i++){
+		for(i=0; i<6; i++){
 			board.getPedina(i).muovi(posizioni[i]);
 		}
 	}
@@ -34,7 +33,7 @@ public class ThreadCorsa extends Thread{
 	@Override
 	public void run() {
 		
-          while(stop==false){
+          while(!stop){
         	  
         	  evento=vista.getEventoCorsa();
         	  board.settaAreaNotifica("");
@@ -57,60 +56,64 @@ public class ThreadCorsa extends Thread{
         	   }
         		  
            }
-        	  
-       	   //Verifica se tutte le pedine sono arrivate
-       	   for(int i=0; i<6;i++){
-       		   
-       		   board.setTutteArrivate(true);
-       		   if(board.getPedina(i).getArrivata()==false){
-       			   
-       			   board.setTutteArrivate(false);
-       		   }
-       	   }
-       	   
-       	   // animazione finita
-       	   if(board.getTutteArrivate()==true && vista.getEventiCorsa().size()==0){
-       			 
-       		   eventoQuotazioni e1=vista.getEventoQuotaz();
-       		   String[][] tabellaQuot= e1.getTabellaQuot();
-           	   String[] quot=new String[6];
-           	   
-           	   for(int i=0;i<6;i++){
-           		   
-           		   quot[i]=tabellaQuot[i][1];
-           	   }
-           	   
-           	   board.settaAreaQuotazioni(quot);
-           	   
-       		   for(int i=0; i<6;i++){
-       			   
-       			   	eventoArrivi e=vista.getEventoArrivi();
-       		   
-       		   		int posArrivo=e.getPosArrivo();
-           	   		String cavallo=e.getCavallo();
-           	   		String rappresentazione=e.rappresentazione();
-           	   		int numCorsia=10;
-           	   
-          	   		if(cavallo.equals("Nero")) numCorsia=1;
-          	   		else if(cavallo.equals("Blu")) numCorsia=2;
-          	   		else if(cavallo.equals("Verde")) numCorsia=3;
-          	   		else if(cavallo.equals("Rosso")) numCorsia=4;
-          	   		else if(cavallo.equals("Giallo")) numCorsia=5;
-          	   		else if(cavallo.equals("Bianco")) numCorsia=6;
-           	   
-          	   		board.settaAreaNotifica("\n"+rappresentazione);
-          	   		if(posArrivo==1 || posArrivo==2 || posArrivo==3){
-          		   
-          	   				board.stampaPiazzamento(numCorsia,posArrivo);
-          	   				board.repaint();
-          	   		}   
-           		   
-           		}
-       		    
-       		    this.stop=true;
-       		    vista.setFirst(true);
-       	       }
-        	  
+        	
+           //permette di far risparmiare il calcolo del tutteArrivate quando non servirebbe
+           if(vista.getEventiCorsa().size()==0){
+        	   
+           
+        	   //Verifica se tutte le pedine sono arrivate
+        	   for(i=0; i<6;i++){
+
+        		   board.setTutteArrivate(true);
+        		   if(!board.getPedina(i).getArrivata()){
+
+        			   board.setTutteArrivate(false);
+        		   }
+        	   }
+
+        	   // animazione finita
+        	   if(board.getTutteArrivate()==true){
+
+        		   eventoQuotazioni e1=vista.getEventoQuotaz();
+        		   String[][] tabellaQuot= e1.getTabellaQuot();
+        		   String[] quot=new String[6];
+
+        		   for(i=0;i<6;i++){
+
+        			   quot[i]=tabellaQuot[i][1];
+        		   }
+
+        		   board.settaAreaQuotazioni(quot);
+
+        		   for(i=0; i<6;i++){
+
+        			   eventoArrivi e=vista.getEventoArrivi();
+
+        			   int posArrivo=e.getPosArrivo();
+        			   String cavallo=e.getCavallo();
+        			   String rappresentazione=e.rappresentazione();
+        			   int numCorsia=10;
+
+        			   if(cavallo.equals("Nero")) numCorsia=1;
+        			   else if(cavallo.equals("Blu")) numCorsia=2;
+        			   else if(cavallo.equals("Verde")) numCorsia=3;
+        			   else if(cavallo.equals("Rosso")) numCorsia=4;
+        			   else if(cavallo.equals("Giallo")) numCorsia=5;
+        			   else if(cavallo.equals("Bianco")) numCorsia=6;
+
+        			   board.settaAreaNotifica("\n"+rappresentazione);
+        			   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+
+        				   board.stampaPiazzamento(numCorsia,posArrivo);
+        				   board.repaint();
+        			   }   
+
+        		   }
+
+        		   this.stop=true;
+        		   vista.setFirst(true);
+        	   }
+           }
       }
 		
 	}
