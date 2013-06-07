@@ -41,7 +41,7 @@ public class GUIView implements View{
 		boolean buonfine= false;
 		String[] scommessa = new String[3];
 		
-		while(buonfine == false){
+		while(!buonfine){
 			try{
 				scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
 				if(scommessa[0].equals("")) scommessa[0]="0";
@@ -53,7 +53,7 @@ public class GUIView implements View{
 		}
 		buonfine = false;
 		
-		while(buonfine == false){
+		while(!buonfine){
 			try{
 			String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
 			scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
@@ -66,7 +66,7 @@ public class GUIView implements View{
 		}
 		buonfine = false;
 		
-		while(buonfine == false){
+		while(!buonfine){
 			try{
 				String[] sceltaScommessa = {"Vincente","Piazzato"};
 				scommessa[2] = (String) JOptionPane.showInputDialog(null, "Scegli che tipo di scommessa vuoi fare","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
