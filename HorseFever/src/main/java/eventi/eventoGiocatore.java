@@ -14,6 +14,7 @@ public class eventoGiocatore extends HorseFeverEvent{
 	public static final int DITURNO=3;
 	public static final int PERSO=4;
 	public static final int VINTO=5;
+	public static final int PAGAMENTO=6;
 	
 	
 	private String nomeGiocatore;
