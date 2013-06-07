@@ -22,7 +22,7 @@ public class TextView implements View{
 		String[] scommessa = new String[3];
 		
 		
-		while(buonfine==false){
+		while(!buonfine){
 
     		System.out.println("Inserisci l'importo da scommettere ");
     		try{
@@ -44,7 +44,7 @@ public class TextView implements View{
     	    }
     	}
 		buonfine=false;
-		while(buonfine==false){	
+		while(!buonfine){	
 	    	
     		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi scommettere: ");
     		try{
@@ -68,7 +68,7 @@ public class TextView implements View{
     	
     	}
 		buonfine=false;
-		while(buonfine==false){
+		while(!buonfine){
 
     		System.out.println("Vuoi scommettere piazzato (P) o vincente (V)?");
     		try{
@@ -99,7 +99,7 @@ public class TextView implements View{
 		boolean buonfine=false;
 		String[] scommessa = new String[3];
 		String risposta = "/";
-		while(buonfine==false){
+		while(!buonfine){
     		
     		System.out.println("Vuoi scommettere ancora?? (S/N)");
     		try{
@@ -135,7 +135,7 @@ public class TextView implements View{
     		System.out.println("" +(i+1)+") " +carteAzione.get(i).getNome()+"," +carteAzione.get(i).getTipoEffetto() +"," +carteAzione.get(i).getValoreEffetto());
     		}
     	
-    	while( buonfine==false){	
+    	while(!buonfine){	
     		System.out.println("Seleziona il numero della carta che vuoi giocare:");
         	try{
         		buonfine=true;
@@ -167,7 +167,7 @@ public class TextView implements View{
         	}
     	}
       	buonfine=false;
-    	while(buonfine==false){	
+    	while(!buonfine){	
     	
     		System.out.println("Inserisci il numero di corsia (1-6) su cui vuoi giocare la carta: ");
     		try{
