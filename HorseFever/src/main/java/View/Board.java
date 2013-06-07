@@ -3,6 +3,8 @@ package View;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 
 @SuppressWarnings("serial")
 public class Board extends JFrame {
@@ -78,7 +80,11 @@ public class Board extends JFrame {
     	quotazioni.setEditable(false);
     	scroll=new JScrollPane(areaNotifica);
     	scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
-    
+    	scroll.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener() {  
+    		public void adjustmentValueChanged(AdjustmentEvent e) {  
+    		e.getAdjustable().setValue(e.getAdjustable().getMaximum());  
+    		}});
+    	
     	pannelloNotifica.setBounds(50,120,350,250);
     	pannelloNotifica.setLayout(new BorderLayout());
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
