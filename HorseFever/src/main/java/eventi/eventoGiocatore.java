@@ -56,8 +56,10 @@ public class eventoGiocatore extends HorseFeverEvent{
 			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
 		else if (tipo==PERSO)
 			return "Ha perso il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
-		else 
+		else if(tipo==VINTO)
 			return "Ha vinto il Giocatore "+nomeGiocatore+" con "+pv+" PV e "+denari+" Denari! Congratulazioni!";
+		else
+			return "E' stato pagato il Giocatore"+nomeGiocatore+" con attualmente "+" PV e "+denari+" Denari";
 	}
 	
 	public int getTipo(){
