@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
+import eventi.eventoGiocatore;
 import eventi.eventoQuotazioni;
 
 public class ThreadCorsa extends Thread{
@@ -16,6 +17,7 @@ public class ThreadCorsa extends Thread{
 	private String immagineMovimento;
 	private Board board;
 	private int i=0;
+	private boolean inserito=false;
 	
 	public ThreadCorsa(GUIView vista){
 		
@@ -108,6 +110,32 @@ public class ThreadCorsa extends Thread{
         				   board.repaint();
         			   }   
 
+        		   }
+        		   
+        		   while(vista.getEventiPagamento().size()>0){
+        			   
+        			   eventoGiocatore e=vista.getEventoPagamento();
+        			   inserito=false;
+        			   i=0;
+        			   
+        			   String nomeGioc=((eventoGiocatore) e).getNome();
+        	           long denari=((eventoGiocatore) e).getDenari();
+        	    	   int pv=((eventoGiocatore) e).getPv();
+        	    	   String scuderia=((eventoGiocatore) e).getScuderia();
+        	    	   
+        			   while(!inserito){
+                		   
+                		   if(board.getNomeGiocatore(i).equals(nomeGioc)){
+                			   
+                			   inserito=true;
+                			   board.setNomeGiocatore(nomeGioc, i);
+                			   board.setPV(pv,i);
+                			   board.setDenari(denari, i);
+                			   board.setNomeScuderia(scuderia, i);
+                		   }
+                		   i++;
+                	   }   
+        			   
         		   }
 
         		   this.stop=true;

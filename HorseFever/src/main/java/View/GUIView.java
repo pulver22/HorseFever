@@ -26,6 +26,7 @@ public class GUIView implements View{
 
 	private Board board;
 	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
+	private Queue<eventoGiocatore> eventiPagamento= new ConcurrentLinkedQueue<eventoGiocatore>();
 	private ArrayList<eventoArrivi> arrivati=new ArrayList<eventoArrivi>();
 	private ArrayList<eventoQuotazioni> quotazioni=new ArrayList<eventoQuotazioni>();
 	private ThreadCorsa threadCorsa;
@@ -370,6 +371,11 @@ public class GUIView implements View{
     		  
     		  
     	  }
+    	  else if(tipo==eventoGiocatore.PAGAMENTO){
+    		  
+    		  eventiPagamento.add((eventoGiocatore) e);
+    		  
+    	  }
     		 	   
     	}
      
@@ -516,7 +522,25 @@ public class GUIView implements View{
 		
 		return null;
 	}
+	
+    public eventoGiocatore getEventoPagamento(){
+		
+		eventoGiocatore e;
+		
+		if(eventiPagamento.size()>0){
+			
+			e=eventiPagamento.poll();
+			
+			return e;
+			
+		}
+		
+		return null;
+	}
 
+	public Queue<eventoGiocatore> getEventiPagamento() {
+		return eventiPagamento;
+	}
 	public Board getBoard() {
 		return board;
 	}
