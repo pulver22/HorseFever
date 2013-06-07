@@ -37,7 +37,9 @@ public class Pedina implements ActionListener {
 	}
 
 	public void muovi(int numPos){
-		
+		//numPos == PosizioniAggiornate
+		//posizioni == numero scatti da fare
+		//posizioniprec == numero di scatti fatti fatti fino ad ora. 
 	   this.posizioni=numPos-posizioniprec;
 	   posizioniprec=posizioniprec+posizioni;
 	   
