@@ -214,13 +214,13 @@ public class Controller {
     				}	
     			}
     			
-                if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V' && buonfine==true)){
+                if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V' && buonfine)){
     				
     				adapter.stampaMessaggio("Parametri non corretti !!",indice);
     				buonfine=false;
     			}
 
-    			if(numCorsia==numCorsiaPrecedente && tipoScommessaPrecedente==tipoScommessa && buonfine==true){
+    			if(numCorsia==numCorsiaPrecedente && tipoScommessaPrecedente==tipoScommessa && buonfine){
     				
     				adapter.stampaMessaggio("Errore, non puoi fare due scommesse identiche !!",indice);
     				buonfine=false;
@@ -279,7 +279,7 @@ public class Controller {
     				buonfine=false;
     			}
     			
-                if(numSegnalini[numCorsia]<=0 && buonfine==true){
+                if(numSegnalini[numCorsia]<=0 && buonfine){
     				
     				adapter.stampaMessaggio("Scommesse esaurite su corsia "+(numCorsia+1)+" !!",indice);
     				buonfine=false;
