@@ -18,7 +18,7 @@ public class Board extends JFrame {
     private JScrollPane scroll;
 	private JScrollPane quotazioniScrollPane;
 	
-    private Background background=new Background("elementiBoard/sfondo.jpg");
+    private Background background=new Background("elementiBoard/background.jpg");
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
@@ -58,7 +58,7 @@ public class Board extends JFrame {
     	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno corrente:" ) );
         pannelloTurni.add(numTurno);
         pannelloTurni.setVisible(true);
-        pannelloTurni.setBackground(Color.decode("#d6a45f"));
+        pannelloTurni.setBackground(Color.decode("#c38335"));
         numTurno.setEditable(false);
         
         
@@ -90,7 +90,7 @@ public class Board extends JFrame {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#d6a45f"));
+    	pannelloNotifica.setBackground(Color.decode("#c38335"));
     	
     	//Plancia
        
@@ -100,7 +100,7 @@ public class Board extends JFrame {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,280);
-		pannelloGiocatore.setBackground(Color.decode("#d6a45f"));
+		pannelloGiocatore.setBackground(Color.decode("#c38335"));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatori"));
 		pannelloGiocatore.setLayout(new GridLayout(7,4));
 		
@@ -135,14 +135,14 @@ public class Board extends JFrame {
 		//Lavagna
 		
 		pannelloLavagna.setBounds(50,370,350,300);
-		pannelloLavagna.setBackground(Color.decode("#d6a45f"));
+		pannelloLavagna.setBackground(Color.decode("#c38335"));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
 		
 		quotazioni.setFont(fontPersonale);
 		quotazioniScrollPane=new JScrollPane(quotazioni);
 		
-		pannelloSinistra.setBackground(Color.white);
+		pannelloSinistra.setBackground(Color.decode("#ededed"));
 		pannelloDivisore=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,pannelloSinistra,quotazioniScrollPane);
 	    pannelloDivisore.setDividerLocation(175); 
 	    pannelloDivisore.setEnabled(false);
@@ -175,7 +175,7 @@ public class Board extends JFrame {
     	pannelloTurni.setDoubleBuffered(true);
     	background.setDoubleBuffered(true);
     	
-    	this.setResizable(false);
+    	this.setResizable(true);
     	this.setTitle("Horse Fever");
     	this.setSize(1200,700);
     	this.setVisible(true);

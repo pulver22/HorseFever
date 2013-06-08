@@ -44,7 +44,7 @@ public class Pedina implements ActionListener {
 	   posizioniprec=posizioniprec+posizioni;
 	   
 	  	
-	   timer=new Timer(350,this);
+	   timer=new Timer(300,this);
 	    
 	   timer.start();
 		  

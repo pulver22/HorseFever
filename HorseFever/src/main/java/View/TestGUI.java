@@ -17,8 +17,8 @@ public class TestGUI {
 		Controller controller=new Controller(p);
 		controller.setAdapter(adapter);
 
-		controller.start();
-		//controller.FaseCorsa();
+		//controller.start();
+		controller.FaseCorsa();
 		//for(int i=0;i<6;i++)
 		//view.getBoard().getPedina(i).muovi(10);
 		//view.getBoard().getPedina(1).muovi(3);

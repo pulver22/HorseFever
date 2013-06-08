@@ -50,7 +50,7 @@ public class ThreadCorsa extends Thread{
         	 
         	   try {
         		   board.repaint();
-        		   Thread.sleep(3500);
+        		   Thread.sleep(2800);
         	   } catch (InterruptedException e) {
 				
 				e.printStackTrace();
