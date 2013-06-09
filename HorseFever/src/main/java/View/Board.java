@@ -30,7 +30,7 @@ public class Board extends JFrame {
 	private JLabel labelNomeGiocatore=new JLabel("    Giocatore:");
 	private JLabel labelScuderia=new JLabel("    Scuderia:");
 	
-	private JTextField[] PV=new JTextField[6];
+	private JTextField[] pv=new JTextField[6];
 	private JTextField[] nomeGiocatore=new JTextField[6];
 	private JTextField[] denari=new JTextField[6];
 	private JTextField[] scuderia=new JTextField[6];
@@ -115,15 +115,15 @@ public class Board extends JFrame {
 			pannelloGiocatore.add(nomeGiocatore[i]);
 			scuderia[i]=new JTextField(" ");
 			pannelloGiocatore.add(scuderia[i]);
-			PV[i]=new JTextField(" ");
-			pannelloGiocatore.add(PV[i]);
+			pv[i]=new JTextField(" ");
+			pannelloGiocatore.add(pv[i]);
 			denari[i]=new JTextField(" ");
 			pannelloGiocatore.add(denari[i]);
 		}
 		
 		for(int i=0;i<6;i++){
 				
-			PV[i].setEditable(false);
+			pv[i].setEditable(false);
 			denari[i].setEditable(false);
 			nomeGiocatore[i].setEditable(false);
 			scuderia[i].setEditable(false);
@@ -306,14 +306,14 @@ public class Board extends JFrame {
 		return this.scuderia[indice].getText();
 	}
 	
-	public void setPV(int PV,int indice){
+	public void setPV(int puntiVita,int indice){
 		
-		this.PV[indice].setText("  "+PV);
+		this.pv[indice].setText("  "+puntiVita);
 	}
 	 
 	public String getPV(int indice){
 	    	
-	    	return this.PV[indice].getText();
+	    	return this.pv[indice].getText();
 	}
 	
     public void setNomeGiocatore(String nome,int indice){
