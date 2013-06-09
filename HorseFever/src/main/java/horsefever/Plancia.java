@@ -6,7 +6,6 @@ import eventi.HorseFeverEvent;
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
 import eventi.eventoEffettoAvvenuto;
-import eventi.eventoQuotazioni;
 import eventi.eventoTrucca;
 
 public class Plancia {
@@ -20,7 +19,6 @@ public class Plancia {
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
 	private Partita partita;
-	private HorseFeverEvent e;
 	
 	public Plancia(Lavagna lavagna, Partita p){
 		this.partita=p;
@@ -40,7 +38,7 @@ public class Plancia {
 	 * @param carta
 	 * @param numCorsia
 	 */
-	public void TruccaCorsia(Azione carta,int numCorsia, String nomeGioc){
+	public void truccaCorsia(Azione carta,int numCorsia, String nomeGioc){
 		corsieTruccate[numCorsia].add(carta);
 		partita.notifyObserver(new eventoTrucca(nomeGioc,numCorsia));
 	}
@@ -71,13 +69,17 @@ public class Plancia {
 				if (a.getValoreEffetto().equals("Rimuovi_positive")) {
 					positive=true;
 					azioni.remove(i);
-					if (i>0)i--;
+					if (i>0){
+						i--;
+					}
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));
 				}
 				if (a.getValoreEffetto().equals("Rimuovi_negative")) {
 					negative=true;
 					azioni.remove(i);
-					if(i>0)i--;
+					if(i>0){
+						i--;
+					}
 					partita.notifyObserver(new eventoEffettoAvvenuto(a.toString(),corsia+1));	
 				}
 			}
@@ -89,7 +91,9 @@ public class Plancia {
 					a=(Azione) azioni.get(j);
 					if (a.getColore().equals("Rosso")){
 						azioni.remove(j);
-						if(j>0)j--;
+						if(j>0){
+							j--;
+						}
 					}
 				}
 			
@@ -168,8 +172,12 @@ public class Plancia {
 					if (a1.getLettera()==a2.getLettera()){
 						azioni.remove(j);
 						azioni.remove(i);
-						if(i>0)i--;
-						if(j>0)j--;
+						if(i>0){
+							i--;
+						}
+						if(j>0){
+							j--;
+						}
 					}
 				}
 			}
@@ -225,13 +233,21 @@ public class Plancia {
 					if (cavalli[i].getEffettoUltimoPrimo()!=null){
 						int[] primiPari=getCavalliPrimiPari();
 						int[] ultimiPari=getCavalliUltimiPari();
-						if (primiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], true, false);
-						else if (ultimiPari[i]==1) cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, true);
-						else cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, false);
+						if (primiPari[i]==1){
+							cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], true, false);
+						}
+						else if (ultimiPari[i]==1){
+							cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, true);
+						}
+						else{
+							cavalli[i].aggiornaPosizionePrimoUltimo(movTeorici[i], false, false);
+						}
 					} else {
 					cavalli[i].aggiornaPosizione(movTeorici[i]);
 					}
-					if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
+					if (dadiSprint[i]==1){
+						cavalli[i].aggiornaPosizioneSprint();
+					}
 				}
 			
 			}
@@ -260,8 +276,12 @@ public class Plancia {
 				if (cavalli[j].oltreTraguardo()){
 					for (int k=j+1;k<6;k++){
 						if (!arrivati[k]){
-							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
-							else flagArrivo-=1;
+							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()){
+								flagArrivo+=1;
+							}
+							else{
+								flagArrivo-=1;
+							}
 						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
 					}						 //aumenta il flag, altrimenti lo diminuisce
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
@@ -286,7 +306,9 @@ public class Plancia {
 						if (!arrivati[k]){
 							if (cavalli[i].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
 							else flagArrivo-=1;
-						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
+						} else{
+							flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
+						}
 					}						 //aumenta il flag, altrimenti lo diminuisce
 					if (flagArrivo==(5-i)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						return true;
@@ -476,7 +498,9 @@ public class Plancia {
 		for (int i=0;i<6;i++){
 			if (cavalli[i].getPosizione()==max){
 				primiPari[i]=1;
-			} else primiPari[i]=0;
+			} else{
+				primiPari[i]=0;
+			}
 		}
 		return primiPari;
 	}
@@ -492,7 +516,9 @@ public class Plancia {
 		for (int i=0;i<6;i++){
 			if (cavalli[i].getPosizione()==min){
 				ultimiPari[i]=1;
-			} else ultimiPari[i]=0;
+			} else{
+				ultimiPari[i]=0;
+			}
 		}
 		return ultimiPari;
 	}

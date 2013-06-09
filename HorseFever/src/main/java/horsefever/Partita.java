@@ -73,7 +73,7 @@ public class Partita {
 	 * Verifica il giocatore con il numero di PV più alto che è il giocatore vincente
 	 * @return Giocatore vincente
 	 */
-	public void FinePartita(){
+	public void finePartita(){
 		
 		int i=0,indiceGiocVinc=-1,maxPV=-1;
 		for(i=0;i<giocatori.size();i++){

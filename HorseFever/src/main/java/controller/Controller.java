@@ -34,16 +34,16 @@ public class Controller {
 		for (int i=0; i<numturni; i++){	
 			
 			partita.setTurnoAttuale(i+1);
-			this.FaseDistribuzioneCarte();
-			this.FaseScommesse();
+			this.faseDistribuzioneCarte();
+			this.faseScommesse();
 			if(finePar){
 				 break;
 			}
-			this.FaseCorsa();
-			this.FaseFineTurno();
+			this.faseCorsa();
+			this.faseFineTurno();
 			
 		}
-		partita.FinePartita();
+		partita.finePartita();
 		
 	}
 	
@@ -51,7 +51,7 @@ public class Controller {
 	 * Per ciascun giocatore pesca due carte azione dal mazzo delle carte azione 
 	 * e le assegna alle carte azione a disposizione del giocatore
 	 */
-	public void FaseDistribuzioneCarte(){
+	public void faseDistribuzioneCarte(){
 		for(int i=0; i<partita.getGiocatori().size();i++){
 			carteDaAssegnare=new ArrayList<Azione>();
 			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
@@ -70,7 +70,7 @@ public class Controller {
 	 * Viene chiamato per ciascun giocatore seguendo per il primo e il terzo un giro orario 
 	 * partendo dal primo giocatore e per il secondo un giro antiorario
 	 */
-	public void FaseScommesse(){
+	public void faseScommesse(){
 		
 		Scommessa scom;
 		Giocatore giocatoreCorrente;
@@ -80,7 +80,7 @@ public class Controller {
 		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,1,numSegnalini,i);
+			scom=scommetti(giocatoreCorrente,1,numSegnalini,i);
 			if(scom.getTipoScomessa()=='F') return;
 			numcorsia=scom.getCorsia();
 			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
@@ -92,7 +92,7 @@ public class Controller {
 		for(i=partita.getNumgiocatori()-1; i>=0;i--){
 			
         	giocatoreCorrente=partita.getGiocatori(i);
-			scom=Scommetti(giocatoreCorrente,2,numSegnalini,i);
+			scom=scommetti(giocatoreCorrente,2,numSegnalini,i);
         	numcorsia=scom.getCorsia();
 			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
@@ -102,14 +102,14 @@ public class Controller {
 		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			Trucca(giocatoreCorrente,i);
+			trucca(giocatoreCorrente,i);
 			
 		}
 		
 		for(i=0; i<partita.getNumgiocatori();i++){
 			
 			giocatoreCorrente=partita.getGiocatori(i);
-			Trucca(giocatoreCorrente,i);
+			trucca(giocatoreCorrente,i);
 			
 		}
 		adapter.prosegui("Sono state effettuate tutte le scommesse.", 0);
@@ -121,7 +121,7 @@ public class Controller {
 	 * Quando tutti i cavalli hanno raggiunto il traguardo invoca il BetManager che si occupa del pagamento delle scommesse
 	 * Successivamente chiede alla Lavagna di aggiornare le quotazioni in base all'ordine di arrivo
 	 */
-	public void FaseCorsa(){
+	public void faseCorsa(){
 		
 		partita.getPlancia().applicaAzioni();
 		while(!partita.getPlancia().tuttiArrivati()){
@@ -145,7 +145,7 @@ public class Controller {
 	 * Chiama il reset di Partita, che resetta i Mazzi e la plancia alla situazione iniziale
 	 * e cambia il primo giocatore. 
 	 */
-	public void FaseFineTurno(){
+	public void faseFineTurno(){
 		
 		partita.reset();
 		
@@ -166,7 +166,7 @@ public class Controller {
 	 *  il numero di corsia, l'importo e il tipo di scommessa che vuole effettare
 	 *  @return scommessa 
 	 */
-    public Scommessa Scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini, int indice){
+    public Scommessa scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini, int indice){
        
     	
     	int PV, numCorsia=0, numCorsiaPrecedente=0;
@@ -309,7 +309,7 @@ public class Controller {
      * applicarla, queste informazioni vengono poi passate al metodo TruccaCorsia in plancia
      * La carta giocata viene infine rimossa dalle carte a disposizione del giocatore
      */
-    public void Trucca(Giocatore giocatore, int indice){
+    public void trucca(Giocatore giocatore, int indice){
         
     	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
     	carteAzione=giocatore.getCarteAzione();
@@ -333,7 +333,7 @@ public class Controller {
     	}
     	
     	cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
-    	partita.getPlancia().TruccaCorsia(carteAzione.get(numCartaAzione), numCorsia,giocatore.getNome());
+    	partita.getPlancia().truccaCorsia(carteAzione.get(numCartaAzione), numCorsia,giocatore.getNome());
     	
     	
     	carteAzione.remove(numCartaAzione);

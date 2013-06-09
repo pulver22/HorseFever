@@ -49,9 +49,9 @@ public class TestPlancia {
 	
 	@Test
 	public void casoTestRimozioneOpposti(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
-		plancia.TruccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
 		plancia.eliminaEffettiOpposti(plancia.getAzioniSuCorsia(1));
 		assertEquals(1,plancia.getAzioniSuCorsia(1).size());
 		Azione a=(Azione)plancia.getAzioniSuCorsia(1).get(0);
@@ -60,11 +60,11 @@ public class TestPlancia {
 	
 	@Test
 	public void casoTestAzioniRimozioneDoppio(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
-		plancia.TruccaCorsia(azione2, 1, nome);
-		plancia.TruccaCorsia(rneg, 1, nome);
-		plancia.TruccaCorsia(rpos, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(rneg, 1, nome);
+		plancia.truccaCorsia(rpos, 1, nome);
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1),0);
 		for (int j=0;j<plancia.getAzioniSuCorsia(1).size();j++){
 			Azione az=(Azione)plancia.getAzioniSuCorsia(1).get(j);
@@ -75,37 +75,37 @@ public class TestPlancia {
 	
 	@Test
 	public void casoTestAzioniRimozioneRosse(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
-		plancia.TruccaCorsia(azione2, 1, nome);
-		plancia.TruccaCorsia(rneg, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(rneg, 1, nome);
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1),0);
 		assertEquals(2,plancia.getAzioniSuCorsia(1).size());
 	}
 	
 	@Test
 	public void casoTestAzioniRimozioneVerdi(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
-		plancia.TruccaCorsia(azione2, 1, nome);
-		plancia.TruccaCorsia(rpos, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(rpos, 1, nome);
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1),0);
 		assertEquals(1,plancia.getAzioniSuCorsia(1).size());
 	}
 	
 	@Test
 	public void casoTestNOAzioniRimozione(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
-		plancia.TruccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
 		plancia.controllaAzioniDiRimozione(plancia.getAzioniSuCorsia(1),0);
 		assertEquals(3,plancia.getAzioniSuCorsia(1).size());
 	}
 	
 	@Test
 	public void casoTestAssegnaEffettiCavallo(){
-		plancia.TruccaCorsia(azione1, 1, nome);
-		plancia.TruccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
 		plancia.assegnaEffettiAlCavallo(plancia.getAzioniSuCorsia(1), plancia.getCavalloAt(1),0);
 		assertEquals("=4",plancia.getCavalloAt(1).getEffettoPartenza());
 		assertEquals("+1",plancia.getCavalloAt(1).getEffettoPartenza2());
