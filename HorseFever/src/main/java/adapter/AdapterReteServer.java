@@ -39,13 +39,13 @@ public class AdapterReteServer implements Adapter{
         		//Waits untill a connection is made, and returns that socket
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket, serverSocket));
+        		System.out.println("Connection created, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
         		System.out.println("Error occured while accepting the socket");
         		return;
         	}
         }
-        //Now we have established the a connection with the client
-        System.out.println("Connection created, client IP" + socket.getInetAddress());
+        /*
         ObjectInputStream in = null;
         ObjectOutputStream out = null;
         while (true) {
@@ -55,66 +55,167 @@ public class AdapterReteServer implements Adapter{
                 }
                 
                 //Message message = (Message) in.readObject();
-                System.out.println("Client said: "/* + message.getMessage()*/);
+                System.out.println("Client said: " + message.getMessage());
  
                 //Send a reply to the client
                 if (out == null) {
                     out = new ObjectOutputStream(socket.getOutputStream());
                 }
-                out.writeObject(new Object()/*new Message(&quot;Message recieved: &quot; + message.getMessage())*/);
+                out.writeObject(new Message(&quot;Message recieved: &quot; + message.getMessage()));
                 out.flush();
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }
         }
+		*/
     }
 	
-	@Override
+	private ArrayList<View> viewRegistrate=new ArrayList<View>();
+
+	/**
+	 * Chiede ad ogni giocatore registrato di fare una scommessa
+	 */
 	public String[] chiediScommessa(int indice) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String[] mess = new String[2];
+		String[] valori = new String[3];
+		mess[0]="chiediScommessa";
+		mess[1]="";
+		Socket socket=clients.get(indice).getClientSocket();
+		ObjectInputStream in = null;
+        ObjectOutputStream out = null;
+		try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
 	}
-
-	@Override
-	public String[] chiediSecondaScommessa(int indice) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	/**
+	 * Chiedi ad ogni giocatore registrato di effettuare la seconda scommessa
+	 */
+	public String[] chiediSecondaScommessa(int indice){
+		
+		String[] mess = new String[2];
+		String[] valori = new String[3];
+		mess[0]="chiediSecondaScommessa";
+		mess[1]="";
+		Socket socket=clients.get(indice).getClientSocket();
+		ObjectInputStream in = null;
+        ObjectOutputStream out = null;
+		try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
 	}
-
-	@Override
+	
+	/**
+	 * Chiedi ad ogni giocatore registrato di truccare la corsa
+	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void stampaMessaggio(String messaggio, int indice) {
-		// TODO Auto-generated method stub
 		
+		String[] mess = new String[2];
+		String[] valori = new String[2];
+		mess[0]="chiediTrucca";
+		mess[1]="";
+		Socket socket=clients.get(indice).getClientSocket();
+		ObjectInputStream in = null;
+        ObjectOutputStream out = null;
+		try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            out.writeObject(carteAzione);
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
+	}
+	
+	/**
+	 * Stampa a video di ogni giocatore registrato un messaggio
+	 */
+	public void stampaMessaggio(String messaggio,int indice){
+		String[] mess = new String[2];
+		mess[0]="stampaMessaggio";
+		mess[1]=String.valueOf(messaggio);
+		Socket socket=clients.get(indice).getClientSocket();
+        ObjectOutputStream out = null;
+		try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
 	}
 
-	@Override
-	public void notify(HorseFeverEvent e) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * Notifica ad ogni giocatore registrato un evento scrivendolo in un outPutStream
+	 */
+	public void notify(HorseFeverEvent e){
+		for (AdapterClientHandler ach: clients){
+			Socket socket=ach.getClientSocket();
+	        ObjectOutputStream out = null;
+			try {
+                out = new ObjectOutputStream(socket.getOutputStream());
+                out.writeObject(e);
+                out.flush();
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex);
+            }
+		}
+	}
+	
+	
+	/**
+	 * Aggiunge una view, quindi registra un giocatore
+	 */
+	public void addView(View v){
+		viewRegistrate.add(v);
+	}
+	
+	/**
+	 * Rimuove una view, quindi elimina un giocatore dal gioco
+	 */
+	public void removeView(int i){
+		clients.remove(i);
 	}
 
+	/**
+	 * Permette di avanzare alla fase successiva del turno, e quindi del gioco
+	 */
 	@Override
 	public void prosegui(String messaggio, int indice) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void addView(View v) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeView(int i) {
-		// TODO Auto-generated method stub
-		
+		String[] mess = new String[2];
+		mess[0]="prosegui";
+		mess[1]=String.valueOf(messaggio);
+		Socket socket=clients.get(0).getClientSocket();
+		ObjectInputStream in = null;
+        ObjectOutputStream out = null;
+		try {
+            out = new ObjectOutputStream(socket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+            in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
 	}
 
 }

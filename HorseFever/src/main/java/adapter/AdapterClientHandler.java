@@ -12,5 +12,15 @@ public class AdapterClientHandler{
 		this.clientSocket=s;
 		this.serverSocket=ss;
 	}
+
+	public Socket getClientSocket() {
+		return clientSocket;
+	}
+
+	public ServerSocket getServerSocket() {
+		return serverSocket;
+	}
+	
+	
 	
 }
