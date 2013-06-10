@@ -86,7 +86,20 @@ public class Controller {
 			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
+	    
+		for(i=0; i<partita.getNumgiocatori();i++){
+			
+			giocatoreCorrente=partita.getGiocatori(i);
+			trucca(giocatoreCorrente,i);
+			
+		}
 		
+		for(i=0; i<partita.getNumgiocatori();i++){
+			
+			giocatoreCorrente=partita.getGiocatori(i);
+			trucca(giocatoreCorrente,i);
+			
+		}
 		numSegnalini=partita.getNumSegnalini();
         
 		for(i=partita.getNumgiocatori()-1; i>=0;i--){
@@ -99,19 +112,7 @@ public class Controller {
 		}
         
         
-		for(i=0; i<partita.getNumgiocatori();i++){
-			
-			giocatoreCorrente=partita.getGiocatori(i);
-			trucca(giocatoreCorrente,i);
-			
-		}
-		
-		for(i=0; i<partita.getNumgiocatori();i++){
-			
-			giocatoreCorrente=partita.getGiocatori(i);
-			trucca(giocatoreCorrente,i);
-			
-		}
+	
 		adapter.prosegui("Sono state effettuate tutte le scommesse.", 0);
 	}
 	
