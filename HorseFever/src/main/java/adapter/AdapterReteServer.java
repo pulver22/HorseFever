@@ -38,7 +38,7 @@ public class AdapterReteServer implements Adapter{
         	try {
         		//Waits untill a connection is made, and returns that socket
         		socket = serverSocket.accept();
-        		clients.add(new AdapterClientHandler(socket, serverSocket));
+        		clients.add(new AdapterClientHandler(socket));
         		System.out.println("Connection created, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
         		System.out.println("Error occured while accepting the socket");
@@ -77,6 +77,8 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediScommessa(int indice) {
 		
+		String valori[]=clients.get(indice).chiediScommessa(indice);
+		/*
 		String[] mess = new String[2];
 		String[] valori = new String[3];
 		mess[0]="chiediScommessa";
@@ -93,7 +95,9 @@ public class AdapterReteServer implements Adapter{
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+        */
 		return valori;
+		
 	}
 	
 	/**
@@ -101,6 +105,8 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediSecondaScommessa(int indice){
 		
+		String valori[]=clients.get(indice).chiediSecondaScommessa(indice);
+		/*
 		String[] mess = new String[2];
 		String[] valori = new String[3];
 		mess[0]="chiediSecondaScommessa";
@@ -117,6 +123,7 @@ public class AdapterReteServer implements Adapter{
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+		*/
 		return valori;
 	}
 	
@@ -125,6 +132,8 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
 		
+		String valori[]=clients.get(indice).chiediTrucca(carteAzione,indice);
+		/*
 		String[] mess = new String[2];
 		String[] valori = new String[2];
 		mess[0]="chiediTrucca";
@@ -143,6 +152,7 @@ public class AdapterReteServer implements Adapter{
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+        */
 		return valori;
 	}
 	
@@ -150,6 +160,8 @@ public class AdapterReteServer implements Adapter{
 	 * Stampa a video di ogni giocatore registrato un messaggio
 	 */
 	public void stampaMessaggio(String messaggio,int indice){
+		clients.get(indice).stampaMessaggio(messaggio,indice);
+		/*
 		String[] mess = new String[2];
 		mess[0]="stampaMessaggio";
 		mess[1]=String.valueOf(messaggio);
@@ -162,6 +174,7 @@ public class AdapterReteServer implements Adapter{
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+        */
 	}
 
 	/**
@@ -169,6 +182,8 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public void notify(HorseFeverEvent e){
 		for (AdapterClientHandler ach: clients){
+			ach.notify(e);
+			/*
 			Socket socket=ach.getClientSocket();
 	        ObjectOutputStream out = null;
 			try {
@@ -178,6 +193,7 @@ public class AdapterReteServer implements Adapter{
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }
+            */
 		}
 	}
 	
@@ -201,6 +217,8 @@ public class AdapterReteServer implements Adapter{
 	 */
 	@Override
 	public void prosegui(String messaggio, int indice) {
+		clients.get(indice).prosegui(messaggio,indice);
+		/*
 		String[] mess = new String[2];
 		mess[0]="prosegui";
 		mess[1]=String.valueOf(messaggio);
@@ -216,6 +234,7 @@ public class AdapterReteServer implements Adapter{
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
+        */
 	}
 
 }

@@ -1,30 +1,153 @@
 package adapter;
 
+import horsefever.Azione;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+
+import View.View;
+import eventi.HorseFeverEvent;
 
 public class AdapterClientHandler{
 
 	Socket clientSocket;
-	ServerSocket serverSocket;
-	ObjectOutputStream out;
-	ObjectInputStream in;
+	ObjectOutputStream out=null;
+	ObjectInputStream in=null;
 	
-	public AdapterClientHandler(Socket s, ServerSocket ss){
+	public AdapterClientHandler(Socket s){
 		this.clientSocket=s;
-		this.serverSocket=ss;
-		try {
-			out = new ObjectOutputStream(s.getOutputStream());
-			in = new ObjectInputStream(s.getInputStream());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
+	/**
+	 * Chiede ad ogni giocatore registrato di fare una scommessa
+	 */
+	public synchronized String[] chiediScommessa(int indice) {
+		
+		String[] mess = new String[2];
+		String[] valori = new String[3];
+		mess[0]="chiediScommessa";
+		mess[1]="";
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            if (in==null)
+            	in = new ObjectInputStream(clientSocket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
+	}
+	
+	/**
+	 * Chiedi ad ogni giocatore registrato di effettuare la seconda scommessa
+	 */
+	public synchronized String[] chiediSecondaScommessa(int indice){
+		
+		String[] mess = new String[2];
+		String[] valori = new String[3];
+		mess[0]="chiediSecondaScommessa";
+		mess[1]="";
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            if (in==null)
+            	in = new ObjectInputStream(clientSocket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
+	}
+	
+	/**
+	 * Chiedi ad ogni giocatore registrato di truccare la corsa
+	 */
+	public synchronized String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
+		
+		String[] mess = new String[2];
+		String[] valori = new String[2];
+		mess[0]="chiediTrucca";
+		mess[1]="";
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            out.writeObject(carteAzione);
+            out.flush();
+            if (in==null)
+            	in = new ObjectInputStream(clientSocket.getInputStream());
+            valori=(String[])in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+		return valori;
+	}
+	
+	/**
+	 * Stampa a video di ogni giocatore registrato un messaggio
+	 */
+	public synchronized void stampaMessaggio(String messaggio,int indice){
+		String[] mess = new String[2];
+		mess[0]="stampaMessaggio";
+		mess[1]=String.valueOf(messaggio);
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+	}
+
+	/**
+	 * Notifica ad ogni giocatore registrato un evento scrivendolo in un outPutStream
+	 */
+	public synchronized void notify(HorseFeverEvent e){
+
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			out.writeObject(e);
+			out.flush();
+		} catch (Exception ex) {
+			System.out.println("Error: " + ex);
+		}
+		
+	}
+	
+
+	/**
+	 * Permette di avanzare alla fase successiva del turno, e quindi del gioco
+	 */
+	
+	public synchronized void prosegui(String messaggio, int indice) {
+		String[] mess = new String[2];
+		mess[0]="prosegui";
+		mess[1]=String.valueOf(messaggio);
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+            if (in==null)
+            	in = new ObjectInputStream(clientSocket.getInputStream());
+            in.readObject();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+	}
+	
 	public ObjectOutputStream getOut() {
 		return out;
 	}
@@ -35,10 +158,6 @@ public class AdapterClientHandler{
 
 	public Socket getClientSocket() {
 		return clientSocket;
-	}
-
-	public ServerSocket getServerSocket() {
-		return serverSocket;
 	}
 	
 	
