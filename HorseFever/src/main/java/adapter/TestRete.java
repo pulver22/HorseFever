@@ -16,11 +16,16 @@ public class TestRete {
 		int numGiocatori=2;
 		
 		View tv=new TextView();
-
-		AdapterReteServer server=new AdapterReteServer(2);
-		ClientThread client1=new ClientThread("127.0.0.1",tv);
-		ClientThread client2=new ClientThread("127.0.0.1",tv);
-		server.startServer();
+		final AdapterReteServer server=new AdapterReteServer(2);
+		new Thread() {
+			@Override
+			public void run(){
+				server.startServer();
+			}
+		}.start();
+		
+		ClientThread client1=new ClientThread("localhost",tv);
+		ClientThread client2=new ClientThread("localhost",tv);
 		client1.start();
 		client2.start();
 		Partita p=new Partita(numGiocatori,server);

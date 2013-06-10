@@ -7,6 +7,7 @@ public class ClientThread extends Thread{
 	AdapterReteClient client;
 	
 	public ClientThread(String serverIP, View v){
+		super();
 		client=new AdapterReteClient();
 		client.connetti(serverIP);
 		client.addView(v);

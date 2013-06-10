@@ -22,6 +22,7 @@ public class AdapterReteClient implements Adapter{
             System.out.println("Connected to server!");
         } catch (Exception ex) {
             System.out.println("Error connecting to server: " + ex.getMessage());
+            throw new RuntimeException();
         }
     }
     
@@ -50,7 +51,9 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
+            	    
             	            System.out.println("Error: " + ex);
+            	            throw new RuntimeException();
             	        }
             		}
             		if (mess[0].equals("chiediSecondaScommessa")){
@@ -62,6 +65,7 @@ public class AdapterReteClient implements Adapter{
             	 
             	        } catch (Exception ex) {
             	            System.out.println("Error: " + ex);
+            	            throw new RuntimeException();
             	        }
             		}
             		if (mess[0].equals("chiediTrucca")){
@@ -74,6 +78,7 @@ public class AdapterReteClient implements Adapter{
             	 
             	        } catch (Exception ex) {
             	            System.out.println("Error: " + ex);
+            	            throw new RuntimeException();
             	        }
             		}
             		if (mess[0].equals("stampaMessaggio")){
@@ -87,6 +92,7 @@ public class AdapterReteClient implements Adapter{
             	
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
+                throw new RuntimeException();
             }
         }
     }
