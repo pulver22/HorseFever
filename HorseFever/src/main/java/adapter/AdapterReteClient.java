@@ -36,7 +36,9 @@ public class AdapterReteClient implements Adapter{
                     in = new ObjectInputStream(socket.getInputStream());
                 }
             	Object obj=in.readObject();
-            	
+            	if (out==null){
+            		out = new ObjectOutputStream(socket.getOutputStream());
+            	}
             	if (obj instanceof HorseFeverEvent){
             		notify((HorseFeverEvent) obj);
             	}
@@ -46,7 +48,6 @@ public class AdapterReteClient implements Adapter{
             		if (mess[0].equals("chiediScommessa")){
             			try {
             				String[] valori=chiediScommessa(0);
-            	            out = new ObjectOutputStream(socket.getOutputStream());
             	            out.writeObject(valori);
             	            out.flush();
             	 
@@ -59,7 +60,6 @@ public class AdapterReteClient implements Adapter{
             		if (mess[0].equals("chiediSecondaScommessa")){
             			try {
             				String[] valori=chiediSecondaScommessa(0);
-            	            out = new ObjectOutputStream(socket.getOutputStream());
             	            out.writeObject(valori);
             	            out.flush();
             	 
@@ -72,7 +72,6 @@ public class AdapterReteClient implements Adapter{
             			try {
                         	ArrayList<Azione> carteAzione=(ArrayList<Azione>)in.readObject();
             				String[] valori=chiediTrucca(carteAzione,0);
-            	            out = new ObjectOutputStream(socket.getOutputStream());
             	            out.writeObject(valori);
             	            out.flush();
             	 

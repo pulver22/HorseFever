@@ -29,7 +29,7 @@ public class AdapterReteServer implements Adapter{
             //Creates a new server socket with the given port number
             serverSocket = new ServerSocket(SERVER_PORT);
         } catch (IOException ex) {
-            System.out.println("Error occured while creating the server socket");
+            System.out.println("Error occured while creating the server socket "+ex.getMessage());
             return;
         }
  
@@ -85,10 +85,10 @@ public class AdapterReteServer implements Adapter{
 		ObjectInputStream in = null;
         ObjectOutputStream out = null;
 		try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+            out = clients.get(indice).getOut();
             out.writeObject(mess);
             out.flush();
-            in = new ObjectInputStream(socket.getInputStream());
+            in = clients.get(indice).getIn();
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -109,10 +109,10 @@ public class AdapterReteServer implements Adapter{
 		ObjectInputStream in = null;
         ObjectOutputStream out = null;
 		try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+			out = clients.get(indice).getOut();
             out.writeObject(mess);
             out.flush();
-            in = new ObjectInputStream(socket.getInputStream());
+            in = clients.get(indice).getIn();
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -133,12 +133,12 @@ public class AdapterReteServer implements Adapter{
 		ObjectInputStream in = null;
         ObjectOutputStream out = null;
 		try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+			out = clients.get(indice).getOut();
             out.writeObject(mess);
             out.flush();
             out.writeObject(carteAzione);
             out.flush();
-            in = new ObjectInputStream(socket.getInputStream());
+            in = clients.get(indice).getIn();
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -156,7 +156,7 @@ public class AdapterReteServer implements Adapter{
 		Socket socket=clients.get(indice).getClientSocket();
         ObjectOutputStream out = null;
 		try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+			out = clients.get(indice).getOut();
             out.writeObject(mess);
             out.flush();
         } catch (Exception ex) {
@@ -172,7 +172,7 @@ public class AdapterReteServer implements Adapter{
 			Socket socket=ach.getClientSocket();
 	        ObjectOutputStream out = null;
 			try {
-                out = new ObjectOutputStream(socket.getOutputStream());
+				out = ach.getOut();
                 out.writeObject(e);
                 out.flush();
             } catch (Exception ex) {
@@ -208,10 +208,10 @@ public class AdapterReteServer implements Adapter{
 		ObjectInputStream in = null;
         ObjectOutputStream out = null;
 		try {
-            out = new ObjectOutputStream(socket.getOutputStream());
+			out = clients.get(indice).getOut();
             out.writeObject(mess);
             out.flush();
-            in = new ObjectInputStream(socket.getInputStream());
+            in = clients.get(indice).getIn();
             in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
