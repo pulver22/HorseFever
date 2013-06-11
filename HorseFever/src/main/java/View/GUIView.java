@@ -572,7 +572,6 @@ public class GUIView implements View{
 			
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
 			first=true;
-			//board.reset();
 			
 		}
 		else{
