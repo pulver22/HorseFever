@@ -32,33 +32,32 @@ public class Pedina implements ActionListener {
 		
 	}
 
-	public void setPosizioniprec(int posizioniprec) {
-		this.posizioniprec = posizioniprec;
-	}
-
+	/**
+	 * Muove le pedine 
+	 * @param numPos nuova posizione delle pedine
+	 * posizioni= numero scatti da fare
+	 * posizioniprec= posizione precedente delle pedine
+	 */
 	public void muovi(int numPos){
-		//numPos == PosizioniAggiornate
-		//posizioni == numero scatti da fare
-		//posizioniprec == numero di scatti fatti fatti fino ad ora. 
+
 	   this.posizioni=numPos-posizioniprec;
 	   posizioniprec=posizioniprec+posizioni;
-	   
-	  	
+	  
 	   timer=new Timer(300,this);
-	    
 	   timer.start();
-		  
-		
-		
 	}
 	
 	//getter e setter
+	public void setPosizioniprec(int posizioniprec) {
+		this.posizioniprec = Integer.valueOf(posizioniprec);
+	}
+	
 	public int getX() {
 		return x;
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		this.x = Integer.valueOf(x);
 	}
 
 	public int getY() {
@@ -66,7 +65,7 @@ public class Pedina implements ActionListener {
 	}
 
 	public void setY(int y) {
-		this.y = y;
+		this.y = Integer.valueOf(y);
 	}
 	
 	public Image getImmagine() {
@@ -86,16 +85,13 @@ public class Pedina implements ActionListener {
 			if(x+dx<1046){
 			  
 				if(x+dx>862){
-					dx=48;
-					
-					
+					dx=48;	
 				}
 				
 				x+=dx;
 				if(x>900) arrivata=true;
 			}
 			else{ 
-				  
 				  x=1046;
 			}
 			board.repaint();
@@ -106,7 +102,7 @@ public class Pedina implements ActionListener {
 	}
 	
 	public void setDx(int dx) {
-		this.dx = dx;
+		this.dx = Integer.valueOf(dx);
 	}
 
 	public void setArrivata(boolean x){
