@@ -56,7 +56,7 @@ public class Board extends JPanel {
     	
     	//numero turni
     	
-    	pannelloTurni.setBounds(1140,10,50,50);
+    	pannelloTurni.setBounds(1130,10,60,50);
     	pannelloTurni.setLayout(new BorderLayout());
     	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno" ) );
         pannelloTurni.add(numTurno);
