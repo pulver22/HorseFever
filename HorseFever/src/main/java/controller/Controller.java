@@ -25,6 +25,9 @@ public class Controller {
 		this.partita=par;
 	}
 	
+	/**
+	 * Per il numero di turni del gioco, svolge tutte le attività di gioco e alla fine conclude la partita
+	 */
 	public void start(){
 		
 		int numturni=partita.getNumturni();
@@ -343,6 +346,10 @@ public class Controller {
         
     }
     
+    /**
+     * Seleziona l'adapter giusto a seconda si giochi in locale o remoto
+     * @param a
+     */
     public void setAdapter(Adapter a){
     	this.adapter=a;
     }
