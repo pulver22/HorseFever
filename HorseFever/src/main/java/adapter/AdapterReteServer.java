@@ -19,8 +19,9 @@ public class AdapterReteServer implements Adapter{
 	private int numeroClientAttesi;
 	private ArrayList<AdapterClientHandler> clients=new ArrayList<AdapterClientHandler>();
 	
-	public AdapterReteServer(int numeroClientAttesi){
+	public AdapterReteServer(int numeroClientAttesi, View v){
 		this.numeroClientAttesi=numeroClientAttesi;
+		viewRegistrate.add(v);
 	}
 	
 	public void startServer() {
@@ -37,6 +38,8 @@ public class AdapterReteServer implements Adapter{
         while(clients.size()<this.numeroClientAttesi){
         	try {
         		//Waits untill a connection is made, and returns that socket
+        		ClientThread c=new ClientThread("localhost",viewRegistrate.get(0));
+        		c.start();
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
         		System.out.println("Connection created, client IP" + socket.getInetAddress());
