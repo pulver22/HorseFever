@@ -169,6 +169,11 @@ public class Lavagna {
 		return quot;
 	}
 	
+	/**
+	 * Aggiorna la variazione della quotazione di un determinato cavallo
+	 * @param colore
+	 * @param variazione
+	 */
 	public void setQuotazioneAlCavallo(String colore, String variazione){
 		int quot;
 		for (int i=0; i<6;i++){

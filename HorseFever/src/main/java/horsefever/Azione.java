@@ -3,15 +3,21 @@ package horsefever;
 import java.io.Serializable;
 
 public class Azione extends Carta implements Serializable{
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2573588524457267064L;
 	private String colore;
 	private String tipoEffetto;
 	private String valoreEffetto;
 	private char lettera;
 
+	/**
+	 * Crea una nuova cartazione con i parametri passati dal mazzo
+	 * @param nome
+	 * @param colore
+	 * @param tipoeEffetto
+	 * @param valoreEffetto
+	 * @param lettera
+	 */
 	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto, char lettera){
 		this.nome = nome;
 		this.colore = colore;

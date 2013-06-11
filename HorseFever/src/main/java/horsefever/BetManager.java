@@ -81,7 +81,11 @@ public class BetManager {
 	
 	}
 	
-	
+	/**
+	 * Converte l'ordine d'arrivo dal numero di corsia nel colore corrispondente
+	 * @param ordineArrivo
+	 * @return
+	 */
 	public String convertiOrdineArrivo(int ordineArrivo){
 		
 		String ordine = new String();
@@ -114,6 +118,13 @@ public class BetManager {
 			return ordine;
 		}
 		
+	/**
+	 * Pulisce l'array di scommesse a fine turno
+	 */
+	public void resetbManager(){
+		int i=0;
+		while(bManager.size() != 0) bManager.remove(i);
+	}
 	
 	//metodi getter e setter
 	public ArrayList<Scommessa> getbManager() {
@@ -122,10 +133,5 @@ public class BetManager {
 
 	public void setbManager(ArrayList<Scommessa> bManager) {
 		this.bManager = bManager;
-	}
-	
-	public void resetbManager(){
-		int i=0;
-		while(bManager.size() != 0) bManager.remove(i);
 	}
 }

@@ -23,7 +23,7 @@ public class Partita {
 	private int[] numSegnalini=new int[6];
 	
 	/**
-	 * @author niccolò
+	 * Crea una nuova partita con il numero di giocatori scelto, scegliendo il numero di turni e i corretti segbalini
 	 * 
 	 * @param numgiocatori
 	 */
@@ -53,6 +53,10 @@ public class Partita {
 			
 	}
 	
+	/**
+	 * Fase iniziale di gioco,in cui ogni giocatore pesca due carte,vengono settate le quotazioni delle scuderie,
+	 * aggiunti i giocatori
+	 */
 	public void preparazione(){
 		
 		String quotazione;

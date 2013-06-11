@@ -15,6 +15,10 @@ public class Cavallo {
 	private String effettoQuotazione=null;
 	private final int SPRINT=1;
 	
+	/**
+	 * Setta il colore del cavallo
+	 * @param colore
+	 */
 	public Cavallo(String colore){
 		this.colore=String.valueOf(colore);
 	}

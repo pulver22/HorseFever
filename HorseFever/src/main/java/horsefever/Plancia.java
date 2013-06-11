@@ -20,6 +20,11 @@ public class Plancia {
 	private Lavagna lavagna;
 	private Partita partita;
 	
+	/**
+	 * Crea la plancia di gioco associandole lavagna e partita,corsie delle carte azioni,cavalli e quotazioni
+	 * @param lavagna
+	 * @param p
+	 */
 	public Plancia(Lavagna lavagna, Partita p){
 		this.partita=p;
 		this.lavagna=lavagna;
@@ -320,6 +325,11 @@ public class Plancia {
 		return false;
 	}
 	
+	/**
+	 * Restituisce vero se due cavalli hanno attraversato contemporaneamente il traguardo e si trovano sulla stessa
+	 * cella
+	 * @return
+	 */
 	public boolean almenoDueCavalliPari(){
 		for (int i=0; i<6; i++){
 			if (!arrivati[i]){
