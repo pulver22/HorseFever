@@ -18,6 +18,10 @@ public class AdapterReteClient implements Adapter{
     private ObjectInputStream in = null;
     private ObjectOutputStream out = null;
  
+    /**
+     * Dopo aver ricevuto in ingresso l'indirizzo IP del server,collega il client al server attraverso una porta
+     * di default
+     */
     public void connetti(String serverIP) {
         try {
             socket = new Socket(serverIP, SERVER_PORT);
@@ -28,6 +32,10 @@ public class AdapterReteClient implements Adapter{
         }
     }
     
+    /**
+     * Rappresenta il main vero e proprio del client, chiedi la prima e seconda scommessa, il truccare la corsa
+     * e il prosegui alla fase successiva
+     */
     public void start(){
     	//ObjectInputStream in = null;
         //ObjectOutputStream out = null;

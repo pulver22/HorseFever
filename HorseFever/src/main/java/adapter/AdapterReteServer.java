@@ -19,19 +19,28 @@ public class AdapterReteServer implements Adapter{
 	private int numeroClientAttesi;
 	private ArrayList<AdapterClientHandler> clients=new ArrayList<AdapterClientHandler>();
 	
+	/**
+	 * Registra il numero di giocatori su cui stare in attesa
+	 * @param numeroClientAttesi
+	 * @param v
+	 */
 	public AdapterReteServer(int numeroClientAttesi, View v){
 		this.numeroClientAttesi=numeroClientAttesi;
 		viewRegistrate.add(v);
 	}
 	
+	/**
+	 * Crea il server socket e aspetta che tutti gli utenti che devono partecipare al gioco
+	 * si connettano
+	 */
 	public void startServer() {
         ServerSocket serverSocket = null;
         try {
-            //Creates a new server socket with the given port number
+            //Crea un nuovo server socket con la porta di default
             serverSocket = new ServerSocket(SERVER_PORT);
             System.out.println("[Server] Aperta la porta.");
         } catch (IOException ex) {
-            System.out.println("Error occured while creating the server socket "+ex.getMessage());
+            System.out.println("Errore durante la creazione del server socket "+ex.getMessage());
             return;
         }
         System.out.println("[Server] In attesa dei Clients");
@@ -40,12 +49,12 @@ public class AdapterReteServer implements Adapter{
 		c.start();
         while(clients.size()<this.numeroClientAttesi){
         	try {
-        		//Waits untill a connection is made, and returns that socket
+        		//Aspetta fino all'instaurazione del server socket e l'aggiunta di giocatori
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
         		System.out.println("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
-        		System.out.println("Error occured while accepting the socket");
+        		System.out.println("Errore durante l'accettazione del server socket");
         		return;
         	}
         }

@@ -18,6 +18,10 @@ public class AdapterClientHandler{
 	ObjectOutputStream out=null;
 	ObjectInputStream in=null;
 	
+	/**
+	 * Associa un determinato socket a questo client
+	 * @param s
+	 */
 	public AdapterClientHandler(Socket s){
 		this.clientSocket=s;
 	}
@@ -148,14 +152,26 @@ public class AdapterClientHandler{
         }
 	}
 	
+	/**
+	 * Restituisce il metodo in uscita
+	 * @return
+	 */
 	public ObjectOutputStream getOut() {
 		return out;
 	}
 
+	/**
+	 * Restituisce il metodo in ingresso
+	 * @return
+	 */
 	public ObjectInputStream getIn() {
 		return in;
 	}
 
+	/**
+	 * Restituisce il socket del client
+	 * @return
+	 */
 	public Socket getClientSocket() {
 		return clientSocket;
 	}
