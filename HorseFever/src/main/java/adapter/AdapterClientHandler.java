@@ -2,14 +2,10 @@ package adapter;
 
 import horsefever.Azione;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-
-import View.View;
 import eventi.HorseFeverEvent;
 
 public class AdapterClientHandler{
@@ -151,31 +147,5 @@ public class AdapterClientHandler{
             System.out.println("Error: " + ex);
         }
 	}
-	
-	/**
-	 * Restituisce il metodo in uscita
-	 * @return
-	 */
-	public ObjectOutputStream getOut() {
-		return out;
-	}
-
-	/**
-	 * Restituisce il metodo in ingresso
-	 * @return
-	 */
-	public ObjectInputStream getIn() {
-		return in;
-	}
-
-	/**
-	 * Restituisce il socket del client
-	 * @return
-	 */
-	public Socket getClientSocket() {
-		return clientSocket;
-	}
-	
-	
 	
 }

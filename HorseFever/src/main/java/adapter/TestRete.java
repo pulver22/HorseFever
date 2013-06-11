@@ -2,10 +2,8 @@ package adapter;
 
 import horsefever.Partita;
 
-import javax.swing.JOptionPane;
 
 import View.GUIView;
-import View.TextView;
 import View.View;
 import controller.Controller;
 
