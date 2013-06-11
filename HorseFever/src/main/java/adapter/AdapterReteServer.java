@@ -36,11 +36,11 @@ public class AdapterReteServer implements Adapter{
         }
         System.out.println("[Server] In attesa dei Clients");
         Socket socket = null;
+        ClientThread c=new ClientThread("localhost",viewRegistrate.get(0));
+		c.start();
         while(clients.size()<this.numeroClientAttesi){
         	try {
         		//Waits untill a connection is made, and returns that socket
-        		ClientThread c=new ClientThread("localhost",viewRegistrate.get(0));
-        		c.start();
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
         		System.out.println("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
