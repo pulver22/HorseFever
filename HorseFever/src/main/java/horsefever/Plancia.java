@@ -602,11 +602,11 @@ public class Plancia {
 		}
 		return true;
 	}
-	
+	/*
 	public Cavallo getCavalloArrivatoInPos(int posizione){
 		return cavalliArrivati.get(posizione);
 	}
-	
+	*/
 	/**
 	 * Ritorna un array di interi corrispondenti alle posizioni dei vari cavalli
 	 * @return l'array delle posizioni
@@ -640,4 +640,5 @@ public class Plancia {
 	public ArrayList<Cavallo> getCavalliArrivati(){
 		return cavalliArrivati;
 	}
+	
 }

@@ -3,7 +3,11 @@ package horsefever;
 
 public class Movimento extends Carta {
 
-   private int[] valorimov=new int[6];
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7830854352517037416L;
+	private int[] valorimov=new int[6];
    private String nomefile;
    
    public Movimento(int[] valori,String nome){

@@ -191,9 +191,11 @@ public class Lavagna {
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
+	/*
 	public Plancia getPlancia() {
 		return plancia;
 	}
+	*/
 	public void setPlancia(Plancia plancia) {
 		this.plancia = plancia;
 	}
