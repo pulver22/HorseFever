@@ -49,6 +49,7 @@ public class Main {
 				ad.start();
 			}
 		}
+		ad.addView(tv);
 		Partita p=new Partita(numGiocatori,ad);
 		Controller c = new Controller(p);
 		c.setAdapter(ad);
