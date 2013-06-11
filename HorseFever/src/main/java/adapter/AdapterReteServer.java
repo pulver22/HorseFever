@@ -223,7 +223,7 @@ public class AdapterReteServer implements Adapter{
 	public void prosegui(String messaggio, int indice) {
 		clients.get(indice).prosegui(messaggio,indice);
 		if (messaggio.equals("Fine del turno")){
-			clients.add(clients.get(0)); //Riordina client secondo ordine primo giocatore
+			clients.add(clients.get(0)); //Riordina clients secondo ordine del primo giocatore
 			clients.remove(0);
 		}
 		/*
