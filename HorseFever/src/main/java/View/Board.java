@@ -33,7 +33,7 @@ public class Board extends JPanel {
 	private JTextField[] nomeGiocatore=new JTextField[6];
 	private JTextField[] denari=new JTextField[6];
 	private JTextField[] scuderia=new JTextField[6];
-	private JTextField numTurno=new JTextField("1/X");
+	private JTextField numTurno=new JTextField("   ");
 	
 	private Image plancia;
 	private Image cartaMov;
@@ -49,7 +49,9 @@ public class Board extends JPanel {
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
-	
+	/**
+	 * Inizializza tutti gli elementi grafici
+	 */
     public Board(){
     	
     	this.setLayout(null);
@@ -191,6 +193,9 @@ public class Board extends JPanel {
     	this.setDoubleBuffered(true);
     }
     
+    /**
+     * Disegna lo sfondo della finestra
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
@@ -198,6 +203,9 @@ public class Board extends JPanel {
         g2d.drawImage(sfondo, 0,0, null);
     }    
  
+    /**
+     * Disegna la plancia, carta movimento, titolo, pedine ed eventuali piazzamenti
+     */
 	public void paint(Graphics g) {
         super.paint(g);
         
@@ -291,6 +299,9 @@ public class Board extends JPanel {
 		areaNotifica.append(messaggio);
 	}
 	
+	/**
+	 *  Pulisce la JTextArea delle notifiche
+	 */
 	public void resetAreaNotifica(){
 		
 		areaNotifica.setText("");
