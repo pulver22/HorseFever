@@ -23,16 +23,8 @@ public class eventoArrivi extends HorseFeverEvent{
 		return posArrivo;
 	}
 
-	public void setPosArrivo(int posArrivo) {
-		this.posArrivo = posArrivo;
-	}
-
 	public String getCavallo() {
 		return cavallo;
-	}
-
-	public void setCavallo(String cavallo) {
-		this.cavallo = cavallo;
 	}
 
 	

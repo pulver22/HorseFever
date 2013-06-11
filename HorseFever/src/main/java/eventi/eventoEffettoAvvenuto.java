@@ -26,9 +26,5 @@ public class eventoEffettoAvvenuto extends HorseFeverEvent{
 	public int getCorsia() {
 		return corsia;
 	}
-	
-	
-	
-	
-	
+
 }
