@@ -40,6 +40,7 @@ public class Board extends JFrame {
 	private Image cartaMov;
 	private Image titolo;
 	private Image[] piazzamento=new Image[3];
+	private ImageIcon[] carteMovimento=new ImageIcon[23];
 	
 	private boolean[] stampaPiazzamento=new boolean[3];
 	private boolean tutteArrivate=false;
@@ -71,6 +72,12 @@ public class Board extends JFrame {
     	pedine[4]=new Pedina(455,295,"pedine/giallo.png",this);
     	pedine[5]=new Pedina(455,345,"pedine/bianco.png",this);
 		
+    	//inizializzazione Carta Movimento
+    	
+    	for(int i=0;i<23;i++){
+    		
+    		carteMovimento[i]=new ImageIcon(getClass().getResource("carteMovimento/horseFever-"+(i+83)+".png")); 
+    	}
     	
     	//Area Notifica
    
@@ -289,8 +296,8 @@ public class Board extends JFrame {
 	 */
 	public void setImmagineMovimento(String cartaMovimento){
 		
-		ImageIcon imgMov=new ImageIcon(getClass().getResource("carteMovimento/"+cartaMovimento));
-		cartaMov=imgMov.getImage();
+		int indice=Integer.parseInt(cartaMovimento);
+		cartaMov=carteMovimento[indice].getImage();
 		this.invalidate();
 		
 	}

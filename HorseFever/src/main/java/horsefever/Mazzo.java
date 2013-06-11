@@ -91,29 +91,29 @@ public class Mazzo {
 		}
 		else if(nome.equals("MazzoMovimento")){
 			
-			Mazzo.add(new Movimento(3,3,2,2,2,2,"horseFever-83.png"));
-			Mazzo.add(new Movimento(3,2,3,2,2,2,"horseFever-84.png"));
-			Mazzo.add(new Movimento(3,2,2,3,2,2,"horseFever-85.png"));
-			Mazzo.add(new Movimento(3,2,2,2,3,2,"horseFever-86.png"));
-			Mazzo.add(new Movimento(2,2,2,2,3,3,"horseFever-87.png"));
-			Mazzo.add(new Movimento(2,2,2,3,2,3,"horseFever-88.png"));
-			Mazzo.add(new Movimento(2,2,3,2,2,3,"horseFever-89.png"));
-			Mazzo.add(new Movimento(2,3,2,2,2,3,"horseFever-90.png"));
-			Mazzo.add(new Movimento(2,3,2,2,3,2,"horseFever-91.png"));
-			Mazzo.add(new Movimento(2,3,2,2,3,2,"horseFever-92.png"));
-			Mazzo.add(new Movimento(2,3,3,2,2,2,"horseFever-93.png"));
-			Mazzo.add(new Movimento(3,2,2,2,2,3,"horseFever-94.png"));
-			Mazzo.add(new Movimento(2,2,3,3,2,2,"horseFever-95.png"));
-			Mazzo.add(new Movimento(2,2,3,2,3,2,"horseFever-96.png"));
-			Mazzo.add(new Movimento(2,2,2,3,3,2,"horseFever-97.png"));
-			Mazzo.add(new Movimento(3,3,2,2,2,2,"horseFever-98.png"));
-			Mazzo.add(new Movimento(4,3,2,2,2,2,"horseFever-99.png"));
-			Mazzo.add(new Movimento(4,2,2,2,2,0,"horseFever-100.png"));
-			Mazzo.add(new Movimento(2,2,2,2,1,0,"horseFever-101.png"));
-			Mazzo.add(new Movimento(2,2,2,2,1,1,"horseFever-102.png"));
-			Mazzo.add(new Movimento(3,2,2,2,2,1,"horseFever-103.png"));
-			Mazzo.add(new Movimento(2,2,3,1,2,2,"horseFever-104.png"));
-			Mazzo.add(new Movimento(2,4,2,2,0,2,"horseFever-105.png"));
+			Mazzo.add(new Movimento(3,3,2,2,2,2,"0"));
+			Mazzo.add(new Movimento(3,2,3,2,2,2,"1"));
+			Mazzo.add(new Movimento(3,2,2,3,2,2,"2"));
+			Mazzo.add(new Movimento(3,2,2,2,3,2,"3"));
+			Mazzo.add(new Movimento(2,2,2,2,3,3,"4"));
+			Mazzo.add(new Movimento(2,2,2,3,2,3,"5"));
+			Mazzo.add(new Movimento(2,2,3,2,2,3,"6"));
+			Mazzo.add(new Movimento(2,3,2,2,2,3,"7"));
+			Mazzo.add(new Movimento(2,3,2,2,3,2,"8"));
+			Mazzo.add(new Movimento(2,3,2,2,3,2,"9"));
+			Mazzo.add(new Movimento(2,3,3,2,2,2,"10"));
+			Mazzo.add(new Movimento(3,2,2,2,2,3,"11"));
+			Mazzo.add(new Movimento(2,2,3,3,2,2,"12"));
+			Mazzo.add(new Movimento(2,2,3,2,3,2,"13"));
+			Mazzo.add(new Movimento(2,2,2,3,3,2,"14"));
+			Mazzo.add(new Movimento(3,3,2,2,2,2,"15"));
+			Mazzo.add(new Movimento(4,3,2,2,2,2,"16"));
+			Mazzo.add(new Movimento(4,2,2,2,2,0,"17"));
+			Mazzo.add(new Movimento(2,2,2,2,1,0,"18"));
+			Mazzo.add(new Movimento(2,2,2,2,1,1,"19"));
+			Mazzo.add(new Movimento(3,2,2,2,2,1,"20"));
+			Mazzo.add(new Movimento(2,2,3,1,2,2,"21"));
+			Mazzo.add(new Movimento(2,4,2,2,0,2,"22"));
 		}
 			
 	}
