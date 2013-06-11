@@ -49,7 +49,7 @@ public class ThreadCorsa extends Thread{
         	   aggiornaPosizioni(posizioniAggiornate);
         	 
         	   try {
-        		   board.repaint();
+        		   
         		   Thread.sleep(2800);
         	   } catch (InterruptedException e) {
 				

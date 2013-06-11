@@ -216,7 +216,7 @@ public class Board extends JFrame {
         
         
         Toolkit.getDefaultToolkit().sync();
-        this.invalidate();
+        g.dispose();
         
 	}
 	
