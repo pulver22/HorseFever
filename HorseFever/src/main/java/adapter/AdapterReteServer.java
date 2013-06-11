@@ -222,6 +222,10 @@ public class AdapterReteServer implements Adapter{
 	@Override
 	public void prosegui(String messaggio, int indice) {
 		clients.get(indice).prosegui(messaggio,indice);
+		if (messaggio.equals("Fine del turno")){
+			clients.add(clients.get(0)); //Riordina client secondo ordine primo giocatore
+			clients.remove(0);
+		}
 		/*
 		String[] mess = new String[2];
 		mess[0]="prosegui";
