@@ -142,25 +142,25 @@ public class Partita {
 	public void setAdapter(Adapter a){
 		this.adapter=a;
 	}
-
+	
 	public BetManager getBetManager() {
 		return betManager;
 	}
-
+	
 	public int[] getNumSegnalini() {
 		
 		
 		return numSegnalini.clone();
 	}
-
+	/*
 	public void setNumSegnalini(int[] numSegnalini) {
 		this.numSegnalini = numSegnalini.clone();
 	}
-
+	/*
 	public void setBetManager(BetManager betManager) {
 		this.betManager = betManager;
 	}
-	
+	*/
 	public ArrayList<Giocatore> getGiocatori() {
 		return giocatori;
 	}
@@ -168,77 +168,77 @@ public class Partita {
 	public Giocatore getGiocatori(int i) {
 		return giocatori.get(i);
 	}
-
+	/*
 	public void setGiocatori(ArrayList<Giocatore> giocatori) {
 		this.giocatori = giocatori;
 	}
-
+	*/
 	public int getNumturni() {
 		return numturni;
 	}
-
+	/*
 	public void setNumturni(int numturni) {
 		this.numturni = Integer.valueOf(numturni);
 	}
-
+	*/
 	public int getNumgiocatori() {
 		return numgiocatori;
 	}
-
+	/*
 	public void setNumgiocatori(int numgiocatori) {
 		this.numgiocatori = Integer.valueOf(numgiocatori);
 	}
-
+	*/
 	public Mazzo getMazzoAzione() {
 		return mazzoAzione;
 	}
-
+	/*
 	public void setMazzoAzione(Mazzo mazzoAzione) {
 		this.mazzoAzione = mazzoAzione;
 	}
-
+	/*
 	public Mazzo getMazzoPersonaggio() {
 		return mazzoPersonaggio;
 	}
-
+	/*
 	public void setMazzoPersonaggio(Mazzo mazzoPersonaggio) {
 		this.mazzoPersonaggio = mazzoPersonaggio;
 	}
-
+	*/
 	public Mazzo getMazzoMovimento() {
 		return mazzoMovimento;
 	}
-
+	/*
 	public void setMazzoMovimento(Mazzo mazzoMovimento) {
 		this.mazzoMovimento = mazzoMovimento;
 	}
-
+	/*
 	public Mazzo getMazzoProprietario() {
 		return mazzoProprietario;
 	}
-
+	/*
 	public void setMazzoProprietario(Mazzo mazzoProprietario) {
 		this.mazzoProprietario = mazzoProprietario;
 	}
-
+	*/
 	public Lavagna getLavagna() {
 		return lavagna;
 	}
-
+	/*
 	public void setLavagna(Lavagna lavagna) {
 		this.lavagna = lavagna;
 	}
-
+	*/
 	public Plancia getPlancia() {
 		return plancia;
 	}
-
+	/*
 	public void setPlancia(Plancia plancia) {
 		this.plancia = plancia;
 	}
-	
+	/*
 	public Adapter getAdapter() {
 		return adapter;
 	}
-	
+	*/
 }

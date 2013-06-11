@@ -30,10 +30,9 @@ public class TestPlancia {
 	public void setup(){
 		
 		adapter = new AdapterLocale();
-		partita = new Partita(2,adapter);
 		textview = new TextView();
 		adapter.addView(textview);
-		partita.setAdapter(adapter);
+		partita = new Partita(2,adapter);
 		lavagna=new Lavagna(partita);
 		plancia=new Plancia(lavagna,partita);
 		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A');
