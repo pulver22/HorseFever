@@ -32,10 +32,18 @@ public class GUIView implements View{
 	private ThreadCorsa threadCorsa;
 	private boolean quotIniziali=true;
 	private boolean first=true;
+	private JFrame frame=new JFrame("Horse Fever");
 	
 	public GUIView(){
 		
 		board=new Board();
+		frame.add(board);
+		frame.setVisible(true);
+		frame.setResizable(false);
+		frame.setSize(1200,700);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	@Override
 	public String[] chiediScommessa() {

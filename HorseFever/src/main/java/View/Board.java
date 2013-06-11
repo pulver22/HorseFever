@@ -7,7 +7,7 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
 @SuppressWarnings("serial")
-public class Board extends JFrame {
+public class Board extends JPanel {
 
 	private Pedina[] pedine=new Pedina[6];
 	
@@ -18,7 +18,6 @@ public class Board extends JFrame {
     private JScrollPane scroll;
 	private JScrollPane quotazioniScrollPane;
 	
-    private Background background=new Background("elementiBoard/background.jpg");
 	private JPanel pannelloNotifica=new JPanel();
 	private JPanel pannelloGiocatore=new JPanel();
 	private JPanel pannelloLavagna=new JPanel(new BorderLayout());
@@ -39,6 +38,7 @@ public class Board extends JFrame {
 	private Image plancia;
 	private Image cartaMov;
 	private Image titolo;
+	private Image sfondo;
 	private Image[] piazzamento=new Image[3];
 	private ImageIcon[] carteMovimento=new ImageIcon[23];
 	
@@ -52,11 +52,13 @@ public class Board extends JFrame {
 	
     public Board(){
     	
+    	this.setLayout(null);
+    	
     	//numero turni
     	
     	pannelloTurni.setBounds(1140,10,50,50);
     	pannelloTurni.setLayout(new BorderLayout());
-    	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno corrente:" ) );
+    	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno" ) );
         pannelloTurni.add(numTurno);
         pannelloTurni.setVisible(true);
         pannelloTurni.setBackground(Color.decode("#c38335"));
@@ -65,12 +67,12 @@ public class Board extends JFrame {
         
     	//inizializzazione Pedine
     	
-    	pedine[0]=new Pedina(455,90,"pedine/nero.png",this);
-    	pedine[1]=new Pedina(455,140,"pedine/blu.png",this);
-    	pedine[2]=new Pedina(455,195,"pedine/verde.png",this);
-    	pedine[3]=new Pedina(455,245,"pedine/rosso.png",this);
-    	pedine[4]=new Pedina(455,295,"pedine/giallo.png",this);
-    	pedine[5]=new Pedina(455,345,"pedine/bianco.png",this);
+    	pedine[0]=new Pedina(455,67,"pedine/nero.png",this);
+    	pedine[1]=new Pedina(455,117,"pedine/blu.png",this);
+    	pedine[2]=new Pedina(455,172,"pedine/verde.png",this);
+    	pedine[3]=new Pedina(455,222,"pedine/rosso.png",this);
+    	pedine[4]=new Pedina(455,272,"pedine/giallo.png",this);
+    	pedine[5]=new Pedina(455,322,"pedine/bianco.png",this);
 		
     	//inizializzazione Carta Movimento
     	
@@ -99,9 +101,14 @@ public class Board extends JFrame {
     	pannelloNotifica.setVisible(true);
     	pannelloNotifica.setBackground(Color.decode("#c38335"));
     	
+    	//Sfondo
+  
+    	ImageIcon ii=new ImageIcon(this.getClass().getResource("elementiBoard/background.jpg"));
+		sfondo=ii.getImage();
+		
     	//Plancia
        
-        ImageIcon ii=new ImageIcon(this.getClass().getResource("elementiBoard/plancia.jpg"));
+        ii=new ImageIcon(this.getClass().getResource("elementiBoard/plancia.jpg"));
 		plancia=ii.getImage();	
 		
 		//Giocatore
@@ -169,35 +176,35 @@ public class Board extends JFrame {
 		piazzamento[1]=ii.getImage();	
 		ii=new ImageIcon(this.getClass().getResource("piazzamenti/terzo.png"));
 		piazzamento[2]=ii.getImage();	
-		
+	
 		this.add(pannelloNotifica);
     	this.add(pannelloLavagna);
     	this.add(pannelloGiocatore);
     	this.add(pannelloTurni);
-    	this.add(background);
+    	
     	
     	pannelloNotifica.setDoubleBuffered(true);
     	pannelloLavagna.setDoubleBuffered(true);
     	pannelloGiocatore.setDoubleBuffered(true);
     	pannelloTurni.setDoubleBuffered(true);
-    	background.setDoubleBuffered(true);
     	
-    	this.setResizable(true);
-    	this.setTitle("Horse Fever");
-    	this.setSize(1200,700);
-    	this.setVisible(true);
-    	this.setLocationRelativeTo(null);
-    	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	this.setDoubleBuffered(true);
     }
     
-   
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(sfondo, 0,0, null);
+    }    
+ 
 	public void paint(Graphics g) {
         super.paint(g);
         
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(plancia, 450,80, null);
-        g2d.drawImage(cartaMov, 60,420,null);
-        g2d.drawImage(titolo, 170,8,null);
+        g2d.drawImage(plancia, 450,60, null);
+        g2d.drawImage(cartaMov, 60,400,null);
+        g2d.drawImage(titolo, 170,-14,null);
         
         for(int i=0;i<3;i++){
         	
@@ -252,7 +259,7 @@ public class Board extends JFrame {
 		posizione--;
 		numCorsia--;
 		//le corsie sono distanziate di 50px l'una dall'altra e la prima parte a 86px
-		yPiazzamento[posizione]=numCorsia*50+86;
+		yPiazzamento[posizione]=numCorsia*50+66;
 		stampaPiazzamento[posizione]=true;
 		this.invalidate();
 		
