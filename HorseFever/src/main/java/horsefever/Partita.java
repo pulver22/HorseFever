@@ -123,6 +123,11 @@ public class Partita {
 		betManager.resetbManager();
 		notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.PRIMO));
 	}
+	
+	public void generaEventoResetGrafico(){
+		notifyObserver(new eventoResetGrafico());
+	}
+	
 	//Metodi Getter e Setter
 	
 	public void setTurnoAttuale(int turno){

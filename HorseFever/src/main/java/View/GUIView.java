@@ -459,6 +459,11 @@ public class GUIView implements View{
     	   
     	   board.setTurni(turnoCor, turniTot);
        }
+       
+       else if(e instanceof eventoResetGrafico){
+    	   
+    	   board.reset();
+       }
 		
 	}
 	
@@ -559,7 +564,7 @@ public class GUIView implements View{
 			
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
 			first=true;
-			board.reset();
+			//board.reset();
 			
 		}
 		else{

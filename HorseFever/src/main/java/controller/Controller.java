@@ -152,6 +152,7 @@ public class Controller {
 		
 		adapter.prosegui("Fine del turno", 0);
 
+		partita.generaEventoResetGrafico();
 	}
 	
 
