@@ -1,9 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import adapter.Adapter;
-import eventi.*;
 
 import horsefever.*;
 
@@ -11,7 +9,6 @@ public class Controller {
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 	private Adapter adapter;
-	private HorseFeverEvent e;
 	private boolean finePar=false;
 	
 	
@@ -318,7 +315,7 @@ public class Controller {
     	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
     	carteAzione=giocatore.getCarteAzione();
     	String[] scelta = new String[2];
-    	String cartaAzioneGiocata,nomeGiocatore=giocatore.getNome();
+    	//String cartaAzioneGiocata,nomeGiocatore=giocatore.getNome();
     	boolean buonfine = false;
     	int numCartaAzione=0,numCorsia=0;
     	
@@ -336,7 +333,7 @@ public class Controller {
 				buonfine=false;
     	}
     	
-    	cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
+    	//cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
     	partita.getPlancia().truccaCorsia(carteAzione.get(numCartaAzione), numCorsia,giocatore.getNome());
     	
     	
