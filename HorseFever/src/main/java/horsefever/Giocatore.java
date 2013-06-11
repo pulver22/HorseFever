@@ -46,16 +46,19 @@ public class Giocatore {
 	     e=new eventoGiocatore(this, eventoGiocatore.PAGAMENTO);
 	     partita.notifyObserver(e);
 	}
-	
+	/*
 	public Carta getCartaPersonaggio() {
 		return cartaPersonaggio;
 	}
+	*/
 	public void setCartaPersonaggio(Personaggio cartaPersonaggio) {
 		this.cartaPersonaggio = cartaPersonaggio;
 	}
+	/*
 	public Azione getCartaAzione(int indice){
 		return carteAzione.get(indice);
 	}
+	*/
 	public String[] getStringheAzioni(){
 		String[] azioni=new String[2];
 		for (int i=0; i<2; i++){
@@ -97,6 +100,7 @@ public class Giocatore {
 	public String getScuderia() {
 		return scuderia;
 	}
+	
 	public void setScuderia(String scuderia) {
 		this.scuderia = String.valueOf(scuderia);
 	}

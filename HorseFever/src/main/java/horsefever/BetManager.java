@@ -127,11 +127,13 @@ public class BetManager {
 	}
 	
 	//metodi getter e setter
+	
 	public ArrayList<Scommessa> getbManager() {
 		return bManager;
 	}
-
+	/*
 	public void setbManager(ArrayList<Scommessa> bManager) {
 		this.bManager = bManager;
 	}
+	*/
 }
