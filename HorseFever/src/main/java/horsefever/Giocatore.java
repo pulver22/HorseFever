@@ -8,7 +8,7 @@ public class Giocatore {
 
 	private int PV=1;
 	private long denari;
-	private Carta cartaPersonaggio;
+	//private Carta cartaPersonaggio;
 	private String scuderia;
 	private ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
 	private String nomeGiocatore;
@@ -17,7 +17,7 @@ public class Giocatore {
 	
 	public Giocatore(Personaggio cartaPersonaggio, String scuderia, Partita p){
 		this.partita=p;
-		this.cartaPersonaggio=cartaPersonaggio;
+		//this.cartaPersonaggio=cartaPersonaggio;
 		this.denari=cartaPersonaggio.getDenari();
 		this.scuderia=String.valueOf(scuderia);
 		nomeGiocatore=cartaPersonaggio.getNome();
@@ -50,7 +50,7 @@ public class Giocatore {
 	public Carta getCartaPersonaggio() {
 		return cartaPersonaggio;
 	}
-	*/
+
 	public void setCartaPersonaggio(Personaggio cartaPersonaggio) {
 		this.cartaPersonaggio = cartaPersonaggio;
 	}

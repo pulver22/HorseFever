@@ -12,7 +12,6 @@ public class Cavallo {
 	private String effettoUltimoPrimo=null;
 	private String effettoFotofinish=null;
 	private String effettoTraguardo=null;
-	private String effettoQuotazione=null;
 	private final int SPRINT=1;
 	
 	/**
@@ -159,7 +158,6 @@ public class Cavallo {
 		effettoUltimoPrimo=null;
 		effettoFotofinish=null;
 		effettoTraguardo=null;
-		effettoQuotazione=null;
 	}
 	
 	public int getPosizione() {
@@ -231,7 +229,6 @@ public class Cavallo {
 	}
 	*/
 	public void setEffettoQuotazione(String effettoQuotazione) {
-		this.effettoQuotazione = String.valueOf(effettoQuotazione);
 		if (effettoQuotazione.charAt(0)=='+'){
 			quotazione-=2;
 			if (quotazione<=2) quotazione=2;

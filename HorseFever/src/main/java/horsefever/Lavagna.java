@@ -34,7 +34,7 @@ public class Lavagna {
 		quotazioni[4][0]="Giallo";
 		quotazioni[5][0]="Bianco";
 		
-		ArrayList<Integer> init = new ArrayList(6);
+		ArrayList<Integer> init = new ArrayList<Integer>(6);
 		for (int i=2; i<8;i++){
 			init.add(i);
 		}
@@ -59,7 +59,7 @@ public class Lavagna {
 		quotazioni[4][0]="Giallo";
 		quotazioni[5][0]="Bianco";
 		
-		ArrayList<Integer> init = new ArrayList(6);
+		ArrayList<Integer> init = new ArrayList<Integer>(6);
 		for (int i=2; i<8;i++){
 			init.add(i);
 		}

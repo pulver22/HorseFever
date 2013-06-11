@@ -12,7 +12,7 @@ public class Partita {
 	private Mazzo mazzoAzione=new Mazzo("MazzoAzione");
 	private Mazzo mazzoPersonaggio=new Mazzo("MazzoPersonaggio");;
 	private Mazzo mazzoMovimento=new Mazzo("MazzoMovimento");
-	private Mazzo mazzoProprietario=new Mazzo("MazzoProprietario");
+	//private Mazzo mazzoProprietario=new Mazzo("MazzoProprietario");
 	private Lavagna lavagna;
 	private Plancia plancia;
 	private Adapter adapter;
