@@ -26,6 +26,10 @@ public class ThreadCorsa extends Thread{
 		this.stop=false;
 	}
 
+	/**
+	 * Chiama il metodo muovi per ogni pedina, passandogli la posizione che deve assumere 
+	 * @param posizioni vettore di posizioni aggiornate
+	 */
 	public void aggiornaPosizioni(int[] posizioni){
 		for(i=0; i<6; i++){
 			board.getPedina(i).muovi(posizioni[i]);
@@ -145,6 +149,10 @@ public class ThreadCorsa extends Thread{
 		
 	}
 
+	/**
+	 * termina il run del thread uscendo dal ciclo while
+	 * @param stop
+	 */
 	public void setStop(boolean stop) {
 		this.stop = stop;
 	}
