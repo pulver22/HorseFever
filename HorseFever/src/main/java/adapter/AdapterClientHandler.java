@@ -82,7 +82,7 @@ public class AdapterClientHandler{
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
             out.writeObject(mess);
             out.flush();
-            out.writeObject(carteAzione);
+            out.writeObject(carteAzione.clone());
             out.flush();
             if (in==null)
             	in = new ObjectInputStream(clientSocket.getInputStream());

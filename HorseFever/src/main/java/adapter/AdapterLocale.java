@@ -88,4 +88,22 @@ public class AdapterLocale implements Adapter {
 		viewRegistrate.get(0).prosegui(messaggio);
 	}
 
+	@Override
+	public void startServer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void connetti(String serverIP) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -240,4 +240,16 @@ public class AdapterReteServer implements Adapter{
         */
 	}
 
+	@Override
+	public void connetti(String serverIP) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void start() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

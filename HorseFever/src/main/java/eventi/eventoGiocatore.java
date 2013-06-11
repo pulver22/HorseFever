@@ -59,7 +59,7 @@ public class eventoGiocatore extends HorseFeverEvent{
 		else if(tipo==VINTO)
 			return "Ha vinto il Giocatore "+nomeGiocatore+" con "+pv+" PV e "+denari+" Denari! Congratulazioni!";
 		else
-			return "E' stato pagato il Giocatore"+nomeGiocatore+" con attualmente "+" PV e "+denari+" Denari";
+			return "E' stato pagato il Giocatore"+nomeGiocatore+" con attualmente "+pv+" PV e "+denari+" Denari";
 	}
 	
 	public int getTipo(){

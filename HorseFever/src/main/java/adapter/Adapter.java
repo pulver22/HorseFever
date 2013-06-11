@@ -25,4 +25,11 @@ public interface Adapter {
 	public void addView(View v);
 	
 	public void removeView(int i);
+	
+	public void startServer();
+	
+	public void connetti(String serverIP);
+	
+	public void start();
+	
 }

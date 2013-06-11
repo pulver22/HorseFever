@@ -15,7 +15,7 @@ public class TestRete {
 		
 		int numGiocatori=2;
 		
-		View tv=new TextView();
+		View tv=new GUIView();
 		final AdapterReteServer server=new AdapterReteServer(2,tv);
 		ClientThread client1=new ClientThread("localhost",tv);
 		client1.start();

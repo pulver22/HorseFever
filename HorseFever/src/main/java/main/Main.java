@@ -26,13 +26,26 @@ public class Main {
 		else 
 			tv= new GUIView();
 		String sceltaRete;
-		String[] opzioniRete = {"Locale"};
+		String[] opzioniRete = {"Locale","Rete"};
 		Adapter ad;
 		sceltaRete = (String)JOptionPane.showInputDialog(null, "Vuoi giocare in rete o in locale?","Opzioni Rete", JOptionPane.PLAIN_MESSAGE,null, opzioniRete, opzioniRete);
 		if (sceltaRete.equals("Locale"))
 			ad=new AdapterLocale();
-		else 
-			ad=new AdapterLocale();
+		else {
+			String[] opzioniClient= {"Server","Client"};
+			String sceltaClient;
+			sceltaClient=(String)JOptionPane.showInputDialog(null, "Vuoi essere Client o Server?","Opzioni Client/Server", JOptionPane.PLAIN_MESSAGE,null, opzioniClient, opzioniClient);
+			if (sceltaClient.equals("Server")){
+				ad=new AdapterReteServer(numGiocatori,tv);
+				ad.startServer();
+			} else {
+				String serverIP;
+				serverIP = (String) JOptionPane.showInputDialog( null, "Inserisci l'IP del Server a cui connettersi.","Inserimento Server IP", JOptionPane.PLAIN_MESSAGE);
+				ad=new AdapterReteClient();
+				ad.connetti(serverIP);
+				ad.start();
+			}
+		}
 		ad.addView(tv);
 		Partita p=new Partita(numGiocatori,ad);
 		Controller c = new Controller(p);
