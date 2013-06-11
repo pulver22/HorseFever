@@ -29,11 +29,12 @@ public class AdapterReteServer implements Adapter{
         try {
             //Creates a new server socket with the given port number
             serverSocket = new ServerSocket(SERVER_PORT);
+            System.out.println("[Server] Aperta la porta.");
         } catch (IOException ex) {
             System.out.println("Error occured while creating the server socket "+ex.getMessage());
             return;
         }
- 
+        System.out.println("[Server] In attesa dei Clients");
         Socket socket = null;
         while(clients.size()<this.numeroClientAttesi){
         	try {
@@ -42,7 +43,7 @@ public class AdapterReteServer implements Adapter{
         		c.start();
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
-        		System.out.println("Connection created, client IP" + socket.getInetAddress());
+        		System.out.println("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
         		System.out.println("Error occured while accepting the socket");
         		return;

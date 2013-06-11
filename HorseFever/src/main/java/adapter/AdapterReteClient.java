@@ -21,7 +21,7 @@ public class AdapterReteClient implements Adapter{
     public void connetti(String serverIP) {
         try {
             socket = new Socket(serverIP, SERVER_PORT);
-            System.out.println("Connected to server!");
+            System.out.println("[Client] Connesso al Server!");
         } catch (Exception ex) {
             System.out.println("Error connecting to server: " + ex.getMessage());
             throw new RuntimeException();
