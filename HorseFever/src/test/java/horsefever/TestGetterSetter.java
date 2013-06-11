@@ -28,6 +28,6 @@ public class TestGetterSetter {
 	
 	@Test
 	public void casoTest(){
-
+		assertTrue(true);
 	}
 }
