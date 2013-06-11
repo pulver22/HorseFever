@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import horsefever.Azione;
-import horsefever.Partita;
-import horsefever.Scommessa;
 import eventi.*;
 
 public class TextView implements View{
@@ -30,7 +28,6 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[0]=myInput.readLine();
-    			int i=Integer.parseInt(scommessa[0]);
         	}
         	catch(IOException e){
         		
@@ -52,8 +49,6 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[1]=myInput.readLine();
-    			int i=Integer.parseInt(scommessa[1]);
-    			 
     		}
     		catch(IOException e){
     		
@@ -76,12 +71,6 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[2]=myInput.readLine();
-    			if(!scommessa[2].equals("V") && !scommessa[2].equals("P")){
-    	    	
-    				System.out.println("Errore, scegli P o V ");
-    				buonfine=false;
-    			}
-            
         	}
         	catch(IOException e){
         		
@@ -175,7 +164,6 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scelta[1]=myInput.readLine();
-    			int i=Integer.parseInt(scelta[1]);
     		}
     		catch(IOException e){
     			System.out.println("Errore !!!\n");
