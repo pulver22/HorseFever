@@ -29,8 +29,10 @@ public class Main {
 		String[] opzioniRete = {"Locale","Rete"};
 		Adapter ad;
 		sceltaRete = (String)JOptionPane.showInputDialog(null, "Vuoi giocare in rete o in locale?","Opzioni Rete", JOptionPane.PLAIN_MESSAGE,null, opzioniRete, opzioniRete);
-		if (sceltaRete.equals("Locale"))
+		if (sceltaRete.equals("Locale")){
 			ad=new AdapterLocale();
+			ad.addView(tv);
+		}
 		else {
 			String[] opzioniClient= {"Server","Client"};
 			String sceltaClient;
@@ -42,11 +44,11 @@ public class Main {
 				String serverIP;
 				serverIP = (String) JOptionPane.showInputDialog( null, "Inserisci l'IP del Server a cui connettersi.","Inserimento Server IP", JOptionPane.PLAIN_MESSAGE);
 				ad=new AdapterReteClient();
+				ad.addView(tv);
 				ad.connetti(serverIP);
 				ad.start();
 			}
 		}
-		ad.addView(tv);
 		Partita p=new Partita(numGiocatori,ad);
 		Controller c = new Controller(p);
 		c.setAdapter(ad);
