@@ -66,9 +66,23 @@ public class GUIView implements View{
 		
 		while(!buonfine){
 			try{
-			String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+			//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+			String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 			scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-			scommessa[1] = ""+scommessa[1].charAt(9);
+			//scommessa[1] = ""+scommessa[1].charAt(9);
+			if (scommessa[1].equals("Nero")){
+				scommessa[1]="1";
+			} else if (scommessa[1].equals("Blu")){
+				scommessa[1]="2";
+			} else if (scommessa[1].equals("Verde")){
+				scommessa[1]="3";
+			} else if (scommessa[1].equals("Rosso")){
+				scommessa[1]="4";
+			} else if (scommessa[1].equals("Giallo")){
+				scommessa[1]="5";
+			} else if (scommessa[1].equals("Bianco")){
+				scommessa[1]="6";
+			}
 			buonfine = true;
 			}catch(NullPointerException e){
 				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
@@ -216,9 +230,23 @@ public class GUIView implements View{
 		buonfine = false;
 		while(!buonfine){
 			try{		
-				String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+				//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
+				String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-				scelta[1] = ""+scelta[1].charAt(9);
+				//scelta[1] = ""+scelta[1].charAt(9);
+				if (scelta[1].equals("Nero")){
+					scelta[1]="1";
+				} else if (scelta[1].equals("Blu")){
+					scelta[1]="2";
+				} else if (scelta[1].equals("Verde")){
+					scelta[1]="3";
+				} else if (scelta[1].equals("Rosso")){
+					scelta[1]="4";
+				} else if (scelta[1].equals("Giallo")){
+					scelta[1]="5";
+				} else if (scelta[1].equals("Bianco")){
+					scelta[1]="6";
+				}
 				buonfine = true;
 			}catch(NullPointerException e){
 				JOptionPane.showMessageDialog(board, "Attento,non puoi evitare di truccare la corsa!!\nIl gioco pulito non piace a nessuno!");
