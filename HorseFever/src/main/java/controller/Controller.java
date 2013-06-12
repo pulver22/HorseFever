@@ -28,8 +28,16 @@ public class Controller {
 	public void start(){
 		
 		int numturni=partita.getNumturni();
+		String nomeGiocatore;
 		
 		partita.preparazione();
+		
+		int numGioc=partita.getNumgiocatori();
+		for(int i=0;i<numGioc;i++){
+			
+			nomeGiocatore=partita.getGiocatori(i).getNome();
+			adapter.evidenziaGiocatore(nomeGiocatore, i);
+		}
 		
 		for (int i=0; i<numturni; i++){	
 			
