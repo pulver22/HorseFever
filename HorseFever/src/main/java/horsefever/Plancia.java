@@ -301,7 +301,10 @@ public class Plancia {
 		}
 		if (esisteAltroArrivato()) inserisciArrivati();
 	}
-	
+	/**
+	 * Funzione di supporto che controlla la presenza di un cavallo ulteriore che sia oltre il
+	 * traguardo, e più avanti di tutti i rimanenti
+	 * */
 	public boolean esisteAltroArrivato(){
 		int flagArrivo=0;
 		for (int i=0; i<6;i++){

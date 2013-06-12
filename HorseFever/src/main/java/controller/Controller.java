@@ -15,7 +15,7 @@ public class Controller {
 	
 	/**
 	 * Il costruttore di Controller riceve in ingresso Partita per poter utilizzare tutti i dati del Model
-	 *
+	 *@param La partita di cui farà da controller
 	 */
 	public Controller(Partita par){
 		
@@ -323,6 +323,8 @@ public class Controller {
      * Viene chiesto al giocatore quale delle sue carte azione vuole giocare e su quale corsia
      * applicarla, queste informazioni vengono poi passate al metodo TruccaCorsia in plancia
      * La carta giocata viene infine rimossa dalle carte a disposizione del giocatore
+     * @param il Giocatore
+     * @param l'indice della carta
      */
     public void trucca(Giocatore giocatore, int indice){
         
