@@ -32,12 +32,15 @@ public class AdapterClientHandler{
 		mess[0]="chiediScommessa";
 		mess[1]="";
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}
+				
             out.writeObject(mess);
             out.flush();
-            if (in==null)
+            if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
+            }	
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -55,12 +58,14 @@ public class AdapterClientHandler{
 		mess[0]="chiediSecondaScommessa";
 		mess[1]="";
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
             out.writeObject(mess);
             out.flush();
-            if (in==null)
+            if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
+            }	
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -78,8 +83,9 @@ public class AdapterClientHandler{
 		mess[0]="chiediTrucca";
 		mess[1]="";
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
             out.writeObject(mess);
             out.flush();
             out.writeObject(carteAzione.clone());
@@ -101,8 +107,9 @@ public class AdapterClientHandler{
 		mess[0]="stampaMessaggio";
 		mess[1]=String.valueOf(messaggio);
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
             out.writeObject(mess);
             out.flush();
         } catch (Exception ex) {
@@ -116,8 +123,9 @@ public class AdapterClientHandler{
 	public synchronized void notify(HorseFeverEvent e){
 
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
 			out.writeObject(e);
 			out.flush();
 		} catch (Exception ex) {
@@ -136,12 +144,14 @@ public class AdapterClientHandler{
 		mess[0]="prosegui";
 		mess[1]=String.valueOf(messaggio);
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
             out.writeObject(mess);
             out.flush();
-            if (in==null)
+            if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
+            }	
             in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
@@ -153,8 +163,9 @@ public class AdapterClientHandler{
 		mess[0]="evidenziaGiocatore";
 		mess[1]=String.valueOf(nomeGiocatore);
 		try {
-			if (out==null)
+			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
+			}	
             out.writeObject(mess);
             out.flush();
         } catch (Exception ex) {
