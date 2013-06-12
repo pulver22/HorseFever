@@ -12,10 +12,10 @@ public class eventoMovimentoAnomalo extends HorseFeverEvent{
 	private String causa;
 	
 	public eventoMovimentoAnomalo(String cavallo, int movTeorico, int movReale, String causa){
-		this.cavallo=new String(cavallo);
-		this.movTeorico=movTeorico;
-		this.movReale=movReale;
-		this.causa=new String(causa);
+		this.cavallo=String.valueOf(cavallo);
+		this.movTeorico=Integer.valueOf(movTeorico);
+		this.movReale=Integer.valueOf(movReale);
+		this.causa=String.valueOf(causa);
 	}
 
 	
