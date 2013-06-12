@@ -88,7 +88,7 @@ public class BetManager {
 	 */
 	public String convertiOrdineArrivo(int ordineArrivo){
 		
-		String ordine = new String();
+		String ordine = null;
 		
 			if(ordineArrivo==0){
 				
