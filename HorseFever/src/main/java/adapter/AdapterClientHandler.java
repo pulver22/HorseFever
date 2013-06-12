@@ -90,8 +90,9 @@ public class AdapterClientHandler{
             out.flush();
             out.writeObject(carteAzione.clone());
             out.flush();
-            if (in==null)
+            if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
+            }
             valori=(String[])in.readObject();
         } catch (Exception ex) {
             System.out.println("Error: " + ex);

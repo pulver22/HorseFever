@@ -123,7 +123,9 @@ public class BetManager {
 	 */
 	public void resetbManager(){
 		int i=0;
-		while(bManager.size() != 0) bManager.remove(i);
+		while(bManager.size() != 0) {
+			bManager.remove(i);
+		}
 	}
 	
 	//metodi getter e setter
