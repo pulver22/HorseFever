@@ -7,7 +7,6 @@ import eventi.eventoQuotazioni;
 public class Lavagna {
 
 	private String[][] quotazioni;
-	//private String[] arrivi = new String[6];
 	private Partita partita;
 	private Plancia plancia;
 	
@@ -140,11 +139,7 @@ public class Lavagna {
 		}
 		return scuderia;
 	}
-	/*
-	public void setArrivi(String[] arrivi){
-		this.arrivi=arrivi.clone();
-	}
-	*/
+
 	//Metodi Getter e Setter
 	public String[][] getQuotazioni() {
 		return quotazioni;
@@ -191,11 +186,7 @@ public class Lavagna {
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
-	/*
-	public Plancia getPlancia() {
-		return plancia;
-	}
-	*/
+
 	public void setPlancia(Plancia plancia) {
 		this.plancia = plancia;
 	}

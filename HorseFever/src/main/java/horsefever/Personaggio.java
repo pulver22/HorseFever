@@ -17,18 +17,10 @@ public class Personaggio extends Carta{
 	public long getDenari() {
 		return this.denari;
 	}
-	/*
-	public void setDenari(int denari) {
-		this.denari = denari;
-	}
-	*/
+
 	public String getQuotScuderia() {
 		return quotScuderia;
 	}
-	/*
-	public void setQuotScuderia(String quotScuderia) {
-		this.quotScuderia = quotScuderia;
-	}
-	*/
+
 	
 }

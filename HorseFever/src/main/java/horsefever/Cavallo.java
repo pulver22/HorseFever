@@ -152,11 +152,6 @@ public class Cavallo {
 		if (posizione>=12){ return true; }
 		else{ return false; }
 	}
-	/*
-	public void resetPosizione(){
-		posizione=0;
-	}
-	*/
 	/**
 	 * Resetta il cavallo alle condizioni precedenti la corsa. 
 	 * Mantiene sostanzialmente solo la quotazione del cavallo (che deve rimanere nei turni a seguire
@@ -184,11 +179,7 @@ public class Cavallo {
 	public String getColore() {
 		return colore;
 	}
-	/*
-	public void setColore(String colore) {
-		this.colore = String.valueOf(colore);
-	}
-	*/
+
 	public String getEffettoPartenza() {
 		return effettoPartenza;
 	}
@@ -196,11 +187,7 @@ public class Cavallo {
 	public void setEffettoPartenza(String effettoPartenza) {
 		this.effettoPartenza = String.valueOf(effettoPartenza);
 	}
-	/*
-	public String getEffettoSprint() {
-		return effettoSprint;
-	}
-	*/
+
 	public void setEffettoSprint(String effettoSprint) {
 		this.effettoSprint = String.valueOf(effettoSprint);
 	}
@@ -220,11 +207,7 @@ public class Cavallo {
 	public void setEffettoFotofinish(String effettoFotofinish) {
 		this.effettoFotofinish = String.valueOf(effettoFotofinish);
 	}
-	/*
-	public String getEffettoTraguardo() {
-		return effettoTraguardo;
-	}
-	*/
+
 	public void setEffettoTraguardo(String effettoTraguardo) {
 		this.effettoTraguardo = String.valueOf(effettoTraguardo);
 	}
@@ -236,11 +219,7 @@ public class Cavallo {
 	public void setQuotazione(int quotazione) {
 		this.quotazione = Integer.valueOf(quotazione);
 	}
-	/*
-	public String getEffettoQuotazione() {
-		return effettoQuotazione;
-	}
-	*/
+
 	/**
 	 * Rispetto ai normali getter/setter degli effetti sul cavallo, questo esegue anche
 	 * immediatamente la modifica dell'attributo del cavallo, facendo anche un controllo
@@ -268,11 +247,7 @@ public class Cavallo {
 	public void setEffettoPartenza2(String effettoPartenza2) {
 		this.effettoPartenza2 = String.valueOf(effettoPartenza2);
 	}
-	/*
-	public String getEffettoSprint2() {
-		return effettoSprint2;
-	}
-	*/
+
 	public void setEffettoSprint2(String effettoSprint2) {
 		this.effettoSprint2 = String.valueOf(effettoSprint2);
 	}
