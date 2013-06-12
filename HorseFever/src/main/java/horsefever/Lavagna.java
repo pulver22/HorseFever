@@ -181,10 +181,10 @@ public class Lavagna {
 				quot=Integer.parseInt(quotazioni[i][1]);
 				if (variazione.charAt(0)=='+'){
 					quot-=2;
-					if (quot<=2) quot=2;
+					if (quot<=2){ quot=2; }
 				} else {
 					quot+=2;
-					if (quot>=7) quot=7;
+					if (quot>=7){ quot=7; }
 				}
 				quotazioni[i][1]=Integer.toString(quot);
 			}

@@ -53,7 +53,9 @@ public class GUIView implements View{
 		while(!buonfine){
 			try{
 				scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
-				if(scommessa[0].equals("")) scommessa[0]="0";
+				if(scommessa[0].equals("")){
+					scommessa[0]="0";
+				}
 				buonfine = true;
 			}catch(NullPointerException e){
 				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
@@ -396,8 +398,8 @@ public class GUIView implements View{
     	   char tipoScom=((eventoScommessa) e).getTipoScommessa();
     	   String tipoSc="";
     	   
-    	   if(tipoScom=='V') tipoSc="Vincente";
-    	   if(tipoScom=='P') tipoSc="Piazzato"
+    	   if(tipoScom=='V'){ tipoSc="Vincente"; }
+    	   if(tipoScom=='P'){ tipoSc="Piazzato"; }
 ;    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha scommesso "+denari+"\nsulla corsia "+numCorsia+"  "+tipoSc+"\n ");
        
        }

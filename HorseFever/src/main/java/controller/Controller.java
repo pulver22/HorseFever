@@ -89,9 +89,13 @@ public class Controller {
 			
 			giocatoreCorrente=partita.getGiocatori(i);
 			scom=scommetti(giocatoreCorrente,1,numSegnalini,i);
-			if(scom.getTipoScomessa()=='F') return;
+			if(scom.getTipoScomessa()=='F'){
+				return;
+			}
 			numcorsia=scom.getCorsia();
-			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
+			if (scom.getTipoScomessa()!='N'){
+				numSegnalini[numcorsia]--;
+			}
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
 	    
@@ -115,7 +119,9 @@ public class Controller {
         	giocatoreCorrente=partita.getGiocatori(i);
 			scom=scommetti(giocatoreCorrente,2,numSegnalini,i);
         	numcorsia=scom.getCorsia();
-			if (scom.getTipoScomessa()!='N')numSegnalini[numcorsia]--;
+			if (scom.getTipoScomessa()!='N'){
+				numSegnalini[numcorsia]--;
+			}
 			partita.getBetManager().AggiungiScommessa(scom);
 		}
         
@@ -337,8 +343,10 @@ public class Controller {
 			numCorsia=Integer.parseInt(scelta[1]);
 			numCorsia--;
 	    
-			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>5 || numCorsia<0)
+			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>5 || numCorsia<0){
 				buonfine=false;
+			}
+				
     	}
     	
     	//cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();

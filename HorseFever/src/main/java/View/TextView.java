@@ -108,8 +108,8 @@ public class TextView implements View{
     		}
     		
     	}
-		if (risposta.equals("S")) scommessa = chiediScommessa();
-		if (risposta.equals("N")) scommessa[2] = "N";
+		if (risposta.equals("S")){ scommessa = chiediScommessa(); }
+		if (risposta.equals("N")){ scommessa[2] = "N"; }
 		return scommessa;
 	}
 

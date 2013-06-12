@@ -418,8 +418,11 @@ public class Plancia {
 		int[] flag=new int[6];
 		int max=getMaxPosPari();
 		for (int i=0;i<6;i++){
-			if (!arrivati[i])
-				if (cavalli[i].getPosizione()==max) flag[i]=1;
+			if (!arrivati[i]){
+				if (cavalli[i].getPosizione()==max){
+					flag[i]=1;
+				}
+			}	
 		}
 		return flag;
 	}
@@ -540,7 +543,9 @@ public class Plancia {
 	public int getMax(){
 		int max=0;
 		for (int i=0;i<6;i++){
-			if (max<cavalli[i].getPosizione()) max=cavalli[i].getPosizione();
+			if (max<cavalli[i].getPosizione()){
+				max=cavalli[i].getPosizione();
+			}
 			//else max=max;
 		}
 		return max;
@@ -553,7 +558,9 @@ public class Plancia {
 	public int getMin(){
 		int min=cavalli[0].getPosizione();
 		for (int i=0;i<6;i++){
-			if (min>cavalli[i].getPosizione()) min=cavalli[i].getPosizione();
+			if (min>cavalli[i].getPosizione()){
+				min=cavalli[i].getPosizione();
+			}
 			//else min=min;
 		}
 		return min;
