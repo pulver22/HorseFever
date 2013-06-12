@@ -12,8 +12,8 @@ public class Cavallo {
 	private String effettoUltimoPrimo=null;
 	private String effettoFotofinish=null;
 	private String effettoTraguardo=null;
-	private final int SPRINT=1;
-	private final int TRAGUARDO=12;
+	private final static int SPRINT=1;
+	private final static int TRAGUARDO=12;
 	
 	/**
 	 * Setta il colore del cavallo
