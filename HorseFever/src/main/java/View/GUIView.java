@@ -67,24 +67,21 @@ public class GUIView implements View{
 		
 		while(!buonfine){
 			try{
-			//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-			//String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
-			scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-			//scommessa[1] = ""+scommessa[1].charAt(9);
-			if (scommessa[1].equals("Nero")){
-				scommessa[1]="1";
-			} else if (scommessa[1].equals("Blu")){
-				scommessa[1]="2";
-			} else if (scommessa[1].equals("Verde")){
-				scommessa[1]="3";
-			} else if (scommessa[1].equals("Rosso")){
-				scommessa[1]="4";
-			} else if (scommessa[1].equals("Giallo")){
-				scommessa[1]="5";
-			} else if (scommessa[1].equals("Bianco")){
-				scommessa[1]="6";
-			}
-			buonfine = true;
+				scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
+				if (scommessa[1].equals(sceltaCorsia[0])){
+					scommessa[1]="1";
+				} else if (scommessa[1].equals(sceltaCorsia[1])){
+					scommessa[1]="2";
+				} else if (scommessa[1].equals(sceltaCorsia[2])){
+					scommessa[1]="3";
+				} else if (scommessa[1].equals(sceltaCorsia[3])){
+					scommessa[1]="4";
+				} else if (scommessa[1].equals(sceltaCorsia[4])){
+					scommessa[1]="5";
+				} else if (scommessa[1].equals(sceltaCorsia[5])){
+					scommessa[1]="6";
+				}
+				buonfine = true;
 			}catch(NullPointerException e){
 				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
 				buonfine = false;
@@ -162,6 +159,7 @@ public class GUIView implements View{
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
+		scommessa[2] =  (String) tipoScommessa.getSelectedItem();
 		*/
 		return scommessa;
 			
@@ -231,21 +229,18 @@ public class GUIView implements View{
 		buonfine = false;
 		while(!buonfine){
 			try{		
-				//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-				//String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-				//scelta[1] = ""+scelta[1].charAt(9);
-				if (scelta[1].equals("Nero")){
+				if (scelta[1].equals(sceltaCorsia[0])){
 					scelta[1]="1";
-				} else if (scelta[1].equals("Blu")){
+				} else if (scelta[1].equals(sceltaCorsia[1])){
 					scelta[1]="2";
-				} else if (scelta[1].equals("Verde")){
+				} else if (scelta[1].equals(sceltaCorsia[2])){
 					scelta[1]="3";
-				} else if (scelta[1].equals("Rosso")){
+				} else if (scelta[1].equals(sceltaCorsia[3])){
 					scelta[1]="4";
-				} else if (scelta[1].equals("Giallo")){
+				} else if (scelta[1].equals(sceltaCorsia[4])){
 					scelta[1]="5";
-				} else if (scelta[1].equals("Bianco")){
+				} else if (scelta[1].equals(sceltaCorsia[5])){
 					scelta[1]="6";
 				}
 				buonfine = true;
@@ -305,6 +300,16 @@ public class GUIView implements View{
 		panel.add(sceltaCarta);
 		panelConferma.add(conferma);
 		
+		
+		
+		//System.out.print(scelta[0]);
+		panel.add(label2);
+		panel.add(sceltaCorsia);
+		
+		frame.setVisible(true);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		
 		for(int i=0;i<carteAzione.size();i++){
 			if(sceltaCarta.getSelectedItem().toString() != ""){
 				if(sceltaCarta.getSelectedItem().toString().equals(carteAzione.get(i).getNome())) 
@@ -314,14 +319,6 @@ public class GUIView implements View{
 		}
 		
 		scelta[1] = sceltaCorsia.getSelectedItem().toString();
-		
-		//System.out.print(scelta[0]);
-		panel.add(label2);
-		panel.add(sceltaCorsia);
-		
-		frame.setVisible(true);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
 		*/
 		return scelta;
 	}
