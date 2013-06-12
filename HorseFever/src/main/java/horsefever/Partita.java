@@ -127,7 +127,10 @@ public class Partita {
 		betManager.resetbManager();
 		notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.PRIMO));
 	}
-	
+	/**
+	 * Metodo per generare a fine turno l'evento che, catturato dalla GUI View, viene usato per
+	 * generare evento di reset grafico.
+	 * */
 	public void generaEventoResetGrafico(){
 		notifyObserver(new eventoResetGrafico());
 	}

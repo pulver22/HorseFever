@@ -161,11 +161,11 @@ public class Controller {
 	 */
 	public void faseFineTurno(){
 		
+		partita.generaEventoResetGrafico();
+		
 		partita.reset();
 		
 		adapter.prosegui("Fine del turno", 0);
-
-		partita.generaEventoResetGrafico();
 	}
 	
 
