@@ -58,7 +58,15 @@ public class Cavallo {
 			posizione+=incremento;
 		}
 	}
-	
+	/**
+	 * Aggiorna la posizione del cavallo tenendo conto degli effetti di Primo/Ultimo. 
+	 * In caso non ve ne siano, chiama il metodo di default aggiornaPosizione (che esegue il
+	 * controllo solo sul traguardo).
+	 * @param l'incremento teorico che dovrebbe eseguire il cavallo
+	 * @param booleano a true nel caso il cavallo sia primo, false altrimenti
+	 * @param booleano a true nel caso il cavallo sia ultimo, false altrimenti
+	 * @author Niccolo
+	 * */
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
 		
 		if (effettoUltimoPrimo!=null){
@@ -135,19 +143,24 @@ public class Cavallo {
 			}
 		}
 	}
-	
+	/**
+	 * Funzione che controlla che il cavallo sia oltre il traguardo.
+	 * @return booleano a true se il cavallo ha superato il traguardo, false altrimenti
+	 * @author Niccolo
+	 * */
 	public boolean oltreTraguardo(){
 		if (posizione>=12){ return true; }
 		else{ return false; }
 	}
-	
+	/*
 	public void resetPosizione(){
 		posizione=0;
 	}
-	
+	*/
 	/**
 	 * Resetta il cavallo alle condizioni precedenti la corsa. 
-	 * Mantiene sostanzialmente solo la quotazione del cavallo.
+	 * Mantiene sostanzialmente solo la quotazione del cavallo (che deve rimanere nei turni a seguire
+	 * per i controlli di fotofinish).
 	 * */
 	public void reset(){
 		posizione=0;
@@ -228,6 +241,12 @@ public class Cavallo {
 		return effettoQuotazione;
 	}
 	*/
+	/**
+	 * Rispetto ai normali getter/setter degli effetti sul cavallo, questo esegue anche
+	 * immediatamente la modifica dell'attributo del cavallo, facendo anche un controllo
+	 * che la quotazione non assuma valori non validi (<2 o >7)
+	 * @param stringa dell'effetto quotazione letto dalla carta
+	 * */
 	public void setEffettoQuotazione(String effettoQuotazione) {
 		if (effettoQuotazione.charAt(0)=='+'){
 			quotazione-=2;
