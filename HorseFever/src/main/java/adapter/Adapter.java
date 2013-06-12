@@ -32,4 +32,6 @@ public interface Adapter {
 	
 	public void start();
 	
+	public void evidenziaGiocatore(String nomeGiocatore, int indice);
+	
 }

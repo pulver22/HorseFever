@@ -324,9 +324,21 @@ public class Board extends JPanel {
 	 * Colora lo sfondo del nome del giocatore
 	 * @param ind indice del JTextField corrispondente
 	 */
-	public void setGiocatoreEvidenziato(int ind){
+	public void setGiocatoreEvidenziato(String nomeGioc){
 		
-		this.nomeGiocatore[ind].setBackground(Color.decode("#FFFF33"));
+		boolean inserito=false;
+		int i=0;
+		
+		while(!inserito){
+ 		   
+ 		   if(this.getNomeGiocatore(i).equals(nomeGioc)){
+ 			   
+ 			   inserito=true;
+ 			   this.nomeGiocatore[i].setBackground(Color.decode("#FFFF33"));
+ 		   }
+ 		   i++;
+ 	   }   
+		
 	}
 	
 	//Getter e Setter

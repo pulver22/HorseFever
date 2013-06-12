@@ -7,6 +7,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import View.GUIView;
 import View.View;
 import eventi.HorseFeverEvent;
 
@@ -108,7 +109,11 @@ public class AdapterReteClient implements Adapter{
             			out.writeObject("Fatto");
             			out.flush();
             		}
-            		
+            		if (mess[0].equals("evidenziaGiocatore")){
+            			if (viewRegistrate.get(0) instanceof GUIView){
+            				((GUIView)viewRegistrate.get(0)).getBoard().setGiocatoreEvidenziato(mess[1]);
+            			}
+            		}
             	}
             	
             } catch (Exception ex) {
@@ -181,6 +186,8 @@ public class AdapterReteClient implements Adapter{
 	 */
 	public void addView(View v){
 		viewRegistrate.add(v);
+		
+		
 	}
 	
 	/**
@@ -200,6 +207,12 @@ public class AdapterReteClient implements Adapter{
 
 	@Override
 	public void startServer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
 		// TODO Auto-generated method stub
 		
 	}

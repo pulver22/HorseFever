@@ -12,7 +12,6 @@ public class TestGUI {
 		
 		Adapter adapter=new AdapterLocale();
 		GUIView view = new GUIView();
-		view.getBoard().setGiocatoreEvidenziato(0);
 		adapter.addView(view);
 		Partita p=new Partita(2,adapter);
 		Controller controller=new Controller(p);

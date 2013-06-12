@@ -264,4 +264,9 @@ public class AdapterReteServer implements Adapter{
 		
 	}
 
+	@Override
+	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
+		clients.get(indice).evidenziaGiocatore(nomeGiocatore);
+	}
+
 }

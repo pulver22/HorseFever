@@ -106,4 +106,10 @@ public class AdapterLocale implements Adapter {
 		
 	}
 
+	@Override
+	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

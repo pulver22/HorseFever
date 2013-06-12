@@ -147,5 +147,19 @@ public class AdapterClientHandler{
             System.out.println("Error: " + ex);
         }
 	}
+
+	public synchronized void evidenziaGiocatore(String nomeGiocatore) {
+		String[] mess = new String[2];
+		mess[0]="evidenziaGiocatore";
+		mess[1]=String.valueOf(nomeGiocatore);
+		try {
+			if (out==null)
+				out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.writeObject(mess);
+            out.flush();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
+	}
 	
 }
