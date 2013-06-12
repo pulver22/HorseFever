@@ -110,9 +110,7 @@ public class AdapterReteClient implements Adapter{
             			out.flush();
             		}
             		if (mess[0].equals("evidenziaGiocatore")){
-            			if (viewRegistrate.get(0) instanceof GUIView){
-            				((GUIView)viewRegistrate.get(0)).getBoard().setGiocatoreEvidenziato(mess[1]);
-            			}
+            			evidenziaGiocatore(mess[1],0);
             		}
             	}
             	
@@ -210,11 +208,14 @@ public class AdapterReteClient implements Adapter{
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Metodo che nelle GUI chiama l'evidenziazione del giocatore corrispondente a questo client
+	 * */
 	@Override
 	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
-		// TODO Auto-generated method stub
-		
+		if (viewRegistrate.get(0) instanceof GUIView){
+			((GUIView)viewRegistrate.get(0)).getBoard().setGiocatoreEvidenziato(nomeGiocatore);
+		}
 	}
 
 }

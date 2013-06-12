@@ -29,7 +29,7 @@ public class AdapterReteServer implements Adapter{
 	
 	/**
 	 * Crea il server socket e aspetta che tutti gli utenti che devono partecipare al gioco
-	 * si connettano
+	 * si connettano. Ingloba anche la creazione del client connesso in locale al server stesso
 	 */
 	public void startServer() {
         ServerSocket serverSocket = null;
@@ -251,7 +251,7 @@ public class AdapterReteServer implements Adapter{
         }
         */
 	}
-
+	
 	@Override
 	public void connetti(String serverIP) {
 		// TODO Auto-generated method stub
@@ -263,7 +263,9 @@ public class AdapterReteServer implements Adapter{
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Metodo che nella GUI permette di evidenziare i dati corrispondenti a quello che è il giocatore
+	 * */
 	@Override
 	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
 		clients.get(indice).evidenziaGiocatore(nomeGiocatore);

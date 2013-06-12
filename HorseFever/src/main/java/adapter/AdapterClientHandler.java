@@ -158,6 +158,9 @@ public class AdapterClientHandler{
         }
 	}
 
+	/**
+	 * Invia al client il comando di evidenziare il giocatore corrispondente
+	 * */
 	public synchronized void evidenziaGiocatore(String nomeGiocatore) {
 		String[] mess = new String[2];
 		mess[0]="evidenziaGiocatore";
