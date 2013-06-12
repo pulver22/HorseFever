@@ -10,10 +10,10 @@ import eventi.*;
 
 public class TextView implements View{
 	
-	public TextView(){
-		
-	}
-	
+	/**
+	 * Chiede all'utente i valori per scommettere
+	 * @return un array di stringhe con i valori inseriti dall'utente
+	 * */
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
@@ -82,7 +82,10 @@ public class TextView implements View{
 		return scommessa;
 	}
 	
-	
+	/**
+	 * Metodo per la seconda scommessa. 
+	 * @return array di stringhe con i parametri inseriti da utente per la seconda scommessa
+	 * */
 	@Override
 	public String[] chiediSecondaScommessa(){
 		boolean buonfine=false;
@@ -113,7 +116,10 @@ public class TextView implements View{
 		return scommessa;
 	}
 
-	
+	/**
+	 * Metodo che chiede a utente di truccare una corsia
+	 * @param l'arraylist di carte azione in mano al giocatore corrispondente
+	 * */
 	@Override
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {
 		boolean buonfine = false;
@@ -180,19 +186,31 @@ public class TextView implements View{
 	
 	}
 
+	/**
+	 * Metodo per la stampa di messaggi generici all'utente
+	 * @param il messaggio da stampare
+	 * */
 	@Override
 	public void stampaMessaggio(String messaggio) {
 
 		System.out.println(""+messaggio);
 		
 	}
-	
+	/**
+	 * Notifica degli eventi lanciati da partita
+	 * @param l'evento notificato da gestire
+	 * */
 	@Override
 	public void notify(HorseFeverEvent e) {
 		System.out.println(e.rappresentazione());
 		
 	}
 
+	/**
+	 * Metodo con l'unico scopo di bloccare la logica tra una fase e l'altra se l'utente non preme
+	 * invio.
+	 * @param messaggio da stampare connesso a questo stop della logica
+	 * */
 	@Override
 	public void prosegui(String messaggio) {
 		
@@ -209,13 +227,6 @@ public class TextView implements View{
 
 	}
 
-
-	
-	
-	
-
-	
-	
 
 }
 
