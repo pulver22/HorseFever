@@ -49,9 +49,9 @@ public class Board extends JPanel {
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
-	private final String colorePannelli="#c38335";
-	private final String coloreEvidenzia="#FFFF33";
-	private final int xPedineIniz=455;
+	private final static String colorePannelli="#c38335";
+	private final static String coloreEvidenzia="#FFFF33";
+	private final static int xPedineIniz=455;
 	
 	/**
 	 * Inizializza tutti gli elementi grafici
