@@ -13,6 +13,7 @@ public class Cavallo {
 	private String effettoFotofinish=null;
 	private String effettoTraguardo=null;
 	private final int SPRINT=1;
+	private final int TRAGUARDO=12;
 	
 	/**
 	 * Setta il colore del cavallo
@@ -28,30 +29,36 @@ public class Cavallo {
 	 * */
 	public void aggiornaPosizionePartenza(int incremento){
 		if (effettoPartenza!=null || effettoPartenza2!=null){
+			int incr1,incr2;
 			if (effettoPartenza!=null && effettoPartenza2!=null){ //Se entrambi tipi di effetti != NULL
+				incr1=Integer.parseInt(""+effettoPartenza.charAt(1));
+				incr2=Integer.parseInt(""+effettoPartenza2.charAt(1));
 				if (effettoPartenza.equals("=4") && effettoPartenza2.equals("-1")){
-					posizione+=3;
+					posizione=posizione+incr1-incr2;
 				} else if (effettoPartenza.equals("=4") && effettoPartenza2.equals("+1")){
-					posizione+=5;
+					posizione=posizione+incr1+incr2;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("-1")){
-					posizione=posizione+0;
+					posizione=posizione+incr1;
 				} else if (effettoPartenza.equals("=0") && effettoPartenza2.equals("+1")){
-					posizione+=1;
+					posizione=posizione+incr1+incr2;
 				}
 			} else if (effettoPartenza!=null){//Se solo quello con lettera A è !=null
+				incr1=Integer.parseInt(""+effettoPartenza.charAt(1));
 				if (effettoPartenza.equals("=4")){
-					posizione+=4;
+					posizione=posizione+incr1;
 				} else if (effettoPartenza.equals("=0")){
-					posizione=posizione+0;
+					posizione=posizione+incr1;
 				}
 			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
+				incr2=Integer.parseInt(""+effettoPartenza2.charAt(1));
 				if (effettoPartenza2.equals("-1")){
-					if (incremento-1>=0){ posizione=incremento-1; }
-					else{ 
+					if (incremento-incr2>=0){ 
+						posizione=incremento-incr2; 
+					} else{ 
 						  posizione=posizione+0;
 					}
 				} else if (effettoPartenza2.equals("+1")){
-					posizione=incremento+1;
+					posizione=incremento+incr2;
 				}
 			}
 		} else {
@@ -70,13 +77,14 @@ public class Cavallo {
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
 		
 		if (effettoUltimoPrimo!=null){
-			if (primo && effettoUltimoPrimo.charAt(1)=='0'){
-				posizione=posizione+0;
-			}else if (primo && effettoUltimoPrimo.charAt(1)=='4'){
+			int incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
+			if (primo && incr==0){
+				posizione=posizione+incr;
+			}else if (primo && incr==4){
 				posizione=posizione+incremento;
-			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='4'){
-				posizione+=4;
-			} else if (ultimo && effettoUltimoPrimo.charAt(1)=='0'){
+			} else if (ultimo && incr==4){
+				posizione+=incr;
+			} else if (ultimo && incr==0){
 				posizione=posizione+incremento;
 			} else if (!ultimo && !primo){
 				aggiornaPosizione(incremento); //Se non ha effetti primoUltimo, o li ha senza essere
@@ -98,25 +106,30 @@ public class Cavallo {
 		 * 
 		 * */
 		if (effettoSprint!=null || effettoSprint2!=null){
+			int incr1,incr2;
 			if (effettoSprint!=null && effettoSprint2!=null){ //Se entrambi tipi di effetti != NULL
+				incr1=Integer.parseInt(""+effettoSprint.charAt(1));
+				incr2=Integer.parseInt(""+effettoSprint2.charAt(1));
 				if (effettoSprint.equals("=0")){
-					posizione=posizione+0;
+					posizione=posizione+incr1;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("-1")){
 					posizione=posizione+SPRINT;
 				} else if (effettoSprint.equals("+1") && effettoSprint2.equals("=2")){
-					posizione=posizione+3;
+					posizione=posizione+incr1+incr2;
 				}
 			} else if (effettoSprint!=null){//Se solo quello con lettera C è !=null
+				incr1=Integer.parseInt(""+effettoSprint.charAt(1));
 				if (effettoSprint.equals("=0")){
-					posizione=posizione+0;
+					posizione=posizione+incr1;
 				} else if (effettoSprint.equals("+1")){
-					posizione=posizione+SPRINT+1;
+					posizione=posizione+SPRINT+incr1;
 				}
 			} else if (effettoSprint2!=null){//Se solo quello con lettera D è !=null
+				incr2=Integer.parseInt(""+effettoSprint2.charAt(1));
 				if (effettoSprint2.equals("-1")){
-					posizione=posizione+SPRINT-1;
+					posizione=posizione+SPRINT-incr2;
 				} else if (effettoSprint2.equals("=2")){
-					posizione=posizione+2;
+					posizione=posizione+incr2;
 				}
 			}
 		} else { //Se entrambi =NULL e quindi non ha effetti sprint di nessun tipo
@@ -131,11 +144,11 @@ public class Cavallo {
 	public void aggiornaPosizione(int incremento){
 		int incr;
 		posizione+=incremento;
-		if (posizione>=12){
+		if (posizione>=TRAGUARDO){
 			if (effettoTraguardo!=null){
 				incr=Integer.parseInt(""+effettoTraguardo.charAt(1));
 				if (effettoTraguardo.charAt(0)=='='){
-					posizione=12; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
+					posizione=TRAGUARDO; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
 								  //anche perchè altrimenti un cavallo in generale si fermerebbe già, una volta superato il traguardo
 				} else if (effettoTraguardo.charAt(0)=='+'){
 					posizione+=incr;
@@ -149,7 +162,7 @@ public class Cavallo {
 	 * @author Niccolo
 	 * */
 	public boolean oltreTraguardo(){
-		if (posizione>=12){ return true; }
+		if (posizione>=TRAGUARDO){ return true; }
 		else{ return false; }
 	}
 	/**
