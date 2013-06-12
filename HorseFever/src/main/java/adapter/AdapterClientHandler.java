@@ -10,9 +10,9 @@ import eventi.HorseFeverEvent;
 
 public class AdapterClientHandler{
 
-	Socket clientSocket;
-	ObjectOutputStream out=null;
-	ObjectInputStream in=null;
+	private Socket clientSocket;
+	private ObjectOutputStream out=null;
+	private ObjectInputStream in=null;
 	
 	/**
 	 * Associa un determinato socket a questo client

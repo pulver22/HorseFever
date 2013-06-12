@@ -5,8 +5,8 @@ public class Personaggio extends Carta{
 	 * 
 	 */
 	private static final long serialVersionUID = -6774319758950087240L;
-	public long denari;
-	public String quotScuderia;
+	private long denari;
+	private String quotScuderia;
 	
 	public Personaggio(String nome,long denari,String quotScuderia){
 		this.nome = nome;

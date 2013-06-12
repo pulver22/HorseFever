@@ -6,8 +6,8 @@ public class eventoArrivi extends HorseFeverEvent{
 	 * 
 	 */
 	private static final long serialVersionUID = -7147089307672438729L;
-	int posArrivo;
-	String cavallo;
+	private int posArrivo;
+	private String cavallo;
 	
 	public eventoArrivi(String cavallo, int posArrivo){
 		this.posArrivo=posArrivo;

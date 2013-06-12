@@ -4,8 +4,8 @@ import View.View;
 
 public class ClientThread extends Thread{
 
-	AdapterReteClient client;
-	String serverIP;
+	private AdapterReteClient client;
+	private String serverIP;
 	
 	/**
 	 * Crea un thread per ogni client associandolo all'indirizzo dell'IP e reegistrandosi

@@ -6,10 +6,10 @@ public class eventoMovimentoAnomalo extends HorseFeverEvent{
 	 * 
 	 */
 	private static final long serialVersionUID = 8862445888665384677L;
-	String cavallo;
-	int movTeorico;
-	int movReale;
-	String causa;
+	private String cavallo;
+	private int movTeorico;
+	private int movReale;
+	private String causa;
 	
 	public eventoMovimentoAnomalo(String cavallo, int movTeorico, int movReale, String causa){
 		this.cavallo=new String(cavallo);
