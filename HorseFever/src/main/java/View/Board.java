@@ -49,6 +49,10 @@ public class Board extends JPanel {
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
+	private final String colorePannelli="#c38335";
+	private final String coloreEvidenzia="#FFFF33";
+	private final int xPedineIniz=455;
+	
 	/**
 	 * Inizializza tutti gli elementi grafici
 	 */
@@ -63,18 +67,18 @@ public class Board extends JPanel {
     	pannelloTurni.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Turno" ) );
         pannelloTurni.add(numTurno);
         pannelloTurni.setVisible(true);
-        pannelloTurni.setBackground(Color.decode("#c38335"));
+        pannelloTurni.setBackground(Color.decode(colorePannelli));
         numTurno.setEditable(false);
         
         
     	//inizializzazione Pedine
     	
-    	pedine[0]=new Pedina(455,67,"pedine/nero.png",this);
-    	pedine[1]=new Pedina(455,117,"pedine/blu.png",this);
-    	pedine[2]=new Pedina(455,172,"pedine/verde.png",this);
-    	pedine[3]=new Pedina(455,222,"pedine/rosso.png",this);
-    	pedine[4]=new Pedina(455,272,"pedine/giallo.png",this);
-    	pedine[5]=new Pedina(455,322,"pedine/bianco.png",this);
+    	pedine[0]=new Pedina(xPedineIniz,67,"pedine/nero.png",this);
+    	pedine[1]=new Pedina(xPedineIniz,117,"pedine/blu.png",this);
+    	pedine[2]=new Pedina(xPedineIniz,172,"pedine/verde.png",this);
+    	pedine[3]=new Pedina(xPedineIniz,222,"pedine/rosso.png",this);
+    	pedine[4]=new Pedina(xPedineIniz,272,"pedine/giallo.png",this);
+    	pedine[5]=new Pedina(xPedineIniz,322,"pedine/bianco.png",this);
 		
     	//inizializzazione Carta Movimento
     	
@@ -101,7 +105,7 @@ public class Board extends JPanel {
     	pannelloNotifica.setBorder ( new TitledBorder ( new BevelBorder(BevelBorder.RAISED), "Area Notifica" ) );
         pannelloNotifica.add(scroll);
     	pannelloNotifica.setVisible(true);
-    	pannelloNotifica.setBackground(Color.decode("#c38335"));
+    	pannelloNotifica.setBackground(Color.decode(colorePannelli));
     	
     	//Sfondo
   
@@ -116,7 +120,7 @@ public class Board extends JPanel {
 		//Giocatore
 		
 		pannelloGiocatore.setBounds(450,380,650,280);
-		pannelloGiocatore.setBackground(Color.decode("#c38335"));
+		pannelloGiocatore.setBackground(Color.decode(colorePannelli));
 		pannelloGiocatore.setBorder (new TitledBorder (new BevelBorder(BevelBorder.RAISED),"Giocatori"));
 		pannelloGiocatore.setLayout(new GridLayout(7,4));
 		
@@ -151,7 +155,7 @@ public class Board extends JPanel {
 		//Lavagna
 		
 		pannelloLavagna.setBounds(50,370,350,300);
-		pannelloLavagna.setBackground(Color.decode("#c38335"));
+		pannelloLavagna.setBackground(Color.decode(colorePannelli));
 		pannelloLavagna.setBorder ( new TitledBorder (new BevelBorder(BevelBorder.RAISED), "Lavagna" ) );
 		pannelloLavagna.setVisible(true);
 		
@@ -248,7 +252,7 @@ public class Board extends JPanel {
 		for(int i=0;i<6;i++){
 			
 			pedine[i].setArrivata(false);
-			pedine[i].setX(455);
+			pedine[i].setX(xPedineIniz);
 			pedine[i].setDx(37);
 			pedine[i].setPosizioniprec(0);
 			if(i<3){ stampaPiazzamento[i]=false; }
@@ -334,7 +338,7 @@ public class Board extends JPanel {
  		   if(this.getNomeGiocatore(i).equals(nomeGioc)){
  			   
  			   inserito=true;
- 			   this.nomeGiocatore[i].setBackground(Color.decode("#FFFF33"));
+ 			   this.nomeGiocatore[i].setBackground(Color.decode(coloreEvidenzia));
  		   }
  		   i++;
  	   }   
