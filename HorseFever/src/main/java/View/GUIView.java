@@ -33,6 +33,7 @@ public class GUIView implements View{
 	private boolean quotIniziali=true;
 	private boolean first=true;
 	private JFrame frame=new JFrame("Horse Fever");
+	private final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 	
 	public GUIView(){
 		
@@ -67,7 +68,7 @@ public class GUIView implements View{
 		while(!buonfine){
 			try{
 			//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-			String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
+			//String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 			scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
 			//scommessa[1] = ""+scommessa[1].charAt(9);
 			if (scommessa[1].equals("Nero")){
@@ -231,7 +232,7 @@ public class GUIView implements View{
 		while(!buonfine){
 			try{		
 				//String[] sceltaCorsia = {"Corsia N.1","Corsia N.2","Corsia N.3","Corsia N.4","Corsia N.5","Corsia N.6"};
-				String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
+				//String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
 				//scelta[1] = ""+scelta[1].charAt(9);
 				if (scelta[1].equals("Nero")){
