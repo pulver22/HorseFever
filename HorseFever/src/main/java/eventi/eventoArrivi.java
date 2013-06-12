@@ -11,7 +11,7 @@ public class eventoArrivi extends HorseFeverEvent{
 	
 	public eventoArrivi(String cavallo, int posArrivo){
 		this.posArrivo=posArrivo;
-		this.cavallo=new String(cavallo);
+		this.cavallo=String.valueOf(cavallo);
 	}
 	
 	@Override

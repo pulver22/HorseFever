@@ -13,8 +13,8 @@ public class eventoQuotazioni extends HorseFeverEvent{
 	
 	public eventoQuotazioni(String[][] tabellaQuot){
 		for (int i=0; i<6; i++){
-			this.tabellaQuot[i][0]=new String(colori[i]);
-			this.tabellaQuot[i][1]=new String("1:"+tabellaQuot[i][1]);
+			this.tabellaQuot[i][0]=String.valueOf(colori[i]);
+			this.tabellaQuot[i][1]="1:"+String.valueOf(tabellaQuot[i][1]);
 		}
 	}
 	

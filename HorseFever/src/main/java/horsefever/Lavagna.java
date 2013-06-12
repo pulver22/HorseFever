@@ -39,37 +39,13 @@ public class Lavagna {
 		}
 		for (int j=0; j<6; j++){
 			temp=(int) (Math.random()*init.size());
-			quotazioni[j][1]=new String(init.get(temp).toString());
+			quotazioni[j][1]=init.get(temp).toString();
 			init.remove(temp);
 		}
 		
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
-	
-	/**
-	 * Inizializzazione di Lavagna con i valori iniziali delle quotazioni 
-	 * */
-	public void inizializzaLavagna(){
-		int temp;
-		quotazioni[0][0]="Nero";
-		quotazioni[1][0]="Blu";
-		quotazioni[2][0]="Verde";
-		quotazioni[3][0]="Rosso";
-		quotazioni[4][0]="Giallo";
-		quotazioni[5][0]="Bianco";
-		
-		ArrayList<Integer> init = new ArrayList<Integer>(6);
-		for (int i=2; i<8;i++){
-			init.add(i);
-		}
-		for (int j=0; j<6; j++){
-			temp=(int) (Math.random()*init.size());
-			quotazioni[j][1]=new String(init.get(temp).toString());
-			init.remove(temp);
-		}
-		
-		partita.notifyObserver(new eventoQuotazioni(quotazioni));
-	}
+
 	/**
 	 * Ricalcola le quotazioni delle relative scuderie, in base all'ordine d'arrivo dei corrispondenti cavalli
 	 * @param Ordine d'arrivo dei cavalli, contraddistinti dal colore che li rappresenta

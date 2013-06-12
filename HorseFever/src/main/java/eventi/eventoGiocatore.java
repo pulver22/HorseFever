@@ -37,7 +37,7 @@ public class eventoGiocatore extends HorseFeverEvent{
 			String[] azioni=g.getStringheAzioni();
 			for (int i=0; i<azioni.length; i++){
 				if (azioni[i]!=null) {
-					this.carteAzione[i]=new String(azioni[i]);
+					this.carteAzione[i]=String.valueOf(azioni[i]);
 					numcarte++;
 				}
 			}
