@@ -62,7 +62,7 @@ public class Giocatore {
 	public String[] getStringheAzioni(){
 		String[] azioni=new String[2];
 		for (int i=0; i<2; i++){
-			if (i<carteAzione.size())azioni[i]=carteAzione.get(i).toString();
+			if (i<carteAzione.size()){ azioni[i]=carteAzione.get(i).toString(); }
 		}
 		return azioni;
 	}

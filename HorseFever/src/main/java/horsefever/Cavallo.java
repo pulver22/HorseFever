@@ -46,7 +46,7 @@ public class Cavallo {
 				}
 			} else if (effettoPartenza2!=null){//Se, per esclusione, solo quello con lettera B è !=null
 				if (effettoPartenza2.equals("-1")){
-					if (incremento-1>=0) posizione=incremento-1;
+					if (incremento-1>=0){ posizione=incremento-1; }
 					else{ 
 						  posizione=posizione+0;
 					}
@@ -137,8 +137,8 @@ public class Cavallo {
 	}
 	
 	public boolean oltreTraguardo(){
-		if (posizione>=12) return true;
-		else return false;
+		if (posizione>=12){ return true; }
+		else{ return false; }
 	}
 	
 	public void resetPosizione(){
@@ -231,10 +231,10 @@ public class Cavallo {
 	public void setEffettoQuotazione(String effettoQuotazione) {
 		if (effettoQuotazione.charAt(0)=='+'){
 			quotazione-=2;
-			if (quotazione<=2) quotazione=2;
+			if (quotazione<=2){ quotazione=2; }
 		} else {
 			quotazione+=2;
-			if (quotazione>=7) quotazione=7;
+			if (quotazione>=7){ quotazione=7; }
 		}
 	}
 	

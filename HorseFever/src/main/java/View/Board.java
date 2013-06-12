@@ -251,7 +251,7 @@ public class Board extends JPanel {
 			pedine[i].setX(455);
 			pedine[i].setDx(37);
 			pedine[i].setPosizioniprec(0);
-			if(i<3) stampaPiazzamento[i]=false;
+			if(i<3){ stampaPiazzamento[i]=false; }
 			this.resetAreaNotifica();
 			repaint();
 		}

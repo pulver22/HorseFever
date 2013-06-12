@@ -167,8 +167,8 @@ public class GUIView implements View{
 		dialog.setVisible(true);
 		Object value = panel.getValue();
 		
-		if(value != null & value.equals("Si")) scommessa = chiediScommessa();
-		else scommessa[2] = "N";
+		if(value != null & value.equals("Si")){ scommessa = chiediScommessa(); }
+		else{ scommessa[2] = "N"; }
 		
 		return scommessa;
 	}
@@ -451,7 +451,7 @@ public class GUIView implements View{
         	   
         	   board.settaAreaQuotazioni(quot);
     	    }
-    	    else quotazioni.add((eventoQuotazioni) e);
+    	    else{ quotazioni.add((eventoQuotazioni) e); }
     		   
     	   }
     	 

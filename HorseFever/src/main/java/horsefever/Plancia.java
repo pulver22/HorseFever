@@ -287,7 +287,7 @@ public class Plancia {
 							else{
 								flagArrivo-=1;
 							}
-						} else flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
+						} else{ flagArrivo+=1; }//Per ogni cavallo fuori gara o con posizione inferiore
 					}						 //aumenta il flag, altrimenti lo diminuisce
 					if (flagArrivo==(5-j)) { //se alla fine il flag è pari ai cavalli dopo quello in analisi
 						cavalliArrivati.add(cavalli[j]); //vuole dire che è davanti a tutti e quindi primo
@@ -309,8 +309,8 @@ public class Plancia {
 				if (cavalli[i].oltreTraguardo()){
 					for (int k=i+1;k<6;k++){
 						if (!arrivati[k]){
-							if (cavalli[i].getPosizione()>cavalli[k].getPosizione()) flagArrivo+=1;
-							else flagArrivo-=1;
+							if (cavalli[i].getPosizione()>cavalli[k].getPosizione()){ flagArrivo+=1; }
+							else{ flagArrivo-=1; }
 						} else{
 							flagArrivo+=1;//Per ogni cavallo fuori gara o con posizione inferiore
 						}

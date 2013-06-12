@@ -89,7 +89,7 @@ public class Pedina implements ActionListener {
 				}
 				
 				x+=dx;
-				if(x>900) arrivata=true;
+				if(x>900){ arrivata=true; }
 			}
 			else{ 
 				  x=1046;

@@ -32,18 +32,18 @@ public class Partita {
 		this.adapter=a;
 		
 		this.numgiocatori=Integer.valueOf(numgiocatori);
-		if(numgiocatori==4) numturni=4;
-		else if (numgiocatori==5) numturni=5;
-		else numturni=6;
+		if(numgiocatori==4){ numturni=4; }
+		else if (numgiocatori==5){ numturni=5; }
+		else { numturni=6; }
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna(this);
 		plancia = new Plancia(lavagna,this);
 		lavagna.setPlancia(plancia);
 		betManager= new BetManager(this);
-		if(numgiocatori==2) numSegnaliniScommessaPerColore=1;
-		else if(numgiocatori==3) numSegnaliniScommessaPerColore=2;
-		else if(numgiocatori==4) numSegnaliniScommessaPerColore=3;
-		else numSegnaliniScommessaPerColore=4;
+		if(numgiocatori==2){ numSegnaliniScommessaPerColore=1; }
+		else if(numgiocatori==3){ numSegnaliniScommessaPerColore=2; }
+		else if(numgiocatori==4){ numSegnaliniScommessaPerColore=3; }
+		else { numSegnaliniScommessaPerColore=4; }
 		
 		
 		for(int i=0; i<6; i++){

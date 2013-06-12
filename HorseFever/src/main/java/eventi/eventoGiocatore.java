@@ -46,20 +46,27 @@ public class eventoGiocatore extends HorseFeverEvent{
 	
 	@Override
 	public String rappresentazione() {
-		if (tipo==MODIFICA)
+		if (tipo==MODIFICA){
 			return "Modifica al Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
-		else if (tipo==NUOVO)
+		}	
+		else if (tipo==NUOVO){
 			return "Si è aggiunto Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
-		else if (tipo==PRIMO)
+		}	
+		else if (tipo==PRIMO){
 			return "Il primo giocatore è : "+nomeGiocatore;
-		else if (tipo==DITURNO)
+		}	
+		else if (tipo==DITURNO){
 			return "Deve fare una scelta il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv+" ha in mano: "+numcarte+" Carte Azione.";
-		else if (tipo==PERSO)
+		}	
+		else if (tipo==PERSO){
 			return "Ha perso il Giocatore: "+nomeGiocatore+" Scuderia: "+scuderia+" Denari: "+denari+" PV: "+pv;
-		else if(tipo==VINTO)
+		}	
+		else if(tipo==VINTO){
 			return "Ha vinto il Giocatore "+nomeGiocatore+" con "+pv+" PV e "+denari+" Denari! Congratulazioni!";
-		else
+		}	
+		else{
 			return "E' stato pagato il Giocatore"+nomeGiocatore+" con attualmente "+pv+" PV e "+denari+" Denari";
+		}	
 	}
 	
 	public int getTipo(){

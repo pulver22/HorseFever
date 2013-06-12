@@ -99,12 +99,12 @@ public class ThreadCorsa extends Thread{
         			   String rappresentazione=e.rappresentazione();
         			   int numCorsia=10;
 
-        			   if(cavallo.equals("Nero")) numCorsia=1;
-        			   else if(cavallo.equals("Blu")) numCorsia=2;
-        			   else if(cavallo.equals("Verde")) numCorsia=3;
-        			   else if(cavallo.equals("Rosso")) numCorsia=4;
-        			   else if(cavallo.equals("Giallo")) numCorsia=5;
-        			   else if(cavallo.equals("Bianco")) numCorsia=6;
+        			   if(cavallo.equals("Nero")){ numCorsia=1; }
+        			   else if(cavallo.equals("Blu")){ numCorsia=2; }
+        			   else if(cavallo.equals("Verde")){ numCorsia=3; }
+        			   else if(cavallo.equals("Rosso")){ numCorsia=4; }
+        			   else if(cavallo.equals("Giallo")){ numCorsia=5; }
+        			   else if(cavallo.equals("Bianco")){ numCorsia=6; }
 
         			   board.settaAreaNotifica("\n"+rappresentazione);
         			   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
