@@ -153,7 +153,7 @@ public class AdapterReteClient implements Adapter{
 	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
 		
-		String[] scelta = new String[2];
+		String[] scelta;
 		
 		scelta=viewRegistrate.get(0).chiediTrucca(carteAzione);
 		

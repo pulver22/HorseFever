@@ -328,9 +328,9 @@ public class Controller {
      */
     public void trucca(Giocatore giocatore, int indice){
         
-    	ArrayList<Azione> carteAzione=new ArrayList<Azione>(2);
+    	ArrayList<Azione> carteAzione;
     	carteAzione=giocatore.getCarteAzione();
-    	String[] scelta = new String[2];
+    	String[] scelta;
     	//String cartaAzioneGiocata,nomeGiocatore=giocatore.getNome();
     	boolean buonfine = false;
     	int numCartaAzione=0,numCorsia=0;

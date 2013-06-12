@@ -56,29 +56,6 @@ public class AdapterReteServer implements Adapter{
         		return;
         	}
         }
-        /*
-        ObjectInputStream in = null;
-        ObjectOutputStream out = null;
-        while (true) {
-            try {
-                if (in == null) {
-                    in = new ObjectInputStream(socket.getInputStream());
-                }
-                
-                //Message message = (Message) in.readObject();
-                System.out.println("Client said: " + message.getMessage());
- 
-                //Send a reply to the client
-                if (out == null) {
-                    out = new ObjectOutputStream(socket.getOutputStream());
-                }
-                out.writeObject(new Message(&quot;Message recieved: &quot; + message.getMessage()));
-                out.flush();
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
-        }
-		*/
     }
 	
 	private ArrayList<View> viewRegistrate=new ArrayList<View>();
@@ -89,24 +66,6 @@ public class AdapterReteServer implements Adapter{
 	public String[] chiediScommessa(int indice) {
 		
 		String valori[]=clients.get(indice).chiediScommessa(indice);
-		/*
-		String[] mess = new String[2];
-		String[] valori = new String[3];
-		mess[0]="chiediScommessa";
-		mess[1]="";
-		Socket socket=clients.get(indice).getClientSocket();
-		ObjectInputStream in = null;
-        ObjectOutputStream out = null;
-		try {
-            out = clients.get(indice).getOut();
-            out.writeObject(mess);
-            out.flush();
-            in = clients.get(indice).getIn();
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-        */
 		return valori;
 		
 	}
@@ -117,24 +76,6 @@ public class AdapterReteServer implements Adapter{
 	public String[] chiediSecondaScommessa(int indice){
 		
 		String valori[]=clients.get(indice).chiediSecondaScommessa(indice);
-		/*
-		String[] mess = new String[2];
-		String[] valori = new String[3];
-		mess[0]="chiediSecondaScommessa";
-		mess[1]="";
-		Socket socket=clients.get(indice).getClientSocket();
-		ObjectInputStream in = null;
-        ObjectOutputStream out = null;
-		try {
-			out = clients.get(indice).getOut();
-            out.writeObject(mess);
-            out.flush();
-            in = clients.get(indice).getIn();
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-		*/
 		return valori;
 	}
 	
@@ -144,26 +85,6 @@ public class AdapterReteServer implements Adapter{
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
 		
 		String valori[]=clients.get(indice).chiediTrucca(carteAzione,indice);
-		/*
-		String[] mess = new String[2];
-		String[] valori = new String[2];
-		mess[0]="chiediTrucca";
-		mess[1]="";
-		Socket socket=clients.get(indice).getClientSocket();
-		ObjectInputStream in = null;
-        ObjectOutputStream out = null;
-		try {
-			out = clients.get(indice).getOut();
-            out.writeObject(mess);
-            out.flush();
-            out.writeObject(carteAzione);
-            out.flush();
-            in = clients.get(indice).getIn();
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-        */
 		return valori;
 	}
 	
@@ -172,20 +93,6 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public void stampaMessaggio(String messaggio,int indice){
 		clients.get(indice).stampaMessaggio(messaggio,indice);
-		/*
-		String[] mess = new String[2];
-		mess[0]="stampaMessaggio";
-		mess[1]=String.valueOf(messaggio);
-		Socket socket=clients.get(indice).getClientSocket();
-        ObjectOutputStream out = null;
-		try {
-			out = clients.get(indice).getOut();
-            out.writeObject(mess);
-            out.flush();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-        */
 	}
 
 	/**
@@ -194,17 +101,6 @@ public class AdapterReteServer implements Adapter{
 	public void notify(HorseFeverEvent e){
 		for (AdapterClientHandler ach: clients){
 			ach.notify(e);
-			/*
-			Socket socket=ach.getClientSocket();
-	        ObjectOutputStream out = null;
-			try {
-				out = ach.getOut();
-                out.writeObject(e);
-                out.flush();
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
-            */
 		}
 	}
 	
@@ -233,23 +129,6 @@ public class AdapterReteServer implements Adapter{
 			clients.add(clients.get(0)); //Riordina clients secondo ordine del primo giocatore
 			clients.remove(0);
 		}
-		/*
-		String[] mess = new String[2];
-		mess[0]="prosegui";
-		mess[1]=String.valueOf(messaggio);
-		Socket socket=clients.get(0).getClientSocket();
-		ObjectInputStream in = null;
-        ObjectOutputStream out = null;
-		try {
-			out = clients.get(indice).getOut();
-            out.writeObject(mess);
-            out.flush();
-            in = clients.get(indice).getIn();
-            in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-        */
 	}
 	
 	@Override
