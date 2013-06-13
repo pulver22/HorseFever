@@ -13,7 +13,6 @@ import eventi.HorseFeverEvent;
 
 public class AdapterReteClient implements Adapter{
 
-	//private static final String SERVER_IP = "127.0.0.1";
     private static final int SERVER_PORT = 5000;
     private Socket socket=null;
     private ObjectInputStream in = null;
@@ -38,8 +37,6 @@ public class AdapterReteClient implements Adapter{
      * e il prosegui alla fase successiva
      */
     public void start(){
-    	//ObjectInputStream in = null;
-        //ObjectOutputStream out = null;
         while (true) {
             try {
             	

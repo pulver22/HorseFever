@@ -9,6 +9,7 @@ public class Lavagna {
 	private String[][] quotazioni;
 	private Partita partita;
 	private Plancia plancia;
+	private String[] colori={"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 	
 	/**
 	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
@@ -26,12 +27,6 @@ public class Lavagna {
 		this.partita=p;
 		quotazioni = new String[6][2];
 		int temp;
-		quotazioni[0][0]="Nero";
-		quotazioni[1][0]="Blu";
-		quotazioni[2][0]="Verde";
-		quotazioni[3][0]="Rosso";
-		quotazioni[4][0]="Giallo";
-		quotazioni[5][0]="Bianco";
 		
 		ArrayList<Integer> init = new ArrayList<Integer>(6);
 		for (int i=2; i<8;i++){
@@ -40,6 +35,7 @@ public class Lavagna {
 		for (int j=0; j<6; j++){
 			temp=(int) (Math.random()*init.size());
 			quotazioni[j][1]=init.get(temp).toString();
+			quotazioni[j][0]=String.valueOf(colori[j]);
 			init.remove(temp);
 		}
 		
@@ -118,7 +114,12 @@ public class Lavagna {
 
 	//Metodi Getter e Setter
 	public String[][] getQuotazioni() {
-		return quotazioni;
+		String[][] quot=new String[6][2];
+		for (int i=0;i<6;i++){
+			quot[i][0]=String.valueOf(quotazioni[i][0]);
+			quot[i][1]=String.valueOf(quotazioni[i][1]);
+		}
+		return quot;
 	}
 	public void setQuotazioni(String[][] quotazioni) {
 		this.quotazioni = quotazioni.clone();

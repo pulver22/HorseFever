@@ -77,7 +77,7 @@ public class ThreadCorsa extends Thread{
         	   }
 
         	   // animazione finita
-        	   if(board.getTutteArrivate()==true){
+        	   if(board.getTutteArrivate()){
 
         		   eventoQuotazioni e1=vista.getEventoQuotaz();
         		   String[][] tabellaQuot= e1.getTabellaQuot();

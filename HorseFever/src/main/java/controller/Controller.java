@@ -247,7 +247,7 @@ public class Controller {
     				
     			}
     			
-    			if(numSegnalini[numCorsia]<=0 && buonfine==true){
+    			if(numSegnalini[numCorsia]<=0 && buonfine){
     				
     				adapter.stampaMessaggio("Scommesse esaurite su corsia "+(numCorsia+1)+" !!",indice);
     				buonfine=false;
@@ -331,7 +331,6 @@ public class Controller {
     	ArrayList<Azione> carteAzione;
     	carteAzione=giocatore.getCarteAzione();
     	String[] scelta;
-    	//String cartaAzioneGiocata,nomeGiocatore=giocatore.getNome();
     	boolean buonfine = false;
     	int numCartaAzione=0,numCorsia=0;
     	
@@ -351,7 +350,6 @@ public class Controller {
 				
     	}
     	
-    	//cartaAzioneGiocata=carteAzione.get(numCartaAzione).toString();
     	partita.getPlancia().truccaCorsia(carteAzione.get(numCartaAzione), numCorsia,giocatore.getNome());
     	
     	

@@ -32,15 +32,15 @@ public class eventoCorsa extends HorseFeverEvent{
 	}
 
 	public int[] getPosizioniAggiornate() {
-		return posizioniAggiornate;
+		return posizioniAggiornate.clone();
 	}
 
 	public int[] getValoriMovimento() {
-		return valoriMovimento;
+		return valoriMovimento.clone();
 	}
 
 	public int[] getEsitoDadi() {
-		return esitoDadi;
+		return esitoDadi.clone();
 	}
 
 }

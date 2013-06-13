@@ -220,7 +220,7 @@ public class Board extends JPanel {
         
         for(int i=0;i<3;i++){
         	
-        	if(stampaPiazzamento[i]==true){
+        	if(stampaPiazzamento[i]){
         	
         		g2d.drawImage(piazzamento[i],904,yPiazzamento[i],null);
         	}
