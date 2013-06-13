@@ -14,6 +14,14 @@ import java.util.Arrays;
 */
 
 import javax.swing.*;
+
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -185,7 +193,9 @@ public class GUIView implements View{
 		
 		return scommessa;
 	}
-
+	
+	
+	private static Object lock = new Object();
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
 		
@@ -249,6 +259,7 @@ public class GUIView implements View{
 				buonfine = false;
 			}
 		}
+		
 		/* RICHIEDE GESTIONE THREAD
 		
 		String[] scelta = new String[2];
@@ -262,9 +273,9 @@ public class GUIView implements View{
 		JLabel label2 = new JLabel("Su quale corsia la vuoi giocare?");
 		JButton conferma = new JButton("Conferma");
 		
-		JComboBox<String> sceltaCarta = new JComboBox<String>();
+		JComboBox sceltaCarta = new JComboBox();
 		sceltaCarta.addItem("");
-		JComboBox<String> sceltaCorsia = new JComboBox<String>();
+		JComboBox sceltaCorsia = new JComboBox();
 		sceltaCorsia.addItem("");
 		sceltaCorsia.addItem("1");
 		sceltaCorsia.addItem("2");
@@ -276,7 +287,7 @@ public class GUIView implements View{
 		frame.add(panelCarta, BorderLayout.NORTH);
 		frame.add(panel, BorderLayout.CENTER);
 		frame.add(panelConferma, BorderLayout.SOUTH);
-		
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	
 		for (int i=0;i< carteAzione.size();i++){
 			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
@@ -287,11 +298,12 @@ public class GUIView implements View{
 			}
 		
 		conferma.addActionListener(new ActionListener(){
+				@Override	
 				public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null,"Hai fatto la tua scommessa!");
+				//JOptionPane.showMessageDialog(null,"Hai fatto la tua scommessa!");
 				frame.dispose();
 				
-			}
+				}
 			
 		});
 		
@@ -309,7 +321,41 @@ public class GUIView implements View{
 		frame.setVisible(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		
+		//////////////////////////
+		Thread t = new Thread() {
+        	public void run() {
+            	synchronized(lock) {
+                	while (frame.isVisible())
+                    	try {
+                        	lock.wait();
+                    	} catch (InterruptedException e) {
+                        	e.printStackTrace();
+                    	}
+                	System.out.println("Working now");
+            	}
+        	}
+    	};
+    	t.start();
+    	
+		frame.addWindowListener(new WindowAdapter() {
+
+        	@Override
+        	public void windowClosing(WindowEvent arg0) {
+            	synchronized (lock) {
+                	frame.setVisible(false);
+                	lock.notify();
+            	}
+        	}
+
+    	});
+
+    	try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	////////////////////////
 		for(int i=0;i<carteAzione.size();i++){
 			if(sceltaCarta.getSelectedItem().toString() != ""){
 				if(sceltaCarta.getSelectedItem().toString().equals(carteAzione.get(i).getNome())) 
