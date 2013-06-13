@@ -184,7 +184,7 @@ public class Controller {
     public Scommessa scommetti(Giocatore giocatore,int numScommessa,int[] numSegnalini, int indice){
        
     	
-    	int PV, numCorsia=0, numCorsiaPrecedente=0;
+    	int pv, numCorsia=0, numCorsiaPrecedente=0;
     	long denari,importo;
     	int scommessaMinima;
     	char tipoScommessa='N',tipoScommessaPrecedente='N';
@@ -196,9 +196,9 @@ public class Controller {
     	ArrayList<Scommessa> scommesse=new ArrayList<Scommessa>();
     	
     	importo=0;
-    	PV=giocatore.getPV();
+    	pv=giocatore.getPV();
     	denari=giocatore.getDenari();
-    	scommessaMinima=PV*100;
+    	scommessaMinima=pv*100;
     	
     	/* se la scommessa non è obbligatoria chiama seconda scommessa che chiede prima all'utente 
     	 * se vuole ancora scommettere, se i denari sono insufficienti per la scommessa minima 
@@ -263,7 +263,7 @@ public class Controller {
  	   gli vengono sottratti 2 PV, se non ha 2 PV il giocatore perde la partita */
     	if(denari<scommessaMinima){
     		
-            if(PV<2){   
+            if(pv<2){   
             	
             	messaggio=""+giocatore.getNome() +" hai perso la partita";
             	adapter.stampaMessaggio(messaggio,indice);
@@ -280,8 +280,8 @@ public class Controller {
             else{
             	 messaggio="Non hai abbastanza denari per scommettere! Perdi due PV!";
             	 adapter.stampaMessaggio(messaggio,indice);
-            	 PV=PV-2;
-    		     giocatore.setPV(PV);
+            	 pv=pv-2;
+    		     giocatore.setPV(pv);
     		     
     		     scommessa=new Scommessa(giocatore,10,0,'N');
            		 return scommessa;
