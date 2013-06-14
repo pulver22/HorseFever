@@ -345,7 +345,7 @@ public class GUIView implements View{
 		panelCarta.setLayout(new FlowLayout());
 		JPanel panel = new JPanel();
 		final JFrame frame = new JFrame();
-		frame.setLayout(new GridLayout(3,3));
+		frame.setLayout(new BorderLayout());
 		JPanel panelConferma = new JPanel();
 		JLabel label = new JLabel("Quale carta vuoi giocare?");
 		JLabel label2 = new JLabel("Su quale corsia la vuoi giocare?");
