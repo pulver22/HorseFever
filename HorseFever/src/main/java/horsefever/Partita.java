@@ -127,14 +127,14 @@ public class Partita {
 	public void reset(){
 		plancia.reset();
 		mazzoAzione=new Mazzo("MazzoAzione");
-		if (!debug){
-			mazzoAzione.mischia();
-		}
+		mazzoAzione.mischia();
 		mazzoMovimento=new Mazzo("MazzoMovimento");
 		mazzoMovimento.mischia();
-		Giocatore g=giocatori.get(0);
-		giocatori.remove(0);
-		giocatori.add(g);
+		if (!debug){ //Se non in debug, cambia il primoGiocatore
+			Giocatore g=giocatori.get(0);
+			giocatori.remove(0);
+			giocatori.add(g);
+		}
 		betManager.resetbManager();
 		notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.PRIMO));
 	}
