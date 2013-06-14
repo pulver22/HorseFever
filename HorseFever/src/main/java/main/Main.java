@@ -18,7 +18,7 @@ public class Main {
 	 * */
 	public static void main(String[] args){
 	
-		String colorePannelli="#c38335";
+		String colorePannelli="#FFFFFF";
 		UIManager UI=new UIManager();
 		UI.put("OptionPane.background",Color.decode(colorePannelli));
 		UI.put("Panel.background",Color.decode(colorePannelli));
