@@ -11,17 +11,9 @@ public class Controller {
 	private Adapter adapter;
 	private boolean finePar=false;
 	
+	private boolean debug=false;
 	
-	
-	/**
-	 * Il costruttore di Controller riceve in ingresso Partita per poter utilizzare tutti i dati del Model
-	 *@param La partita di cui farà da controller
-	 */
-	/*public Controller(Partita par){
-		
-		this.partita=par;
-	}
-	*/
+
 	/**
 	 * Per il numero di turni del gioco, svolge tutte le attività di gioco e alla fine conclude la partita
 	 */
@@ -62,8 +54,13 @@ public class Controller {
 	public void faseDistribuzioneCarte(){
 		for(int i=0; i<partita.getGiocatori().size();i++){
 			carteDaAssegnare=new ArrayList<Azione>();
-			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
-			carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
+			if (debug){
+				carteDaAssegnare.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z',17));
+				carteDaAssegnare.add(new Azione("Friz Finden","Grigio","Azione","Rimuovi_negative",'X',15));
+			}else{
+				carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
+				carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
+			}
 			partita.getGiocatori(i).setCarteAzione(carteDaAssegnare);
 			
 		}
@@ -375,8 +372,19 @@ public class Controller {
     	this.adapter=a;
     }
     
+    /**
+     * Rimuove giocatore non più raggiungibile in rete
+     * */
     public void rimuoviGiocatoreIrraggiungibile(int i){
     	partita.rimuoviGiocatore(partita.getGiocatori(i));
+    }
+    
+    
+    /**
+     * Setta il controller in stato di debug
+     * */
+    public void setDebug(boolean debug){
+    	this.debug=debug;
     }
     
 }

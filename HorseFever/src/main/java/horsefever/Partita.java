@@ -16,6 +16,7 @@ public class Partita {
 	private Plancia plancia;
 	private Adapter adapter;
 	
+	private boolean debug=false;
 
 	private BetManager betManager;
 	private int numSegnaliniScommessaPerColore;
@@ -60,7 +61,16 @@ public class Partita {
 		
 		String quotazione;
 		String scuderia;
-		
+		if (debug){
+			Personaggio p=new Personaggio("Sigvard Skalle", 4400, "7");
+			giocatori.add(new Giocatore(p,"Bianco",this));	
+			notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.NUOVO));
+			
+			Personaggio p2=new Personaggio("Craneo Cervantes", 4200, "6");
+			giocatori.add(new Giocatore(p2,"Giallo",this));	
+			notifyObserver(new eventoGiocatore(giocatori.get(1),eventoGiocatore.NUOVO));
+
+		}
 		for (int i=0; i<numgiocatori; i++){
 			Personaggio p= (Personaggio) mazzoPersonaggio.pesca();
 			quotazione=p.getQuotScuderia();
@@ -117,7 +127,9 @@ public class Partita {
 	public void reset(){
 		plancia.reset();
 		mazzoAzione=new Mazzo("MazzoAzione");
-		mazzoAzione.mischia();
+		if (!debug){
+			mazzoAzione.mischia();
+		}
 		mazzoMovimento=new Mazzo("MazzoMovimento");
 		mazzoMovimento.mischia();
 		Giocatore g=giocatori.get(0);
@@ -185,6 +197,12 @@ public class Partita {
 	
 	public Plancia getPlancia() {
 		return plancia;
+	}
+	
+	public void setDebug(boolean debug){
+		this.debug=debug;
+		plancia.setDebug(debug);
+		lavagna.setDebug(debug);
 	}
 	
 }
