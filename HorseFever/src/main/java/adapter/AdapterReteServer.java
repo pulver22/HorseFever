@@ -7,6 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import controller.Controller;
+
 import View.View;
 import eventi.HorseFeverEvent;
 
@@ -14,6 +16,7 @@ public class AdapterReteServer implements Adapter{
 
 	public static final int SERVER_PORT = 5000;
 	
+	private Controller controller;
 	private int numeroClientAttesi;
 	private ArrayList<AdapterClientHandler> clients=new ArrayList<AdapterClientHandler>();
 	
@@ -22,7 +25,8 @@ public class AdapterReteServer implements Adapter{
 	 * @param numeroClientAttesi
 	 * @param v
 	 */
-	public AdapterReteServer(int numeroClientAttesi, View v){
+	public AdapterReteServer(int numeroClientAttesi, View v,Controller c){
+		this.controller=c;
 		this.numeroClientAttesi=numeroClientAttesi;
 		viewRegistrate.add(v);
 	}
@@ -65,7 +69,15 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediScommessa(int indice) {
 		
-		String valori[]=clients.get(indice).chiediScommessa(indice);
+		String valori[]=null;
+		try {
+			valori = clients.get(indice).chiediScommessa(indice);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 		return valori;
 		
 	}
@@ -75,7 +87,15 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediSecondaScommessa(int indice){
 		
-		String valori[]=clients.get(indice).chiediSecondaScommessa(indice);
+		String valori[]=null;
+		try {
+			valori = clients.get(indice).chiediSecondaScommessa(indice);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 		return valori;
 	}
 	
@@ -84,7 +104,15 @@ public class AdapterReteServer implements Adapter{
 	 */
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
 		
-		String valori[]=clients.get(indice).chiediTrucca(carteAzione,indice);
+		String valori[]=null;
+		try {
+			valori = clients.get(indice).chiediTrucca(carteAzione,indice);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 		return valori;
 	}
 	
@@ -92,15 +120,31 @@ public class AdapterReteServer implements Adapter{
 	 * Stampa a video di ogni giocatore registrato un messaggio
 	 */
 	public void stampaMessaggio(String messaggio,int indice){
-		clients.get(indice).stampaMessaggio(messaggio,indice);
+		try {
+			clients.get(indice).stampaMessaggio(messaggio,indice);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 	}
 
 	/**
 	 * Notifica ad ogni giocatore registrato un evento scrivendolo in un outPutStream
 	 */
 	public void notify(HorseFeverEvent e){
+		int i=0;
 		for (AdapterClientHandler ach: clients){
-			ach.notify(e);
+			try {
+				ach.notify(e);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				controller.rimuoviGiocatoreIrraggiungibile(i);
+				clients.remove(i);
+				e1.printStackTrace();
+			}
+			i++;
 		}
 	}
 	
@@ -124,7 +168,14 @@ public class AdapterReteServer implements Adapter{
 	 */
 	@Override
 	public void prosegui(String messaggio, int indice) {
-		clients.get(indice).prosegui(messaggio,indice);
+		try {
+			clients.get(indice).prosegui(messaggio,indice);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 		if (messaggio.equals("Fine del turno")){
 			clients.add(clients.get(0)); //Riordina clients secondo ordine del primo giocatore
 			clients.remove(0);
@@ -147,7 +198,14 @@ public class AdapterReteServer implements Adapter{
 	 * */
 	@Override
 	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
-		clients.get(indice).evidenziaGiocatore(nomeGiocatore);
+		try {
+			clients.get(indice).evidenziaGiocatore(nomeGiocatore);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			controller.rimuoviGiocatoreIrraggiungibile(indice);
+			clients.remove(indice);
+			e.printStackTrace();
+		}
 	}
 
 }

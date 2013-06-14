@@ -17,11 +17,11 @@ public class Controller {
 	 * Il costruttore di Controller riceve in ingresso Partita per poter utilizzare tutti i dati del Model
 	 *@param La partita di cui farà da controller
 	 */
-	public Controller(Partita par){
+	/*public Controller(Partita par){
 		
 		this.partita=par;
 	}
-	
+	*/
 	/**
 	 * Per il numero di turni del gioco, svolge tutte le attività di gioco e alla fine conclude la partita
 	 */
@@ -360,6 +360,14 @@ public class Controller {
     }
     
     /**
+     * Setta al controller la partita corrente
+     * @param la partita corrente
+     * */
+    public void setPartita(Partita p){
+    	this.partita=p;
+    }
+    
+    /**
      * Seleziona l'adapter giusto a seconda si giochi in locale o remoto
      * @param a
      */
@@ -367,5 +375,8 @@ public class Controller {
     	this.adapter=a;
     }
     
+    public void rimuoviGiocatoreIrraggiungibile(int i){
+    	partita.rimuoviGiocatore(partita.getGiocatori(i));
+    }
     
 }

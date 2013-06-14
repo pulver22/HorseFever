@@ -21,10 +21,13 @@ public class Main {
 		String sceltaVista;
 		String[] opzioniVista = {"Graphic User Interface","Testuale"};
 		sceltaVista = (String)JOptionPane.showInputDialog(null, "Con quale interfaccia vuoi giocare?","Opzioni Vista", JOptionPane.PLAIN_MESSAGE,null, opzioniVista, opzioniVista);
-		if (sceltaVista.equals("Testuale"))
+		if (sceltaVista.equals("Testuale")){
 			tv= new TextView();
-		else 
+		}else {
 			tv= new GUIView();
+		}
+		Controller c = new Controller();
+		
 		String sceltaRete;
 		String[] opzioniRete = {"Locale","Rete"};
 		Adapter ad;
@@ -38,7 +41,7 @@ public class Main {
 			String sceltaClient;
 			sceltaClient=(String)JOptionPane.showInputDialog(null, "Vuoi essere Client o Server?","Opzioni Client/Server", JOptionPane.PLAIN_MESSAGE,null, opzioniClient, opzioniClient);
 			if (sceltaClient.equals("Server")){
-				ad=new AdapterReteServer(numGiocatori,tv);
+				ad=new AdapterReteServer(numGiocatori,tv,c);
 				ad.startServer();
 			} else {
 				String serverIP;
@@ -50,7 +53,7 @@ public class Main {
 			}
 		}
 		Partita p=new Partita(numGiocatori,ad);
-		Controller c = new Controller(p);
+		c.setPartita(p);
 		c.setAdapter(ad);
 		c.start();
 	}

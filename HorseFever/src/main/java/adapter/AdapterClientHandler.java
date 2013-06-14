@@ -2,6 +2,7 @@ package adapter;
 
 import horsefever.Azione;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -25,13 +26,13 @@ public class AdapterClientHandler{
 	/**
 	 * Chiede ad ogni giocatore registrato di fare una scommessa
 	 */
-	public synchronized String[] chiediScommessa(int indice) {
+	public synchronized String[] chiediScommessa(int indice) throws IOException{
 		
 		String[] mess = new String[2];
 		String[] valori = new String[3];
 		mess[0]="chiediScommessa";
 		mess[1]="";
-		try {
+		
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}
@@ -41,23 +42,26 @@ public class AdapterClientHandler{
             if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
             }	
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
+            try {
+				valori=(String[])in.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        
 		return valori;
 	}
 	
 	/**
 	 * Chiedi ad ogni giocatore registrato di effettuare la seconda scommessa
 	 */
-	public synchronized String[] chiediSecondaScommessa(int indice){
+	public synchronized String[] chiediSecondaScommessa(int indice) throws IOException{
 		
 		String[] mess = new String[2];
 		String[] valori = new String[3];
 		mess[0]="chiediSecondaScommessa";
 		mess[1]="";
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
@@ -66,23 +70,26 @@ public class AdapterClientHandler{
             if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
             }	
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
+            try {
+				valori=(String[])in.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		return valori;
 	}
 	
 	/**
 	 * Chiedi ad ogni giocatore registrato di truccare la corsa
 	 */
-	public synchronized String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) {
+	public synchronized String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) throws IOException{
 		
 		String[] mess = new String[2];
 		String[] valori = new String[2];
 		mess[0]="chiediTrucca";
 		mess[1]="";
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
@@ -93,45 +100,43 @@ public class AdapterClientHandler{
             if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
             }
-            valori=(String[])in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
+            try {
+				valori=(String[])in.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		return valori;
 	}
 	
 	/**
 	 * Stampa a video di ogni giocatore registrato un messaggio
 	 */
-	public synchronized void stampaMessaggio(String messaggio,int indice){
+	public synchronized void stampaMessaggio(String messaggio,int indice) throws IOException{
 		String[] mess = new String[2];
 		mess[0]="stampaMessaggio";
 		mess[1]=String.valueOf(messaggio);
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
             out.writeObject(mess);
             out.flush();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
 	}
 
 	/**
 	 * Notifica ad ogni giocatore registrato un evento scrivendolo in un outPutStream
 	 */
-	public synchronized void notify(HorseFeverEvent e){
+	public synchronized void notify(HorseFeverEvent e) throws IOException{
 
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
 			out.writeObject(e);
 			out.flush();
-		} catch (Exception ex) {
-			System.out.println("Error: " + ex);
-		}
+
 		
 	}
 	
@@ -140,11 +145,11 @@ public class AdapterClientHandler{
 	 * Permette di avanzare alla fase successiva del turno, e quindi del gioco
 	 */
 	
-	public synchronized void prosegui(String messaggio, int indice) {
+	public synchronized void prosegui(String messaggio, int indice) throws IOException{
 		String[] mess = new String[2];
 		mess[0]="prosegui";
 		mess[1]=String.valueOf(messaggio);
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
@@ -153,28 +158,28 @@ public class AdapterClientHandler{
             if (in==null){
             	in = new ObjectInputStream(clientSocket.getInputStream());
             }	
-            in.readObject();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
+            try {
+				in.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	/**
 	 * Invia al client il comando di evidenziare il giocatore corrispondente
 	 * */
-	public synchronized void evidenziaGiocatore(String nomeGiocatore) {
+	public synchronized void evidenziaGiocatore(String nomeGiocatore) throws IOException{
 		String[] mess = new String[2];
 		mess[0]="evidenziaGiocatore";
 		mess[1]=String.valueOf(nomeGiocatore);
-		try {
+
 			if (out==null){
 				out = new ObjectOutputStream(clientSocket.getOutputStream());
 			}	
             out.writeObject(mess);
             out.flush();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
+
 	}
 	
 }
