@@ -353,8 +353,7 @@ public class GUIView implements View{
 		
 		JComboBox sceltaCarta = new JComboBox();
 		for (int i=0;i< carteAzione.size();i++){
-			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
-					+carteAzione.get(i).getTipoEffetto() +"\n"+carteAzione.get(i).getValoreEffetto());
+			JLabel descrizioneCarta = new JLabel(this.carteAzione[carteAzione.get(i).getIndice()]);
 			panelCarta.add(descrizioneCarta);
 			String nomeCarta = carteAzione.get(i).getNome();
 			sceltaCarta.addItem(nomeCarta);
@@ -371,7 +370,7 @@ public class GUIView implements View{
 		frame.add(panelCarta, BorderLayout.NORTH);
 		frame.add(panel, BorderLayout.CENTER);
 		frame.add(panelConferma, BorderLayout.SOUTH);
-		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		conferma.addActionListener(new ActionListener(){
 				@Override	
