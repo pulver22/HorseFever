@@ -508,7 +508,7 @@ public class GUIView implements View{
 		UIManager UI=new UIManager();
 		UI.put("OptionPane.background",Color.decode(colorePannelli));
 		UI.put("Panel.background",Color.decode(colorePannelli));
-		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", JOptionPane.PLAIN_MESSAGE);
 		
 		
 	}
@@ -603,14 +603,14 @@ public class GUIView implements View{
 				e.printStackTrace();
 			}
 			
-			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", JOptionPane.PLAIN_MESSAGE);
 			
 			 
 			first=true;
 			
 		}
 		else{
-			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", JOptionPane.PLAIN_MESSAGE);
 			
 		}
 		
