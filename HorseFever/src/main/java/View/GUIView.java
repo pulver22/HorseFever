@@ -330,9 +330,15 @@ public class GUIView implements View{
 		JButton conferma = new JButton("Conferma");
 		
 		JComboBox sceltaCarta = new JComboBox();
-		sceltaCarta.addItem("");
+		for (int i=0;i< carteAzione.size();i++){
+			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
+					+carteAzione.get(i).getTipoEffetto() +"\n"+carteAzione.get(i).getValoreEffetto());
+			panelCarta.add(descrizioneCarta);
+			String nomeCarta = carteAzione.get(i).getNome();
+			sceltaCarta.addItem(nomeCarta);
+		}
+		
 		JComboBox sceltaCorsia = new JComboBox();
-		sceltaCorsia.addItem("");
 		sceltaCorsia.addItem("1");
 		sceltaCorsia.addItem("2");
 		sceltaCorsia.addItem("3");
@@ -344,14 +350,6 @@ public class GUIView implements View{
 		frame.add(panel, BorderLayout.CENTER);
 		frame.add(panelConferma, BorderLayout.SOUTH);
 		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-	
-		for (int i=0;i< carteAzione.size();i++){
-			JTextArea descrizioneCarta = new JTextArea(""+carteAzione.get(i).getNome() + "\n"+carteAzione.get(i).getColore() +"\n" 
-					+carteAzione.get(i).getTipoEffetto() +"\n"+carteAzione.get(i).getValoreEffetto());
-			panelCarta.add(descrizioneCarta);
-			String nomeCarta = carteAzione.get(i).getNome();
-			sceltaCarta.addItem(nomeCarta);
-			}
 		
 		conferma.addActionListener(new ActionListener(){
 				@Override	
