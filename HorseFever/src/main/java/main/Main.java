@@ -12,11 +12,14 @@ public class Main {
 
 	public static void main(String[] args){
 	
+		//Scelta numero giocatori
 		int numGiocatori;
 		String sceltaGiocatori;
 		String[] opzioniGiocatori = {"2","3","4","5","6"};
 		sceltaGiocatori = (String)JOptionPane.showInputDialog(null, "Quanti sono i giocatori?","Numero Giocatori", JOptionPane.PLAIN_MESSAGE,null, opzioniGiocatori, opzioniGiocatori);
 		numGiocatori=Integer.parseInt(sceltaGiocatori);
+		
+		//Scelta Vista
 		View tv;
 		String sceltaVista;
 		String[] opzioniVista = {"Graphic User Interface","Testuale"};
@@ -28,6 +31,7 @@ public class Main {
 		}
 		Controller c = new Controller();
 		
+		//Scelta Rete
 		String sceltaRete;
 		String[] opzioniRete = {"Locale","Rete"};
 		Adapter ad;
@@ -37,6 +41,7 @@ public class Main {
 			ad.addView(tv);
 		}
 		else {
+			//Scelta Client-Server
 			String[] opzioniClient= {"Server","Client"};
 			String sceltaClient;
 			sceltaClient=(String)JOptionPane.showInputDialog(null, "Vuoi essere Client o Server?","Opzioni Client/Server", JOptionPane.PLAIN_MESSAGE,null, opzioniClient, opzioniClient);
@@ -52,9 +57,11 @@ public class Main {
 				ad.start();
 			}
 		}
+		
 		Partita p=new Partita(numGiocatori,ad);
 		c.setPartita(p);
 		c.setAdapter(ad);
+		//Inizio Partita
 		c.start();
 	}
 	
