@@ -54,26 +54,26 @@ public class Mazzo {
 		String rosso="Rosso";
 		String grigio="Grigio";
 		if (nome.equals("MazzoAzione")){
-			Mazzo.add(new Azione("Magna Velocitas",verde,"Partenza","=4",'A'));
-			Mazzo.add(new Azione("Fortuna Malevola",verde,"Partenza","+1",'B'));
-			Mazzo.add(new Azione("Flagellum Fulguris",verde,"Sprint","+1",'C'));
-			Mazzo.add(new Azione("Herba Magica",verde,"Sprint","=2",'D'));
-			Mazzo.add(new Azione("In Igni Veritas",verde,"Fotofinish","=1",'E'));
-			Mazzo.add(new Azione("Fustis et Radix",verde,"Traguardo","+2",'F'));
-			Mazzo.add(new Azione("Vigor Ferreum",verde,"Utimo","=4",'G'));
+			Mazzo.add(new Azione("Magna Velocitas",verde,"Partenza","=4",'A',0));
+			Mazzo.add(new Azione("Fortuna Benevola",verde,"Partenza","+1",'B',1));
+			Mazzo.add(new Azione("Flagellum Fulguris",verde,"Sprint","+1",'C',2));
+			Mazzo.add(new Azione("Herba Magica",verde,"Sprint","=2",'D',3));
+			Mazzo.add(new Azione("In Igni Veritas",verde,"Fotofinish","=1",'E',4));
+			Mazzo.add(new Azione("Fustis et Radix",verde,"Traguardo","+2",'F',5));
+			Mazzo.add(new Azione("Vigor Ferreum",verde,"Utimo","=4",'G',6));
 	
-			Mazzo.add(new Azione("Globulus Obscurus",rosso,"Partenza","=0",'A'));
-			Mazzo.add(new Azione("Aqua Putrida",rosso,"Partenza","-1",'B'));
-			Mazzo.add(new Azione("Serum Maleficum",rosso,"Sprint","=0",'C'));
-			Mazzo.add(new Azione("Venenum Veneficum",rosso,"Sprint","-1",'D'));
-			Mazzo.add(new Azione("Mala tempora",rosso,"Fotofinish","=0",'E'));
-			Mazzo.add(new Azione("XIII",rosso,"Traguardo","=0",'F'));
-			Mazzo.add(new Azione("Feliz Infernalis",rosso,"Primo","=0",'G'));
+			Mazzo.add(new Azione("Globus Obscurus",rosso,"Partenza","=0",'A',7));
+			Mazzo.add(new Azione("Aqua Putrida",rosso,"Partenza","-1",'B',8));
+			Mazzo.add(new Azione("Serum Maleficum",rosso,"Sprint","=0",'C',9));
+			Mazzo.add(new Azione("Venenum Veneficum",rosso,"Sprint","-1",'D',10));
+			Mazzo.add(new Azione("Mala Tempora",rosso,"Fotofinish","=0",'E',11));
+			Mazzo.add(new Azione("XIII",rosso,"Traguardo","=0",'F',12));
+			Mazzo.add(new Azione("Felix Infernalis",rosso,"Primo","=0",'G',13));
 	
-			Mazzo.add(new Azione("Alfio Allibratore",grigio,"Quotazione","+2",'W'));
-			Mazzo.add(new Azione("Fritz Finden",grigio,"Azione","Rimuovi_negative",'X'));
-			Mazzo.add(new Azione("Steven Sting",grigio,"Quotazione","-2",'Y'));
-			Mazzo.add(new Azione("Rochelle Recherche",grigio,"Azione","Rimuovi_positive",'Z'));
+			Mazzo.add(new Azione("Alfio Allibratore",grigio,"Quotazione","+2",'W',14));
+			Mazzo.add(new Azione("Friz Finden",grigio,"Azione","Rimuovi_negative",'X',15));
+			Mazzo.add(new Azione("Steven Sting",grigio,"Quotazione","-2",'Y',16));
+			Mazzo.add(new Azione("Rochelle Recherche",grigio,"Azione","Rimuovi_positive",'Z',17));
 		}
 		else if (nome.equals("MazzoPersonaggio")){
 			Mazzo.add(new Personaggio("Cranio Mercanti", 3400, "2"));

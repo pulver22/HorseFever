@@ -9,6 +9,7 @@ public class Azione extends Carta implements Serializable{
 	private String tipoEffetto;
 	private String valoreEffetto;
 	private char lettera;
+	private int indice;
 
 	/**
 	 * Crea una nuova cartazione con i parametri passati dal mazzo
@@ -18,12 +19,13 @@ public class Azione extends Carta implements Serializable{
 	 * @param valoreEffetto
 	 * @param lettera
 	 */
-	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto, char lettera){
+	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto, char lettera,int indice){
 		this.nome = nome;
 		this.colore = colore;
 		this.tipoEffetto = tipoeEffetto;
 		this.valoreEffetto = valoreEffetto;
 		this.lettera=lettera;
+		this.indice=indice;
 	}
 	
 	//Metodi Getter e Setter
@@ -46,6 +48,10 @@ public class Azione extends Carta implements Serializable{
 
 	public char getLettera() {
 		return lettera;
+	}
+	
+	public int getIndice() {
+		return indice;
 	}
 
 	

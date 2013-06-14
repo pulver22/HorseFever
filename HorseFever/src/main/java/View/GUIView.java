@@ -43,6 +43,9 @@ public class GUIView implements View{
 	private JFrame frame=new JFrame("Horse Fever");
 	private final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 	
+	//Immagini Carte Azione
+	private ImageIcon[] carteAzione=new ImageIcon[23];
+	
 	public GUIView(){
 		
 		board=new Board();
@@ -52,7 +55,26 @@ public class GUIView implements View{
 		frame.setSize(1200,700);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		carteAzione[0]=new ImageIcon(getClass().getResource("carteAzione/Magna Velocitas.png"));
+		carteAzione[1]=new ImageIcon(getClass().getResource("carteAzione/Fortuna Benevola.png"));
+		carteAzione[2]=new ImageIcon(getClass().getResource("carteAzione/Flagellum Fulguris.png"));
+		carteAzione[3]=new ImageIcon(getClass().getResource("carteAzione/Herba Magica.png"));
+		carteAzione[4]=new ImageIcon(getClass().getResource("carteAzione/In Igni Veritas.png"));
+		carteAzione[5]=new ImageIcon(getClass().getResource("carteAzione/Fustis et Radix.png"));
+		carteAzione[6]=new ImageIcon(getClass().getResource("carteAzione/Vigor Ferreum.png"));
 		
+		carteAzione[7]=new ImageIcon(getClass().getResource("carteAzione/Globus Obscurus.png"));
+		carteAzione[8]=new ImageIcon(getClass().getResource("carteAzione/Aqua Putrida.png"));
+		carteAzione[9]=new ImageIcon(getClass().getResource("carteAzione/Serum Maleficum.png"));
+		carteAzione[10]=new ImageIcon(getClass().getResource("carteAzione/Venenum Veneficum.png"));
+		carteAzione[11]=new ImageIcon(getClass().getResource("carteAzione/Mala Tempora.png"));
+		carteAzione[12]=new ImageIcon(getClass().getResource("carteAzione/XIII.png"));
+		carteAzione[13]=new ImageIcon(getClass().getResource("carteAzione/Felix Infernalis.png"));
+		
+		carteAzione[14]=new ImageIcon(getClass().getResource("carteAzione/Alfio Allibratore.png"));
+		carteAzione[15]=new ImageIcon(getClass().getResource("carteAzione/Friz Finden.png"));
+		carteAzione[16]=new ImageIcon(getClass().getResource("carteAzione/Steven Sting.png"));
+		carteAzione[17]=new ImageIcon(getClass().getResource("carteAzione/Rochelle Recherche.png"));
 	}
 	
 	private static Object lock2 = new Object();
