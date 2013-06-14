@@ -18,10 +18,10 @@ public class TestCavalloSprint {
 	@Before
 	public void setup(){
 		cavallo1=new Cavallo("Nero");
-		azione1=new Azione("Flagellum Fulguris","Verde","Sprint","+1",'C');
-		azione2=new Azione("Herba Magica","Verde","Sprint","=2",'D');
-		azione3=new Azione("Serum Maleficum","Rosso","Sprint","=0",'C');
-		azione4=new Azione("Venenum Veneficum","Rosso","Sprint","-1",'D');
+		azione1=new Azione("Flagellum Fulguris","Verde","Sprint","+1",'C',1);
+		azione2=new Azione("Herba Magica","Verde","Sprint","=2",'D',2);
+		azione3=new Azione("Serum Maleficum","Rosso","Sprint","=0",'C',3);
+		azione4=new Azione("Venenum Veneficum","Rosso","Sprint","-1",'D',4);
 	}
 	
 	@Test

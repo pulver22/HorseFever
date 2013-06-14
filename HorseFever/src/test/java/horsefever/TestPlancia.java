@@ -35,11 +35,11 @@ public class TestPlancia {
 		partita = new Partita(2,adapter);
 		lavagna=new Lavagna(partita);
 		plancia=new Plancia(lavagna,partita);
-		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A');
-		azione2=new Azione("Globulus Obscurus","Rosso","Partenza","=0",'A');
-		azione3=new Azione("Fortuna Malevola","Verde","Partenza","+1",'B');
-		rpos=new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z');
-		rneg=new Azione("Fritz Finden","Grigio","Azione","Rimuovi_negative",'X');
+		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A',1);
+		azione2=new Azione("Globulus Obscurus","Rosso","Partenza","=0",'A',2);
+		azione3=new Azione("Fortuna Malevola","Verde","Partenza","+1",'B',3);
+		rpos=new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z',4);
+		rneg=new Azione("Fritz Finden","Grigio","Azione","Rimuovi_negative",'X',5);
 		personaggio = new Personaggio("Cranio Mercanti", 3400, "2");
 		giocatore = new Giocatore(personaggio, "Nero",partita);
 		nome=giocatore.getNome();
