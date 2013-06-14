@@ -15,8 +15,8 @@ public class AdapterClientHandler{
 	private ObjectInputStream in=null;
 	
 	/**
-	 * Associa un determinato socket a questo client
-	 * @param s
+	 * Costruttore dell'handler
+	 * @param Il socket relativo al client che deve gestire l'handler
 	 */
 	public AdapterClientHandler(Socket s){
 		this.clientSocket=s;
