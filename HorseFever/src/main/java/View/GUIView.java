@@ -390,7 +390,6 @@ public class GUIView implements View{
                     	} catch (InterruptedException e) {
                         	e.printStackTrace();
                     	}
-                	System.out.println("Working now");
             	}
         	}
     	};
