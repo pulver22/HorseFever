@@ -54,8 +54,11 @@ public class GUIView implements View{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
+	
+	private static Object lock2 = new Object();
 	@Override
 	public String[] chiediScommessa() {
+		/*
 		boolean buonfine= false;
 		String[] scommessa = new String[3];
 		
@@ -108,67 +111,120 @@ public class GUIView implements View{
 				buonfine = false;
 			}
 		}
-		
-		/* RICHIEDE GESTIONE THREAD
-		 * 
-		final JFrame frame = new JFrame("Make your Choice!!");
-		
-		JButton invioScommessa = new JButton("Conferma");
-
-		JLabel importo = new JLabel("Inserisci Importo");
-		JTextField sceltaImporto = new JTextField();
-		JLabel corsia = new JLabel("Scegli la corsia : ");
-		
-		JLabel tipo = new JLabel("Scegli se piazzato o vincente : ");
-		JComboBox tipoScommessa = new JComboBox();
-		tipoScommessa.addItem("Piazzato");
-		tipoScommessa.addItem("Vincente");
-		tipoScommessa.setEditable(true);
-				
-		scommessa[2] =  (String) tipoScommessa.getSelectedItem();
-		
-		
-		invioScommessa.addActionListener(new ActionListener(){
-			
-			public void actionPerformed(ActionEvent ae){
-				//visualizzare messaggio conferma invio e chiudere tutto
-				//JOptionPane.showMessageDialog(null,"Hai scommesso " +scommessa[0] +" denari, su  " +scommessa[1] +", come " +scommessa[2]);
-				//vista.scommetti(scommessa);
-				frame.dispose();
-			}
-		});
-		
-		
-		
-			
-		
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(3,2));
-		
-		
-		JPanel panel_conferma = new JPanel();
-		panel_conferma.setLayout(new FlowLayout());
-		
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE) ;
-		frame.add(panel, BorderLayout.NORTH);
-		frame.add(panel_conferma, BorderLayout.SOUTH);
-		
-		panel.add(importo);
-		panel.add(sceltaImporto);
-		panel.add(corsia);
-		panel.add(corsieDisponibili);
-		panel.add(tipo);
-		panel.add(tipoScommessa);
-		
-		panel_conferma.add(invioScommessa);
-		
-		
-		frame.pack();
-		frame.setVisible(true);
-		frame.setResizable(false);
-		frame.setLocationRelativeTo(null);
-		scommessa[2] =  (String) tipoScommessa.getSelectedItem();
 		*/
+		/* RICHIEDE GESTIONE THREAD*/
+		boolean buonfine= false;
+		String[] scommessa = new String[3];
+		
+		while (!buonfine){
+			final JFrame frame = new JFrame("Make your Choice!!");
+
+			JButton invioScommessa = new JButton("Conferma");
+
+			JLabel importo = new JLabel("Inserisci Importo");
+			JTextField sceltaImporto = new JTextField();
+
+			JLabel corsia = new JLabel("Scegli la corsia : ");
+			JComboBox corsieDisponibili = new JComboBox();
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[0]));
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[1]));
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[2]));
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[3]));
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[4]));
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[5]));
+
+			String[] genereScommessa={"Piazzato","Vincente"};
+			JLabel tipo = new JLabel("Scegli se piazzato o vincente : ");
+			JComboBox tipoScommessa = new JComboBox();
+			tipoScommessa.addItem(String.valueOf(genereScommessa[0]));
+			tipoScommessa.addItem(String.valueOf(genereScommessa[1]));
+			//tipoScommessa.setEditable(false);
+
+
+			invioScommessa.addActionListener(new ActionListener(){
+
+				public void actionPerformed(ActionEvent ae){
+					synchronized(lock2){
+						lock2.notify();
+						//visualizzare messaggio conferma invio e chiudere tutto
+						//JOptionPane.showMessageDialog(null,"Hai scommesso " +scommessa[0] +" denari, su  " +scommessa[1] +", come " +scommessa[2]);
+						//vista.scommetti(scommessa);
+						frame.dispose();
+					}
+				}
+			});
+
+
+
+			JPanel panel = new JPanel();
+			panel.setLayout(new GridLayout(3,2));
+
+
+			JPanel panel_conferma = new JPanel();
+			panel_conferma.setLayout(new FlowLayout());
+
+			frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE) ;
+			frame.add(panel, BorderLayout.NORTH);
+			frame.add(panel_conferma, BorderLayout.SOUTH);
+
+			panel.add(importo);
+			panel.add(sceltaImporto);
+			panel.add(corsia);
+			panel.add(corsieDisponibili);
+			panel.add(tipo);
+			panel.add(tipoScommessa);
+
+			panel_conferma.add(invioScommessa);
+
+
+			frame.pack();
+			frame.setVisible(true);
+			frame.setResizable(false);
+			frame.setLocationRelativeTo(null);
+			Thread t = new Thread() {
+				public void run() {
+					synchronized(lock2) {
+						while (frame.isVisible())
+							try {
+								lock2.wait();
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+					}
+				}
+			};
+			t.start();
+			try {
+				t.join();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			scommessa[0] = (String) sceltaImporto.getText();
+			scommessa[1] = (String) corsieDisponibili.getSelectedItem();
+			if (scommessa[1].equals(sceltaCorsia[0])){
+				scommessa[1]="1";
+			} else if (scommessa[1].equals(sceltaCorsia[1])){
+				scommessa[1]="2";
+			} else if (scommessa[1].equals(sceltaCorsia[2])){
+				scommessa[1]="3";
+			} else if (scommessa[1].equals(sceltaCorsia[3])){
+				scommessa[1]="4";
+			} else if (scommessa[1].equals(sceltaCorsia[4])){
+				scommessa[1]="5";
+			} else if (scommessa[1].equals(sceltaCorsia[5])){
+				scommessa[1]="6";
+			}
+			scommessa[2] =  (String) tipoScommessa.getSelectedItem();
+			buonfine=true;
+			try{
+				Integer.parseInt((String)sceltaImporto.getText());
+			} catch (NumberFormatException e){
+				JOptionPane.showMessageDialog(null,"Hai inserito dei valori non validi. Riprova.");
+				buonfine=false;
+			}
+		}
+		//*/
 		return scommessa;
 			
 	}
@@ -198,7 +254,7 @@ public class GUIView implements View{
 	private static Object lock = new Object();
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
-		
+		/*
 		String[] scelta = new String[3];
 		String[] carte = new String[2];
 		boolean buonfine = false;
@@ -259,8 +315,8 @@ public class GUIView implements View{
 				buonfine = false;
 			}
 		}
-		
-		/* RICHIEDE GESTIONE THREAD
+		*/
+		/* RICHIEDE GESTIONE THREAD*/
 		
 		String[] scelta = new String[2];
 		JPanel panelCarta = new JPanel();
@@ -300,8 +356,11 @@ public class GUIView implements View{
 		conferma.addActionListener(new ActionListener(){
 				@Override	
 				public void actionPerformed(ActionEvent arg0) {
+				synchronized(lock){
+				lock.notify();
 				//JOptionPane.showMessageDialog(null,"Hai fatto la tua scommessa!");
 				frame.dispose();
+				}
 				
 				}
 			
@@ -336,7 +395,7 @@ public class GUIView implements View{
         	}
     	};
     	t.start();
-    	
+    	/*
 		frame.addWindowListener(new WindowAdapter() {
 
         	@Override
@@ -347,7 +406,7 @@ public class GUIView implements View{
             	}
         	}
 
-    	});
+    	});*/
 
     	try {
 			t.join();
@@ -365,7 +424,7 @@ public class GUIView implements View{
 		}
 		
 		scelta[1] = sceltaCorsia.getSelectedItem().toString();
-		*/
+		
 		return scelta;
 	}
 
