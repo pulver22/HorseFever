@@ -44,4 +44,40 @@ public class TestLavagna {
 		assertEquals(5,Integer.parseInt(quotazioni[4][1]));
 		assertEquals(6,Integer.parseInt(quotazioni[5][1]));
 	}
+	
+	@Test
+	public void casoTestGetScuderiaInit(){
+		lavagna.setDebug(true);
+		assertEquals("Nero",lavagna.getScuderiaInit("2"));
+		assertEquals("Blu",lavagna.getScuderiaInit("3"));
+		assertEquals("Verde",lavagna.getScuderiaInit("4"));
+		assertEquals("Rosso",lavagna.getScuderiaInit("5"));
+		assertEquals("Giallo",lavagna.getScuderiaInit("6"));
+		assertEquals("Bianco",lavagna.getScuderiaInit("7"));
+	}
+	
+	@Test
+	public void casoTestGetQuotazioneDaColoreIniziale(){
+		lavagna.setDebug(true);
+		assertEquals(2,lavagna.getQuotazioneDaColoreIniziale("Nero"));
+		assertEquals(3,lavagna.getQuotazioneDaColoreIniziale("Blu"));
+		assertEquals(4,lavagna.getQuotazioneDaColoreIniziale("Verde"));
+		assertEquals(5,lavagna.getQuotazioneDaColoreIniziale("Rosso"));
+		assertEquals(6,lavagna.getQuotazioneDaColoreIniziale("Giallo"));
+		assertEquals(7,lavagna.getQuotazioneDaColoreIniziale("Bianco"));
+	}
+	
+	@Test
+	public void casoTestSetQuotazioneAlCavallo(){
+		lavagna.setDebug(true);
+		lavagna.setQuotazioneAlCavallo("Blu","+2");
+		lavagna.setQuotazioneAlCavallo("Giallo","-2");
+		lavagna.setQuotazioneAlCavallo("Verde","+2");
+		lavagna.setQuotazioneAlCavallo("Rosso","-2");
+		String[][] quot=lavagna.getQuotazioni();
+		assertEquals("2",quot[1][1]);
+		assertEquals("7",quot[4][1]);
+		assertEquals("2",quot[2][1]);
+		assertEquals("7",quot[3][1]);
+	}
 }
