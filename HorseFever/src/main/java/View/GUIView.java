@@ -16,6 +16,7 @@ import java.util.Arrays;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -40,6 +41,7 @@ public class GUIView implements View{
 	private boolean first=true;
 	private JFrame frame=new JFrame("Horse Fever");
 	private final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
+	private final String colorePannelli="#c38335";
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[23];
@@ -120,10 +122,12 @@ public class GUIView implements View{
 
 			JPanel panel = new JPanel();
 			panel.setLayout(new GridLayout(3,2));
+			panel.setBackground(Color.decode(colorePannelli));
 
 
 			JPanel panel_conferma = new JPanel();
 			panel_conferma.setLayout(new FlowLayout());
+			panel_conferma.setBackground(Color.decode(colorePannelli));
 
 			frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE) ;
 			frame.add(panel, BorderLayout.NORTH);
@@ -200,6 +204,7 @@ public class GUIView implements View{
 		
 		JOptionPane panel = new JOptionPane("Vuoi effettuare una seconda scommessa? ");
 		panel.setOptions(new String[]  {"Si", "No"});
+		panel.setBackground(Color.decode(colorePannelli));
 		JFrame frame = new JFrame();
 		frame.setLocationRelativeTo(null);
 		JDialog dialog = panel.createDialog(frame, "Seconda scommessa");
@@ -219,11 +224,14 @@ public class GUIView implements View{
 		
 		String[] scelta = new String[2];
 		JPanel panelCarta = new JPanel();
+		panelCarta.setBackground(Color.decode(colorePannelli));
 		panelCarta.setLayout(new FlowLayout());
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.decode(colorePannelli));
 		final JFrame frame = new JFrame();
 		frame.setLayout(new BorderLayout());
 		JPanel panelConferma = new JPanel();
+		panelConferma.setBackground(Color.decode(colorePannelli));
 		JLabel label = new JLabel("Quale carta vuoi giocare?");
 		JLabel label2 = new JLabel("Su quale corsia la vuoi giocare?");
 		JButton conferma = new JButton("Conferma");
@@ -497,7 +505,11 @@ public class GUIView implements View{
     
 	@Override
 	public void stampaMessaggio(String messaggio) {
+		UIManager UI=new UIManager();
+		UI.put("OptionPane.background",Color.decode(colorePannelli));
+		UI.put("Panel.background",Color.decode(colorePannelli));
 		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+		
 		
 	}
 
@@ -576,6 +588,11 @@ public class GUIView implements View{
 	@Override
 	public void prosegui(String messaggio) {
 		
+		UIManager UI=new UIManager();
+		UI.put("OptionPane.background",Color.decode(colorePannelli));
+		UI.put("Panel.background",Color.decode(colorePannelli));
+	
+		
 		if(messaggio.equals("E' terminata la fase di corsa.")){
 		
 		    try {
@@ -587,6 +604,8 @@ public class GUIView implements View{
 			}
 			
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", 1);
+			
+			 
 			first=true;
 			
 		}

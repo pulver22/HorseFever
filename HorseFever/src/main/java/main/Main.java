@@ -1,6 +1,9 @@
 package main;
 
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import horsefever.*;
 import View.*;
@@ -15,6 +18,10 @@ public class Main {
 	 * */
 	public static void main(String[] args){
 	
+		String colorePannelli="#c38335";
+		UIManager UI=new UIManager();
+		UI.put("OptionPane.background",Color.decode(colorePannelli));
+		UI.put("Panel.background",Color.decode(colorePannelli));
 		//Scelta numero giocatori
 		int numGiocatori;
 		String sceltaGiocatori;
