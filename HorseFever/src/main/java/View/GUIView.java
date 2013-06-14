@@ -78,61 +78,7 @@ public class GUIView implements View{
 	private static Object lock2 = new Object();
 	@Override
 	public String[] chiediScommessa() {
-		/*
-		boolean buonfine= false;
-		String[] scommessa = new String[3];
 		
-		while(!buonfine){
-			try{
-				scommessa[0] = (String) JOptionPane.showInputDialog( null, "Inserisci l'importo che vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE);
-				if(scommessa[0].equals("")){
-					scommessa[0]="0";
-				}
-				buonfine = true;
-			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
-				buonfine = false;
-			}
-		}
-		buonfine = false;
-		
-		while(!buonfine){
-			try{
-				scommessa[1] = (String)JOptionPane.showInputDialog(null, "Inserisci la corsia su cui vuoi scommettere:","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-				if (scommessa[1].equals(sceltaCorsia[0])){
-					scommessa[1]="1";
-				} else if (scommessa[1].equals(sceltaCorsia[1])){
-					scommessa[1]="2";
-				} else if (scommessa[1].equals(sceltaCorsia[2])){
-					scommessa[1]="3";
-				} else if (scommessa[1].equals(sceltaCorsia[3])){
-					scommessa[1]="4";
-				} else if (scommessa[1].equals(sceltaCorsia[4])){
-					scommessa[1]="5";
-				} else if (scommessa[1].equals(sceltaCorsia[5])){
-					scommessa[1]="6";
-				}
-				buonfine = true;
-			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
-				buonfine = false;
-			}
-		}
-		buonfine = false;
-		
-		while(!buonfine){
-			try{
-				String[] sceltaScommessa = {"Vincente","Piazzato"};
-				scommessa[2] = (String) JOptionPane.showInputDialog(null, "Scegli che tipo di scommessa vuoi fare","Make your Choice!", JOptionPane.PLAIN_MESSAGE,null, sceltaScommessa, sceltaScommessa);
-				scommessa[2] = ""+scommessa[2].charAt(0);
-				buonfine = true;
-			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,non puoi annullare la scommessa!!");
-				buonfine = false;
-			}
-		}
-		*/
-		/* RICHIEDE GESTIONE THREAD*/
 		boolean buonfine= false;
 		String[] scommessa = new String[3];
 		
@@ -158,17 +104,13 @@ public class GUIView implements View{
 			JComboBox tipoScommessa = new JComboBox();
 			tipoScommessa.addItem(String.valueOf(genereScommessa[0]));
 			tipoScommessa.addItem(String.valueOf(genereScommessa[1]));
-			//tipoScommessa.setEditable(false);
 
 
 			invioScommessa.addActionListener(new ActionListener(){
 
 				public void actionPerformed(ActionEvent ae){
 					synchronized(lock2){
-						lock2.notify();
-						//visualizzare messaggio conferma invio e chiudere tutto
-						//JOptionPane.showMessageDialog(null,"Hai scommesso " +scommessa[0] +" denari, su  " +scommessa[1] +", come " +scommessa[2]);
-						//vista.scommetti(scommessa);
+						lock2.notifyAll();
 						frame.dispose();
 					}
 				}
@@ -244,7 +186,7 @@ public class GUIView implements View{
 				buonfine=false;
 			}
 		}
-		//*/
+
 		return scommessa;
 			
 	}
@@ -274,69 +216,6 @@ public class GUIView implements View{
 	private static Object lock = new Object();
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
-		/*
-		String[] scelta = new String[3];
-		String[] carte = new String[2];
-		boolean buonfine = false;
-		
-		while(!buonfine){
-			try{
-				for(int i=0; i<carteAzione.size(); i++){
-					carte[i] = carteAzione.get(i).getNome() + " " + carteAzione.get(i).getColore() + " " +
-							carteAzione.get(i).getTipoEffetto() + " " +carteAzione.get(i).getValoreEffetto();
-				}
-
-
-				if(carteAzione.size()==2){
-
-					scelta[0] = (String) JOptionPane.showInputDialog(null, "Seleziona la carta azione che vuoi giocare:","Trucca la gara", JOptionPane.PLAIN_MESSAGE, null, carte, carte);
-				}
-				else{
-
-					JOptionPane.showMessageDialog(null, "Carta azione rimasta: \n"+carte[0],"Attenzione", 1);
-					scelta[0] = carte[0];
-
-				}
-
-				for(int i=0; i<carteAzione.size(); i++){
-
-					if(scelta[0].equals(carte[i])){
-
-						scelta[0]=""+(i+1);
-					}
-				}
-				buonfine = true;
-			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,non puoi evitare di truccare la corsa!!\nIl gioco pulito non piace a nessuno!");
-				buonfine = false;
-			}
-		}
-		
-		buonfine = false;
-		while(!buonfine){
-			try{		
-				scelta[1] = (String) JOptionPane.showInputDialog(null, "Seleziona la corsia su cui vuoi giocare la carta azione:","Trucca la gara", JOptionPane.PLAIN_MESSAGE,null, sceltaCorsia, sceltaCorsia);
-				if (scelta[1].equals(sceltaCorsia[0])){
-					scelta[1]="1";
-				} else if (scelta[1].equals(sceltaCorsia[1])){
-					scelta[1]="2";
-				} else if (scelta[1].equals(sceltaCorsia[2])){
-					scelta[1]="3";
-				} else if (scelta[1].equals(sceltaCorsia[3])){
-					scelta[1]="4";
-				} else if (scelta[1].equals(sceltaCorsia[4])){
-					scelta[1]="5";
-				} else if (scelta[1].equals(sceltaCorsia[5])){
-					scelta[1]="6";
-				}
-				buonfine = true;
-			}catch(NullPointerException e){
-				JOptionPane.showMessageDialog(board, "Attento,non puoi evitare di truccare la corsa!!\nIl gioco pulito non piace a nessuno!");
-				buonfine = false;
-			}
-		}
-		*/
-		/* RICHIEDE GESTIONE THREAD*/
 		
 		String[] scelta = new String[2];
 		JPanel panelCarta = new JPanel();
@@ -374,8 +253,7 @@ public class GUIView implements View{
 				@Override	
 				public void actionPerformed(ActionEvent arg0) {
 				synchronized(lock){
-				lock.notify();
-				//JOptionPane.showMessageDialog(null,"Hai fatto la tua scommessa!");
+				lock.notifyAll();
 				frame.dispose();
 				}
 				
@@ -388,16 +266,13 @@ public class GUIView implements View{
 		panel.add(sceltaCarta);
 		panelConferma.add(conferma);
 		
-		
-		
-		//System.out.print(scelta[0]);
 		panel.add(label2);
 		panel.add(sceltaCorsia);
 		
 		frame.setVisible(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		//////////////////////////
+
 		Thread t = new Thread() {
         	public void run() {
             	synchronized(lock) {
@@ -411,18 +286,7 @@ public class GUIView implements View{
         	}
     	};
     	t.start();
-    	/*
-		frame.addWindowListener(new WindowAdapter() {
 
-        	@Override
-        	public void windowClosing(WindowEvent arg0) {
-            	synchronized (lock) {
-                	frame.setVisible(false);
-                	lock.notify();
-            	}
-        	}
-
-    	});*/
 
     	try {
 			t.join();
@@ -430,7 +294,7 @@ public class GUIView implements View{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	////////////////////////
+
     	int indiceCarta=0;
 		for(int i=0;i<carteAzione.size();i++){
 				if(sceltaCarta.getSelectedItem().equals(carteAzione.get(i).getNome())){ 

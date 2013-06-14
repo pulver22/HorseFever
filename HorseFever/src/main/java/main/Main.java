@@ -9,7 +9,10 @@ import adapter.*;
 
 
 public class Main {
-
+	/**
+	 * Il main effettivo che lancia l'intero gioco
+	 * @author Niccolo
+	 * */
 	public static void main(String[] args){
 	
 		//Scelta numero giocatori
