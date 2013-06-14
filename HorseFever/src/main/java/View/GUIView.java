@@ -433,14 +433,17 @@ public class GUIView implements View{
 			e.printStackTrace();
 		}
     	////////////////////////
+    	int indiceCarta=0;
 		for(int i=0;i<carteAzione.size();i++){
-			if(sceltaCarta.getSelectedItem().toString() != ""){
-				if(sceltaCarta.getSelectedItem().toString().equals(carteAzione.get(i).getNome())) 
-					scelta[0] = "1";
-				else scelta[0] = "2";
-			}
+				if(sceltaCarta.getSelectedItem().equals(carteAzione.get(i).getNome())){ 
+					indiceCarta=i+1;
+				}
 		}
-		
+		if (indiceCarta==1) {
+			scelta[0] = "1";
+		}else {
+			scelta[0]="2";
+		}
 		scelta[1] = sceltaCorsia.getSelectedItem().toString();
 		
 		return scelta;
