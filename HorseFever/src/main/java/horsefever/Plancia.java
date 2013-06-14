@@ -2,7 +2,6 @@ package horsefever;
 
 import java.util.ArrayList;
 
-import eventi.HorseFeverEvent;
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
 import eventi.eventoEffettoAvvenuto;
@@ -19,6 +18,7 @@ public class Plancia {
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
 	private Partita partita;
+	private boolean debug=false;
 	
 	/**
 	 * Crea la plancia di gioco associandole lavagna e partita,corsie delle carte azioni,cavalli e quotazioni
@@ -218,9 +218,24 @@ public class Plancia {
 	 * */
 	public void muovi(){
 		
-		int[] dadiSprint=sprint();
+		int[] dadiSprint;
 		
-		Movimento m=(Movimento)partita.getMazzoMovimento().pesca();
+		if (debug){ //In caso di gioco in condizioni di Debug o Testing
+			dadiSprint=new int[6];
+			for (int i=0;i<6;i++){
+				dadiSprint[i]=0;
+			}
+		} else{ //In caso di gioco normale
+			dadiSprint=sprint();
+		}
+		
+		Movimento m;
+		if (debug){ //Carta movimento in caso di Debug o Testing
+			m=new Movimento(4,3,2,1,1,1,"0");
+		}else{ // Carta movimento in caso di partita ordinaria
+			m=(Movimento)partita.getMazzoMovimento().pesca();
+		}
+
 		int[] valoriMov=m.getArrayMovimenti();
 		String immagineMov=m.getNomefile();
 		
@@ -646,6 +661,10 @@ public class Plancia {
 	
 	public ArrayList<Cavallo> getCavalliArrivati(){
 		return cavalliArrivati;
+	}
+	
+	public void setDebug(boolean debug){
+		this.debug=debug;
 	}
 	
 }

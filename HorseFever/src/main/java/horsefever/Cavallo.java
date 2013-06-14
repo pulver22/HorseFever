@@ -201,6 +201,10 @@ public class Cavallo {
 		this.effettoPartenza = String.valueOf(effettoPartenza);
 	}
 
+	public String getEffettoSprint(){
+		return effettoSprint;
+	}
+	
 	public void setEffettoSprint(String effettoSprint) {
 		this.effettoSprint = String.valueOf(effettoSprint);
 	}

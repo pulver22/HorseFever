@@ -20,6 +20,7 @@ public class TestPlancia {
 	Azione azione1;
 	Azione azione2;
 	Azione azione3;
+	Azione sprintC;
 	Azione rpos;
 	Azione rneg;
 	Giocatore giocatore;
@@ -38,6 +39,7 @@ public class TestPlancia {
 		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A',1);
 		azione2=new Azione("Globulus Obscurus","Rosso","Partenza","=0",'A',2);
 		azione3=new Azione("Fortuna Malevola","Verde","Partenza","+1",'B',3);
+		sprintC=new Azione("Flagellum Fulguris","Verde","Sprint","+1",'C',2);
 		rpos=new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z',4);
 		rneg=new Azione("Fritz Finden","Grigio","Azione","Rimuovi_negative",'X',5);
 		personaggio = new Personaggio("Cranio Mercanti", 3400, "2");
@@ -105,9 +107,22 @@ public class TestPlancia {
 	public void casoTestAssegnaEffettiCavallo(){
 		plancia.truccaCorsia(azione1, 1, nome);
 		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(sprintC, 1, nome);
 		plancia.assegnaEffettiAlCavallo(plancia.getAzioniSuCorsia(1), plancia.getCavalloAt(1),0);
 		assertEquals("=4",plancia.getCavalloAt(1).getEffettoPartenza());
 		assertEquals("+1",plancia.getCavalloAt(1).getEffettoPartenza2());
+		assertEquals("+1",plancia.getCavalloAt(1).getEffettoSprint());
+	}
+	
+	@Test
+	public void casoTestApplicaAzioni(){
+		plancia.truccaCorsia(azione1, 1, nome);
+		plancia.truccaCorsia(azione3, 1, nome);
+		plancia.truccaCorsia(azione2, 1, nome);
+		plancia.truccaCorsia(rneg, 1, nome);
+		plancia.truccaCorsia(rpos, 1, nome);
+		plancia.applicaAzioni();
+		assertEquals(0,plancia.getAzioniSuCorsia(1).size());
 	}
 	
 	@Test
@@ -281,5 +296,49 @@ public class TestPlancia {
 		assertEquals(1,ultimi[3]);
 		assertEquals(0,ultimi[4]);
 		assertEquals(1,ultimi[5]);
+	}
+	
+	@Test
+	public void casoTestMuovi(){
+		int[] pos={9,9,9,9,9,9};
+		plancia.setPosizioniCavalli(pos);
+		//Nero
+		plancia.getCavalloAt(0).setQuotazione(2);
+		//Blu
+		plancia.getCavalloAt(1).setQuotazione(3);
+		//Verde
+		plancia.getCavalloAt(2).setQuotazione(4);
+
+		//Rosso
+		plancia.getCavalloAt(3).setQuotazione(5);
+		//Giallo
+		plancia.getCavalloAt(4).setQuotazione(6);
+		//Bianco
+		plancia.getCavalloAt(5).setQuotazione(7);
+
+		lavagna.setDebug(true);
+		plancia.setDebug(true);
+		while(!plancia.tuttiArrivati()){
+			plancia.muovi();
+		}
+		String[] arrivi=plancia.getColoriArrivi();
+		assertEquals("Nero",arrivi[0]);
+		assertEquals("Blu",arrivi[1]);
+		assertEquals("Verde",arrivi[2]);
+		assertEquals("Bianco",arrivi[3]);
+		assertEquals("Giallo",arrivi[4]);
+		assertEquals("Rosso",arrivi[5]);
+	}
+	
+	@Test
+	public void casoTestReset(){
+		plancia.reset();
+		int[] pos=plancia.getPosizioniCavalli();
+		for (int i=0;i<6;i++){
+			assertEquals(0,pos[i]);
+			assertEquals(0, plancia.getAzioniSuCorsia(i).size());
+		}
+		assertEquals(0, plancia.getCavalliArrivati().size());
+		
 	}
 }

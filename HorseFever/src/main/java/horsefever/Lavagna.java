@@ -10,6 +10,7 @@ public class Lavagna {
 	private Partita partita;
 	private Plancia plancia;
 	private String[] colori={"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
+	private boolean debug=false;
 	
 	/**
 	 * Il costruttore di Lavagna. Inizializza la prima colonna di quotazioni alle Stringhe dei colori corrispondenti alle scuderie
@@ -25,23 +26,33 @@ public class Lavagna {
 	 * */
 	public Lavagna(Partita p){
 		this.partita=p;
-		quotazioni = new String[6][2];
+		inizializzaQuot();
+	}
+
+	/**
+	 * Inizializza TabellaQuotazioni con valori iniziali casuali (o fissi se in caso di debug)
+	 * */
+	public void inizializzaQuot(){
 		int temp;
-		
+		quotazioni=new String[6][2];
 		ArrayList<Integer> init = new ArrayList<Integer>(6);
 		for (int i=2; i<8;i++){
 			init.add(i);
 		}
 		for (int j=0; j<6; j++){
-			temp=(int) (Math.random()*init.size());
-			quotazioni[j][1]=init.get(temp).toString();
+			if (debug){//Quotazioni iniziali in caso di Debug o Test
+				quotazioni[j][1]=Integer.toString(j+2);
+			}else{ //Quotazioni iniziali in caso di partita ordinaria
+				temp=(int) (Math.random()*init.size());
+				quotazioni[j][1]=init.get(temp).toString();
+				init.remove(temp);
+			}
 			quotazioni[j][0]=String.valueOf(colori[j]);
-			init.remove(temp);
 		}
-		
+
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
-
+	
 	/**
 	 * Ricalcola le quotazioni delle relative scuderie, in base all'ordine d'arrivo dei corrispondenti cavalli
 	 * @param Ordine d'arrivo dei cavalli, contraddistinti dal colore che li rappresenta
@@ -168,5 +179,11 @@ public class Lavagna {
 		this.plancia = plancia;
 	}
 	
-	
+	/**
+	 * Setta lo stato di Debug. In tale caso ricalcola anche quotazioni iniziali convenzionali
+	 * */
+	public void setDebug(boolean debug){
+		this.debug=debug;
+		inizializzaQuot();
+	}
 }
