@@ -82,7 +82,8 @@ public class AdapterReteClient implements Adapter{
             		}
             		if (mess[0].equals("chiediTrucca")){
             			try {
-            				ArrayList<Azione> carteAzione=(ArrayList<Azione>)in.readObject();
+            				@SuppressWarnings("unchecked")
+							ArrayList<Azione> carteAzione=(ArrayList<Azione>)in.readObject();
             				String[] valori=chiediTrucca(carteAzione,0);
             				if (out==null){
                         		out = new ObjectOutputStream(socket.getOutputStream());

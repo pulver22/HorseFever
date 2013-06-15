@@ -13,6 +13,7 @@ public class Plancia {
 	private boolean[] arrivati = new boolean[NUM_CORSIE];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
 	private Cavallo[] cavalli = new Cavallo[NUM_CORSIE];
+	@SuppressWarnings("unchecked")
 	private ArrayList<Azione>[] corsieTruccate = new ArrayList[NUM_CORSIE];
 	private boolean partenza=true;
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
