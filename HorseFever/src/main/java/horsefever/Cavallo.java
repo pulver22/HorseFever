@@ -14,6 +14,8 @@ public class Cavallo {
 	private String effettoTraguardo=null;
 	private final static int SPRINT=1;
 	private final static int TRAGUARDO=12;
+	private final static int QUOT_MIN=7;
+	private final static int QUOT_MAX=2;
 	
 	/**
 	 * Setta il colore del cavallo
@@ -76,15 +78,18 @@ public class Cavallo {
 	 * */
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
 		
+		int effUltimo=4;
+		int effPrimo=0;
+		
 		if (effettoUltimoPrimo!=null){
 			int incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
-			if (primo && incr==0){
+			if (primo && incr==effPrimo){
 				posizione=posizione+incr;
-			}else if (primo && incr==4){
+			}else if (primo && incr==effUltimo){
 				posizione=posizione+incremento;
-			} else if (ultimo && incr==4){
+			} else if (ultimo && incr==effUltimo){
 				posizione+=incr;
-			} else if (ultimo && incr==0){
+			} else if (ultimo && incr==effPrimo){
 				posizione=posizione+incremento;
 			} else if (!ultimo && !primo){
 				aggiornaPosizione(incremento); //Se non ha effetti primoUltimo, o li ha senza essere
@@ -244,12 +249,13 @@ public class Cavallo {
 	 * @param stringa dell'effetto quotazione letto dalla carta
 	 * */
 	public void setEffettoQuotazione(String effettoQuotazione) {
+		int variazione=Integer.parseInt(""+effettoQuotazione.charAt(1));
 		if (effettoQuotazione.charAt(0)=='+'){
-			quotazione-=2;
-			if (quotazione<=2){ quotazione=2; }
+			quotazione-=variazione;
+			if (quotazione<=QUOT_MAX){ quotazione=QUOT_MAX; }
 		} else {
-			quotazione+=2;
-			if (quotazione>=7){ quotazione=7; }
+			quotazione+=variazione;
+			if (quotazione>=QUOT_MIN){ quotazione=QUOT_MIN; }
 		}
 	}
 	
