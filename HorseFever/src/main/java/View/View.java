@@ -13,13 +13,13 @@ public interface View {
 	/**
 	 * Chiede all'utente su quale corsia vuole scommettere,quanto, e se piazzato o vincente
 	 */
-	public String[] chiediScommessa();
+	String[] chiediScommessa();
 	
 	/**
 	 * Se il giocatore vuole fare una seconda scommessa,viene lanciato il metodo per scommettere.
 	 * Altrimenti setta il paramentro vincente/piazzato a valore nullo (N)
 	 */
-	public String[] chiediSecondaScommessa();
+	String[] chiediSecondaScommessa();
 	
 	/**
 	 * 
@@ -29,23 +29,23 @@ public interface View {
 	 * @param valoreEffetto della carta azione
 	 * @return
 	 */
-	public String[] chiediTrucca(ArrayList<Azione> carteAzione);
+	String[] chiediTrucca(ArrayList<Azione> carteAzione);
 
 	/**
 	 * Stampa a video una stringa generica
 	 * @param messaggio 
 	 */
-	public void stampaMessaggio(String messaggio);
+	void stampaMessaggio(String messaggio);
 	
 	
 	
 	
-	public void prosegui(String messaggio);
+	void prosegui(String messaggio);
 	
 	
 	
 	//chiamati dal model
-	public void notify(HorseFeverEvent e);
+	void notify(HorseFeverEvent e);
 
 
 }
