@@ -6,6 +6,12 @@ import eventi.eventoScommessa;
 
 public class BetManager {
 	
+	private final static int PV_VITT=3;
+	private final static int PV_PIAZZ=1;
+	private final static int PROP_PRIMO=600;
+	private final static int PROP_SECONDO=400;
+	private final static int PROP_TERZO=200;
+	
 	private ArrayList<Scommessa> bManager = new ArrayList<Scommessa>();
 	private eventoScommessa e;
 	private Partita p;
@@ -49,7 +55,7 @@ public class BetManager {
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari + (long) (bManager.get(i).getImporto() * Long.parseLong(quotazioni[corsiaInt][1]));
 			bManager.get(i).getScommettitore().setDenariPaga(nuoviDenari);
-			int nuoviPV = bManager.get(i).getScommettitore().getPV() +3 ;
+			int nuoviPV = bManager.get(i).getScommettitore().getPV() +PV_VITT ;
 			bManager.get(i).getScommettitore().setPVPaga(nuoviPV);
 		}
 		else if( (bManager.get(i)).getTipoScomessa() == 'P' & (corsiaString.equals(ordineArrivoColori[0])
@@ -57,7 +63,7 @@ public class BetManager {
 			long nuoviDenari=bManager.get(i).getScommettitore().getDenari();
 			nuoviDenari = nuoviDenari+(long) (bManager.get(i).getImporto() * 2);
 			bManager.get(i).getScommettitore().setDenariPaga(nuoviDenari);
-			int nuoviPV = bManager.get(i).getScommettitore().getPV() +1 ;
+			int nuoviPV = bManager.get(i).getScommettitore().getPV() +PV_PIAZZ ;
 			bManager.get(i).getScommettitore().setPVPaga(nuoviPV);
 		}
 	}
@@ -66,15 +72,15 @@ public class BetManager {
 		long denari = giocatori.get(i).getDenari();
 		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]){
 			
-			giocatori.get(i).setDenariPaga(denari + 600);
+			giocatori.get(i).setDenariPaga(denari + PROP_PRIMO);
 		}
 		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]){
 			
-			giocatori.get(i).setDenariPaga(denari + 400);
+			giocatori.get(i).setDenariPaga(denari + PROP_SECONDO);
 		}
 		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]){
 			
-			giocatori.get(i).setDenariPaga(denari + 200);
+			giocatori.get(i).setDenariPaga(denari + PROP_TERZO);
 		}
 	}
 	

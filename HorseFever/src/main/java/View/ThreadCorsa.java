@@ -9,6 +9,12 @@ import eventi.eventoQuotazioni;
 
 public class ThreadCorsa extends Thread{
 
+	private final static int NUM_CORSIE=6;
+	private final static int PRIMO=1;
+	private final static int SECONDO=2;
+	private final static int TERZO=3;
+	
+	
 	private boolean stop;
 	private GUIView vista;
 	private eventoCorsa evento;
@@ -31,7 +37,7 @@ public class ThreadCorsa extends Thread{
 	 * @param posizioni vettore di posizioni aggiornate
 	 */
 	public void aggiornaPosizioni(int[] posizioni){
-		for(i=0; i<6; i++){
+		for(i=0; i<posizioni.length; i++){
 			board.getPedina(i).muovi(posizioni[i]);
 		}
 	}
@@ -67,7 +73,7 @@ public class ThreadCorsa extends Thread{
         	   
            
         	   //Verifica se tutte le pedine sono arrivate
-        	   for(i=0; i<6;i++){
+        	   for(i=0; i<NUM_CORSIE;i++){
 
         		   board.setTutteArrivate(true);
         		   if(!board.getPedina(i).getArrivata()){
@@ -81,16 +87,16 @@ public class ThreadCorsa extends Thread{
 
         		   eventoQuotazioni e1=vista.getEventoQuotaz();
         		   String[][] tabellaQuot= e1.getTabellaQuot();
-        		   String[] quot=new String[6];
+        		   String[] quot=new String[NUM_CORSIE];
 
-        		   for(i=0;i<6;i++){
+        		   for(i=0;i<NUM_CORSIE;i++){
 
         			   quot[i]=tabellaQuot[i][1];
         		   }
 
         		   board.settaAreaQuotazioni(quot);
 
-        		   for(i=0; i<6;i++){
+        		   for(i=0; i<NUM_CORSIE;i++){
 
         			   eventoArrivi e=vista.getEventoArrivi();
 
@@ -107,7 +113,7 @@ public class ThreadCorsa extends Thread{
         			   else if(cavallo.equals("Bianco")){ numCorsia=6; }
 
         			   board.settaAreaNotifica("\n"+rappresentazione);
-        			   if(posArrivo==1 || posArrivo==2 || posArrivo==3){
+        			   if(posArrivo==PRIMO || posArrivo==SECONDO || posArrivo==TERZO){
 
         				   board.stampaPiazzamento(numCorsia,posArrivo);
         				   board.repaint();

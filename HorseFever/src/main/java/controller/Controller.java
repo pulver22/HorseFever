@@ -6,6 +6,12 @@ import adapter.Adapter;
 import horsefever.*;
 
 public class Controller {
+	
+	private final static int MOLTIPLICATORE=100;
+	private final static int PV_MIN=2;
+	private final static int DIECI=10;
+	
+	
 	private Partita partita;
 	private ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 	private Adapter adapter;
@@ -195,7 +201,7 @@ public class Controller {
     	importo=0;
     	pv=giocatore.getPV();
     	denari=giocatore.getDenari();
-    	scommessaMinima=pv*100;
+    	scommessaMinima=pv*MOLTIPLICATORE;
     	
     	/* se la scommessa non è obbligatoria chiama seconda scommessa che chiede prima all'utente 
     	 * se vuole ancora scommettere, se i denari sono insufficienti per la scommessa minima 
@@ -210,7 +216,7 @@ public class Controller {
     			
     			if(denari<scommessaMinima || parametriScommessa[2].equals("N")){
     	
-    				scommessa=new Scommessa(giocatore,10,0,'N');
+    				scommessa=new Scommessa(giocatore,DIECI,0,'N');
     				return scommessa;
     		
     			}
@@ -260,7 +266,7 @@ public class Controller {
  	   gli vengono sottratti 2 PV, se non ha 2 PV il giocatore perde la partita */
     	if(denari<scommessaMinima){
     		
-            if(pv<2){   
+            if(pv<PV_MIN){   
             	
             	messaggio=""+giocatore.getNome() +" hai perso la partita";
             	adapter.stampaMessaggio(messaggio,indice);
@@ -268,10 +274,10 @@ public class Controller {
             	
             	if(partita.getGiocatori().size()==1){
         			finePar=true;
-        			scommessa=new Scommessa(giocatore,10,0,'F');
+        			scommessa=new Scommessa(giocatore,DIECI,0,'F');
         			return scommessa;
         		}
-            	scommessa=new Scommessa(giocatore,10,0,'N');
+            	scommessa=new Scommessa(giocatore,DIECI,0,'N');
         		return scommessa;
             }   
             else{
@@ -280,7 +286,7 @@ public class Controller {
             	 pv=pv-2;
     		     giocatore.setPV(pv);
     		     
-    		     scommessa=new Scommessa(giocatore,10,0,'N');
+    		     scommessa=new Scommessa(giocatore,DIECI,0,'N');
            		 return scommessa;
             }
     	}
