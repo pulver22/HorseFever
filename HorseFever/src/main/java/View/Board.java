@@ -9,7 +9,12 @@ import java.awt.event.AdjustmentListener;
 @SuppressWarnings("serial")
 public class Board extends JPanel {
 
-	private Pedina[] pedine=new Pedina[6];
+	private final static int NUM_CORSIE=6;
+	private final static int MAX_GIOC=NUM_CORSIE;
+	private final static int NUM_PIAZZ=3;
+	private final static int NUM_MOVIMENTI=23;
+	
+	private Pedina[] pedine=new Pedina[NUM_CORSIE];
 	
 	private JTextArea areaNotifica;
 	private JTextArea quotazioni;
@@ -29,23 +34,23 @@ public class Board extends JPanel {
 	private JLabel labelNomeGiocatore=new JLabel("    Giocatore:");
 	private JLabel labelScuderia=new JLabel("    Scuderia:");
 	
-	private JTextField[] pv=new JTextField[6];
-	private JTextField[] nomeGiocatore=new JTextField[6];
-	private JTextField[] denari=new JTextField[6];
-	private JTextField[] scuderia=new JTextField[6];
+	private JTextField[] pv=new JTextField[MAX_GIOC];
+	private JTextField[] nomeGiocatore=new JTextField[MAX_GIOC];
+	private JTextField[] denari=new JTextField[MAX_GIOC];
+	private JTextField[] scuderia=new JTextField[MAX_GIOC];
 	private JTextField numTurno=new JTextField("   ");
 	
 	private Image plancia;
 	private Image cartaMov;
 	private Image titolo;
 	private Image sfondo;
-	private Image[] piazzamento=new Image[3];
-	private ImageIcon[] carteMovimento=new ImageIcon[23];
+	private Image[] piazzamento=new Image[NUM_PIAZZ];
+	private ImageIcon[] carteMovimento=new ImageIcon[NUM_MOVIMENTI];
 	
-	private boolean[] stampaPiazzamento=new boolean[3];
+	private boolean[] stampaPiazzamento=new boolean[NUM_PIAZZ];
 	private boolean tutteArrivate=false;
 	
-	private int[] yPiazzamento=new int[3];
+	private int[] yPiazzamento=new int[NUM_PIAZZ];
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
@@ -82,7 +87,7 @@ public class Board extends JPanel {
 		
     	//inizializzazione Carta Movimento
     	
-    	for(int i=0;i<23;i++){
+    	for(int i=0;i<carteMovimento.length;i++){
     		
     		carteMovimento[i]=new ImageIcon(getClass().getResource("carteMovimento/horseFever-"+(i+83)+".png")); 
     	}
@@ -129,7 +134,7 @@ public class Board extends JPanel {
 		pannelloGiocatore.add(labelPV);
 		pannelloGiocatore.add(labelDenari);
 		
-		for(int i=0;i<6;i++){
+		for(int i=0;i<MAX_GIOC;i++){
 		
 			nomeGiocatore[i]=new JTextField(" ");
 			pannelloGiocatore.add(nomeGiocatore[i]);
@@ -141,7 +146,7 @@ public class Board extends JPanel {
 			pannelloGiocatore.add(denari[i]);
 		}
 		
-		for(int i=0;i<6;i++){
+		for(int i=0;i<MAX_GIOC;i++){
 				
 			pv[i].setEditable(false);
 			denari[i].setEditable(false);
@@ -226,13 +231,18 @@ public class Board extends JPanel {
         	}
         }
         
+        for (int i=0; i<pedine.length;i++){
+        	g2d.drawImage(pedine[i].getImmagine(),pedine[i].getX(),pedine[i].getY(),this);
+        }
+        
+        /*
         g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
         g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
         g2d.drawImage(pedine[2].getImmagine(),pedine[2].getX(),pedine[2].getY(),this);
         g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
         g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
         g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
-        
+        */
         
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
@@ -249,13 +259,13 @@ public class Board extends JPanel {
 		
 		this.setTutteArrivate(false);
 		
-		for(int i=0;i<6;i++){
+		for(int i=0;i<pedine.length;i++){
 			
 			pedine[i].setArrivata(false);
 			pedine[i].setX(xPedineIniz);
 			pedine[i].setDx(37);
 			pedine[i].setPosizioniprec(0);
-			if(i<3){ stampaPiazzamento[i]=false; }
+			if(i<NUM_PIAZZ){ stampaPiazzamento[i]=false; }
 			this.resetAreaNotifica();
 			repaint();
 		}

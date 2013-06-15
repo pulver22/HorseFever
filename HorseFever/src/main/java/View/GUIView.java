@@ -19,6 +19,8 @@ import eventi.*;
 
 public class GUIView implements View{
 
+	private final static int NUM_AZIONI=18;
+	
 	private Board board;
 	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
 	private Queue<eventoGiocatore> eventiPagamento= new ConcurrentLinkedQueue<eventoGiocatore>();
@@ -32,7 +34,7 @@ public class GUIView implements View{
 	private final static String colorePannelli="#FFFFFF";
 	
 	//Immagini Carte Azione
-	private ImageIcon[] carteAzione=new ImageIcon[23];
+	private ImageIcon[] carteAzione=new ImageIcon[NUM_AZIONI];
 	
 	public GUIView(){
 		
@@ -82,12 +84,10 @@ public class GUIView implements View{
 
 			JLabel corsia = new JLabel("Scegli la corsia : ");
 			JComboBox corsieDisponibili = new JComboBox();
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[0]));
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[1]));
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[2]));
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[3]));
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[4]));
-			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[5]));
+			
+			for (int i=0; i<sceltaCorsia.length;i++){
+				corsieDisponibili.addItem(String.valueOf(sceltaCorsia[i]));
+			}
 
 			String[] genereScommessa={"Piazzato","Vincente"};
 			JLabel tipo = new JLabel("Scegli se piazzato o vincente : ");
@@ -156,6 +156,7 @@ public class GUIView implements View{
 			}
 			scommessa[0] = (String) sceltaImporto.getText();
 			scommessa[1] = (String) corsieDisponibili.getSelectedItem();
+	
 			if (scommessa[1].equals(sceltaCorsia[0])){
 				scommessa[1]="1";
 			} else if (scommessa[1].equals(sceltaCorsia[1])){
