@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.Color;
-
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -16,12 +15,14 @@ public class Main {
 	 * Il main effettivo che lancia l'intero gioco
 	 * @author Niccolo
 	 * */
+	
+	//private final static ImageIcon sfondo=new ImageIcon(View.class.getResource("elementiBoard/background.jpg"));
+	
 	public static void main(String[] args){
 	
 		String colorePannelli="#FFFFFF";
-		UIManager UI=new UIManager();
-		UI.put("OptionPane.background",Color.decode(colorePannelli));
-		UI.put("Panel.background",Color.decode(colorePannelli));
+		UIManager.put("OptionPane.background",Color.decode(colorePannelli));
+		UIManager.put("Panel.background",Color.decode(colorePannelli));
 		//Scelta numero giocatori
 		int numGiocatori;
 		String sceltaGiocatori;

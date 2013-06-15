@@ -493,9 +493,8 @@ public class GUIView implements View{
     
 	@Override
 	public void stampaMessaggio(String messaggio) {
-		UIManager UI=new UIManager();
-		UI.put("OptionPane.background",Color.decode(colorePannelli));
-		UI.put("Panel.background",Color.decode(colorePannelli));
+		UIManager.put("OptionPane.background",Color.decode(colorePannelli));
+		UIManager.put("Panel.background",Color.decode(colorePannelli));
 		JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", JOptionPane.PLAIN_MESSAGE);
 		
 		
@@ -576,9 +575,8 @@ public class GUIView implements View{
 	@Override
 	public void prosegui(String messaggio) {
 		
-		UIManager UI=new UIManager();
-		UI.put("OptionPane.background",Color.decode(colorePannelli));
-		UI.put("Panel.background",Color.decode(colorePannelli));
+		UIManager.put("OptionPane.background",Color.decode(colorePannelli));
+		UIManager.put("Panel.background",Color.decode(colorePannelli));
 	
 		
 		if(messaggio.equals("E' terminata la fase di corsa.")){

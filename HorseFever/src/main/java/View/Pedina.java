@@ -9,9 +9,14 @@ import javax.swing.*;
 
 public class Pedina implements ActionListener {
 
+	private final static int LIMITE_PLANCIA=1046;
+	private final static int TRAGUARDO=900;
+	private final static int DX_INIZ=37;
+	private final static int DX_FIN=48;
+	
 	private int x;
 	private int y;
-	private int dx=37;
+	private int dx=DX_INIZ;
 	private Image immagine;
 	private Timer timer;
 	private Board board;
@@ -82,17 +87,17 @@ public class Pedina implements ActionListener {
 		if(posizioni>0){
 		
 			posizioni--;
-			if(x+dx<1046){
+			if(x+dx<LIMITE_PLANCIA){
 			  
-				if(x+dx>862){
-					dx=48;	
+				if(x+dx>TRAGUARDO-DX_INIZ-1){
+					dx=DX_FIN;	
 				}
 				
 				x+=dx;
-				if(x>900){ arrivata=true; }
+				if(x>TRAGUARDO){ arrivata=true; }
 			}
 			else{ 
-				  x=1046;
+				  x=LIMITE_PLANCIA;
 			}
 			board.repaint();
 		}

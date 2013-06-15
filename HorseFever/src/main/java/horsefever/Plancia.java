@@ -9,11 +9,11 @@ import eventi.eventoTrucca;
 
 public class Plancia {
 	
-	private boolean[] arrivati = new boolean[6];
-	
+	private final static int NUM_CORSIE=6;
+	private boolean[] arrivati = new boolean[NUM_CORSIE];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
-	private Cavallo[] cavalli = new Cavallo[6];
-	private ArrayList[] corsieTruccate = new ArrayList[6];
+	private Cavallo[] cavalli = new Cavallo[NUM_CORSIE];
+	private ArrayList<Azione>[] corsieTruccate = new ArrayList[NUM_CORSIE];
 	private boolean partenza=true;
 	private ArrayList<Cavallo> cavalliArrivati=new ArrayList<Cavallo>();
 	private Lavagna lavagna;
@@ -28,7 +28,7 @@ public class Plancia {
 	public Plancia(Lavagna lavagna, Partita p){
 		this.partita=p;
 		this.lavagna=lavagna;
-		for (int i=0;i<6; i++){
+		for (int i=0;i<NUM_CORSIE; i++){
 			corsieTruccate[i]=new ArrayList<Azione>();		
 			cavalli[i]=new Cavallo(colori[i]);
 			cavalli[i].setQuotazione(lavagna.getQuotazioneDaColoreIniziale(colori[i]));
@@ -52,7 +52,7 @@ public class Plancia {
 	 * Applica gli effetti di tutte le carte Azioni su tutti i Cavalli
 	 */
 	public void applicaAzioni(){
-		for (int i=0; i<6;i++){
+		for (int i=0; i<NUM_CORSIE;i++){
 			controllaAzioniDiRimozione(corsieTruccate[i],i);
 			eliminaEffettiOpposti(corsieTruccate[i]);
 			assegnaEffettiAlCavallo(corsieTruccate[i],cavalli[i],i);
@@ -63,7 +63,7 @@ public class Plancia {
 	 * Controlla e applica effetti delle carte Grigie che rimuovono tutte le carte Verdi o Rosse
 	 * @param l'ArrayList dell carte Azione su cui fare il controllo
 	 * */
-	public void controllaAzioniDiRimozione(ArrayList azioni,int corsia){
+	public void controllaAzioniDiRimozione(ArrayList<Azione> azioni,int corsia){
 		Azione a;
 		boolean positive=false;
 		boolean negative=false;
@@ -123,7 +123,7 @@ public class Plancia {
 	 * @param ArrayList delle Carte Azione assegnate al cavallo
 	 * @param Il cavallo su cui assegnare gli effetti
 	 * */
-	public void assegnaEffettiAlCavallo(ArrayList<?> azioni, Cavallo cavallo,int corsia){
+	public void assegnaEffettiAlCavallo(ArrayList<Azione> azioni, Cavallo cavallo,int corsia){
 		for (int i=0; i<azioni.size();i++){
 			Azione a= (Azione)azioni.get(i);
 			if (a.getTipoEffetto().equals("Partenza")) {
@@ -167,7 +167,7 @@ public class Plancia {
 	 * Verifica se in un ArrayList di carte Azione, ce ne sono alcune che si annullano
 	 * @param l'arrayList delle carte Azione da controllare
 	 * */
-	public void eliminaEffettiOpposti(ArrayList<?> azioni){
+	public void eliminaEffettiOpposti(ArrayList<Azione> azioni){
 		if (azioni.size()>1){
 			
 			for (int i=0; i<azioni.size()-1; i++){
@@ -196,8 +196,8 @@ public class Plancia {
 	 * @return array dei movimenti teorici dei cavalli
 	 * */
 	public int[] calcolaIncrementiDaMov(int[] valoriMov){
-		int[] incrementi = new int[6];
-		for (int i=0; i<6;i++){
+		int[] incrementi = new int[NUM_CORSIE];
+		for (int i=0; i<incrementi.length;i++){
 			incrementi[i]=valoriMov[lavagna.getRigaMovimento(i)];
 		}
 		return incrementi;
@@ -208,7 +208,7 @@ public class Plancia {
 	 * @param l'array dei movimenti teorici dei cavalli
 	 * */
 	public void partenza(int[] movimenti){
-		for (int i=0; i<6;i++){
+		for (int i=0; i<NUM_CORSIE;i++){
 			cavalli[i].aggiornaPosizionePartenza(movimenti[i]);
 		}
 	}
@@ -221,8 +221,8 @@ public class Plancia {
 		int[] dadiSprint;
 		
 		if (debug){ //In caso di gioco in condizioni di Debug o Testing
-			dadiSprint=new int[6];
-			for (int i=0;i<6;i++){
+			dadiSprint=sprint();
+			for (int i=0;i<NUM_CORSIE;i++){
 				dadiSprint[i]=0;
 			}
 		} else{ //In caso di gioco normale
@@ -231,6 +231,7 @@ public class Plancia {
 		
 		Movimento m;
 		if (debug){ //Carta movimento in caso di Debug o Testing
+			m=(Movimento)partita.getMazzoMovimento().pesca();
 			m=new Movimento(4,3,2,1,1,1,"0");
 		}else{ // Carta movimento in caso di partita ordinaria
 			m=(Movimento)partita.getMazzoMovimento().pesca();
@@ -244,12 +245,12 @@ public class Plancia {
 		if (partenza){
 			partenza(movTeorici);
 			partenza=false;
-			for (int i=0;i<6;i++){
+			for (int i=0;i<cavalli.length;i++){
 				if (dadiSprint[i]==1) cavalli[i].aggiornaPosizioneSprint();
 			}
 			partita.notifyObserver(new eventoCorsa(getPosizioniCavalli(), valoriMov, dadiSprint,immagineMov));
 		}else{
-			for(int i=0; i<6; i++){
+			for(int i=0; i<cavalli.length; i++){
 				if (cavalli[i]!=null){
 					if (cavalli[i].getEffettoUltimoPrimo()!=null){
 						int[] primiPari=getCavalliPrimiPari();
@@ -292,10 +293,10 @@ public class Plancia {
 	 * */
 	public void inserisciArrivati(){
 		int flagArrivo=0;
-		for (int j=0;j<6;j++){
+		for (int j=0;j<cavalli.length;j++){
 			if (!arrivati[j]){
 				if (cavalli[j].oltreTraguardo()){
-					for (int k=j+1;k<6;k++){
+					for (int k=j+1;k<cavalli.length;k++){
 						if (!arrivati[k]){
 							if (cavalli[j].getPosizione()>cavalli[k].getPosizione()){
 								flagArrivo+=1;
@@ -323,10 +324,10 @@ public class Plancia {
 	 * */
 	public boolean esisteAltroArrivato(){
 		int flagArrivo=0;
-		for (int i=0; i<6;i++){
+		for (int i=0; i<cavalli.length;i++){
 			if (!arrivati[i]){
 				if (cavalli[i].oltreTraguardo()){
-					for (int k=i+1;k<6;k++){
+					for (int k=i+1;k<cavalli.length;k++){
 						if (!arrivati[k]){
 							if (cavalli[i].getPosizione()>cavalli[k].getPosizione()){ flagArrivo+=1; }
 							else{ flagArrivo-=1; }
@@ -350,10 +351,10 @@ public class Plancia {
 	 * @return
 	 */
 	public boolean almenoDueCavalliPari(){
-		for (int i=0; i<6; i++){
+		for (int i=0; i<cavalli.length; i++){
 			if (!arrivati[i]){
 				if (cavalli[i].oltreTraguardo()){
-					for (int j=i+1;j<6;j++){
+					for (int j=i+1;j<cavalli.length;j++){
 						if (!arrivati[j]){
 							if (cavalli[j].oltreTraguardo()){
 								if (cavalli[i].getPosizione()==cavalli[j].getPosizione())return true;
@@ -374,7 +375,7 @@ public class Plancia {
 		ArrayList<Cavallo> fotofinish=new ArrayList<Cavallo>();
 		ArrayList<Cavallo> ordineCavalli=new ArrayList<Cavallo>();
 		boolean esisteVincente=false,esistePerdente=false;
-		for (int i=0; i<6;i++){ //Per cavalli di cui si è memorizzato l'indice, si aggiungono a Fotofinish e si segnano arrivati
+		for (int i=0; i<flag.length;i++){ //Per cavalli di cui si è memorizzato l'indice, si aggiungono a Fotofinish e si segnano arrivati
 			if (flag[i]==1){
 				fotofinish.add(cavalli[i]);
 				arrivati[i]=true;
@@ -434,9 +435,9 @@ public class Plancia {
 	 * Restituisce un array con 1 agli indici dei cavalli pari nella posizione massima non ancora arrivati, 0 altrove 
 	 * */
 	public int[] getCavalliPariMax(){
-		int[] flag=new int[6];
+		int[] flag=new int[NUM_CORSIE];
 		int max=getMaxPosPari();
-		for (int i=0;i<6;i++){
+		for (int i=0;i<flag.length;i++){
 			if (!arrivati[i]){
 				if (cavalli[i].getPosizione()==max){
 					flag[i]=1;
@@ -452,10 +453,10 @@ public class Plancia {
 	 * */
 	public int getMaxPosPari(){
 		int max=0;
-		for (int i=0; i<6;i++){
+		for (int i=0; i<cavalli.length;i++){
 			if (!arrivati[i]){
 				if (cavalli[i].oltreTraguardo()){
-					for (int j=i+1;j<6;j++){
+					for (int j=i+1;j<cavalli.length;j++){
 						if (!arrivati[j]){
 							if (cavalli[j].getPosizione()==cavalli[i].getPosizione()){
 								if (cavalli[j].getPosizione()>=max) max=cavalli[j].getPosizione();
@@ -501,7 +502,7 @@ public class Plancia {
 	 * Rimuove tutti gli elementi da fotofinish cavalliArrivati e corsieTruccate, e resetta i cavalli.
 	 * */
 	public void reset(){
-		for (int i=0; i<6;i++){
+		for (int i=0; i<NUM_CORSIE;i++){
 			cavalli[i].reset(); //Resetta cavalli
 			if (corsieTruccate[i].size()!=0){//Se ci sono ancora Azioni su corsie, rimuove tutto
 				while (corsieTruccate[i].size()>0){
@@ -525,9 +526,9 @@ public class Plancia {
 	 * 0 se invece non lo è. 
 	 * */
 	public int[] getCavalliPrimiPari(){
-		int[] primiPari=new int[6];
+		int[] primiPari=new int[NUM_CORSIE];
 		int max=getMax();
-		for (int i=0;i<6;i++){
+		for (int i=0;i<primiPari.length;i++){
 			if (cavalli[i].getPosizione()==max){
 				primiPari[i]=1;
 			} else{
@@ -543,9 +544,9 @@ public class Plancia {
 	 * 0 se invece non lo è. 
 	 * */
 	public int[] getCavalliUltimiPari(){
-		int[] ultimiPari=new int[6];
+		int[] ultimiPari=new int[NUM_CORSIE];
 		int min=getMin();
-		for (int i=0;i<6;i++){
+		for (int i=0;i<ultimiPari.length;i++){
 			if (cavalli[i].getPosizione()==min){
 				ultimiPari[i]=1;
 			} else{
@@ -561,7 +562,7 @@ public class Plancia {
 	 * */
 	public int getMax(){
 		int max=0;
-		for (int i=0;i<6;i++){
+		for (int i=0;i<cavalli.length;i++){
 			if (max<cavalli[i].getPosizione()){
 				max=cavalli[i].getPosizione();
 			}
@@ -576,7 +577,7 @@ public class Plancia {
 	 * */
 	public int getMin(){
 		int min=cavalli[0].getPosizione();
-		for (int i=0;i<6;i++){
+		for (int i=0;i<cavalli.length;i++){
 			if (min>cavalli[i].getPosizione()){
 				min=cavalli[i].getPosizione();
 			}
@@ -591,13 +592,13 @@ public class Plancia {
 	 * */
 	public int[] sprint(){
 		int c;
-		int movimentiSprint[]=new int[6];
-		for (int i=0; i<6; i++){
+		int movimentiSprint[]=new int[NUM_CORSIE];
+		for (int i=0; i<movimentiSprint.length; i++){
 			movimentiSprint[i]=0;
 		}
 		for (int j=0; j<2; j++){
 			
-			c=(int)(Math.random()*6);
+			c=(int)(Math.random()*NUM_CORSIE);
 			if(movimentiSprint[c]!=1) movimentiSprint[c]=1;
 		
 		}
@@ -610,8 +611,8 @@ public class Plancia {
 	 * @return I colori dei cavalli in ordine d'arrivo
 	 * */
 	public String[] getColoriArrivi(){
-		String colori[]=new String[6];
-		for (int i=0; i<6;i++){
+		String colori[]=new String[NUM_CORSIE];
+		for (int i=0; i<colori.length;i++){
 			if(cavalliArrivati.get(i)!=null)
 			colori[i]=cavalliArrivati.get(i).getColore();
 		}
@@ -623,7 +624,7 @@ public class Plancia {
 	 * @return true tutti i cavalli sono arrivati, false altrimenti
 	 * */
 	public boolean tuttiArrivati(){
-		for (int i=0; i<6;i++){
+		for (int i=0; i<arrivati.length;i++){
 			if (!arrivati[i]) return false;
 		}
 		return true;
@@ -634,8 +635,8 @@ public class Plancia {
 	 * @return l'array delle posizioni
 	 * */
 	public int[] getPosizioniCavalli(){
-		int[] posizioni=new int[6];
-		for (int i=0; i<6; i++){
+		int[] posizioni=new int[NUM_CORSIE];
+		for (int i=0; i<posizioni.length; i++){
 			posizioni[i]=cavalli[i].getPosizione();
 		}
 		return posizioni;
@@ -645,12 +646,12 @@ public class Plancia {
 	 * Ritorna le carte azioni presenti su una data corsia
 	 * @return l'ArrayList delle azioni presenti su di esso.
 	 * */
-	public ArrayList<?> getAzioniSuCorsia(int corsia){
+	public ArrayList<Azione> getAzioniSuCorsia(int corsia){
 		return corsieTruccate[corsia];
 	}
 	
 	public void setPosizioniCavalli(int[] posizioneFissa){
-		for (int i=0;i<6;i++){
+		for (int i=0;i<cavalli.length;i++){
 			cavalli[i].setPosizione(posizioneFissa[i]);
 		}
 	}
