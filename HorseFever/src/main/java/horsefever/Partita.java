@@ -5,6 +5,8 @@ import eventi.*;
 
 public class Partita {
 
+	private final static int NUM_CORSIE=6;
+	
 	private ArrayList<Giocatore> giocatori;
 	private int numturni=2;
 	private int turnoAttuale=1;
@@ -20,7 +22,7 @@ public class Partita {
 
 	private BetManager betManager;
 	private int numSegnaliniScommessaPerColore;
-	private int[] numSegnalini=new int[6];
+	private int[] numSegnalini=new int[NUM_CORSIE];
 	
 	/**
 	 * Crea una nuova partita con il numero di giocatori scelto, scegliendo il numero di turni e i corretti segbalini
@@ -46,7 +48,7 @@ public class Partita {
 		else { numSegnaliniScommessaPerColore=4; }
 		
 		
-		for(int i=0; i<6; i++){
+		for(int i=0; i<numSegnalini.length; i++){
 			
 			numSegnalini[i]=numSegnaliniScommessaPerColore;
 		}

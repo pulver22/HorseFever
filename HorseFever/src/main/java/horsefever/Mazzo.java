@@ -83,14 +83,6 @@ public class Mazzo {
 			Mazzo.add(new Personaggio("Craneo Cervantes", 4200, "6"));
 			Mazzo.add(new Personaggio("Sigvard Skalle", 4400, "7"));
 		}
-		else if (nome.equals("MazzoProprietario")){
-			Mazzo.add(new Proprietario("Nero"));
-			Mazzo.add(new Proprietario("Blu"));
-			Mazzo.add(new Proprietario("Verde"));
-			Mazzo.add(new Proprietario("Rosso"));
-			Mazzo.add(new Proprietario("Giallo"));
-			Mazzo.add(new Proprietario("Bianco"));
-		}
 		else if(nome.equals("MazzoMovimento")){
 			
 			Mazzo.add(new Movimento(3,3,2,2,2,2,"0"));

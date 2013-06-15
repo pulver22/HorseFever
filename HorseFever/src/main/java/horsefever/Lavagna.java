@@ -6,6 +6,10 @@ import eventi.eventoQuotazioni;
 
 public class Lavagna {
 
+	private final static int NUM_CORSIE=6;
+	private final static int QUOT_MIN=7;
+	private final static int QUOT_MAX=2;
+	
 	private String[][] quotazioni;
 	private Partita partita;
 	private Plancia plancia;
@@ -34,12 +38,12 @@ public class Lavagna {
 	 * */
 	public void inizializzaQuot(){
 		int temp;
-		quotazioni=new String[6][2];
+		quotazioni=new String[NUM_CORSIE][2];
 		ArrayList<Integer> init = new ArrayList<Integer>(6);
 		for (int i=2; i<8;i++){
 			init.add(i);
 		}
-		for (int j=0; j<6; j++){
+		for (int j=0; j<NUM_CORSIE; j++){
 			if (debug){//Quotazioni iniziali in caso di Debug o Test
 				quotazioni[j][1]=Integer.toString(j+2);
 			}else{ //Quotazioni iniziali in caso di partita ordinaria
@@ -59,8 +63,8 @@ public class Lavagna {
 	 * */
 	public void ricalcolaQuotazioni(String[] ordineArrivo){
 		String [] arrivi=ordineArrivo;
-		for (int i=0; i<6; i++){
-			for (int j=0; j<6; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
+		for (int i=0; i<NUM_CORSIE; i++){
+			for (int j=0; j<NUM_CORSIE; j++){   //Ricerca in quotazioni cavallo==cavallo in arrivi
 				if (arrivi[i].equals(quotazioni[j][0])){
 					int posCavallo=i+1; //Poichè l'indice i è di 1 inferiore alla posizione reale
 					int quotCavallo=Integer.parseInt(quotazioni[j][1]);
@@ -70,12 +74,12 @@ public class Lavagna {
 					 confrontando così le righe di scuderia e cavallo stabilisco se far salire
 					 o diminuire la quotazione di quel cavallo*/
 					if (posCavallo>(quotCavallo-1)){
-						if (quotCavallo<7){
+						if (quotCavallo<QUOT_MIN){
 							quotCavallo++;
 							
 						}
 					} else if (posCavallo<(quotCavallo-1)){
-						if (quotCavallo>2){
+						if (quotCavallo>QUOT_MAX){
 							quotCavallo--;
 						}
 					} else {
@@ -86,7 +90,7 @@ public class Lavagna {
 				}
 			}
 		}
-		for (int i=0; i<6;i++){ //Aggiorna ai cavalli in plancia la loro nuova quotazione
+		for (int i=0; i<NUM_CORSIE;i++){ //Aggiorna ai cavalli in plancia la loro nuova quotazione
 			plancia.getCavalloAt(i).setQuotazione(Integer.parseInt(quotazioni[i][1]));
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
@@ -115,7 +119,7 @@ public class Lavagna {
 	public String getScuderiaInit(String quotazione){
 		String scuderia=null;
 		
-		for (int j=0; j<6;j++){
+		for (int j=0; j<NUM_CORSIE;j++){
 			if (quotazione.equals(quotazioni[j][1])) {
 				scuderia=quotazioni[j][0];
 			}
@@ -125,8 +129,8 @@ public class Lavagna {
 
 	//Metodi Getter e Setter
 	public String[][] getQuotazioni() {
-		String[][] quot=new String[6][2];
-		for (int i=0;i<6;i++){
+		String[][] quot=new String[NUM_CORSIE][2];
+		for (int i=0;i<NUM_CORSIE;i++){
 			quot[i][0]=String.valueOf(quotazioni[i][0]);
 			quot[i][1]=String.valueOf(quotazioni[i][1]);
 		}
@@ -144,7 +148,7 @@ public class Lavagna {
 	 * */
 	public int getQuotazioneDaColoreIniziale(String colore){
 		int quot=0;
-		for (int i=0; i<6;i++){
+		for (int i=0; i<NUM_CORSIE;i++){
 			if (quotazioni[i][0].equals(colore)) {
 				quot=Integer.parseInt(quotazioni[i][1]);
 			}
@@ -159,15 +163,16 @@ public class Lavagna {
 	 */
 	public void setQuotazioneAlCavallo(String colore, String variazione){
 		int quot;
-		for (int i=0; i<6;i++){
+		int incremento=2;
+		for (int i=0; i<NUM_CORSIE;i++){
 			if (colore.equals(quotazioni[i][0])){
 				quot=Integer.parseInt(quotazioni[i][1]);
 				if (variazione.charAt(0)=='+'){
-					quot-=2;
-					if (quot<=2){ quot=2; }
+					quot-=incremento;
+					if (quot<=QUOT_MAX){ quot=QUOT_MAX; }
 				} else {
-					quot+=2;
-					if (quot>=7){ quot=7; }
+					quot+=incremento;
+					if (quot>=QUOT_MIN){ quot=QUOT_MIN; }
 				}
 				quotazioni[i][1]=Integer.toString(quot);
 			}
