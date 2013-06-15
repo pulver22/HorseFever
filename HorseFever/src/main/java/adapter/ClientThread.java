@@ -25,7 +25,7 @@ public class ClientThread extends Thread{
 	@Override
 	public void run() {
 		try {
-			this.sleep(3000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
