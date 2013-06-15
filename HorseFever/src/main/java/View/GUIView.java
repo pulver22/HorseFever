@@ -29,7 +29,7 @@ public class GUIView implements View{
 	private boolean first=true;
 	private JFrame frame=new JFrame("Horse Fever");
 	private final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
-	private final String colorePannelli="#FFFFFF";
+	private final static String colorePannelli="#FFFFFF";
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[23];
