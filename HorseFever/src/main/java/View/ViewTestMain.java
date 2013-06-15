@@ -8,10 +8,10 @@ import eventi.HorseFeverEvent;
 
 public class ViewTestMain implements View{
 
-	int scomCount=0;
-	int trucCount=0;
-	String[] scommessa1={"700","1","P"};
-	String[] scommessa2={"100","6","V"};
+	private int scomCount=0;
+	private int trucCount=0;
+	private String[] scommessa1={"700","1","P"};
+	private String[] scommessa2={"100","6","V"};
 	@Override
 	public String[] chiediScommessa() {
 		String[] scommessa;
