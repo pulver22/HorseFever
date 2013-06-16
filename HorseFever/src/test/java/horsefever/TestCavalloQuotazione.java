@@ -15,8 +15,8 @@ public class TestCavalloQuotazione {
 	public void setup(){
 		cavallo=new Cavallo("Nero");
 		cavallo.setQuotazione(4);
-		azione1=new Azione("Alfio Allibratore","Grigio","Quotazione","+2",'W',14);
-		azione2=new Azione("Steven Sting","Grigio","Quotazione","-2",'Y',16);
+		azione1=new Azione("Alfio Allibratore","Grigio","Quotazione","+2",'W');
+		azione2=new Azione("Steven Sting","Grigio","Quotazione","-2",'Y');
 	}
 	
 	@Test

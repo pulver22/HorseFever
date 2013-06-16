@@ -13,8 +13,8 @@ public class TestCavalloPrimoUltimo {
 	@Before
 	public void setup(){
 		cavallo=new Cavallo("Nero");
-		azione1=new Azione("Vigor Ferreum","Verde","Utimo","=4",'G',1);
-		azione2=new Azione("Feliz Infernalis","Rosso","Primo","=0",'G',2);
+		azione1=new Azione("Vigor Ferreum","Verde","Utimo","=4",'G');
+		azione2=new Azione("Feliz Infernalis","Rosso","Primo","=0",'G');
 	}
 	
 	@Test

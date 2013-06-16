@@ -18,10 +18,10 @@ public class TestCavalloPartenza {
 	@Before
 	public void setup(){
 		cavallo1=new Cavallo("Nero");
-		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A',1);
-		azione2=new Azione("Fortuna Malevola","Verde","Partenza","+1",'B',2);
-		azione3=new Azione("Globulus Obscurus","Rosso","Partenza","=0",'A',3);
-		azione4=new Azione("Aqua Putrida","Rosso","Partenza","-1",'B',4);
+		azione1=new Azione("Magna Velocitas","Verde","Partenza","=4",'A');
+		azione2=new Azione("Fortuna Malevola","Verde","Partenza","+1",'B');
+		azione3=new Azione("Globulus Obscurus","Rosso","Partenza","=0",'A');
+		azione4=new Azione("Aqua Putrida","Rosso","Partenza","-1",'B');
 	}
 	
 	@Test

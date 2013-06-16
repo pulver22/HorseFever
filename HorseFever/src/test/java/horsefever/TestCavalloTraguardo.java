@@ -13,8 +13,8 @@ public class TestCavalloTraguardo {
 	@Before
 	public void setup(){
 		cavallo=new Cavallo("Nero");
-		azione1=new Azione("Fustis et Radix","Verde","Traguardo","+2",'F',1);
-		azione2=new Azione("XIII","Rosso","Traguardo","=0",'F',2);
+		azione1=new Azione("Fustis et Radix","Verde","Traguardo","+2",'F');
+		azione2=new Azione("XIII","Rosso","Traguardo","=0",'F');
 	}
 	
 	@Test
