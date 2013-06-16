@@ -13,6 +13,10 @@ public class eventoScommessa extends HorseFeverEvent{
 	private long denari;
 	private char tipoScommessa;
 	
+	/**
+	 * Inizializza l'eventoScommessa.
+	 * @param la scommessa da cui generare l'evento
+	 * */
 	public eventoScommessa(Scommessa scom){
 		
 		this.nomeGiocatore=String.valueOf(scom.getScommettitore().getNome());
@@ -20,20 +24,20 @@ public class eventoScommessa extends HorseFeverEvent{
 		this.denari=Long.valueOf(scom.getImporto());
 		this.tipoScommessa= scom.getTipoScomessa();
 	}
-	
+	/***/
 	@Override
 	public String rappresentazione() {
 		return "Giocatore: "+nomeGiocatore+" Corsia: "+corsia+" Importo: "+denari+" TipoScommessa "+tipoScommessa;
 	}
-
+	/***/
 	public String getNomeGiocatore() {
 		return nomeGiocatore;
 	}
-
+	/***/
 	public int getCorsia() {
 		return corsia;
 	}
-
+	/***/
 	public long getDenari() {
 		return denari;
 	}

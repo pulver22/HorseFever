@@ -25,6 +25,10 @@ public class ThreadCorsa extends Thread{
 	private int i=0;
 	private boolean inserito=false;
 	
+	/**
+	 * Inizializza il thread Corsa.
+	 * @param la GUIView di riferimento.
+	 * */
 	public ThreadCorsa(GUIView vista){
 		
 		this.vista=vista;
@@ -41,7 +45,7 @@ public class ThreadCorsa extends Thread{
 			board.getPedina(i).muovi(posizioni[i]);
 		}
 	}
-	
+	/***/
 	@Override
 	public void run() {
 		

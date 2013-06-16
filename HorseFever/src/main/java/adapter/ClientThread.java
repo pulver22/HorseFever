@@ -8,7 +8,7 @@ public class ClientThread extends Thread{
 	private String serverIP;
 	
 	/**
-	 * Crea un thread per ogni client associandolo all'indirizzo dell'IP e reegistrandosi
+	 * Crea un thread per ogni client associandolo all'indirizzo dell'IP e registrandosi
 	 * @param serverIP
 	 * @param v
 	 */

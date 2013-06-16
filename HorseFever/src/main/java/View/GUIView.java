@@ -69,6 +69,9 @@ public class GUIView implements View{
 			"carteAzione/Rochelle Recherche.png"
 	};
 	
+	/**
+	 * Inizializza la GUIView
+	 * */
 	public GUIView(){
 		
 		board=new Board();
@@ -82,31 +85,13 @@ public class GUIView implements View{
 		for (int i=0;i<nomiCarte.length;i++){
 			carteAzione[i]=new ImageIcon(getClass().getResource(nomiCarte[i]));
 		}
-		/*
-		carteAzione[0]=new ImageIcon(getClass().getResource("carteAzione/Magna Velocitas.png"));
-		carteAzione[1]=new ImageIcon(getClass().getResource("carteAzione/Fortuna Benevola.png"));
-		carteAzione[2]=new ImageIcon(getClass().getResource("carteAzione/Flagellum Fulguris.png"));
-		carteAzione[3]=new ImageIcon(getClass().getResource("carteAzione/Herba Magica.png"));
-		carteAzione[4]=new ImageIcon(getClass().getResource("carteAzione/In Igni Veritas.png"));
-		carteAzione[5]=new ImageIcon(getClass().getResource("carteAzione/Fustis et Radix.png"));
-		carteAzione[6]=new ImageIcon(getClass().getResource("carteAzione/Vigor Ferreum.png"));
-		
-		carteAzione[7]=new ImageIcon(getClass().getResource("carteAzione/Globus Obscurus.png"));
-		carteAzione[8]=new ImageIcon(getClass().getResource("carteAzione/Aqua Putrida.png"));
-		carteAzione[9]=new ImageIcon(getClass().getResource("carteAzione/Serum Maleficum.png"));
-		carteAzione[10]=new ImageIcon(getClass().getResource("carteAzione/Venenum Veneficum.png"));
-		carteAzione[11]=new ImageIcon(getClass().getResource("carteAzione/Mala Tempora.png"));
-		carteAzione[12]=new ImageIcon(getClass().getResource("carteAzione/XIII.png"));
-		carteAzione[13]=new ImageIcon(getClass().getResource("carteAzione/Felix Infernalis.png"));
-		
-		carteAzione[14]=new ImageIcon(getClass().getResource("carteAzione/Alfio Allibratore.png"));
-		carteAzione[15]=new ImageIcon(getClass().getResource("carteAzione/Friz Finden.png"));
-		carteAzione[16]=new ImageIcon(getClass().getResource("carteAzione/Steven Sting.png"));
-		carteAzione[17]=new ImageIcon(getClass().getResource("carteAzione/Rochelle Recherche.png"));
-		*/
 	}
 	
 	private static Object lock2 = new Object();
+	/**
+	 * Chiede all'utente i valori per scommettere
+	 * @return un array di stringhe con i valori inseriti dall'utente
+	 * */
 	@Override
 	public String[] chiediScommessa() {
 		
@@ -225,7 +210,10 @@ public class GUIView implements View{
 	}
 		
 	
-
+	/**
+	 * Metodo per la seconda scommessa. 
+	 * @return array di stringhe con i parametri inseriti da utente per la seconda scommessa
+	 * */
 	@Override
 	public String[] chiediSecondaScommessa() {
 		
@@ -248,6 +236,11 @@ public class GUIView implements View{
 	
 	
 	private static Object lock = new Object();
+	/**
+	 * Metodo che chiede a utente di truccare una corsia
+	 * @param l'arraylist di carte azione in mano al giocatore corrispondente
+	 * @return l'array di stringhe con i valori inseriti dall'utente
+	 * */
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
 		
@@ -527,11 +520,17 @@ public class GUIView implements View{
        }
 		
 	}
-	
+	/**
+	 * Setta il booleano first
+	 * @param il valore booleano da assegnare a first
+	 * */
 	public void setFirst(boolean first) {
 		this.first = first;
 	}
-    
+	/**
+	 * Metodo per la stampa di messaggi generici all'utente
+	 * @param il messaggio da stampare
+	 * */
 	@Override
 	public void stampaMessaggio(String messaggio) {
 		UIManager.put("OptionPane.background",Color.decode(colorePannelli));
@@ -540,7 +539,10 @@ public class GUIView implements View{
 		
 		
 	}
-
+	/**
+	 * Estrae un eventoQuotazioni dalla coda corrispondente
+	 * @return l'eventoQuotazioni in testa alla coda
+	 * */
 	public eventoQuotazioni getEventoQuotaz(){
 		
         eventoQuotazioni e;
@@ -557,6 +559,10 @@ public class GUIView implements View{
 		return null;
 	}
 
+	/**
+	 * Estrae un eventoArrivi dalla coda corrispondente
+	 * @return l'eventoArrivi in testa alla coda
+	 * */
     public eventoArrivi getEventoArrivi(){
 		
 		eventoArrivi e;
@@ -573,10 +579,17 @@ public class GUIView implements View{
 		return null;
 	}
     
+    /**
+	 * Ritorna la coda di eventoCorsa
+	 * @return la coda di eventoCorsa
+	 * */
 	public Queue<eventoCorsa> getEventiCorsa() {
 		return eventiCorsa;
 	}
-	
+	/**
+	 * Estrae un eventoCorsa dalla coda corrispondente
+	 * @return l'eventoCorsa in testa alla coda
+	 * */
 	public eventoCorsa getEventoCorsa(){
 		
 		eventoCorsa e;
@@ -591,7 +604,10 @@ public class GUIView implements View{
 		
 		return null;
 	}
-	
+	/**
+	 * Estrae un eventoPagamento dalla coda corrispondente
+	 * @return l'eventoPagamento in testa alla coda
+	 * */
     public eventoGiocatore getEventoPagamento(){
 		
 		eventoGiocatore e;
@@ -607,12 +623,23 @@ public class GUIView implements View{
 		return null;
 	}
 
+    /**
+	 * Estrae un eventoPagamento dalla coda corrispondente
+	 * @return l'eventoPagamento in testa alla coda
+	 * */
 	public Queue<eventoGiocatore> getEventiPagamento() {
 		return eventiPagamento;
 	}
+	/***/
 	public Board getBoard() {
 		return board;
 	}
+	
+	/**
+	 * Metodo con l'unico scopo di bloccare la logica tra una fase e l'altra se l'utente non preme
+	 * invio.
+	 * @param messaggio da stampare connesso a questo stop della logica
+	 * */
 	@Override
 	public void prosegui(String messaggio) {
 		

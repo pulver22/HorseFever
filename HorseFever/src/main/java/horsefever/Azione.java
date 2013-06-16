@@ -28,31 +28,34 @@ public class Azione extends Carta implements Serializable{
 	}
 	
 	//Metodi Getter e Setter
-	
+	/***/
 	public String getColore() {
 		return colore;
 	}
-
+	/***/
 	public String getTipoEffetto() {
 		return tipoEffetto;
 	}
-
+	/***/
 	public String getValoreEffetto() {
 		return valoreEffetto;
 	}
-
+	/**
+	 * Rappresentazione in stringa della carta azione.
+	 * @return la rappresentazione a stringa
+	 * */
 	public String toString(){
 		return this.nome+" "+this.colore+" "+this.tipoEffetto+" "+this.valoreEffetto;
 	}
-
+	/***/
 	public char getLettera() {
 		return lettera;
 	}
-	
+	/***/
 	public int getIndice() {
 		return indice;
 	}
-
+	/***/
 	public void setIndice(int indice){
 		this.indice=indice;
 	}

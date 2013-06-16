@@ -182,12 +182,17 @@ public class AdapterReteServer implements Adapter{
 		}
 	}
 	
+	/**
+	 * Relativo al client, inutile nel server
+	 * */
 	@Override
 	public void connetti(String serverIP) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Relativo al client, inutile nel server
+	 * */
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub

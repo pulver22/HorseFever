@@ -128,6 +128,7 @@ public class Lavagna {
 	}
 
 	//Metodi Getter e Setter
+	/***/
 	public String[][] getQuotazioni() {
 		String[][] quot=new String[NUM_CORSIE][2];
 		for (int i=0;i<NUM_CORSIE;i++){
@@ -136,6 +137,7 @@ public class Lavagna {
 		}
 		return quot;
 	}
+	/***/
 	public void setQuotazioni(String[][] quotazioni) {
 		this.quotazioni = quotazioni.clone();
 	}
@@ -179,7 +181,7 @@ public class Lavagna {
 		}
 		partita.notifyObserver(new eventoQuotazioni(quotazioni));
 	}
-
+	/***/
 	public void setPlancia(Plancia plancia) {
 		this.plancia = plancia;
 	}

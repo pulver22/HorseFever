@@ -21,18 +21,19 @@ public class Scommessa {
 		this.tipoScomessa = tipoScommessa;
 	}
 
+	/***/
 	public Giocatore getScommettitore() {
 		return scommettitore;
 	}
-
+	/***/
 	public int getCorsia() {
 		return corsia;
 	}
-
+	/***/
 	public long getImporto() {
 		return importo;
 	}
-
+	/***/
 	public char getTipoScomessa() {
 		return tipoScomessa;
 	}

@@ -8,7 +8,11 @@ public class eventoTurno extends HorseFeverEvent{
 	private static final long serialVersionUID = 7990007490326932245L;
 	private int turnoCorrente;
 	private int turniTotali;
-	
+	/**
+	 * Inizializza eventoTurno
+	 * @param il turno corrente
+	 * @param il numero totale di turni
+	 * */
     public eventoTurno(int turnCor,int turnTot){
     	
     	this.turnoCorrente=turnCor;
@@ -17,14 +21,17 @@ public class eventoTurno extends HorseFeverEvent{
     
     
     //getters 
+    /***/
 	public int getTurnoCorrente() {
 		return turnoCorrente;
 	}
 
+	/***/
 	public int getTurniTotali() {
 		return turniTotali;
 	}
 
+	/***/
 	@Override
 	public String rappresentazione() {
 		

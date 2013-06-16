@@ -88,24 +88,33 @@ public class AdapterLocale implements Adapter {
 		viewRegistrate.get(0).prosegui(messaggio);
 	}
 
+	/**
+	 * Relativo alla rete, inutile in locale.
+	 * */
 	@Override
 	public void startServer() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Relativo alla rete, inutile in locale.
+	 * */
 	@Override
 	public void connetti(String serverIP) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Relativo alla rete, inutile in locale.
+	 * */
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * Relativo alla rete, inutile in locale.
+	 * */
 	@Override
 	public void evidenziaGiocatore(String nomeGiocatore, int indice) {
 		// TODO Auto-generated method stub

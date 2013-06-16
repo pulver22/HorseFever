@@ -10,10 +10,6 @@ import eventi.*;
 
 public class TextView implements View{
 	
-	/**
-	 * Chiede all'utente i valori per scommettere
-	 * @return un array di stringhe con i valori inseriti dall'utente
-	 * */
 	
 	public static final int DIM_SCOM=3;
 	public static final int DIM_TRUC=2;
@@ -22,7 +18,10 @@ public class TextView implements View{
 	public static final int CARTA_SCELTA=0;
 	public static final int CORSIA=1;
 	public static final int TIPO=2;
-	
+	/**
+	 * Chiede all'utente i valori per scommettere
+	 * @return un array di stringhe con i valori inseriti dall'utente
+	 * */
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
@@ -128,6 +127,7 @@ public class TextView implements View{
 	/**
 	 * Metodo che chiede a utente di truccare una corsia
 	 * @param l'arraylist di carte azione in mano al giocatore corrispondente
+	 * @return l'array di stringhe con i valori inseriti dall'utente
 	 * */
 	@Override
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {

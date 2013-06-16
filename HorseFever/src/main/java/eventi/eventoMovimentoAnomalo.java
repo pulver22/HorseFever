@@ -11,6 +11,13 @@ public class eventoMovimentoAnomalo extends HorseFeverEvent{
 	private int movReale;
 	private String causa;
 	
+	/**
+	 * Inizializza l'evento movimento Anomalo.
+	 * @param il colore del cavallo.
+	 * @param il movimento teorico che avrebbe dovuto assumere il cavallo
+	 * @param il movimento reale che ha effettuato il cavallo
+	 * @param la causa che ha causato la variazione
+	 * */
 	public eventoMovimentoAnomalo(String cavallo, int movTeorico, int movReale, String causa){
 		this.cavallo=String.valueOf(cavallo);
 		this.movTeorico=Integer.valueOf(movTeorico);
@@ -19,15 +26,15 @@ public class eventoMovimentoAnomalo extends HorseFeverEvent{
 	}
 
 	
-	
+	/***/
 	public String getCavallo() {
 		return cavallo;
 	}
-	
+	/***/
 	public int getMovTeorico() {
 		return movTeorico;
 	}
-
+	/***/
 	public int getMovReale() {
 		return movReale;
 	}

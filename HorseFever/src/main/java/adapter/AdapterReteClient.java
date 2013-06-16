@@ -201,6 +201,9 @@ public class AdapterReteClient implements Adapter{
 		viewRegistrate.get(0).prosegui(messaggio);
 	}
 
+	/**
+	 * Relativo al server, intuile nel client.
+	 * */
 	@Override
 	public void startServer() {
 		// TODO Auto-generated method stub

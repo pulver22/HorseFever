@@ -119,12 +119,20 @@ public class Partita {
 		
 	}
 	
-	
+	/**
+	 * Metodo che notifica tutti gli eventi lanciati da partita (o un suo componente) all'adapter
+	 * il quale lo smisterà alle view registrate
+	 * @param l'evento da notificare
+	 * */
 	public void notifyObserver(HorseFeverEvent e){
 		
 		adapter.notify(e);
 	}
 	
+	/**
+	 * Rimuove un giocatore dall'arrayList di partita
+	 * @param il giocatore da rimuovere
+	 * */
 	public void rimuoviGiocatore(Giocatore gioc){
 		
 		notifyObserver(new eventoGiocatore(gioc,eventoGiocatore.PERSO));
@@ -158,58 +166,62 @@ public class Partita {
 	}
 	
 	//Metodi Getter e Setter
-	
+	/***/
 	public void setTurnoAttuale(int turno){
 		
 		this.turnoAttuale=Integer.valueOf(turno);
 		adapter.notify(new eventoTurno(turnoAttuale,numturni));
 	}
+	/***/
 	public void setAdapter(Adapter a){
 		this.adapter=a;
 	}
-	
+	/***/
 	public BetManager getBetManager() {
 		return betManager;
 	}
-	
+	/***/
 	public int[] getNumSegnalini() {
 		
 		
 		return numSegnalini.clone();
 	}
-
+	/***/
 	public ArrayList<Giocatore> getGiocatori() {
 		return giocatori;
 	}
-	
+	/***/
 	public Giocatore getGiocatori(int i) {
 		return giocatori.get(i);
 	}
-
+	/***/
 	public int getNumturni() {
 		return numturni;
 	}
-
+	/***/
 	public int getNumgiocatori() {
 		return numgiocatori;
 	}
-
+	/***/
 	public Mazzo getMazzoAzione() {
 		return mazzoAzione;
 	}
-
+	/***/
 	public Mazzo getMazzoMovimento() {
 		return mazzoMovimento;
 	}
-	
+	/***/
 	public Lavagna getLavagna() {
 		return lavagna;
 	}
-	
+	/***/
 	public Plancia getPlancia() {
 		return plancia;
 	}
-	
+	/**
+	 * Setta la partia nello stato di Debug o di Testing. Lo propaga ai suoi componenti
+	 * @param il booleano a cui settare debug
+	 * */
 	public void setDebug(boolean debug){
 		this.debug=debug;
 		plancia.setDebug(debug);

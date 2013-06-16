@@ -650,21 +650,21 @@ public class Plancia {
 	public ArrayList<Azione> getAzioniSuCorsia(int corsia){
 		return corsieTruccate[corsia];
 	}
-	
+	/***/
 	public void setPosizioniCavalli(int[] posizioneFissa){
 		for (int i=0;i<cavalli.length;i++){
 			cavalli[i].setPosizione(posizioneFissa[i]);
 		}
 	}
-	
+	/***/
 	public Cavallo getCavalloAt(int i){
 		return cavalli[i];
 	}
-	
+	/***/
 	public ArrayList<Cavallo> getCavalliArrivati(){
 		return cavalliArrivati;
 	}
-	
+	/***/
 	public void setDebug(boolean debug){
 		this.debug=debug;
 	}

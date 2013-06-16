@@ -25,6 +25,13 @@ public class Pedina implements ActionListener {
 	private boolean arrivata=false;
 	
 
+	/**
+	 * Inizializza la pedina.
+	 * @param x
+	 * @param y
+	 * @param il nome dell'immagine
+	 * @param il riferimento alla board
+	 * */
 	public Pedina(int x, int y, String nomeImmagine,Board board){
 		
 		this.x=x;
@@ -53,34 +60,35 @@ public class Pedina implements ActionListener {
 	}
 	
 	//getter e setter
+	/***/
 	public void setPosizioniprec(int posizioniprec) {
 		this.posizioniprec = Integer.valueOf(posizioniprec);
 	}
-	
+	/***/
 	public int getX() {
 		return x;
 	}
-
+	/***/
 	public void setX(int x) {
 		this.x = Integer.valueOf(x);
 	}
-
+	/***/
 	public int getY() {
 		return y;
 	}
-
+	/***/
 	public void setY(int y) {
 		this.y = Integer.valueOf(y);
 	}
-	
+	/***/
 	public Image getImmagine() {
 		return immagine;
 	}
-
+	/***/
 	public void setImmagine(Image immagine) {
 		this.immagine = immagine;
 	}
-
+	/***/
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -105,15 +113,16 @@ public class Pedina implements ActionListener {
 			timer.stop();
 		}
 	}
-	
+	/***/
 	public void setDx(int dx) {
 		this.dx = Integer.valueOf(dx);
 	}
-
+	/***/
 	public void setArrivata(boolean x){
 		
 		this.arrivata=x;
 	}
+	/***/
 	public boolean getArrivata(){
 		
 		return arrivata;

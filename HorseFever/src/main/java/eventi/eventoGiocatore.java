@@ -25,6 +25,11 @@ public class eventoGiocatore extends HorseFeverEvent{
 	private int tipo;
 	private int numcarte;
 	
+	/**
+	 * Inizializza l'evento giocatore.
+	 * @param il giocatore di cui generare l'evento.
+	 * @param il tipo di evento da generare.
+	 * */
 	public eventoGiocatore(Giocatore g, int tipo){
 		
 		this.tipo=Integer.valueOf(tipo);
@@ -43,7 +48,7 @@ public class eventoGiocatore extends HorseFeverEvent{
 			}
 		}
 	}
-	
+	/***/
 	@Override
 	public String rappresentazione() {
 		if (tipo==MODIFICA){
@@ -68,20 +73,22 @@ public class eventoGiocatore extends HorseFeverEvent{
 			return "E' stato pagato il Giocatore"+nomeGiocatore+" con attualmente "+pv+" PV e "+denari+" Denari";
 		}	
 	}
-	
+	/***/
 	public int getTipo(){
 		
 		return tipo;
 	}
-
+	/***/
 	public String getScuderia(){
 		
 		return scuderia;
 	}
+	/***/
 	public String getNome(){
 		
 		return nomeGiocatore;
 	}
+	/***/
 	public long getDenari() {
 		return denari;
 	}
@@ -89,7 +96,7 @@ public class eventoGiocatore extends HorseFeverEvent{
 	public int getPv() {
 		return pv;
 	}
-
+	/***/
 	public String[] getCarteAzione() {
 		return carteAzione;
 	}

@@ -8,7 +8,7 @@ abstract class Carta implements Serializable{
 	protected String nome;
 
 	//Metodi Getter e Setter
-	
+	/***/
 	public String getNome() {
 		return nome;
 	}

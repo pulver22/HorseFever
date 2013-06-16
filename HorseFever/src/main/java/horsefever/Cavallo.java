@@ -186,58 +186,59 @@ public class Cavallo {
 		effettoTraguardo=null;
 	}
 	
+	/***/
 	public int getPosizione() {
 		return posizione;
 	}
-	
+	/***/
 	public void setPosizione(int posizione) {
 		this.posizione = Integer.valueOf(posizione);
 	}
-	
+	/***/
 	public String getColore() {
 		return colore;
 	}
-
+	/***/
 	public String getEffettoPartenza() {
 		return effettoPartenza;
 	}
-	
+	/***/
 	public void setEffettoPartenza(String effettoPartenza) {
 		this.effettoPartenza = String.valueOf(effettoPartenza);
 	}
-
+	/***/
 	public String getEffettoSprint(){
 		return effettoSprint;
 	}
-	
+	/***/
 	public void setEffettoSprint(String effettoSprint) {
 		this.effettoSprint = String.valueOf(effettoSprint);
 	}
-	
+	/***/
 	public String getEffettoUltimoPrimo() {
 		return effettoUltimoPrimo;
 	}
-
+	/***/
 	public void setEffettoUltimoPrimo(String effettoUltimoPrimo) {
 		this.effettoUltimoPrimo = String.valueOf(effettoUltimoPrimo);
 	}
-
+	/***/
 	public String getEffettoFotofinish() {
 		return effettoFotofinish;
 	}
-	
+	/***/
 	public void setEffettoFotofinish(String effettoFotofinish) {
 		this.effettoFotofinish = String.valueOf(effettoFotofinish);
 	}
-
+	/***/
 	public void setEffettoTraguardo(String effettoTraguardo) {
 		this.effettoTraguardo = String.valueOf(effettoTraguardo);
 	}
-
+	/***/
 	public int getQuotazione() {
 		return quotazione;
 	}
-	
+	/***/
 	public void setQuotazione(int quotazione) {
 		this.quotazione = Integer.valueOf(quotazione);
 	}
@@ -258,19 +259,19 @@ public class Cavallo {
 			if (quotazione>=QUOT_MIN){ quotazione=QUOT_MIN; }
 		}
 	}
-	
+	/***/
 	public String toString(){
 		return colore+" con quotazione "+quotazione+" e posizione "+posizione;
 	}
-	
+	/***/
 	public String getEffettoPartenza2() {
 		return effettoPartenza2;
 	}
-	
+	/***/
 	public void setEffettoPartenza2(String effettoPartenza2) {
 		this.effettoPartenza2 = String.valueOf(effettoPartenza2);
 	}
-
+	/***/
 	public void setEffettoSprint2(String effettoSprint2) {
 		this.effettoSprint2 = String.valueOf(effettoSprint2);
 	}

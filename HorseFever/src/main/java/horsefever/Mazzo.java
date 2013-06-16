@@ -4,10 +4,10 @@ import java.util.ArrayList;
 public class Mazzo {
 	
 	private ArrayList<Carta> Mazzo = new ArrayList<Carta>();
-	
-/**
- 	* Scorre il mazzo e sostituisce a caso una carta con un' altra	
- */
+
+	/**
+	 * Scorre il mazzo e sostituisce a caso una carta con un' altra	
+	 */
 	public void mischia(){
 		for(int i=Mazzo.size()-1;i > 0; i--){
 			int j = (int) (Math.random()* i);
@@ -22,28 +22,28 @@ public class Mazzo {
 	public Carta pescaCertezza(int i){
 		return Mazzo.get(i);
 	}
-	
-/**
- 	* Pesca una carta a caso dal mazzo,la restituisce e la rimuove dal mazzo
- * @return
- */
+
+	/**
+	 * Pesca una carta a caso dal mazzo,la restituisce e la rimuove dal mazzo
+	 * @return
+	 */
 	public Carta pesca(){
 		int j = (int) (Math.random() * Mazzo.size());
 		Carta test =  (Carta) Mazzo.get(j);
 		Mazzo.remove(j);
 		return test;
 	}
-	
-	
+
+
 	/**
-	* Inserisce una carta in fondo al mazzo
+	 * Inserisce una carta in fondo al mazzo
 	 * @param carta
 	 */
 	public void inserisci(Carta carta){
 		Mazzo.add(carta);
 	}
-	
-	
+
+
 	/**
 	 * In base al tipo di carta passato, viene creato il mazzo opportuno
 	 * @param nome
@@ -60,7 +60,7 @@ public class Mazzo {
 			Mazzo.add(new Azione("In Igni Veritas",verde,"Fotofinish","=1",'E'));
 			Mazzo.add(new Azione("Fustis et Radix",verde,"Traguardo","+2",'F'));
 			Mazzo.add(new Azione("Vigor Ferreum",verde,"Utimo","=4",'G'));
-	
+
 			Mazzo.add(new Azione("Globus Obscurus",rosso,"Partenza","=0",'A'));
 			Mazzo.add(new Azione("Aqua Putrida",rosso,"Partenza","-1",'B'));
 			Mazzo.add(new Azione("Serum Maleficum",rosso,"Sprint","=0",'C'));
@@ -68,7 +68,7 @@ public class Mazzo {
 			Mazzo.add(new Azione("Mala Tempora",rosso,"Fotofinish","=0",'E'));
 			Mazzo.add(new Azione("XIII",rosso,"Traguardo","=0",'F'));
 			Mazzo.add(new Azione("Felix Infernalis",rosso,"Primo","=0",'G'));
-	
+
 			Mazzo.add(new Azione("Alfio Allibratore",grigio,"Quotazione","+2",'W'));
 			Mazzo.add(new Azione("Friz Finden",grigio,"Azione","Rimuovi_negative",'X'));
 			Mazzo.add(new Azione("Steven Sting",grigio,"Quotazione","-2",'Y'));
@@ -87,7 +87,7 @@ public class Mazzo {
 			Mazzo.add(new Personaggio("Sigvard Skalle", 4400, "7"));
 		}
 		else if(nome.equals("MazzoMovimento")){
-			
+
 			Mazzo.add(new Movimento(3,3,2,2,2,2,"0"));
 			Mazzo.add(new Movimento(3,2,3,2,2,2,"1"));
 			Mazzo.add(new Movimento(3,2,2,3,2,2,"2"));
@@ -112,7 +112,7 @@ public class Mazzo {
 			Mazzo.add(new Movimento(2,2,3,1,2,2,"21"));
 			Mazzo.add(new Movimento(2,4,2,2,0,2,"22"));
 		}
-			
+
 	}
 
 }

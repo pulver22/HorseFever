@@ -204,6 +204,7 @@ public class Board extends JPanel {
     
     /**
      * Disegna lo sfondo della finestra
+     * @param la grafica Graphics
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -214,6 +215,7 @@ public class Board extends JPanel {
  
     /**
      * Disegna la plancia, carta movimento, titolo, pedine ed eventuali piazzamenti
+     * @param la Grafica Graphics
      */
 	public void paint(Graphics g) {
         super.paint(g);
@@ -235,15 +237,6 @@ public class Board extends JPanel {
         	g2d.drawImage(pedine[i].getImmagine(),pedine[i].getX(),pedine[i].getY(),this);
         }
         
-        /*
-        g2d.drawImage(pedine[0].getImmagine(),pedine[0].getX(),pedine[0].getY(),this);
-        g2d.drawImage(pedine[1].getImmagine(),pedine[1].getX(),pedine[1].getY(),this);
-        g2d.drawImage(pedine[2].getImmagine(),pedine[2].getX(),pedine[2].getY(),this);
-        g2d.drawImage(pedine[3].getImmagine(),pedine[3].getX(),pedine[3].getY(),this);
-        g2d.drawImage(pedine[4].getImmagine(),pedine[4].getX(),pedine[4].getY(),this);
-        g2d.drawImage(pedine[5].getImmagine(),pedine[5].getX(),pedine[5].getY(),this);
-        */
-        
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
         
@@ -259,11 +252,13 @@ public class Board extends JPanel {
 		
 		this.setTutteArrivate(false);
 		
+		int dxIniz=37;
+		
 		for(int i=0;i<pedine.length;i++){
 			
 			pedine[i].setArrivata(false);
 			pedine[i].setX(xPedineIniz);
-			pedine[i].setDx(37);
+			pedine[i].setDx(dxIniz);
 			pedine[i].setPosizioniprec(0);
 			if(i<NUM_PIAZZ){ stampaPiazzamento[i]=false; }
 			this.resetAreaNotifica();
@@ -289,7 +284,7 @@ public class Board extends JPanel {
 	
 	/**
 	 * Scrive sulla JTextArea delle quotazioni
-	 * @param messaggio
+	 * @param L'array di stringhe che rappresenta le quotazioni
 	 */
 	public void settaAreaQuotazioni(String[] quot){
 		
@@ -356,60 +351,95 @@ public class Board extends JPanel {
 	}
 	
 	//Getter e Setter
-	
+	/**
+	 * 
+	 * */
 	public void setNomeScuderia(String scuderia,int indice) {
 		this.scuderia[indice].setText(scuderia);
 	}
 
+	/**
+	 * 
+	 * */
 	public String getNomeScuderia(int indice){
 		
 		return this.scuderia[indice].getText();
 	}
 	
+	/**
+	 * 
+	 * */
 	public void setPV(int puntiVita,int indice){
 		
 		this.pv[indice].setText("  "+puntiVita);
 	}
 	 
+	/**
+	 * 
+	 * */
 	public String getPV(int indice){
 	    	
 	    	return this.pv[indice].getText();
 	}
 	
+	/**
+	 * 
+	 * */
     public void setNomeGiocatore(String nome,int indice){
     	
     	this.nomeGiocatore[indice].setText(nome);
     }
 	
+    /**
+     * 
+     * */
     public String getNomeGiocatore(int indice){
     	
     	return this.nomeGiocatore[indice].getText();
     }
  
+    /**
+     * 
+     * */
     public void setDenari(long denari,int indice){
 		
 		this.denari[indice].setText(""+denari);
 	}
     
+    /**
+     * 
+     * */
     public String getDenari(int indice){
     	
     	return this.denari[indice].getText();
     }
-		
+	
+    /**
+     * 
+     * */
 	public Pedina getPedina(int i) {
 		return pedine[i];
 	}
 
+	/**
+	 * 
+	 * */
 	public void setTutteArrivate(boolean a){
 		
 		this.tutteArrivate=a;
 	}
 	
+	/**
+	 * 
+	 * */
 	public boolean getTutteArrivate(){
 		
 		return this.tutteArrivate;
 	}
 	
+	/**
+	 * 
+	 * */
 	public void setTurni(int turnoCor, int turniTot){
 		
 		numTurno.setText(turnoCor+"/"+turniTot);

@@ -9,21 +9,27 @@ public class eventoTrucca extends HorseFeverEvent{
 	private String nomeGiocatore;
 	private int corsia;
 	
+	/**
+	 * Inizializza eventoTrucca
+	 * @param il nome del giocatore che ha truccato la corsia
+	 * @param la corsia truccata
+	 * */
 	public eventoTrucca(String nomeGiocatore, int corsia){
 		
 		this.nomeGiocatore=String.valueOf(nomeGiocatore);
 		this.corsia=Integer.valueOf(corsia)+1;
 	}
-	
+	/***/
 	@Override
 	public String rappresentazione() {
 		return "Il Giocatore: "+nomeGiocatore+" ha truccato la Corsia: "+corsia;
 	}
-
+	/***/
 	public String getNomeGiocatore() {
 		return nomeGiocatore;
 	}
 
+	/***/
 	public int getCorsia() {
 		return corsia;
 	}

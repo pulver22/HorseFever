@@ -144,7 +144,6 @@ public class AdapterClientHandler{
 	/**
 	 * Permette di avanzare alla fase successiva del turno, e quindi del gioco
 	 */
-	
 	public synchronized void prosegui(String messaggio, int indice) throws IOException{
 		String[] mess = new String[2];
 		mess[0]="prosegui";

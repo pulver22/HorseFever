@@ -39,12 +39,19 @@ public interface View {
 	
 	
 	
-	
+	/**
+	 * Metodo per bloccare la logica in attesa di un comando dell'utente
+	 * @param messaggio da stampare 
+	 * */
 	void prosegui(String messaggio);
 	
 	
 	
 	//chiamati dal model
+	/**
+	 * Metodo per gestire le notifiche in arrivo dal model
+	 * @param l'evento da gestire
+	 * */
 	void notify(HorseFeverEvent e);
 
 

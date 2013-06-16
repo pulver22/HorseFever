@@ -16,6 +16,10 @@ public class BetManager {
 	private eventoScommessa e;
 	private Partita p;
 	
+	/**
+	 * Inizializza betManager
+	 * @param la partita di riferimento
+	 * */
 	public BetManager(Partita p){
 		
 		this.p=p;
@@ -141,7 +145,7 @@ public class BetManager {
 	}
 	
 	//metodi getter e setter
-	
+	/***/
 	public ArrayList<Scommessa> getbManager() {
 		return bManager;
 	}
