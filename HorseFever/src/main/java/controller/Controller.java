@@ -14,7 +14,6 @@ public class Controller {
 	
 	
 	private Partita partita;
-	private ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 	private Adapter adapter;
 	private boolean finePar=false;
 	
@@ -60,7 +59,7 @@ public class Controller {
 	 */
 	public void faseDistribuzioneCarte(){
 		for(int i=0; i<partita.getGiocatori().size();i++){
-			carteDaAssegnare=new ArrayList<Azione>();
+			ArrayList<Azione> carteDaAssegnare=new ArrayList<Azione>();
 			if (debug){
 				carteDaAssegnare.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z'));
 				carteDaAssegnare.get(0).setIndice(0);

@@ -109,10 +109,8 @@ public class Partita {
 			}
 		}
 		for (int j=0;j<giocatori.size();j++){
-			if (giocatori.get(j).getPV()==maxPV && j!=indiceGiocVinc){
-				if (giocatori.get(j).getDenari()>giocatori.get(indiceGiocVinc).getDenari()){
-					indiceGiocVinc=j;
-				}
+			if (giocatori.get(j).getPV()==maxPV && j!=indiceGiocVinc && giocatori.get(j).getDenari()>giocatori.get(indiceGiocVinc).getDenari()){
+				indiceGiocVinc=j;
 			}
 		}
 		notifyObserver(new eventoGiocatore(giocatori.get(indiceGiocVinc),eventoGiocatore.VINTO));

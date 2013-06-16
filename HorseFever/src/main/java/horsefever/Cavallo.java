@@ -149,15 +149,13 @@ public class Cavallo {
 	public void aggiornaPosizione(int incremento){
 		int incr;
 		posizione+=incremento;
-		if (posizione>=TRAGUARDO){
-			if (effettoTraguardo!=null){
-				incr=Integer.parseInt(""+effettoTraguardo.charAt(1));
-				if (effettoTraguardo.charAt(0)=='='){
-					posizione=TRAGUARDO; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
-								  //anche perchè altrimenti un cavallo in generale si fermerebbe già, una volta superato il traguardo
-				} else if (effettoTraguardo.charAt(0)=='+'){
-					posizione+=incr;
-				}
+		if (posizione>=TRAGUARDO && effettoTraguardo!=null){
+			incr=Integer.parseInt(""+effettoTraguardo.charAt(1));
+			if (effettoTraguardo.charAt(0)=='='){
+				posizione=TRAGUARDO; //il "si ferma immediatamente" nelle regole l'ho interpretato come "si ferma SUL traguardo"
+				//anche perchè altrimenti un cavallo in generale si fermerebbe già, una volta superato il traguardo
+			} else if (effettoTraguardo.charAt(0)=='+'){
+				posizione+=incr;
 			}
 		}
 	}

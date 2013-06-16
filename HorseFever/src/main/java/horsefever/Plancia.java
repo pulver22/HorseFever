@@ -458,10 +458,8 @@ public class Plancia {
 			if (!arrivati[i]){
 				if (cavalli[i].oltreTraguardo()){
 					for (int j=i+1;j<cavalli.length;j++){
-						if (!arrivati[j]){
-							if (cavalli[j].getPosizione()==cavalli[i].getPosizione()){
-								if (cavalli[j].getPosizione()>=max) max=cavalli[j].getPosizione();
-							}
+						if (!arrivati[j] && cavalli[j].getPosizione()==cavalli[i].getPosizione() && cavalli[j].getPosizione()>=max){
+							max=cavalli[j].getPosizione();
 						}
 					}
 				}

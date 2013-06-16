@@ -26,6 +26,13 @@ public class GUIView implements View{
 	private static final int NUM_AZIONI=18;
 	private static final int NUM_CORSIE=6;
 	
+	private static final int NERO=0;
+	private static final int BLU=1;
+	private static final int VERDE=2;
+	private static final int ROSSO=3;
+	private static final int GIALLO=4;
+	private static final int BIANCO=5;
+	
 	public static final int DIM_SCOM=3;
 	public static final int DIM_TRUC=2;
 	
@@ -189,17 +196,17 @@ public class GUIView implements View{
 			scommessa[IMPORTO] = (String) sceltaImporto.getText();
 			scommessa[CORSIA] = (String) corsieDisponibili.getSelectedItem();
 	
-			if (scommessa[CORSIA].equals(sceltaCorsia[0])){
+			if (scommessa[CORSIA].equals(sceltaCorsia[NERO])){
 				scommessa[CORSIA]="1";
-			} else if (scommessa[1].equals(sceltaCorsia[1])){
+			} else if (scommessa[CORSIA].equals(sceltaCorsia[BLU])){
 				scommessa[CORSIA]="2";
-			} else if (scommessa[1].equals(sceltaCorsia[2])){
+			} else if (scommessa[CORSIA].equals(sceltaCorsia[VERDE])){
 				scommessa[CORSIA]="3";
-			} else if (scommessa[1].equals(sceltaCorsia[3])){
+			} else if (scommessa[CORSIA].equals(sceltaCorsia[ROSSO])){
 				scommessa[CORSIA]="4";
-			} else if (scommessa[1].equals(sceltaCorsia[4])){
+			} else if (scommessa[CORSIA].equals(sceltaCorsia[GIALLO])){
 				scommessa[CORSIA]="5";
-			} else if (scommessa[1].equals(sceltaCorsia[5])){
+			} else if (scommessa[CORSIA].equals(sceltaCorsia[BIANCO])){
 				scommessa[CORSIA]="6";
 			}
 			scommessa[TIPO] =  (String) tipoScommessa.getSelectedItem();
@@ -249,7 +256,7 @@ public class GUIView implements View{
 	 * @return l'array di stringhe con i valori inseriti dall'utente
 	 * */
 	@Override
-	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
+	public String[] chiediTrucca( ArrayList<Azione> carteAzione) {
 		
 		String[] scelta = new String[DIM_TRUC];
 		JPanel panelCarta = new JPanel();
@@ -273,13 +280,10 @@ public class GUIView implements View{
 			sceltaCarta.addItem(nomeCarta);
 		}
 		
-		JComboBox sceltaCorsia = new JComboBox();
-		sceltaCorsia.addItem("1");
-		sceltaCorsia.addItem("2");
-		sceltaCorsia.addItem("3");
-		sceltaCorsia.addItem("4");
-		sceltaCorsia.addItem("5");
-		sceltaCorsia.addItem("6");
+		JComboBox corsieDisponibili = new JComboBox();
+		for (int i=0; i<sceltaCorsia.length;i++){
+			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[i]));
+		}
 		
 		frame.add(panelCarta, BorderLayout.NORTH);
 		frame.add(panel, BorderLayout.CENTER);
@@ -304,7 +308,7 @@ public class GUIView implements View{
 		panelConferma.add(conferma);
 		
 		panel.add(label2);
-		panel.add(sceltaCorsia);
+		panel.add(corsieDisponibili);
 		
 		frame.setVisible(true);
 		frame.pack();
@@ -344,7 +348,20 @@ public class GUIView implements View{
 		}else {
 			scelta[CARTA_SCELTA]="2";
 		}
-		scelta[CORSIA] = sceltaCorsia.getSelectedItem().toString();
+		scelta[CORSIA] = corsieDisponibili.getSelectedItem().toString();
+		if (scelta[CORSIA].equals(sceltaCorsia[NERO])){
+			scelta[CORSIA]="1";
+		} else if (scelta[CORSIA].equals(sceltaCorsia[BLU])){
+			scelta[CORSIA]="2";
+		} else if (scelta[CORSIA].equals(sceltaCorsia[VERDE])){
+			scelta[CORSIA]="3";
+		} else if (scelta[CORSIA].equals(sceltaCorsia[ROSSO])){
+			scelta[CORSIA]="4";
+		} else if (scelta[CORSIA].equals(sceltaCorsia[GIALLO])){
+			scelta[CORSIA]="5";
+		} else if (scelta[CORSIA].equals(sceltaCorsia[BIANCO])){
+			scelta[CORSIA]="6";
+		}
 		
 		return scelta;
 	}
@@ -452,7 +469,7 @@ public class GUIView implements View{
     	   
     	   if(tipoScom=='V'){ tipoSc="Vincente"; }
     	   if(tipoScom=='P'){ tipoSc="Piazzato"; }
-;    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha scommesso "+denari+"\nsulla corsia "+numCorsia+"  "+tipoSc+"\n ");
+    	   board.settaAreaNotifica("Il giocatore "+nomeGioc+" ha scommesso "+denari+"\nsulla corsia "+numCorsia+"  "+tipoSc+"\n ");
        
        }
        

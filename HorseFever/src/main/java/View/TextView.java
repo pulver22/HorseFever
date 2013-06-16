@@ -148,17 +148,13 @@ public class TextView implements View{
         	    BufferedReader myInput=new BufferedReader(reader);
         	    scelta[CARTA_SCELTA] = myInput.readLine();
         	    int i=Integer.parseInt(scelta[CARTA_SCELTA]);
-        	    if (carteAzione.size()==2){
-        	    	if (i!=1 &&i!=2){
-        	    		System.out.println("Devi inserire uno dei valori in elenco");
-        	    		buonfine=false;
-        	    	}
+        	    if (carteAzione.size()==2 && (i!=1 && i!=2)){
+        	    	System.out.println("Devi inserire uno dei valori in elenco");
+        	    	buonfine=false;
         	    }
-        	    if (carteAzione.size()==1){
-        	    	if (i!=1){
-        	    		System.out.println("Devi inserire uno dei valori in elenco");
-        	    		buonfine=false;
-        	    	}
+        	    if (carteAzione.size()==1 && i!=1){
+        	    	System.out.println("Devi inserire uno dei valori in elenco");
+        	    	buonfine=false;
         	    }
                	}
        
