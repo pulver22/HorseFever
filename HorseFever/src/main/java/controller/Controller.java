@@ -61,8 +61,10 @@ public class Controller {
 		for(int i=0; i<partita.getGiocatori().size();i++){
 			carteDaAssegnare=new ArrayList<Azione>();
 			if (debug){
-				carteDaAssegnare.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z',17));
-				carteDaAssegnare.add(new Azione("Friz Finden","Grigio","Azione","Rimuovi_negative",'X',15));
+				carteDaAssegnare.add(new Azione("Rochelle Recherche","Grigio","Azione","Rimuovi_positive",'Z'));
+				carteDaAssegnare.get(0).setIndice(0);
+				carteDaAssegnare.add(new Azione("Friz Finden","Grigio","Azione","Rimuovi_negative",'X'));
+				carteDaAssegnare.get(0).setIndice(1);
 			}else{
 				carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());
 				carteDaAssegnare.add((Azione) partita.getMazzoAzione().pesca());

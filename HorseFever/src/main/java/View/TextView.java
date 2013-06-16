@@ -14,10 +14,19 @@ public class TextView implements View{
 	 * Chiede all'utente i valori per scommettere
 	 * @return un array di stringhe con i valori inseriti dall'utente
 	 * */
+	
+	public static final int DIM_SCOM=3;
+	public static final int DIM_TRUC=2;
+	
+	public static final int IMPORTO=0;
+	public static final int CARTA_SCELTA=0;
+	public static final int CORSIA=1;
+	public static final int TIPO=2;
+	
 	@Override
 	public String[] chiediScommessa() {
 		boolean buonfine = false;
-		String[] scommessa = new String[3];
+		String[] scommessa = new String[DIM_SCOM];
 		
 		
 		while(!buonfine){
@@ -27,7 +36,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[0]=myInput.readLine();
+    			scommessa[IMPORTO]=myInput.readLine();
         	}
         	catch(IOException e){
         		
@@ -48,7 +57,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[1]=myInput.readLine();
+    			scommessa[CORSIA]=myInput.readLine();
     		}
     		catch(IOException e){
     		
@@ -70,7 +79,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scommessa[2]=myInput.readLine();
+    			scommessa[TIPO]=myInput.readLine();
         	}
         	catch(IOException e){
         		
@@ -89,7 +98,7 @@ public class TextView implements View{
 	@Override
 	public String[] chiediSecondaScommessa(){
 		boolean buonfine=false;
-		String[] scommessa = new String[3];
+		String[] scommessa = new String[DIM_SCOM];
 		String risposta = "/";
 		while(!buonfine){
     		
@@ -112,7 +121,7 @@ public class TextView implements View{
     		
     	}
 		if (risposta.equals("S")){ scommessa = chiediScommessa(); }
-		if (risposta.equals("N")){ scommessa[2] = "N"; }
+		if (risposta.equals("N")){ scommessa[TIPO] = "N"; }
 		return scommessa;
 	}
 
@@ -123,7 +132,7 @@ public class TextView implements View{
 	@Override
 	public String[] chiediTrucca(ArrayList<Azione> carteAzione) {
 		boolean buonfine = false;
-		String[] scelta = new String[2];
+		String[] scelta = new String[DIM_TRUC];
 		
 		System.out.println("Hai in mano queste carte: " );
     	for (int i=0;i< carteAzione.size();i++){
@@ -136,8 +145,8 @@ public class TextView implements View{
         		buonfine=true;
         	    InputStreamReader reader=new InputStreamReader(System.in);
         	    BufferedReader myInput=new BufferedReader(reader);
-        	    scelta[0] = myInput.readLine();
-        	    int i=Integer.parseInt(scelta[0]);
+        	    scelta[CARTA_SCELTA] = myInput.readLine();
+        	    int i=Integer.parseInt(scelta[CARTA_SCELTA]);
         	    if (carteAzione.size()==2){
         	    	if (i!=1 &&i!=2){
         	    		System.out.println("Devi inserire uno dei valori in elenco");
@@ -169,7 +178,7 @@ public class TextView implements View{
     			buonfine=true;
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
-    			scelta[1]=myInput.readLine();
+    			scelta[CORSIA]=myInput.readLine();
     		}
     		catch(IOException e){
     			System.out.println("Errore !!!\n");

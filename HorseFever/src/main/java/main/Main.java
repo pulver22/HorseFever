@@ -15,9 +15,6 @@ public class Main {
 	 * Il main effettivo che lancia l'intero gioco
 	 * @author Niccolo
 	 * */
-	
-	//private final static ImageIcon sfondo=new ImageIcon(View.class.getResource("elementiBoard/background.jpg"));
-	
 	public static void main(String[] args){
 	
 		String colorePannelli="#FFFFFF";

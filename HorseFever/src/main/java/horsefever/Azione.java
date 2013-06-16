@@ -19,13 +19,12 @@ public class Azione extends Carta implements Serializable{
 	 * @param valoreEffetto
 	 * @param lettera
 	 */
-	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto, char lettera,int indice){
+	public Azione(String nome,String colore,String tipoeEffetto, String valoreEffetto, char lettera){
 		this.nome = nome;
 		this.colore = colore;
 		this.tipoEffetto = tipoeEffetto;
 		this.valoreEffetto = valoreEffetto;
 		this.lettera=lettera;
-		this.indice=indice;
 	}
 	
 	//Metodi Getter e Setter
@@ -54,5 +53,8 @@ public class Azione extends Carta implements Serializable{
 		return indice;
 	}
 
+	public void setIndice(int indice){
+		this.indice=indice;
+	}
 	
 }

@@ -20,6 +20,17 @@ import eventi.*;
 public class GUIView implements View{
 
 	private static final int NUM_AZIONI=18;
+	private static final int NUM_CORSIE=6;
+	
+	public static final int DIM_SCOM=3;
+	public static final int DIM_TRUC=2;
+	
+	public static final int IMPORTO=0;
+	public static final int CARTA_SCELTA=0;
+	public static final int CORSIA=1;
+	public static final int TIPO=2;
+	public static final int WIDTH=1200;
+	public static final int HEIGHT=700;
 	
 	private Board board;
 	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
@@ -35,6 +46,28 @@ public class GUIView implements View{
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[NUM_AZIONI];
+	private String[] nomiCarte = {
+			"carteAzione/Magna Velocitas.png",
+			"carteAzione/Fortuna Benevola.png",
+			"carteAzione/Flagellum Fulguris.png",
+			"carteAzione/Herba Magica.png",
+			"carteAzione/In Igni Veritas.png",
+			"carteAzione/Fustis et Radix.png",
+			"carteAzione/Vigor Ferreum.png",
+			
+			"carteAzione/Globus Obscurus.png",
+			"carteAzione/Aqua Putrida.png",
+			"carteAzione/Serum Maleficum.png",
+			"carteAzione/Venenum Veneficum.png",
+			"carteAzione/Mala Tempora.png",
+			"carteAzione/XIII.png",
+			"carteAzione/Felix Infernalis.png",
+			
+			"carteAzione/Alfio Allibratore.png",
+			"carteAzione/Friz Finden.png",
+			"carteAzione/Steven Sting.png",
+			"carteAzione/Rochelle Recherche.png"
+	};
 	
 	public GUIView(){
 		
@@ -42,9 +75,14 @@ public class GUIView implements View{
 		frame.add(board);
 		frame.setVisible(true);
 		frame.setResizable(false);
-		frame.setSize(1200,700);
+		frame.setSize(WIDTH,HEIGHT);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		for (int i=0;i<nomiCarte.length;i++){
+			carteAzione[i]=new ImageIcon(getClass().getResource(nomiCarte[i]));
+		}
+		/*
 		carteAzione[0]=new ImageIcon(getClass().getResource("carteAzione/Magna Velocitas.png"));
 		carteAzione[1]=new ImageIcon(getClass().getResource("carteAzione/Fortuna Benevola.png"));
 		carteAzione[2]=new ImageIcon(getClass().getResource("carteAzione/Flagellum Fulguris.png"));
@@ -65,6 +103,7 @@ public class GUIView implements View{
 		carteAzione[15]=new ImageIcon(getClass().getResource("carteAzione/Friz Finden.png"));
 		carteAzione[16]=new ImageIcon(getClass().getResource("carteAzione/Steven Sting.png"));
 		carteAzione[17]=new ImageIcon(getClass().getResource("carteAzione/Rochelle Recherche.png"));
+		*/
 	}
 	
 	private static Object lock2 = new Object();
@@ -72,7 +111,7 @@ public class GUIView implements View{
 	public String[] chiediScommessa() {
 		
 		boolean buonfine= false;
-		String[] scommessa = new String[3];
+		String[] scommessa = new String[DIM_SCOM];
 		
 		while (!buonfine){
 			final JFrame frame = new JFrame("Make your Choice!!");
@@ -106,10 +145,11 @@ public class GUIView implements View{
 				}
 			});
 
-
+			int righeGriglia=3;
+			int colonneGriglia=2;
 
 			JPanel panel = new JPanel();
-			panel.setLayout(new GridLayout(3,2));
+			panel.setLayout(new GridLayout(righeGriglia,colonneGriglia));
 			panel.setBackground(Color.decode(colorePannelli));
 
 
@@ -154,23 +194,23 @@ public class GUIView implements View{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			scommessa[0] = (String) sceltaImporto.getText();
-			scommessa[1] = (String) corsieDisponibili.getSelectedItem();
+			scommessa[IMPORTO] = (String) sceltaImporto.getText();
+			scommessa[CORSIA] = (String) corsieDisponibili.getSelectedItem();
 	
-			if (scommessa[1].equals(sceltaCorsia[0])){
-				scommessa[1]="1";
+			if (scommessa[CORSIA].equals(sceltaCorsia[0])){
+				scommessa[CORSIA]="1";
 			} else if (scommessa[1].equals(sceltaCorsia[1])){
-				scommessa[1]="2";
+				scommessa[CORSIA]="2";
 			} else if (scommessa[1].equals(sceltaCorsia[2])){
-				scommessa[1]="3";
+				scommessa[CORSIA]="3";
 			} else if (scommessa[1].equals(sceltaCorsia[3])){
-				scommessa[1]="4";
+				scommessa[CORSIA]="4";
 			} else if (scommessa[1].equals(sceltaCorsia[4])){
-				scommessa[1]="5";
+				scommessa[CORSIA]="5";
 			} else if (scommessa[1].equals(sceltaCorsia[5])){
-				scommessa[1]="6";
+				scommessa[CORSIA]="6";
 			}
-			scommessa[2] =  (String) tipoScommessa.getSelectedItem();
+			scommessa[TIPO] =  (String) tipoScommessa.getSelectedItem();
 			buonfine=true;
 			try{
 				Integer.parseInt((String)sceltaImporto.getText());
@@ -189,7 +229,7 @@ public class GUIView implements View{
 	@Override
 	public String[] chiediSecondaScommessa() {
 		
-		String[] scommessa = new String[3];
+		String[] scommessa = new String[DIM_SCOM];
 		
 		JOptionPane panel = new JOptionPane("Vuoi effettuare una seconda scommessa? ");
 		panel.setOptions(new String[]  {"Si", "No"});
@@ -201,7 +241,7 @@ public class GUIView implements View{
 		Object value = panel.getValue();
 		
 		if(value != null & value.equals("Si")){ scommessa = chiediScommessa(); }
-		else{ scommessa[2] = "N"; }
+		else{ scommessa[TIPO] = "N"; }
 		
 		return scommessa;
 	}
@@ -211,7 +251,7 @@ public class GUIView implements View{
 	@Override
 	public String[] chiediTrucca( ArrayList<Azione> carteAzione) throws NullPointerException{
 		
-		String[] scelta = new String[2];
+		String[] scelta = new String[DIM_TRUC];
 		JPanel panelCarta = new JPanel();
 		panelCarta.setBackground(Color.decode(colorePannelli));
 		panelCarta.setLayout(new FlowLayout());
@@ -299,11 +339,11 @@ public class GUIView implements View{
 				}
 		}
 		if (indiceCarta==1) {
-			scelta[0] = "1";
+			scelta[CARTA_SCELTA] = "1";
 		}else {
-			scelta[0]="2";
+			scelta[CARTA_SCELTA]="2";
 		}
-		scelta[1] = sceltaCorsia.getSelectedItem().toString();
+		scelta[CORSIA] = sceltaCorsia.getSelectedItem().toString();
 		
 		return scelta;
 	}
@@ -453,9 +493,9 @@ public class GUIView implements View{
     		   quotIniziali=false;
         	   
     		   String[][] tabellaQuot= ((eventoQuotazioni) e).getTabellaQuot();
-        	   String[] quot=new String[6];
+        	   String[] quot=new String[NUM_CORSIE];
         	   
-        	   for(int i=0;i<6;i++){
+        	   for(int i=0;i<NUM_CORSIE;i++){
         		   
         		   quot[i]=tabellaQuot[i][1];
         	   }
