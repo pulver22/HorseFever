@@ -74,15 +74,15 @@ public class BetManager {
 	//Pagamenti ai proprietari di scuderia
 	for(int i=0;i< giocatori.size();i++){
 		long denari = giocatori.get(i).getDenari();
-		if(giocatori.get(i).getScuderia() == ordineArrivoColori[0]){
+		if(giocatori.get(i).getScuderia().equals(ordineArrivoColori[0])){
 			
 			giocatori.get(i).setDenariPaga(denari + PROP_PRIMO);
 		}
-		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[1]){
+		else if(giocatori.get(i).getScuderia().equals(ordineArrivoColori[1])){
 			
 			giocatori.get(i).setDenariPaga(denari + PROP_SECONDO);
 		}
-		else if(giocatori.get(i).getScuderia() == ordineArrivoColori[2]){
+		else if(giocatori.get(i).getScuderia().equals(ordineArrivoColori[2])){
 			
 			giocatori.get(i).setDenariPaga(denari + PROP_TERZO);
 		}

@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import View.GUIView;
 import View.View;
@@ -17,6 +18,8 @@ public class AdapterReteClient implements Adapter{
     private Socket socket=null;
     private ObjectInputStream in = null;
     private ObjectOutputStream out = null;
+    
+    private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
  
     /**
      * Dopo aver ricevuto in ingresso l'indirizzo IP del server,collega il client al server attraverso una porta
@@ -25,9 +28,9 @@ public class AdapterReteClient implements Adapter{
     public void connetti(String serverIP) {
         try {
             socket = new Socket(serverIP, SERVER_PORT);
-            System.out.println("[Client] Connesso al Server!");
+            log.info("[Client] Connesso al Server!");
         } catch (Exception ex) {
-            System.out.println("Error connecting to server: " + ex.getMessage());
+        	log.info("Errore di connessione al server: " + ex.getMessage());
             throw new RuntimeException();
         }
     }
@@ -61,8 +64,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	    
-            	            System.out.println("Error: " + ex);
+            	        	log.info("Errore: " + ex);
             	            throw new RuntimeException();
             	        }
             		}
@@ -76,7 +78,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	            System.out.println("Error: " + ex);
+            	        	log.info("Errore: " + ex);
             	            throw new RuntimeException();
             	        }
             		}
@@ -92,7 +94,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	            System.out.println("Error: " + ex);
+            	        	log.info("Errore: " + ex);
             	            throw new RuntimeException();
             	        }
             		}
@@ -113,7 +115,7 @@ public class AdapterReteClient implements Adapter{
             	}
             	
             } catch (Exception ex) {
-                System.out.println("Error: " + ex);
+            	log.info("Errore: " + ex);
                 throw new RuntimeException();
             }
         }

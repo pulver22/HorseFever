@@ -18,6 +18,7 @@ public class TextView implements View{
 	public static final int CARTA_SCELTA=0;
 	public static final int CORSIA=1;
 	public static final int TIPO=2;
+	
 	/**
 	 * Chiede all'utente i valori per scommettere
 	 * @return un array di stringhe con i valori inseriti dall'utente

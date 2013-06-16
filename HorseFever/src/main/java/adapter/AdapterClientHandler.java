@@ -18,7 +18,7 @@ public class AdapterClientHandler{
 	private ObjectOutputStream out=null;
 	private ObjectInputStream in=null;
 	
-	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Costruttore dell'handler

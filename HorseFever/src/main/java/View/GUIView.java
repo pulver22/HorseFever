@@ -48,7 +48,7 @@ public class GUIView implements View{
 	private static final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 	private static final String colorePannelli="#FFFFFF";
 	
-	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[NUM_AZIONI];

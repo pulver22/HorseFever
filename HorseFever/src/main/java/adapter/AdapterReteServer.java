@@ -18,7 +18,7 @@ public class AdapterReteServer implements Adapter{
 
 	public static final int SERVER_PORT = 5000;
 	
-	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	private Controller controller;
 	private int numeroClientAttesi;
@@ -44,12 +44,12 @@ public class AdapterReteServer implements Adapter{
         try {
             //Crea un nuovo server socket con la porta di default
             serverSocket = new ServerSocket(SERVER_PORT);
-            System.out.println("[Server] Aperta la porta.");
+            log.info("[Server] Aperta la porta.");
         } catch (IOException ex) {
-            System.out.println("Errore durante la creazione del server socket "+ex.getMessage());
+        	log.info("Errore durante la creazione del server socket "+ex.getMessage());
             return;
         }
-        System.out.println("[Server] In attesa dei Clients");
+        log.info("[Server] In attesa dei Clients");
         Socket socket = null;
         ClientThread c=new ClientThread("localhost",viewRegistrate.get(0));
 		c.start();
@@ -58,9 +58,9 @@ public class AdapterReteServer implements Adapter{
         		//Aspetta fino all'instaurazione del server socket e l'aggiunta di giocatori
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
-        		System.out.println("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
+        		log.info("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
-        		System.out.println("Errore durante l'accettazione del server socket");
+        		log.info("Errore durante l'accettazione del server socket");
         		return;
         	}
         }
