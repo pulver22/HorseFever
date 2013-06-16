@@ -2,10 +2,12 @@ package adapter;
 
 import horsefever.Azione;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import View.GUIView;
@@ -31,7 +33,6 @@ public class AdapterReteClient implements Adapter{
             log.info("[Client] Connesso al Server!");
         } catch (Exception ex) {
         	log.info("Errore di connessione al server: " + ex.getMessage());
-            throw new RuntimeException();
         }
     }
     
@@ -65,7 +66,7 @@ public class AdapterReteClient implements Adapter{
             	 
             	        } catch (Exception ex) {
             	        	log.info("Errore: " + ex);
-            	            throw new RuntimeException();
+            	      
             	        }
             		}
             		if (mess[0].equals("chiediSecondaScommessa")){
@@ -79,7 +80,6 @@ public class AdapterReteClient implements Adapter{
             	 
             	        } catch (Exception ex) {
             	        	log.info("Errore: " + ex);
-            	            throw new RuntimeException();
             	        }
             		}
             		if (mess[0].equals("chiediTrucca")){
@@ -95,7 +95,6 @@ public class AdapterReteClient implements Adapter{
             	 
             	        } catch (Exception ex) {
             	        	log.info("Errore: " + ex);
-            	            throw new RuntimeException();
             	        }
             		}
             		if (mess[0].equals("stampaMessaggio")){
@@ -114,10 +113,11 @@ public class AdapterReteClient implements Adapter{
             		}
             	}
             	
-            } catch (Exception ex) {
+            } catch (IOException ex) {
             	log.info("Errore: " + ex);
-                throw new RuntimeException();
-            }
+            } catch (ClassNotFoundException e) {
+            	log.log(Level.SEVERE, e.getMessage(), e);
+			}
         }
     }
 	

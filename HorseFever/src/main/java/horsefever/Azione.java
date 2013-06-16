@@ -1,8 +1,7 @@
 package horsefever;
 
-import java.io.Serializable;
 
-public class Azione extends Carta implements Serializable{
+public class Azione extends Carta{
 
 	private static final long serialVersionUID = 2573588524457267064L;
 	private String colore;

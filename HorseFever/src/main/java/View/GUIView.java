@@ -169,12 +169,13 @@ public class GUIView implements View{
 			Thread t = new Thread() {
 				public void run() {
 					synchronized(lock2) {
-						while (frame.isVisible())
+						while (frame.isVisible()){
 							try {
 								lock2.wait();
 							} catch (InterruptedException e) {
 								log.log(Level.SEVERE, e.getMessage(), e);
 							}
+						}
 					}
 				}
 			};
@@ -312,12 +313,13 @@ public class GUIView implements View{
 		Thread t = new Thread() {
         	public void run() {
             	synchronized(lock) {
-                	while (frame.isVisible())
+                	while (frame.isVisible()){
                     	try {
                         	lock.wait();
                     	} catch (InterruptedException e) {
                     		log.log(Level.SEVERE, e.getMessage(), e);
                     	}
+                	}
             	}
         	}
     	};
