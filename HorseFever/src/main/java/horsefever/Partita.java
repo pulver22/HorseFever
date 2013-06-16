@@ -33,19 +33,26 @@ public class Partita {
 		
 		this.adapter=a;
 		
+		int uno=1;
+		int due=2;
+		int tre=3;
+		int quattro=4;
+		int cinque=5;
+		int sei=6;
+		
 		this.numgiocatori=Integer.valueOf(numgiocatori);
-		if(numgiocatori==4){ numturni=4; }
-		else if (numgiocatori==5){ numturni=5; }
-		else { numturni=6; }
+		if(numgiocatori==quattro){ numturni=quattro; }
+		else if (numgiocatori==cinque){ numturni=cinque; }
+		else { numturni=sei; }
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna(this);
 		plancia = new Plancia(lavagna,this);
 		lavagna.setPlancia(plancia);
 		betManager= new BetManager(this);
-		if(numgiocatori==2){ numSegnaliniScommessaPerColore=1; }
-		else if(numgiocatori==3){ numSegnaliniScommessaPerColore=2; }
-		else if(numgiocatori==4){ numSegnaliniScommessaPerColore=3; }
-		else { numSegnaliniScommessaPerColore=4; }
+		if(numgiocatori==due){ numSegnaliniScommessaPerColore=uno; }
+		else if(numgiocatori==tre){ numSegnaliniScommessaPerColore=due; }
+		else if(numgiocatori==quattro){ numSegnaliniScommessaPerColore=tre; }
+		else { numSegnaliniScommessaPerColore=quattro; }
 		
 		
 		for(int i=0; i<numSegnalini.length; i++){
@@ -64,11 +71,13 @@ public class Partita {
 		String quotazione;
 		String scuderia;
 		if (debug){
-			Personaggio p=new Personaggio("Sigvard Skalle", 4400, "7");
+			int soldiSigvard=4400;
+			int soldiCraneo=4200;
+			Personaggio p=new Personaggio("Sigvard Skalle", soldiSigvard, "7");
 			giocatori.add(new Giocatore(p,"Bianco",this));	
 			notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.NUOVO));
 			
-			Personaggio p2=new Personaggio("Craneo Cervantes", 4200, "6");
+			Personaggio p2=new Personaggio("Craneo Cervantes", soldiCraneo, "6");
 			giocatori.add(new Giocatore(p2,"Giallo",this));	
 			notifyObserver(new eventoGiocatore(giocatori.get(1),eventoGiocatore.NUOVO));
 

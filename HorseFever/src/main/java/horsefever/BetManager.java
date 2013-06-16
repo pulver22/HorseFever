@@ -95,28 +95,34 @@ public class BetManager {
 	public String convertiOrdineArrivo(int ordineArrivo){
 		
 		String ordine = null;
+		int primo=0;
+		int secondo=1;
+		int terzo=2;
+		int quarto=3;
+		int quinto=4;
+		int sesto=5;
 		
-			if(ordineArrivo==0){
+			if(ordineArrivo==primo){
 				
 				ordine ="Nero";
 			}
-			else if(ordineArrivo==1){
+			else if(ordineArrivo==secondo){
 				
 				ordine ="Blu";
 			}
-			else if(ordineArrivo==2){
+			else if(ordineArrivo==terzo){
 				
 				ordine ="Verde";
 			}
-			else if(ordineArrivo==3){
+			else if(ordineArrivo==quarto){
 				
 				ordine ="Rosso";
 			}
-			else if(ordineArrivo==4){
+			else if(ordineArrivo==quinto){
 				
 				ordine ="Giallo";
 			}
-			else if(ordineArrivo==5){
+			else if(ordineArrivo==sesto){
 				
 				ordine ="Bianco";
 			}

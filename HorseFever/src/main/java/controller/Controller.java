@@ -10,6 +10,7 @@ public class Controller {
 	private static final int MOLTIPLICATORE=100;
 	private static final int PV_MIN=2;
 	private static final int DIECI=10;
+	private static final int NUM_CORSIE=6;
 	
 	
 	private Partita partita;
@@ -239,7 +240,7 @@ public class Controller {
     				}	
     			}
     			
-                if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V' && buonfine)){
+                if(importo>denari || importo<scommessaMinima || numCorsia>(NUM_CORSIE-1) || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V' && buonfine)){
     				
     				adapter.stampaMessaggio("Parametri non corretti !!",indice);
     				buonfine=false;
@@ -304,7 +305,7 @@ public class Controller {
     			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     	    
-    			if(importo>denari || importo<scommessaMinima || numCorsia>5 || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
+    			if(importo>denari || importo<scommessaMinima || numCorsia>(NUM_CORSIE-1) || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
     				
     				adapter.stampaMessaggio("Parametri non corretti !!",indice);
     				buonfine=false;
@@ -349,7 +350,7 @@ public class Controller {
 			numCorsia=Integer.parseInt(scelta[1]);
 			numCorsia--;
 	    
-			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>5 || numCorsia<0){
+			if(numCartaAzione>1 || numCartaAzione<0 || numCorsia>(NUM_CORSIE-1) || numCorsia<0){
 				buonfine=false;
 			}
 				
