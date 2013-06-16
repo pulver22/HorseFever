@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import controller.Controller;
 
@@ -15,6 +17,8 @@ import eventi.HorseFeverEvent;
 public class AdapterReteServer implements Adapter{
 
 	public static final int SERVER_PORT = 5000;
+	
+	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	private Controller controller;
 	private int numeroClientAttesi;
@@ -76,7 +80,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 		
@@ -94,7 +98,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 	}
@@ -111,7 +115,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 	}
@@ -126,7 +130,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -142,7 +146,7 @@ public class AdapterReteServer implements Adapter{
 				// TODO Auto-generated catch block
 				controller.rimuoviGiocatoreIrraggiungibile(i);
 				clients.remove(i);
-				e1.printStackTrace();
+				log.log(Level.SEVERE, e1.getMessage(), e1);
 			}
 			i++;
 		}
@@ -174,7 +178,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 		if (messaggio.equals("Fine del turno")){
 			clients.add(clients.get(0)); //Riordina clients secondo ordine del primo giocatore
@@ -209,7 +213,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 

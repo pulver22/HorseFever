@@ -7,6 +7,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import eventi.HorseFeverEvent;
 
 public class AdapterClientHandler{
@@ -14,6 +17,8 @@ public class AdapterClientHandler{
 	private Socket clientSocket;
 	private ObjectOutputStream out=null;
 	private ObjectInputStream in=null;
+	
+	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Costruttore dell'handler
@@ -46,7 +51,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
         
 		return valori;
@@ -74,7 +79,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 
 		return valori;
@@ -104,7 +109,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 
 		return valori;
@@ -161,7 +166,7 @@ public class AdapterClientHandler{
 				in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 	}
 

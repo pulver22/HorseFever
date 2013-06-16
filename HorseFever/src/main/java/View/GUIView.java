@@ -3,6 +3,8 @@ package View;
 
 import javax.swing.*;
 
+import adapter.AdapterReteServer;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -12,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import horsefever.Azione;
 import eventi.*;
@@ -43,6 +47,8 @@ public class GUIView implements View{
 	private JFrame frame=new JFrame("Horse Fever");
 	private static final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
 	private static final String colorePannelli="#FFFFFF";
+	
+	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[NUM_AZIONI];
@@ -167,7 +173,7 @@ public class GUIView implements View{
 							try {
 								lock2.wait();
 							} catch (InterruptedException e) {
-								e.printStackTrace();
+								log.log(Level.SEVERE, e.getMessage(), e);
 							}
 					}
 				}
@@ -177,7 +183,7 @@ public class GUIView implements View{
 				t.join();
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 			scommessa[IMPORTO] = (String) sceltaImporto.getText();
 			scommessa[CORSIA] = (String) corsieDisponibili.getSelectedItem();
@@ -310,7 +316,7 @@ public class GUIView implements View{
                     	try {
                         	lock.wait();
                     	} catch (InterruptedException e) {
-                        	e.printStackTrace();
+                    		log.log(Level.SEVERE, e.getMessage(), e);
                     	}
             	}
         	}
@@ -322,7 +328,7 @@ public class GUIView implements View{
 			t.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage(), e);
 		}
 
     	int indiceCarta=0;
@@ -654,7 +660,7 @@ public class GUIView implements View{
                 
 			} catch (InterruptedException e) {
 				
-				e.printStackTrace();
+				log.log(Level.SEVERE, e.getMessage(), e);
 			}
 			
 			JOptionPane.showMessageDialog(null, ""+messaggio,"Attenzione", JOptionPane.PLAIN_MESSAGE);

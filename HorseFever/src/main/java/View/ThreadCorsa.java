@@ -1,6 +1,10 @@
 package View;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import adapter.AdapterReteServer;
 
 import eventi.eventoArrivi;
 import eventi.eventoCorsa;
@@ -24,6 +28,8 @@ public class ThreadCorsa extends Thread{
 	private Board board;
 	private int i=0;
 	private boolean inserito=false;
+	
+	public static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Inizializza il thread Corsa.
@@ -67,7 +73,7 @@ public class ThreadCorsa extends Thread{
         		   Thread.sleep(2800);
         	   } catch (InterruptedException e) {
 				
-				e.printStackTrace();
+        		  log.log(Level.SEVERE, e.getMessage(), e);
         	   }
         		  
            }
