@@ -6,9 +6,9 @@ import eventi.eventoQuotazioni;
 
 public class Lavagna {
 
-	private final static int NUM_CORSIE=6;
-	private final static int QUOT_MIN=7;
-	private final static int QUOT_MAX=2;
+	private static final int NUM_CORSIE=6;
+	private static final int QUOT_MIN=7;
+	private static final int QUOT_MAX=2;
 	
 	private String[][] quotazioni;
 	private Partita partita;

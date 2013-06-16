@@ -9,10 +9,10 @@ import eventi.eventoQuotazioni;
 
 public class ThreadCorsa extends Thread{
 
-	private final static int NUM_CORSIE=6;
-	private final static int PRIMO=1;
-	private final static int SECONDO=2;
-	private final static int TERZO=3;
+	private static final int NUM_CORSIE=6;
+	private static final int PRIMO=1;
+	private static final int SECONDO=2;
+	private static final int TERZO=3;
 	
 	
 	private boolean stop;

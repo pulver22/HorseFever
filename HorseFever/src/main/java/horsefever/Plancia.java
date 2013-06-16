@@ -9,7 +9,7 @@ import eventi.eventoTrucca;
 
 public class Plancia {
 	
-	private final static int NUM_CORSIE=6;
+	private static final int NUM_CORSIE=6;
 	private boolean[] arrivati = new boolean[NUM_CORSIE];
 	private String colori[] = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"}; 
 	private Cavallo[] cavalli = new Cavallo[NUM_CORSIE];

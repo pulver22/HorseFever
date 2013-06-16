@@ -6,11 +6,11 @@ import eventi.eventoScommessa;
 
 public class BetManager {
 	
-	private final static int PV_VITT=3;
-	private final static int PV_PIAZZ=1;
-	private final static int PROP_PRIMO=600;
-	private final static int PROP_SECONDO=400;
-	private final static int PROP_TERZO=200;
+	private static final int PV_VITT=3;
+	private static final int PV_PIAZZ=1;
+	private static final int PROP_PRIMO=600;
+	private static final int PROP_SECONDO=400;
+	private static final int PROP_TERZO=200;
 	
 	private ArrayList<Scommessa> bManager = new ArrayList<Scommessa>();
 	private eventoScommessa e;

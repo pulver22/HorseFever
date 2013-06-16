@@ -7,9 +7,9 @@ import horsefever.*;
 
 public class Controller {
 	
-	private final static int MOLTIPLICATORE=100;
-	private final static int PV_MIN=2;
-	private final static int DIECI=10;
+	private static final int MOLTIPLICATORE=100;
+	private static final int PV_MIN=2;
+	private static final int DIECI=10;
 	
 	
 	private Partita partita;

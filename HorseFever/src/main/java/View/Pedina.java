@@ -9,10 +9,10 @@ import javax.swing.*;
 
 public class Pedina implements ActionListener {
 
-	private final static int LIMITE_PLANCIA=1046;
-	private final static int TRAGUARDO=900;
-	private final static int DX_INIZ=37;
-	private final static int DX_FIN=48;
+	private static final int LIMITE_PLANCIA=1046;
+	private static final int TRAGUARDO=900;
+	private static final int DX_INIZ=37;
+	private static final int DX_FIN=48;
 	
 	private int x;
 	private int y;

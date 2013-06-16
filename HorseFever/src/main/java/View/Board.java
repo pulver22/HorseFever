@@ -9,10 +9,10 @@ import java.awt.event.AdjustmentListener;
 @SuppressWarnings("serial")
 public class Board extends JPanel {
 
-	private final static int NUM_CORSIE=6;
-	private final static int MAX_GIOC=NUM_CORSIE;
-	private final static int NUM_PIAZZ=3;
-	private final static int NUM_MOVIMENTI=23;
+	private static final int NUM_CORSIE=6;
+	private static final int MAX_GIOC=NUM_CORSIE;
+	private static final int NUM_PIAZZ=3;
+	private static final int NUM_MOVIMENTI=23;
 	
 	private Pedina[] pedine=new Pedina[NUM_CORSIE];
 	
@@ -54,9 +54,9 @@ public class Board extends JPanel {
 	
 	private Font fontPersonale=new Font("Monaco",Font.BOLD,20);
 
-	private final static String colorePannelli="#c38335";
-	private final static String coloreEvidenzia="#FFFF33";
-	private final static int xPedineIniz=455;
+	private static final String colorePannelli="#c38335";
+	private static final String coloreEvidenzia="#FFFF33";
+	private static final int xPedineIniz=455;
 	
 	/**
 	 * Inizializza tutti gli elementi grafici

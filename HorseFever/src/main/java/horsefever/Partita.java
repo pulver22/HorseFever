@@ -5,7 +5,7 @@ import eventi.*;
 
 public class Partita {
 
-	private final static int NUM_CORSIE=6;
+	private static final int NUM_CORSIE=6;
 	
 	private ArrayList<Giocatore> giocatori;
 	private int numturni=2;

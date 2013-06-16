@@ -19,7 +19,7 @@ import eventi.*;
 
 public class GUIView implements View{
 
-	private final static int NUM_AZIONI=18;
+	private static final int NUM_AZIONI=18;
 	
 	private Board board;
 	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
@@ -30,8 +30,8 @@ public class GUIView implements View{
 	private boolean quotIniziali=true;
 	private boolean first=true;
 	private JFrame frame=new JFrame("Horse Fever");
-	private final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
-	private final static String colorePannelli="#FFFFFF";
+	private static final String[] sceltaCorsia = {"Nero","Blu","Verde","Rosso","Giallo","Bianco"};
+	private static final String colorePannelli="#FFFFFF";
 	
 	//Immagini Carte Azione
 	private ImageIcon[] carteAzione=new ImageIcon[NUM_AZIONI];
