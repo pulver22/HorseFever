@@ -35,7 +35,7 @@ public class Partita {
 		
 		this.adapter=a;
 		
-		this.numgiocatori=Integer.valueOf(numgiocatori-2);
+		this.numgiocatori=Integer.valueOf(numgiocatori);
 		
 		
 		
