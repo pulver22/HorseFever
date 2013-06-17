@@ -18,7 +18,7 @@ public class AdapterReteServer implements Adapter{
 
 	public static final int SERVER_PORT = 5000;
 	
-	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	private Controller controller;
 	private int numeroClientAttesi;
@@ -44,12 +44,12 @@ public class AdapterReteServer implements Adapter{
         try {
             //Crea un nuovo server socket con la porta di default
             serverSocket = new ServerSocket(SERVER_PORT);
-            log.info("[Server] Aperta la porta.");
+            LOG.info("[Server] Aperta la porta.");
         } catch (IOException ex) {
-        	log.info("Errore durante la creazione del server socket "+ex.getMessage());
+        	LOG.info("Errore durante la creazione del server socket "+ex.getMessage());
             return;
         }
-        log.info("[Server] In attesa dei Clients");
+        LOG.info("[Server] In attesa dei Clients");
         Socket socket = null;
         ClientThread c=new ClientThread("localhost",viewRegistrate.get(0));
 		c.start();
@@ -58,9 +58,9 @@ public class AdapterReteServer implements Adapter{
         		//Aspetta fino all'instaurazione del server socket e l'aggiunta di giocatori
         		socket = serverSocket.accept();
         		clients.add(new AdapterClientHandler(socket));
-        		log.info("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
+        		LOG.info("[Server] Connessione instaurata, client IP" + socket.getInetAddress());
         	} catch (IOException ex) {
-        		log.info("Errore durante l'accettazione del server socket");
+        		LOG.info("Errore durante l'accettazione del server socket");
         		return;
         	}
         }
@@ -80,7 +80,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 		
@@ -98,7 +98,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 	}
@@ -115,7 +115,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		return valori;
 	}
@@ -130,7 +130,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 
@@ -146,7 +146,7 @@ public class AdapterReteServer implements Adapter{
 				// TODO Auto-generated catch block
 				controller.rimuoviGiocatoreIrraggiungibile(i);
 				clients.remove(i);
-				log.log(Level.SEVERE, e1.getMessage(), e1);
+				LOG.log(Level.SEVERE, e1.getMessage(), e1);
 			}
 			i++;
 		}
@@ -178,7 +178,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		if (messaggio.equals("Fine del turno")){
 			clients.add(clients.get(0)); //Riordina clients secondo ordine del primo giocatore
@@ -213,7 +213,7 @@ public class AdapterReteServer implements Adapter{
 			// TODO Auto-generated catch block
 			controller.rimuoviGiocatoreIrraggiungibile(indice);
 			clients.remove(indice);
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 	}
 

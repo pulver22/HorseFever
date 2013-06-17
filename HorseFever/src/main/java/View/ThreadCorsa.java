@@ -29,7 +29,7 @@ public class ThreadCorsa extends Thread{
 	private int i=0;
 	private boolean inserito=false;
 	
-	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Inizializza il thread Corsa.
@@ -73,7 +73,7 @@ public class ThreadCorsa extends Thread{
         		   Thread.sleep(2800);
         	   } catch (InterruptedException e) {
 				
-        		  log.log(Level.SEVERE, e.getMessage(), e);
+        		  LOG.log(Level.SEVERE, e.getMessage(), e);
         	   }
         		  
            }

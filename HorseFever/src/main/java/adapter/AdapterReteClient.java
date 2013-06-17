@@ -21,7 +21,7 @@ public class AdapterReteClient implements Adapter{
     private ObjectInputStream in = null;
     private ObjectOutputStream out = null;
     
-    private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+    private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
  
     /**
      * Dopo aver ricevuto in ingresso l'indirizzo IP del server,collega il client al server attraverso una porta
@@ -30,9 +30,9 @@ public class AdapterReteClient implements Adapter{
     public void connetti(String serverIP) {
         try {
             socket = new Socket(serverIP, SERVER_PORT);
-            log.info("[Client] Connesso al Server!");
+            LOG.info("[Client] Connesso al Server!");
         } catch (Exception ex) {
-        	log.info("Errore di connessione al server: " + ex.getMessage());
+        	LOG.info("Errore di connessione al server: " + ex.getMessage());
         }
     }
     
@@ -65,7 +65,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	        	log.info("Errore: " + ex);
+            	        	LOG.info("Errore: " + ex);
             	      
             	        }
             		}
@@ -79,7 +79,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	        	log.info("Errore: " + ex);
+            	        	LOG.info("Errore: " + ex);
             	        }
             		}
             		if (mess[0].equals("chiediTrucca")){
@@ -94,7 +94,7 @@ public class AdapterReteClient implements Adapter{
             	            out.flush();
             	 
             	        } catch (Exception ex) {
-            	        	log.info("Errore: " + ex);
+            	        	LOG.info("Errore: " + ex);
             	        }
             		}
             		if (mess[0].equals("stampaMessaggio")){
@@ -114,9 +114,9 @@ public class AdapterReteClient implements Adapter{
             	}
             	
             } catch (IOException ex) {
-            	log.info("Errore: " + ex);
+            	LOG.info("Errore: " + ex);
             } catch (ClassNotFoundException e) {
-            	log.log(Level.SEVERE, e.getMessage(), e);
+            	LOG.log(Level.SEVERE, e.getMessage(), e);
 			}
         }
     }

@@ -18,7 +18,7 @@ public class AdapterClientHandler{
 	private ObjectOutputStream out=null;
 	private ObjectInputStream in=null;
 	
-	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Costruttore dell'handler
@@ -51,7 +51,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				log.log(Level.SEVERE, e.getMessage(), e);
+				LOG.log(Level.SEVERE, e.getMessage(), e);
 			}
         
 		return valori;
@@ -79,7 +79,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				log.log(Level.SEVERE, e.getMessage(), e);
+				LOG.log(Level.SEVERE, e.getMessage(), e);
 			}
 
 		return valori;
@@ -109,7 +109,7 @@ public class AdapterClientHandler{
 				valori=(String[])in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				log.log(Level.SEVERE, e.getMessage(), e);
+				LOG.log(Level.SEVERE, e.getMessage(), e);
 			}
 
 		return valori;
@@ -166,7 +166,7 @@ public class AdapterClientHandler{
 				in.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				log.log(Level.SEVERE, e.getMessage(), e);
+				LOG.log(Level.SEVERE, e.getMessage(), e);
 			}
 	}
 

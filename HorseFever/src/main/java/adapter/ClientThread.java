@@ -10,7 +10,7 @@ public class ClientThread extends Thread{
 	private AdapterReteClient client;
 	private String serverIP;
 	
-	private static final Logger log = Logger.getLogger(AdapterReteServer.class.getName());
+	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
 	/**
 	 * Crea un thread per ogni client associandolo all'indirizzo dell'IP e registrandosi
@@ -33,7 +33,7 @@ public class ClientThread extends Thread{
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			log.log(Level.SEVERE, e.getMessage(), e);
+			LOG.log(Level.SEVERE, e.getMessage(), e);
 		}
 		client.connetti(serverIP);
 		client.start();
