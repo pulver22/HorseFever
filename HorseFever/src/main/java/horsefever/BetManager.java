@@ -16,6 +16,13 @@ public class BetManager {
 	private eventoScommessa e;
 	private Partita p;
 	
+	private static final int PRIMO=0;
+	private static final int SECONDO=1;
+	private static final int TERZO=2;
+	private static final int QUARTO=3;
+	private static final int QUINTO=4;
+	private static final int SESTO=5;
+	
 	/**
 	 * Inizializza betManager
 	 * @param la partita di riferimento
@@ -99,34 +106,28 @@ public class BetManager {
 	public String convertiOrdineArrivo(int ordineArrivo){
 		
 		String ordine = null;
-		int primo=0;
-		int secondo=1;
-		int terzo=2;
-		int quarto=3;
-		int quinto=4;
-		int sesto=5;
 		
-			if(ordineArrivo==primo){
+			if(ordineArrivo==PRIMO){
 				
 				ordine ="Nero";
 			}
-			else if(ordineArrivo==secondo){
+			else if(ordineArrivo==SECONDO){
 				
 				ordine ="Blu";
 			}
-			else if(ordineArrivo==terzo){
+			else if(ordineArrivo==TERZO){
 				
 				ordine ="Verde";
 			}
-			else if(ordineArrivo==quarto){
+			else if(ordineArrivo==QUARTO){
 				
 				ordine ="Rosso";
 			}
-			else if(ordineArrivo==quinto){
+			else if(ordineArrivo==QUINTO){
 				
 				ordine ="Giallo";
 			}
-			else if(ordineArrivo==sesto){
+			else if(ordineArrivo==SESTO){
 				
 				ordine ="Bianco";
 			}

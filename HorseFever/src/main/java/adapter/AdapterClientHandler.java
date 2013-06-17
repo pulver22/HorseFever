@@ -20,6 +20,9 @@ public class AdapterClientHandler{
 	
 	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
+	private static final int DIM_SCOM=3;
+	private static final int DIM_TRUC=2;
+	
 	/**
 	 * Costruttore dell'handler
 	 * @param Il socket relativo al client che deve gestire l'handler
@@ -34,7 +37,7 @@ public class AdapterClientHandler{
 	public synchronized String[] chiediScommessa(int indice) throws IOException{
 		
 		String[] mess = new String[2];
-		String[] valori = new String[3];
+		String[] valori = new String[DIM_SCOM];
 		mess[0]="chiediScommessa";
 		mess[1]="";
 		
@@ -63,7 +66,7 @@ public class AdapterClientHandler{
 	public synchronized String[] chiediSecondaScommessa(int indice) throws IOException{
 		
 		String[] mess = new String[2];
-		String[] valori = new String[3];
+		String[] valori = new String[DIM_SCOM];
 		mess[0]="chiediSecondaScommessa";
 		mess[1]="";
 
@@ -91,7 +94,7 @@ public class AdapterClientHandler{
 	public synchronized String[] chiediTrucca(ArrayList<Azione> carteAzione, int indice) throws IOException{
 		
 		String[] mess = new String[2];
-		String[] valori = new String[2];
+		String[] valori = new String[DIM_TRUC];
 		mess[0]="chiediTrucca";
 		mess[1]="";
 

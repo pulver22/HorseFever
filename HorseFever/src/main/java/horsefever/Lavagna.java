@@ -39,8 +39,8 @@ public class Lavagna {
 	public void inizializzaQuot(){
 		int temp;
 		quotazioni=new String[NUM_CORSIE][2];
-		ArrayList<Integer> init = new ArrayList<Integer>(6);
-		for (int i=2; i<8;i++){
+		ArrayList<Integer> init = new ArrayList<Integer>(NUM_CORSIE);
+		for (int i=QUOT_MAX; i<(QUOT_MIN+1) ;i++){
 			init.add(i);
 		}
 		for (int j=0; j<NUM_CORSIE; j++){

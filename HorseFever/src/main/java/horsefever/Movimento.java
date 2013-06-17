@@ -3,8 +3,10 @@ package horsefever;
 
 public class Movimento extends Carta {
 
+	
 	private static final long serialVersionUID = -7830854352517037416L;
-	private int[] valorimov=new int[6];
+	private static final int NUM_CORSIE=6;
+	private int[] valorimov=new int[NUM_CORSIE];
 	private String nomefile;
 	/**
 	 * Inizializza la carta movimento.

@@ -12,6 +12,9 @@ public class ViewTestMain implements View{
 	private int trucCount=0;
 	private String[] scommessa1={"700","1","P"};
 	private String[] scommessa2={"100","6","V"};
+
+	private static final int TRE=3;
+	
 	@Override
 	public String[] chiediScommessa() {
 		String[] scommessa;
@@ -29,7 +32,7 @@ public class ViewTestMain implements View{
 
 	@Override
 	public String[] chiediSecondaScommessa() {
-		String[] scommessa=new String[3];
+		String[] scommessa=new String[TRE];
 		scommessa[2]="N";
 		return scommessa;
 	}
@@ -48,7 +51,7 @@ public class ViewTestMain implements View{
 		} else if (trucCount==2){
 			scelta[1]="3";
 			trucCount++;
-		} else if (trucCount==3){
+		} else if (trucCount==TRE){
 			scelta[1]="4";
 			trucCount=0;
 		}
