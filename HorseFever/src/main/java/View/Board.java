@@ -271,7 +271,10 @@ public class Board extends JPanel {
 	 * @param numCorsia (corsia in cui è arrivato il cavallo che si è piazzato)
 	 * @param posizione (1°,2° o 3° posto)
 	 */
-	public void stampaPiazzamento(int numCorsia, int posizione){
+	public void stampaPiazzamento(int numCor, int pos){
+		
+		int posizione=pos-1;
+		int numCorsia=numCor-1;
 		
 		posizione--;
 		numCorsia--;
