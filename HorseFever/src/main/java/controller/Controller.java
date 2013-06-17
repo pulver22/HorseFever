@@ -323,7 +323,7 @@ public class Controller {
     			
                 if(numSegnalini[numCorsia]<=0 && buonfine){
     				
-    				adapter.stampaMessaggio("Scommesse esaurite su corsia "+(numCorsia+1)+" !!",indice);
+    				adapter.stampaMessaggio("Errore! Scommesse esaurite su corsia "+(numCorsia+1)+"!",indice);
     				buonfine=false;
     			}
     			
