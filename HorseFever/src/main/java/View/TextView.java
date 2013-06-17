@@ -14,6 +14,8 @@ public class TextView implements View{
 	public static final int DIM_SCOM=3;
 	public static final int DIM_TRUC=2;
 	
+	private static final int NUM_CORSIE=6;
+	
 	public static final int IMPORTO=0;
 	public static final int CARTA_SCELTA=0;
 	public static final int CORSIA=1;
@@ -64,7 +66,7 @@ public class TextView implements View{
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[CORSIA]=myInput.readLine();
     			int corsia=Integer.parseInt(scommessa[CORSIA]);
-    			if(corsia<1 || corsia>6){
+    			if(corsia<1 || corsia>NUM_CORSIE){
     				buonfine=false;
     				System.out.println("Errore! Inserisci una corsia valida.");
     			}
@@ -192,7 +194,7 @@ public class TextView implements View{
     			BufferedReader myInput=new BufferedReader(reader);
     			scelta[CORSIA]=myInput.readLine();
     			int corsia=Integer.parseInt(scelta[CORSIA]);
-    			if(corsia<1 || corsia>6){
+    			if(corsia<1 || corsia>NUM_CORSIE){
     				buonfine=false;
     				System.out.println("Errore! Inserisci una corsia valida.");
     			}
