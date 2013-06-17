@@ -17,6 +17,8 @@ public class Cavallo {
 	private static final int QUOT_MIN=7;
 	private static final int QUOT_MAX=2;
 	
+	private static final int EFF_ULTIMO=4;
+	
 	/**
 	 * Setta il colore del cavallo
 	 * @param colore
@@ -77,17 +79,16 @@ public class Cavallo {
 	 * @author Niccolo
 	 * */
 	public void aggiornaPosizionePrimoUltimo(int incremento,boolean primo, boolean ultimo){
-		
-		int effUltimo=4;
+
 		int effPrimo=0;
 		
 		if (effettoUltimoPrimo!=null){
 			int incr=Integer.parseInt(""+effettoUltimoPrimo.charAt(1));
 			if (primo && incr==effPrimo){
 				posizione=posizione+incr;
-			}else if (primo && incr==effUltimo){
+			}else if (primo && incr==EFF_ULTIMO){
 				posizione=posizione+incremento;
-			} else if (ultimo && incr==effUltimo){
+			} else if (ultimo && incr==EFF_ULTIMO){
 				posizione+=incr;
 			} else if (ultimo && incr==effPrimo){
 				posizione=posizione+incremento;

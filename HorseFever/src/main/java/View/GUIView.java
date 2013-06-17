@@ -33,15 +33,17 @@ public class GUIView implements View{
 	private static final int GIALLO=4;
 	private static final int BIANCO=5;
 	
-	public static final int DIM_SCOM=3;
-	public static final int DIM_TRUC=2;
+	private static final int DIM_SCOM=3;
+	private static final int DIM_TRUC=2;
 	
-	public static final int IMPORTO=0;
-	public static final int CARTA_SCELTA=0;
-	public static final int CORSIA=1;
-	public static final int TIPO=2;
-	public static final int WIDTH=1200;
-	public static final int HEIGHT=700;
+	private static final int IMPORTO=0;
+	private static final int CARTA_SCELTA=0;
+	private static final int CORSIA=1;
+	private static final int TIPO=2;
+	private static final int WIDTH=1200;
+	private static final int HEIGHT=700;
+	
+	private static final int TRE=3;
 	
 	private Board board;
 	private Queue<eventoCorsa> eventiCorsa=new ConcurrentLinkedQueue<eventoCorsa>();
@@ -143,11 +145,8 @@ public class GUIView implements View{
 				}
 			});
 
-			int righeGriglia=3;
-			int colonneGriglia=2;
-
 			JPanel panel = new JPanel();
-			panel.setLayout(new GridLayout(righeGriglia,colonneGriglia));
+			panel.setLayout(new GridLayout(TRE,2));
 			panel.setBackground(Color.decode(colorePannelli));
 
 

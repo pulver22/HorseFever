@@ -12,6 +12,8 @@ public class ClientThread extends Thread{
 	
 	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
+	private static final int DT_ATTESA_CONNESSIONE=3000;
+	
 	/**
 	 * Crea un thread per ogni client associandolo all'indirizzo dell'IP e registrandosi
 	 * @param serverIP
@@ -30,7 +32,7 @@ public class ClientThread extends Thread{
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(DT_ATTESA_CONNESSIONE);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			LOG.log(Level.SEVERE, e.getMessage(), e);

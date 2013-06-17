@@ -11,6 +11,7 @@ public class Controller {
 	private static final int PV_MIN=2;
 	private static final int DIECI=10;
 	private static final int NUM_CORSIE=6;
+	private static final int DIM_SCOM=3;
 	
 	
 	private Partita partita;
@@ -195,7 +196,7 @@ public class Controller {
     	char tipoScommessa='N',tipoScommessaPrecedente='N';
     	boolean buonfine=false;
     	String messaggio;
-    	String[] parametriScommessa=new String[3];
+    	String[] parametriScommessa=new String[DIM_SCOM];
     	Scommessa scommessa;
     	BetManager bManager=partita.getBetManager();
     	ArrayList<Scommessa> scommesse=new ArrayList<Scommessa>();

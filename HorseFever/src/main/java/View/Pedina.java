@@ -14,6 +14,8 @@ public class Pedina implements ActionListener {
 	private static final int DX_INIZ=37;
 	private static final int DX_FIN=48;
 	
+	private static final int DT_SCATTO=300;
+	
 	private int x;
 	private int y;
 	private int dx=DX_INIZ;
@@ -55,7 +57,7 @@ public class Pedina implements ActionListener {
 	   this.posizioni=numPos-posizioniprec;
 	   posizioniprec=posizioniprec+posizioni;
 	  
-	   timer=new Timer(300,this);
+	   timer=new Timer(DT_SCATTO,this);
 	   timer.start();
 	}
 	
