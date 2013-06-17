@@ -24,14 +24,7 @@ public class Partita {
 	private int numSegnaliniScommessaPerColore;
 	private int[] numSegnalini=new int[NUM_CORSIE];
 	
-	//Tabelle che contengono in posizione i il numero di turni e il numero di segnalini
-	//relativi a una partita con (i+2) giocatori.
-	//	2	3	4	5	6 NumGiocatori
-	//	0	1	2	3	4 Indice Array TAB
-	//	6	6	4	5	6 NumTurni
-	//	1	2	3	4	4 NumSegnaliniPerScommessa
-	private static final int[] TAB_TURNI={6,6,4,5,6};
-	private static final int[] TAB_SEGNALINI={1,2,3,4,4};
+	
 	
 	/**
 	 * Crea una nuova partita con il numero di giocatori scelto, scegliendo il numero di turni e i corretti segbalini
@@ -44,26 +37,23 @@ public class Partita {
 		
 		this.numgiocatori=Integer.valueOf(numgiocatori-2);
 		
-		numturni=TAB_TURNI[numgiocatori-2];
 		
-		numSegnaliniScommessaPerColore=TAB_SEGNALINI[numgiocatori-2];
 		
-		/*
 		if(numgiocatori==4){ numturni=4; }
 		else if (numgiocatori==5){ numturni=5; }
 		else { numturni=6; }
-		*/
+		
 		giocatori=new ArrayList<Giocatore>(numgiocatori);
 		lavagna = new Lavagna(this);
 		plancia = new Plancia(lavagna,this);
 		lavagna.setPlancia(plancia);
 		betManager= new BetManager(this);
-		/*
+		
 		if(numgiocatori==2){ numSegnaliniScommessaPerColore=1; }
 		else if(numgiocatori==3){ numSegnaliniScommessaPerColore=2; }
 		else if(numgiocatori==4){ numSegnaliniScommessaPerColore=3; }
 		else { numSegnaliniScommessaPerColore=4; }
-		*/
+		
 		
 		for(int i=0; i<numSegnalini.length; i++){
 			
