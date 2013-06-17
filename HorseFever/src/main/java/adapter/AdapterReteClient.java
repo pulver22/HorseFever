@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,12 +29,17 @@ public class AdapterReteClient implements Adapter{
      * di default
      */
     public void connetti(String serverIP) {
-        try {
-            socket = new Socket(serverIP, SERVER_PORT);
+
+            try {
+				socket = new Socket(serverIP, SERVER_PORT);
+				LOG.info("[Client] Connesso al Server!");
+			} catch (UnknownHostException e) {
+				LOG.info("Errore di connessione al server: " + e.getMessage());
+			} catch (IOException e) {
+				LOG.info("Errore di connessione al server: " + e.getMessage());
+			}
             LOG.info("[Client] Connesso al Server!");
-        } catch (Exception ex) {
-        	LOG.info("Errore di connessione al server: " + ex.getMessage());
-        }
+
     }
     
     /**
@@ -56,46 +62,36 @@ public class AdapterReteClient implements Adapter{
             	if (obj instanceof String[]){
             		String[] mess= (String[])obj;
             		if (mess[0].equals("chiediScommessa")){
-            			try {
-            				String[] valori=chiediScommessa(0);
-            				if (out==null){
-                        		out = new ObjectOutputStream(socket.getOutputStream());
-                        	}
-            	            out.writeObject(valori);
-            	            out.flush();
-            	 
-            	        } catch (Exception ex) {
-            	        	LOG.info("Errore: " + ex);
-            	      
-            	        }
+
+            			String[] valori=chiediScommessa(0);
+            			if (out==null){
+            				out = new ObjectOutputStream(socket.getOutputStream());
+            			}
+            			out.writeObject(valori);
+            			out.flush();
+
             		}
             		if (mess[0].equals("chiediSecondaScommessa")){
-            			try {
-            				String[] valori=chiediSecondaScommessa(0);
-            				if (out==null){
-                        		out = new ObjectOutputStream(socket.getOutputStream());
-                        	}
-            	            out.writeObject(valori);
-            	            out.flush();
-            	 
-            	        } catch (Exception ex) {
-            	        	LOG.info("Errore: " + ex);
-            	        }
+
+            			String[] valori=chiediSecondaScommessa(0);
+            			if (out==null){
+            				out = new ObjectOutputStream(socket.getOutputStream());
+            			}
+            			out.writeObject(valori);
+            			out.flush();
+
             		}
             		if (mess[0].equals("chiediTrucca")){
-            			try {
-            				@SuppressWarnings("unchecked")
-							ArrayList<Azione> carteAzione=(ArrayList<Azione>)in.readObject();
-            				String[] valori=chiediTrucca(carteAzione,0);
-            				if (out==null){
-                        		out = new ObjectOutputStream(socket.getOutputStream());
-                        	}
-            	            out.writeObject(valori);
-            	            out.flush();
-            	 
-            	        } catch (Exception ex) {
-            	        	LOG.info("Errore: " + ex);
-            	        }
+
+            			@SuppressWarnings("unchecked")
+            			ArrayList<Azione> carteAzione=(ArrayList<Azione>)in.readObject();
+            			String[] valori=chiediTrucca(carteAzione,0);
+            			if (out==null){
+            				out = new ObjectOutputStream(socket.getOutputStream());
+            			}
+            			out.writeObject(valori);
+            			out.flush();
+            	            
             		}
             		if (mess[0].equals("stampaMessaggio")){
             			stampaMessaggio(mess[1],0);
