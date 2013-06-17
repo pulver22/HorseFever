@@ -310,9 +310,14 @@ public class Controller {
     			numCorsia--;
     			tipoScommessa=parametriScommessa[2].charAt(0);
     	    
-    			if(importo>denari || importo<scommessaMinima || numCorsia>(NUM_CORSIE-1) || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
+    			if (importo>denari){
+    				adapter.stampaMessaggio("Parametri non corretti! Hai scommesso più di quanto possiedi.",indice);
+    				buonfine=false;
+    			}
+    			
+                if(importo<scommessaMinima || numCorsia>(NUM_CORSIE-1) || numCorsia<0 || (tipoScommessa!='P' && tipoScommessa!='V')){
     				
-    				adapter.stampaMessaggio("Parametri non corretti !!",indice);
+    				adapter.stampaMessaggio("Parametri non corretti! Probabilmente non hai rispettato la scommessa minima.",indice);
     				buonfine=false;
     			}
     			
