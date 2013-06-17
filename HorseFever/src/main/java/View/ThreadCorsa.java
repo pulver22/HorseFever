@@ -18,6 +18,13 @@ public class ThreadCorsa extends Thread{
 	private static final int SECONDO=2;
 	private static final int TERZO=3;
 	
+	private static final int NERO=1;
+	private static final int BLU=2;
+	private static final int VERDE=3;
+	private static final int ROSSO=4;
+	private static final int GIALLO=5;
+	private static final int BIANCO=6;
+	
 	
 	private boolean stop;
 	private GUIView vista;
@@ -28,6 +35,8 @@ public class ThreadCorsa extends Thread{
 	private Board board;
 	private int i=0;
 	private boolean inserito=false;
+	
+	private static final int DT_ANIMAZ=2800;
 	
 	private static final Logger LOG = Logger.getLogger(AdapterReteServer.class.getName());
 	
@@ -70,7 +79,7 @@ public class ThreadCorsa extends Thread{
         	 
         	   try {
         		   board.repaint();
-        		   Thread.sleep(2800);
+        		   Thread.sleep(DT_ANIMAZ);
         	   } catch (InterruptedException e) {
 				
         		  LOG.log(Level.SEVERE, e.getMessage(), e);
@@ -113,14 +122,14 @@ public class ThreadCorsa extends Thread{
         			   int posArrivo=e.getPosArrivo();
         			   String cavallo=e.getCavallo();
         			   String rappresentazione=e.rappresentazione();
-        			   int numCorsia=10;
+        			   int numCorsia=0;
 
-        			   if(cavallo.equals("Nero")){ numCorsia=1; }
-        			   else if(cavallo.equals("Blu")){ numCorsia=2; }
-        			   else if(cavallo.equals("Verde")){ numCorsia=3; }
-        			   else if(cavallo.equals("Rosso")){ numCorsia=4; }
-        			   else if(cavallo.equals("Giallo")){ numCorsia=5; }
-        			   else if(cavallo.equals("Bianco")){ numCorsia=6; }
+        			   if(cavallo.equals("Nero")){ numCorsia=NERO; }
+        			   else if(cavallo.equals("Blu")){ numCorsia=BLU; }
+        			   else if(cavallo.equals("Verde")){ numCorsia=VERDE; }
+        			   else if(cavallo.equals("Rosso")){ numCorsia=ROSSO; }
+        			   else if(cavallo.equals("Giallo")){ numCorsia=GIALLO; }
+        			   else if(cavallo.equals("Bianco")){ numCorsia=BIANCO; }
 
         			   board.settaAreaNotifica("\n"+rappresentazione);
         			   if(posArrivo==PRIMO || posArrivo==SECONDO || posArrivo==TERZO){
