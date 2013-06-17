@@ -30,9 +30,11 @@ public class Partita {
 	//    0    1    2    3    4 Indice Array TAB
 	//    6    6    4    5    6 NumTurni
 	//    1    2    3    4    4 NumSegnaliniPerScommessa
-
 	private static final int[] TAB_TURNI={6,6,4,5,6};
 	private static final int[] TAB_SEGNALINI={1,2,3,4,4};
+	
+	//Soldi iniziali per i giocatori fittizi in caso di Debug o Test
+	private static final int SOLDI_DEBUG=4400;
 	
 	/**
 	 * Crea una nuova partita con il numero di giocatori scelto, scegliendo il numero di turni e i corretti segbalini
@@ -70,13 +72,11 @@ public class Partita {
 		String quotazione;
 		String scuderia;
 		if (debug){
-			int soldiSigvard=4400;
-			int soldiCraneo=4200;
-			Personaggio p=new Personaggio("Sigvard Skalle", soldiSigvard, "7");
+			Personaggio p=new Personaggio("Sigvard Skalle", SOLDI_DEBUG, "7");
 			giocatori.add(new Giocatore(p,"Bianco",this));	
 			notifyObserver(new eventoGiocatore(giocatori.get(0),eventoGiocatore.NUOVO));
 			
-			Personaggio p2=new Personaggio("Craneo Cervantes", soldiCraneo, "6");
+			Personaggio p2=new Personaggio("Craneo Cervantes", SOLDI_DEBUG, "6");
 			giocatori.add(new Giocatore(p2,"Giallo",this));	
 			notifyObserver(new eventoGiocatore(giocatori.get(1),eventoGiocatore.NUOVO));
 
