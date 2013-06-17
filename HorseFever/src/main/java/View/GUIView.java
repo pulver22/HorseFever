@@ -114,7 +114,7 @@ public class GUIView implements View{
 		String[] scommessa = new String[DIM_SCOM];
 		
 		while (!buonfine){
-			final JFrame frame = new JFrame("Make your Choice!!");
+			final JFrame frameS = new JFrame("Make your Choice!!");
 
 			JButton invioScommessa = new JButton("Conferma");
 
@@ -140,7 +140,7 @@ public class GUIView implements View{
 				public void actionPerformed(ActionEvent ae){
 					synchronized(lock2){
 						lock2.notifyAll();
-						frame.dispose();
+						frameS.dispose();
 					}
 				}
 			});
@@ -154,9 +154,9 @@ public class GUIView implements View{
 			panel_conferma.setLayout(new FlowLayout());
 			panel_conferma.setBackground(Color.decode(colorePannelli));
 
-			frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE) ;
-			frame.add(panel, BorderLayout.NORTH);
-			frame.add(panel_conferma, BorderLayout.SOUTH);
+			frameS.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE) ;
+			frameS.add(panel, BorderLayout.NORTH);
+			frameS.add(panel_conferma, BorderLayout.SOUTH);
 
 			panel.add(importo);
 			panel.add(sceltaImporto);
@@ -168,14 +168,14 @@ public class GUIView implements View{
 			panel_conferma.add(invioScommessa);
 
 
-			frame.pack();
-			frame.setVisible(true);
-			frame.setResizable(false);
-			frame.setLocationRelativeTo(null);
+			frameS.pack();
+			frameS.setVisible(true);
+			frameS.setResizable(false);
+			frameS.setLocationRelativeTo(null);
 			Thread t = new Thread() {
 				public void run() {
 					synchronized(lock2) {
-						while (frame.isVisible()){
+						while (frameS.isVisible()){
 							try {
 								lock2.wait();
 							} catch (InterruptedException e) {
@@ -235,8 +235,8 @@ public class GUIView implements View{
 		JOptionPane panel = new JOptionPane("Vuoi effettuare una seconda scommessa? ");
 		panel.setOptions(new String[]  {"Si", "No"});
 		panel.setBackground(Color.decode(colorePannelli));
-		JFrame frame = new JFrame();
-		frame.setLocationRelativeTo(null);
+		JFrame frameS = new JFrame();
+		frameS.setLocationRelativeTo(null);
 		JDialog dialog = panel.createDialog(frame, "Seconda scommessa");
 		dialog.setVisible(true);
 		Object value = panel.getValue();
@@ -263,8 +263,8 @@ public class GUIView implements View{
 		panelCarta.setLayout(new FlowLayout());
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.decode(colorePannelli));
-		final JFrame frame = new JFrame();
-		frame.setLayout(new BorderLayout());
+		final JFrame frameT = new JFrame();
+		frameT.setLayout(new BorderLayout());
 		JPanel panelConferma = new JPanel();
 		panelConferma.setBackground(Color.decode(colorePannelli));
 		JLabel label = new JLabel("Quale carta vuoi giocare?");
@@ -284,17 +284,17 @@ public class GUIView implements View{
 			corsieDisponibili.addItem(String.valueOf(sceltaCorsia[i]));
 		}
 		
-		frame.add(panelCarta, BorderLayout.NORTH);
-		frame.add(panel, BorderLayout.CENTER);
-		frame.add(panelConferma, BorderLayout.SOUTH);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frameT.add(panelCarta, BorderLayout.NORTH);
+		frameT.add(panel, BorderLayout.CENTER);
+		frameT.add(panelConferma, BorderLayout.SOUTH);
+		frameT.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
 		conferma.addActionListener(new ActionListener(){
 				@Override	
 				public void actionPerformed(ActionEvent arg0) {
 				synchronized(lock){
 				lock.notifyAll();
-				frame.dispose();
+				frameT.dispose();
 				}
 				
 				}
@@ -309,14 +309,14 @@ public class GUIView implements View{
 		panel.add(label2);
 		panel.add(corsieDisponibili);
 		
-		frame.setVisible(true);
-		frame.pack();
-		frame.setLocationRelativeTo(null);
+		frameT.setVisible(true);
+		frameT.pack();
+		frameT.setLocationRelativeTo(null);
 
 		Thread t = new Thread() {
         	public void run() {
             	synchronized(lock) {
-                	while (frame.isVisible()){
+                	while (frameT.isVisible()){
                     	try {
                         	lock.wait();
                     	} catch (InterruptedException e) {

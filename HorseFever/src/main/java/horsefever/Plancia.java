@@ -610,12 +610,12 @@ public class Plancia {
 	 * @return I colori dei cavalli in ordine d'arrivo
 	 * */
 	public String[] getColoriArrivi(){
-		String colori[]=new String[NUM_CORSIE];
-		for (int i=0; i<colori.length;i++){
+		String coloriArr[]=new String[NUM_CORSIE];
+		for (int i=0; i<coloriArr.length;i++){
 			if(cavalliArrivati.get(i)!=null)
-			colori[i]=cavalliArrivati.get(i).getColore();
+			coloriArr[i]=cavalliArrivati.get(i).getColore();
 		}
-		return colori;
+		return coloriArr;
 	}
 	
 	/**
