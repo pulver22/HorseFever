@@ -37,6 +37,11 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[IMPORTO]=myInput.readLine();
+    			int i=Integer.parseInt(scommessa[IMPORTO]);
+    			if (i<0){
+    				buonfine=false;
+    				System.out.println("Errore! L'importo non può essere negativo.");
+    			}
         	}
         	catch(IOException e){
         		
@@ -58,6 +63,11 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[CORSIA]=myInput.readLine();
+    			int corsia=Integer.parseInt(scommessa[CORSIA]);
+    			if(corsia<1 || corsia>6){
+    				buonfine=false;
+    				System.out.println("Errore! Inserisci una corsia valida.");
+    			}
     		}
     		catch(IOException e){
     		
@@ -80,6 +90,11 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scommessa[TIPO]=myInput.readLine();
+    			char c=scommessa[TIPO].charAt(0);
+    			if (c!='P' && c!='V'){
+    				buonfine=false;
+    				System.out.println("Errore! Devi inserire P o V.");
+    			}
         	}
         	catch(IOException e){
         		
@@ -176,6 +191,11 @@ public class TextView implements View{
     			InputStreamReader reader=new InputStreamReader(System.in);
     			BufferedReader myInput=new BufferedReader(reader);
     			scelta[CORSIA]=myInput.readLine();
+    			int corsia=Integer.parseInt(scelta[CORSIA]);
+    			if(corsia<1 || corsia>6){
+    				buonfine=false;
+    				System.out.println("Errore! Inserisci una corsia valida.");
+    			}
     		}
     		catch(IOException e){
     			System.out.println("Errore !!!\n");
