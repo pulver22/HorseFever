@@ -118,7 +118,7 @@ public class Controller {
 			trucca(giocatoreCorrente,i);
 			
 		}
-		//numSegnalini=partita.getNumSegnalini();
+		
         
 		for(i=partita.getNumgiocatori()-1; i>=0;i--){
 			
