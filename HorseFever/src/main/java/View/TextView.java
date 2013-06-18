@@ -11,15 +11,17 @@ import eventi.*;
 public class TextView implements View{
 	
 	
-	public static final int DIM_SCOM=3;
-	public static final int DIM_TRUC=2;
+	private static final int DIM_SCOM=3;
+	private static final int DIM_TRUC=2;
 	
 	private static final int NUM_CORSIE=6;
 	
-	public static final int IMPORTO=0;
-	public static final int CARTA_SCELTA=0;
-	public static final int CORSIA=1;
-	public static final int TIPO=2;
+	private static final int IMPORTO=0;
+	private static final int CARTA_SCELTA=0;
+	private static final int CORSIA=1;
+	private static final int TIPO=2;
+	
+	
 	
 	/**
 	 * Chiede all'utente i valori per scommettere
