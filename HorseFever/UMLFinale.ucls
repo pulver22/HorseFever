@@ -6,34 +6,34 @@
     <position height="-1" width="-1" x="636" y="623"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="2" language="java" name="controller.Controller" project="HorseFever" 
     file="/HorseFever/src/main/java/controller/Controller.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="422" width="266" x="158" y="-192"/>    
+    <position height="-1" width="-1" x="283" y="112"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="3" language="java" name="horsefever.Plancia" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Plancia.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="957" y="1118"/>    
+    <position height="-1" width="-1" x="1003" y="1125"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="4" language="java" name="horsefever.Movimento" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Movimento.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="222" x="-37" y="1380"/>    
+    <position height="-1" width="-1" x="118" y="1440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
@@ -42,25 +42,25 @@
     <position height="-1" width="-1" x="315" y="835"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="6" language="java" name="horsefever.Cavallo" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Cavallo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="941" y="1975"/>    
+    <position height="-1" width="-1" x="1405" y="1127"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="7" language="java" name="horsefever.Scommessa" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Scommessa.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1021" y="6"/>    
+    <position height="-1" width="-1" x="1033" y="211"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
@@ -69,25 +69,25 @@
     <position height="-1" width="-1" x="605" y="1364"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="9" language="java" name="horsefever.BetManager" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/BetManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="711" y="38"/>    
+    <position height="-1" width="-1" x="687" y="222"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="10" language="java" name="horsefever.Lavagna" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Lavagna.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1028" y="488"/>    
+    <position height="-1" width="-1" x="1128" y="526"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
@@ -96,16 +96,16 @@
     <position height="-1" width="-1" x="93" y="1111"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="12" language="java" name="horsefever.Personaggio" project="HorseFever" 
     file="/HorseFever/src/main/java/horsefever/Personaggio.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="170" width="198" x="225" y="1380"/>    
+    <position height="-1" width="-1" x="348" y="1433"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
@@ -114,7 +114,7 @@
     <position height="-1" width="-1" x="349" y="1016"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
@@ -123,7 +123,7 @@
     <position height="-1" width="-1" x="-46" y="455"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
@@ -132,7 +132,7 @@
     <position height="-1" width="-1" x="-388" y="647"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
